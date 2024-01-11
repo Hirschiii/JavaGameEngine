@@ -1,0 +1,1 @@
+Dein Opa ist gestorben. Doch in seinem letzten Brief an dich steht etwas außergewöhnliches drin: Man soll ein Paket an einen besonderen Ort abliefern. Was in dem Paket drin ist weißt du nicht, und als Anweisung hast du nur einen Namen einer Person bekommen.
