@@ -1,101 +1,64 @@
 @startuml
 
-hide class circle
-
-!define Color_Tallis #FF0000
-!define Color_Turner #00FF00
-!define Color_Quincey #0000FF
-
-
-class Briony #Color_Tallis {
-	- Family Tallis
-	- Born 1922
-	- Likes writing
-	- extended and vivid imagination
-	- gorws up to serve as nurse
-	- begins to write more
+package game {
+  class Game
+  class Player
+  class Package
+  class Obstacle
+  class Map
+  class Camera
+  class InputHandler
+  class AssetManager
+  class SoundManager
+  class CollisionDetector
+  class HUD
+  class Score
+  class MainScreen
 }
 
-class Cecilia #Color_Tallis{
-	Family Tallis
-	10 yrs older than Briony
-	Lives at home
-	State of living: untidy
+package graphics {
+  class SpriteBatch
+  class Texture
+  class Sprite
 }
 
-class Leon #Color_Tallis{
-	Family Tallis
-	12 yrs older than Briony
-	Lives in London
-	Studied at Campbridge
+package audio {
+  class Music
+  class Sound
 }
 
-class Robbie #Color_Turner {
-	Family Turner
-	Just returned from Cambridge
-	Falsey accused of rapeing Briony Tallis
-}
+game.Game --> graphics.SpriteBatch
+game.Game --> graphics.Camera
+game.Game --> game.Player
+game.Game --> game.Package
+game.Game --> game.Obstacle
+game.Game --> game.Map
+game.Game --> game.InputHandler
+game.Game --> game.AssetManager
+game.Game --> game.SoundManager
+game.Game --> game.CollisionDetector
+game.Game --> game.HUD
+game.Game --> game.Score
+game.Game --> game.MainScreen
 
-class Grace #Color_Turner {
-	Family Turner
-}
+game.Player --> graphics.Sprite
+game.Package --> graphics.Sprite
+game.Obstacle --> graphics.Sprite
+game.Map --> graphics.Texture
+game.Camera --> graphics.SpriteBatch
 
-class Jack #Color_Tallis{
-	- Family Tallis
-	- The Vather
-	- is never around
-	- hard working
-	- works in the Whitehall ministry
-	- values family and patriotism
-}
+game.AssetManager --> graphics.Texture
+game.SoundManager --> audio.Sound
+game.SoundManager --> audio.Music
 
-class Lola #Color_Quincey {
-	Parents are divercing
-	Spends summer with the Tallis fam
-	Has two brothers
-	15 y.o.
-}
+game.CollisionDetector ..> game.Player
+game.CollisionDetector ..> game.Package
+game.CollisionDetector ..> game.Obstacle
 
-class Jackson #Color_Quincey {
-	}
-class Pierrot #Color_Quincey {
-	}
+game.HUD --> graphics.SpriteBatch
+game.Score --> game.HUD
 
-class Emily #Color_Tallis {
-	- Family Tallis
-	- The Mother
-	- "distant and unfriendly"
-	- suffers from severe migraines
-	- was educated at home til 16
-	- then boarding school in Switzreland
-	- Traditional view on woman and society
-	- social classes should not mix romantically
-}
+game.MainScreen --> game.Game
+game.MainScreen --> game.InputHandler
 
-class Ernest #Color_Turner {
-	Family Turner
-}
-
-Emily --> Briony : Mother
-Jack --> Briony : Father
-Jack --> Grace : household employee of fam
-Briony <--> Cecilia : Sibling
-Briony <--> Leon : Sibling
-Cecilia <--> Leon : Sibling
-Briony --> Lola : Dislikes
-Briony ..> Robbie : Imagined Enemy
-Lola --> Jackson : Sibling
-Lola --> Pierrot : Sibling
-Robbie --> Grace : Sone of
-Robbie --> Jack : schooling founded by
-Robbie --> Ernest : Son of
-Cecilia <--|> Robbie : Love Interest
-
-' Family Binding
-Jack -[hidden]- Emily
-Grace -[hidden]- Ernest
-
-' Alignment
-Briony -up[hidden]- Lola
-Briony -left[hidden]- Cecilia
 @enduml
