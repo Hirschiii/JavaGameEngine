@@ -1,0 +1,104 @@
+
+....
+@startuml
+
+hide class circle
+
+!define Color_Tallis #FF0000
+!define Color_Turner #00FF00
+!define Color_Quincey #0000FF
+
+
+class Briony #Color_Tallis {
+	- Family Tallis
+		- Born 1922
+		- Likes writing
+		- extended and vivid imagination
+		- gorws up to serve as nurse
+		- begins to write more
+}
+
+class Cecilia #Color_Tallis{
+	Family Tallis
+		10 yrs older than Briony
+		Lives at home
+		State of living: untidy
+}
+
+class Leon #Color_Tallis{
+	Family Tallis
+		12 yrs older than Briony
+		Lives in London
+		Studied at Campbridge
+}
+
+class Robbie #Color_Turner {
+	Family Turner
+		Just returned from Cambridge
+		Falsey accused of rapeing Briony Tallis
+}
+
+class Grace #Color_Turner {
+	Family Turner
+}
+
+class Jack #Color_Tallis{
+	- Family Tallis
+		- The Vather
+		- is never around
+		- hard working
+		- works in the Whitehall ministry
+		- values family and patriotism
+}
+
+class Lola #Color_Quincey {
+	Parents are divercing
+		Spends summer with the Tallis fam
+		Has two brothers
+		15 y.o.
+}
+
+class Jackson #Color_Quincey {
+}
+class Pierrot #Color_Quincey {
+}
+
+class Emily #Color_Tallis {
+	- Family Tallis
+		- The Mother
+		- "distant and unfriendly"
+		- suffers from severe migraines
+		- was educated at home til 16
+		- then boarding school in Switzreland
+		- Traditional view on woman and society
+		- social classes should not mix romantically
+}
+
+class Ernest #Color_Turner {
+	Family Turner
+}
+
+Emily --> Briony : Mother
+Jack --> Briony : Father
+Jack --> Grace : household employee of fam
+Briony <--> Cecilia : Sibling
+Briony <--> Leon : Sibling
+Cecilia <--> Leon : Sibling
+Briony --> Lola : Dislikes
+Briony ..> Robbie : Imagined Enemy
+Lola --> Jackson : Sibling
+Lola --> Pierrot : Sibling
+Robbie --> Grace : Sone of
+Robbie --> Jack : schooling founded by
+Robbie --> Ernest : Son of
+Cecilia <--|> Robbie : Love Interest
+
+' Family Binding
+Jack -[hidden]- Emily
+Grace -[hidden]- Ernest
+
+' Alignment
+Briony -up[hidden]- Lola
+Briony -left[hidden]- Cecilia
+@enduml
+....
