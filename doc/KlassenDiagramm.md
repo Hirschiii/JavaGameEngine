@@ -1,0 +1,4 @@
+
+# KlassenDiagram:
+
+![](./KlassenDiagramm.svg)
