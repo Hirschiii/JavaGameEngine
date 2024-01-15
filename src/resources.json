@@ -1,0 +1,92 @@
+{
+  "storyline": [
+    {
+      "chapter": 1,
+      "title": "The Beginning",
+      "scenes": [
+        {
+          "sceneId": 1,
+          "description": "Our hero begins their journey in a small village.",
+          "dialogues": [
+            {
+              "character": "Villager",
+              "text": "Welcome to our village!"
+            },
+            {
+              "character": "Hero",
+              "text": "Thank you, I am seeking adventure."
+            }
+          ]
+        },
+        {
+          "sceneId": 2,
+          "description": "The hero discovers a mysterious map.",
+          "dialogues": [
+            {
+              "character": "Hero",
+              "text": "What's this? A map leading to an ancient treasure!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "The Journey",
+      "scenes": [
+        {
+          "sceneId": 1,
+          "description": "The hero faces challenges while traveling.",
+          "dialogues": [
+            {
+              "character": "Hero",
+              "text": "This journey is more challenging than I thought."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "triggerId": 1,
+      "type": "enemyEncounter",
+      "details": {
+        "enemyType": "Goblin",
+        "location": "Forest"
+      }
+    },
+    {
+      "triggerId": 2,
+      "type": "findItem",
+      "details": {
+        "itemName": "Ancient Sword",
+        "location": "Cave"
+      }
+    }
+  ],
+  "maps": [
+    {
+      "mapId": 1,
+      "name": "Village",
+      "description": "A peaceful village surrounded by forests.",
+      "tiles": [
+        {"x": 0, "y": 0, "type": "grass"},
+        {"x": 0, "y": 1, "type": "path"},
+        {"x": 1, "y": 0, "type": "house"}
+        // More tiles...
+      ]
+    },
+    {
+      "mapId": 2,
+      "name": "Dark Forest",
+      "description": "A mysterious and dangerous forest.",
+      "tiles": [
+        {"x": 0, "y": 0, "type": "tree"},
+        {"x": 0, "y": 1, "type": "bush"},
+        {"x": 1, "y": 0, "type": "grass"}
+        // More tiles...
+      ]
+    }
+  ]
+}
