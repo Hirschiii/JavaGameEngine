@@ -1,64 +1,76 @@
 @startuml
 
-package game {
-  class Game
-  class Player
-  class Package
-  class Obstacle
-  class Map
-  class Camera
-  class InputHandler
-  class AssetManager
-  class SoundManager
-  class CollisionDetector
-  class HUD
-  class Score
-  class MainScreen
+package com.yourgamename.app {
+    class Main {
+        +main(args : String[]) : void
+    }
 }
 
-package graphics {
-  class SpriteBatch
-  class Texture
-  class Sprite
+package com.yourgamename.game {
+    class GameLoop {
+        -isRunning : boolean
+        +start() : void
+        +stop() : void
+        +update() : void
+        +render() : void
+    }
+
+    class GameState {
+        -currentState : State
+        +changeState(newState : State) : void
+    }
 }
 
-package audio {
-  class Music
-  class Sound
+package com.yourgamename.world {
+    class World {
+        -tiles : Tile[][]
+        +loadWorld() : void
+    }
+
+    class Tile {
+        -type : TileType
+    }
 }
 
-game.Game --> graphics.SpriteBatch
-game.Game --> graphics.Camera
-game.Game --> game.Player
-game.Game --> game.Package
-game.Game --> game.Obstacle
-game.Game --> game.Map
-game.Game --> game.InputHandler
-game.Game --> game.AssetManager
-game.Game --> game.SoundManager
-game.Game --> game.CollisionDetector
-game.Game --> game.HUD
-game.Game --> game.Score
-game.Game --> game.MainScreen
+package com.yourgamename.entity {
+    class Entity {
+        -position : Point
+        -velocity : Point
+        +update() : void
+        +render() : void
+    }
 
-game.Player --> graphics.Sprite
-game.Package --> graphics.Sprite
-game.Obstacle --> graphics.Sprite
-game.Map --> graphics.Texture
-game.Camera --> graphics.SpriteBatch
+    class Player {
+        -health : int
+        +move(direction : Direction) : void
+    }
 
-game.AssetManager --> graphics.Texture
-game.SoundManager --> audio.Sound
-game.SoundManager --> audio.Music
+    class Enemy {
+        -damage : int
+        +attack(target : Entity) : void
+    }
+}
 
-game.CollisionDetector ..> game.Player
-game.CollisionDetector ..> game.Package
-game.CollisionDetector ..> game.Obstacle
+package com.yourgamename.util {
+    class Constants {
+        {static} +SCREEN_WIDTH : int
+        {static} +SCREEN_HEIGHT : int
+    }
+}
 
-game.HUD --> graphics.SpriteBatch
-game.Score --> game.HUD
+package com.yourgamename.ui {
+    class HUD {
+        +update() : void
+        +render() : void
+    }
+}
 
-game.MainScreen --> game.Game
-game.MainScreen --> game.InputHandler
+Main .right.> GameLoop
+GameLoop -right- GameState
+World -up-|> Tile
+Entity <|-down- Player
+Entity <|-down- Enemy
+Player -left- GameState
+Enemy -left- GameState
 
 @enduml
