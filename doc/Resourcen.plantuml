@@ -1,12 +1,13 @@
+@startjson
 {
   "storyline": [
     {
-      "chapter": 1,
+      "chapter": "1",
       "title": "The Beginning",
       "scenes": [
         {
-          "sceneId": 1,
-		  "triger": "init",
+          "sceneId": "1",
+          "trigger": "init",
           "dialogues": [
             {
               "character": "Villager",
@@ -19,8 +20,8 @@
           ]
         },
         {
-          "sceneId": 2,
-		  "triger": "enter house father",
+          "sceneId": "2",
+          "trigger": "enter house father",
           "dialogues": [
             {
               "character": "Father",
@@ -33,7 +34,7 @@
   ],
   "triggers": [
     {
-      "triggerId": 1,
+      "triggerId": "1",
       "type": "enemyEncounter",
       "details": {
         "enemyType": "Goblin",
@@ -41,7 +42,7 @@
       }
     },
     {
-      "triggerId": 2,
+      "triggerId": "2",
       "type": "findItem",
       "details": {
         "itemName": "Ancient Sword",
@@ -49,29 +50,29 @@
       }
     }
   ],
-  "modules":{
-	"mapModules": [
-		{"id": 5, "name": "road_straight_vertical"},
-		{"id": 6, "name": "road_straight_horizontal"},
-		{"id": 7, "name": "road_cross_urdl"}, // up, right, down, left (urdl)
-		{"id": 8, "name": "road_cross_rdl"}, 
-		{"id": 9, "name": "road_cross_udl"}, 
-		{"id": 10, "name": "road_cross_url"}, 
-		{"id": 11, "name": "road_cross_urd"}, 
-		{"id": 12, "name": "road_cross_dl"}, 
-		{"id": 13, "name": "road_cross_ur"}, 
-		{"id": 14, "name": "road_cross_rd"} 
-	]
-
+  "modules": {
+    "mapModules": [
+      {"id": "5", "name": "road_straight_vertical"},
+      {"id": "6", "name": "road_straight_horizontal"},
+      {"id": "7", "name": "road_cross_urdl"},
+      {"id": "8", "name": "road_cross_rdl"},
+      {"id": "9", "name": "road_cross_udl"},
+      {"id": "10", "name": "road_cross_url"},
+      {"id": "11", "name": "road_cross_urd"},
+      {"id": "12", "name": "road_cross_dl"},
+      {"id": "13", "name": "road_cross_ur"},
+      {"id": "14", "name": "road_cross_rd"}
+    ]
   },
   "maps": [
     {
-      "mapId": 1,
+      "mapId": "1",
       "name": "Village",
       "description": "A peaceful village surrounded by forests.",
-      "tiles": { // From left to right, top to bottom, the modules (square)
-		  "1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"
-      }
+      "tiles": [
+        "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"
+      ]
     }
   ]
 }
+@endjson
