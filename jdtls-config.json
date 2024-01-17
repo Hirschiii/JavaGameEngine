@@ -1,0 +1,26 @@
+{
+  "workspace": "./src/java",
+  "java": {
+    "completion": {
+      "favoriteStaticMembers": [
+        "java.util.Arrays.asList",
+        "org.mockito.Mockito.*"
+      ],
+      "autoImports": true
+    },
+    "format": {
+      "settingsUrl": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+    },
+    "implementation": {
+      "updateJavadoc": true
+    },
+    "signatureHelp": {
+      "enabled": true
+    }
+  },
+  "editor": {
+    "formatOnSave": true,
+    "renameOnType": true
+  }
+}
+
