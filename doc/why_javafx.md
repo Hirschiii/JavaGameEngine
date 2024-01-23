@@ -1,12 +1,13 @@
 ---
-title: 'Wieso brauchen wir JavaFX'
+title: 'Wieso wir JavaFX brauchen und was das überhaupt ist.'
 author: "Niklas von Hirschfeld, Jan Knüpfer"
-date: 2024-01-18
-tags: []
-enableToc: true
+date: 2024-01-23
+geometry: "left=4cm, right=4cm"
 ---
 
 \tableofcontents
+
+\newpage
 
 # Was ist JavaFX?
 
@@ -24,6 +25,8 @@ Eine Scene beinhaltet die Schauspieler und die Requisieten. In Java wären diese
 Objekte, welche durch einfache Formen oder Grafiken dargestellt werden. Diese
 Objekte beinhalten die Grafische darstellung, position, variablen und
 funktionen, welche für dieses Objekt wichtig sind.
+
+\newpage
 
 ## Was bietet JavaFX
 
@@ -119,6 +122,7 @@ FXML ist ein ist ein Modul von JavaFX. Diese erlaubt es, Szenen als .xml Datein
 zu speichern. Dadurch ist es auch möglich, auf grafische Programme
 zurückzugreifen, um ein Nutzerinterface zu erstellen.
 
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -126,11 +130,16 @@ zurückzugreifen, um ein Nutzerinterface zu erstellen.
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="org.scenebuilder.BasicFXMLController">
-    <children>
-        <Button fx:id="button" layoutX="126.0" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" 
+	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" 
+	fx:controller="org.scenebuilder.BasicFXMLController">
+	<children>
+		<Button fx:id="button" layoutX="126.0" layoutY="90" 
+			onAction="#handleButtonAction" text="Click Me!" />
+
+		<Label fx:id="label" layoutX="126" layoutY="120" minHeight="16"
+			minWidth="69" />
+	</children>
 </AnchorPane>
 ```
 
@@ -145,7 +154,7 @@ Editor integriert.
 
 ## Java AWT
 
-- https://www.javatpoint.com/java-awt
+- <https://www.javatpoint.com/java-awt>
 
 Java AWT (Abstract Window Toolkit) wurde in den frühen Tagen von Java
 eingeführt und diente als Grundlage für die GUI-Entwicklung. Allerdings hat es
@@ -154,7 +163,7 @@ Spieleentwicklung machen.
 
 ## LWJGL
 
-- https://www.lwjgl.org/
+- <https://www.lwjgl.org/>
 
 
 LWJGL, die "Lightweight Java Game Library", ist eine Java-Bibliothek, die den plattformübergreifenden Zugriff auf
@@ -164,7 +173,35 @@ sind. Dieser Zugriff ist direkt und leistungsstark, aber auch in einer
 typsicheren und benutzerfreundlichen Schicht verpackt, die für das
 Java-Ökosystem geeignet ist.
 
-# Quellen:
+Wenn man also bereits erfahrungen in OpenGL besitzt, sind diese Bindings sehr
+geeignet und bieten viel Kontrolle über das, was passiert. Wenn man allerdings
+diese nicht hat, muss man OpenGL erstmal von Grund auf neu lernen. 
 
-- [Javaeditor.org](https://javaeditor.org/doku.php?id=en:javafx&s[]=javafx)
-- [JavaFX Dokumentation von Oracle](https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html)
+## LibGDX
+
+- <https://libgdx.com/>
+- Ziehen wir neben JavaFX in Erwägung
+
+LibGDX ist ein vollwertiges Java spiel Entwicklungs Framework, welches auf
+OpenGL basiert. Es funktioniert *cross-platform* und funktioniert auf Window,
+Linux, OSX, Android und im Browser. Eine aktive Community und ausführliche
+Dokumentation sprechen durchaus dafür. Im gegensatz zu JavaFX werden auch
+"große" und auch kommerzielle Spiele mit LibGDX programmiert.
+
+Wir denken das LibGDX etwas über das hinaus steigt, was wir benötigen. Falls
+ich irgendwann mal, in einem anderen Rahmen, ein Spiel in Java mal programmieren sollte, werde
+ich aber auf dieses Framework zurückgreifen.
+
+# Fazit
+
+JavaFX bieten im Vergleich zu den Alternativen eine gute Menge an Funktionen
+an, aber eben auch nicht zu viel. Ich denke ohne mindestens JavaFX  wird es
+schwierig ein ordentliches Spiel in der Zeit zu programmieren. Da diese Libary
+nur die Grafische Darstellung und Sounds übernimmt, hat es keinen größeren
+Einfluss darauf, wie wir unser Spiel, von der Logik und dem Aufbau her,
+programmieren.
+
+# Quellen
+
+- <https://javaeditor.org/doku.php>
+- <https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html>
