@@ -1,76 +1,54 @@
 @startuml
 
-package com.yourgamename.app {
+package javafx.application {
+	class Application {}
+	}
+
+package java {
     class Main {
         +main(args : String[]) : void
     }
-}
-
-package com.yourgamename.game {
+	entity Entity {
+		- position: vector
+		- inventar: array
+		+ interact() : self
+		}
+	class Game {}
     class GameLoop {
         -isRunning : boolean
-        +start() : void
+        +start(GameWindow gamewindow) : void
         +stop() : void
         +update() : void
         +render() : void
     }
-
     class GameState {
         -currentState : State
         +changeState(newState : State) : void
     }
-}
-
-package com.yourgamename.world {
+	class GameWindow {
+		+main() : void
+		+start(Stage stage) : void
+		}
+	class Player extends Entity {}
     class World {
         -tiles : Tile[][]
         +loadWorld() : void
     }
-
-    class Tile {
-        -type : TileType
-    }
 }
 
-package com.yourgamename.entity {
-    class Entity {
-        -position : Point
-        -velocity : Point
-        +update() : void
-        +render() : void
-    }
-
-    class Player {
-        -health : int
-        +move(direction : Direction) : void
-    }
-
-    class Enemy {
-        -damage : int
-        +attack(target : Entity) : void
-    }
+package resources {
+	class audio {}
+	class map_tiles {}
+	class map_textures {}
 }
 
-package com.yourgamename.util {
-    class Constants {
-        {static} +SCREEN_WIDTH : int
-        {static} +SCREEN_HEIGHT : int
-    }
+package stories {
+	+ scene(id : int) : 
 }
 
-package com.yourgamename.ui {
-    class HUD {
-        +update() : void
-        +render() : void
-    }
-}
-
-Main .right.> GameLoop
-GameLoop -right- GameState
-World -up-|> Tile
-Entity <|-down- Player
-Entity <|-down- Enemy
-Player -left- GameState
-Enemy -left- GameState
+Main --> Game : new Game
+GameWindow --|> Application
+Game --> GameWindow : new GameWindow
+Game --> GameLoop : start(gamewindow)
 
 @enduml
