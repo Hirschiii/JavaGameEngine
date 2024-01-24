@@ -11,9 +11,14 @@ geometry: "left=4cm, right=4cm"
 
 # Was ist JavaFX?
 
-JavaFX bietet viele möglichkeiten mit Java ein grafische Oberfläche zu
-Porgrammieren. Es bietet neben bindings für OpenGL eine recht hohe API um auf
-diese zuzugreifen. Es ist ein Moderner nachfolger von dem veralteten Swing framework.
+JavaFX ist eine Bibliothek für Java, welche erstmals 2008 von Sun Microsystems
+veröffentlicht wurde. Es sollte ursprünglich eine Alternative zu Swing und AWT
+bieten, insbesondere im Hinblick auf die Entwicklung von Rich Internet
+Applications (RIAs) und ansprechenden Benutzeroberflächen. Es wird seit dem
+Weiterentwickelt und auch nach der Übernahme von Sun Microsystems durch Oracle
+hat sich daran nichts geändert. Es bietet neben bindings für OpenGL eine recht
+hohe API um auf diese zuzugreifen. Es ist ein Moderner nachfolger von dem
+veralteten Swing framework.
 
 JavaFX nutzt einen *scenen Graf* um Objekte und Scenen zu sortieren und zugänglich.
 
@@ -116,7 +121,22 @@ myButton.setOnAction(e -> {
 });
 ```
 
-## FXML
+\newpage
+
+## Module
+
+### javafx.base
+
+`module javafx.base` definiert die basis der API mit Bindings, Eigenschaften,
+Sammlungen und Ereignissen. 
+
+### javafx.controls
+
+In diesem Modul sind die Elemente für eine Benutzeroberfläche, wie Knöpfe,
+Textfelder, Liste und noch viele andere Steuerelemente. Es beinhaltet ebenfalls
+Methoden um Layouts und die Anordnung der Elemente zu Managen.
+
+### javafx.fxml
 
 FXML ist ein ist ein Modul von JavaFX. Diese erlaubt es, Szenen als .xml Datein
 zu speichern. Dadurch ist es auch möglich, auf grafische Programme
@@ -131,18 +151,43 @@ zurückzugreifen, um ein Nutzerinterface zu erstellen.
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" 
-	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" 
-	fx:controller="org.scenebuilder.BasicFXMLController">
-	<children>
-		<Button fx:id="button" layoutX="126.0" layoutY="90" 
-			onAction="#handleButtonAction" text="Click Me!" />
+xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" 
+fx:controller="org.scenebuilder.BasicFXMLController">
+<children>
+<Button fx:id="button" layoutX="126.0" layoutY="90" 
+onAction="#handleButtonAction" text="Click Me!" />
 
-		<Label fx:id="label" layoutX="126" layoutY="120" minHeight="16"
-			minWidth="69" />
-	</children>
+<Label fx:id="label" layoutX="126" layoutY="120" minHeight="16"
+minWidth="69" />
+</children>
 </AnchorPane>
 ```
 
+### javafx.graphics
+
+Dieses Modul ist für alle Grafik basierten Aspekte im Spiel zuständig. Darunter
+bietet es Funktionen zum Arbeiten mir Bildern, Formen und Farben. Es ist
+notwendig um jegliche grafischen Elemente zu Rendern.
+
+### javafx.media
+
+Für die Wiedergabe von Sound und Musik bietet dieses Modul hilfreiche und
+notwendige Funktionen und Klassen.
+
+### javafx.swing
+
+Java Swing ist ebenfalls ein GUI-Toolkit welches seit 1998 Bestandteil der
+Java-Runtime ist. Abstract Window Toolkit (AWT) ist ein Teil von Swing. Dieses
+Modul ermöglicht eine beidseitige Kompatibilität und erlaubt so einen
+fließenden Übergang zu JavaFX, da Swing und AWT nicht mehr Weiterentwickelt
+werden. Swing und AWT werden zwar weiterhin unterstützt und gelten auch als
+stabil, es wird aber an keinen neuen Funktionen mehr gearbeitet.
+
+### javafx.web
+
+Das Modul ermöglicht das Anzeigen von HTML-Seiten innerhalb der
+JavaFX-Anwendungen. Dadurch ist es zum beispiel möglich, Online-Ranglisten zu
+integrieren.
 
 
 # Integrierung in den JavaEditor
@@ -164,7 +209,6 @@ Spieleentwicklung machen.
 ## LWJGL
 
 - <https://www.lwjgl.org/>
-
 
 LWJGL, die "Lightweight Java Game Library", ist eine Java-Bibliothek, die den plattformübergreifenden Zugriff auf
 beliebte native APIs ermöglicht, die bei der Entwicklung von Grafik- (OpenGL,
@@ -197,11 +241,15 @@ ich aber auf dieses Framework zurückgreifen.
 JavaFX bieten im Vergleich zu den Alternativen eine gute Menge an Funktionen
 an, aber eben auch nicht zu viel. Ich denke ohne mindestens JavaFX  wird es
 schwierig ein ordentliches Spiel in der Zeit zu programmieren. Da diese Libary
-nur die Grafische Darstellung und Sounds übernimmt, hat es keinen größeren
+nur die grafische Darstellung und Sounds übernimmt, hat es keinen größeren
 Einfluss darauf, wie wir unser Spiel, von der Logik und dem Aufbau her,
-programmieren.
+programmieren. Auch von der Performance ist JavaFX eine gute Wahl. Es ist
+bereits seit ungefähr 16 Jahren in der Entwicklung und wurde hinreichend
+optimiert.
 
 # Quellen
 
 - <https://javaeditor.org/doku.php>
 - <https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html>
+- <https://fxdocs.github.io/docs/html5/>
+- <https://openjfx.io/javadoc/21/>
