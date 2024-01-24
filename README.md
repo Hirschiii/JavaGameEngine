@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/Hirschiii/liferfix_game_projekt_2024_2_hj/main/assets/Studio_Firma/Logo_Ideen/Logo500x500.png" alt="Serenti Studios">
+  <img height="300px" width="300px" src="https://raw.githubusercontent.com/Hirschiii/liferfix_game_projekt_2024_2_hj/main/assets/Studio_Firma/Logo_Ideen/Logo500x500.png" alt="Serenti Studios">
   
   <a href="">Documentation</a> |
   <a href="">Releas</a>
