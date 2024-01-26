@@ -17,14 +17,14 @@ bieten, insbesondere im Hinblick auf die Entwicklung von Rich Internet
 Applications (RIAs) und ansprechenden Benutzeroberflächen. Es wird seit dem
 Weiterentwickelt und auch nach der Übernahme von Sun Microsystems durch Oracle
 hat sich daran nichts geändert. Es bietet neben bindings für OpenGL eine recht
-hohe API um auf diese zuzugreifen. Es ist ein Moderner nachfolger von dem
+hohe API um auf diese zuzugreifen und ist ein Moderner nachfolger von dem
 veralteten Swing framework.
 
 JavaFX nutzt einen *scenen Graf* um Objekte und Scenen zu sortieren und zugänglich.
 
 ![Grafisch darstellung einer *Stage*](./assets/javafx_stage_graph.jpg)
 
-Die Basis stellt eine *Stage* dar. Die ist vergleichbar mit einer Bühne eines
+Die Basis stellt eine *Stage* dar. Diese ist vergleichbar mit einer Bühne eines
 Theaterstückes, auf der Verschiedene Scenen und Schauspiele auftreten können.
 Eine Scene beinhaltet die Schauspieler und die Requisieten. In Java wären diese klassisches
 Objekte, welche durch einfache Formen oder Grafiken dargestellt werden. Diese
