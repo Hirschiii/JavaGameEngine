@@ -206,13 +206,12 @@ public class ImGuiLayer {
         imGuiGl3.init("#version 330");
     }
 
-    // public void update(float dt, Scene currentScene) {
-    public void update(float dt) {
+    public void update(float dt, Scene currentScene) {
         startFrame(dt);
 
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         // setupDockspace();
-        // currentScene.imgui();
+        currentScene.sceneImgui();
         // //ImGui.showDemoWindow();
         // gameViewWindow.imgui();
         // propertiesWindow.imgui();

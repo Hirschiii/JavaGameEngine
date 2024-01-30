@@ -10,6 +10,7 @@ import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.util.AssetPool;
+import imgui.ImGui;
 
 public class LevelEditorScene extends Scene {
 
@@ -44,7 +45,7 @@ public class LevelEditorScene extends Scene {
 
 		obj2.addComponent(obj2SpriteRender);
 
-		this.addGameObject(obj1); 
+		this.addGameObject(obj1);
 		this.addGameObject(obj2);
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -71,6 +72,14 @@ public class LevelEditorScene extends Scene {
 		}
 
 		this.renderer.render();
+
+	}
+
+	@Override
+	public void imgui() {
+		ImGui.begin("Test Window");
+		ImGui.text("Random Text");
+		ImGui.end();
 
 	}
 

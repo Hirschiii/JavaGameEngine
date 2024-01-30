@@ -197,7 +197,7 @@ public class Window {
 				currenScene.update(dt);
 			}
 
-			this.imguiLayer.update(dt);
+			this.imguiLayer.update(dt, currenScene);
 
 			glfwSwapBuffers(glfwWindow);
 
