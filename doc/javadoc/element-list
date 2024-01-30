@@ -1,4 +1,4 @@
-gradle_lwjgl.components
-gradle_lwjgl.game
-gradle_lwjgl.renderer
-gradle_lwjgl.util
+game.components
+game.engine
+game.renderer
+game.util
