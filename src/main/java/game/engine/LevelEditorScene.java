@@ -15,6 +15,7 @@ import imgui.ImGui;
 public class LevelEditorScene extends Scene {
 
 	private GameObject obj1;
+	private SpriteRenderer obj1Sprite;
 	private Spritesheet sprites;
 
 	public LevelEditorScene() {
@@ -33,7 +34,7 @@ public class LevelEditorScene extends Scene {
 		obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
 				new Vector2f(256, 256)), 1);
 
-		SpriteRenderer obj1Sprite = new SpriteRenderer();
+		obj1Sprite = new SpriteRenderer();
 		obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
 		obj1.addComponent(obj1Sprite);
 
@@ -48,10 +49,14 @@ public class LevelEditorScene extends Scene {
 		this.addGameObject(obj1);
 		this.addGameObject(obj2);
 
+		this.activeGameObject = obj1;
+
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-		// System.out.println(gson.toJson("Hello World"));
-
+		String serialized = gson.toJson(new Vector2f(1, 2));
+		System.out.println(serialized);
+		Vector2f one = gson.fromJson(serialized, Vector2f.class);
+		System.out.println(one);
 	}
 
 	private void loadResources() {

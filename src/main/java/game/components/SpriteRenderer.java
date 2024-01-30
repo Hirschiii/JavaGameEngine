@@ -6,6 +6,7 @@ import org.joml.Vector4f;
 import game.engine.Component;
 import game.engine.Transform;
 import game.renderer.Texture;
+import imgui.ImGui;
 
 public class SpriteRenderer extends Component {
 	private Vector4f color = new Vector4f(1, 1, 1, 1);
@@ -15,15 +16,15 @@ public class SpriteRenderer extends Component {
 	private transient boolean isDirty = true;
 
 	// public SpriteRenderer(Vector4f color) {
-	// 	this.color = color;
-	// 	// this.sprite = new Sprite(null);
-	// 	this.sprite = new Sprite(null);
+	// this.color = color;
+	// // this.sprite = new Sprite(null);
+	// this.sprite = new Sprite(null);
 	// }
 	//
 	// public SpriteRenderer(Sprite sprite) {
-	// 	this.sprite = sprite;
-	// 	this.color = new Vector4f(1, 1, 1, 1);
-	// 	// this.lastTransform = gameObject.transform;
+	// this.sprite = sprite;
+	// this.color = new Vector4f(1, 1, 1, 1);
+	// // this.lastTransform = gameObject.transform;
 	// }
 
 	@Override
@@ -38,6 +39,17 @@ public class SpriteRenderer extends Component {
 
 			isDirty = true;
 		}
+	}
+
+	@Override
+	public void imgui() {
+		float[] imColor = {color.x, color.y, color.z, color.y};
+		if(ImGui.colorPicker4("Color Picker: ", imColor)) {
+			this.color.set(imColor[0],imColor[1],imColor[2],imColor[3]);
+			this.isDirty = true;
+		}
+
+
 	}
 
 	public Vector4f getColor() {
@@ -71,4 +83,5 @@ public class SpriteRenderer extends Component {
 	public void setClean() {
 		this.isDirty = false;
 	}
+
 }
