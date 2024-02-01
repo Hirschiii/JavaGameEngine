@@ -1,6 +1,6 @@
 ---
-title: 'Bibliotheken, welche wir benutzen wollen'
-author: Niklas von Hirschfeld
+title: 'Bibliotheken, welche wir benutzen wollen.'
+author: Niklas von Hirschfeld, Jan Knüpfer
 date: 2024-01-30
 tags: []
 enableToc: true
