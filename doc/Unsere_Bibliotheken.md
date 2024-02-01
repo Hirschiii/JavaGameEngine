@@ -117,7 +117,7 @@ verändern und so ein optimales Spielerlebnis für den Spielenden vorzubereiten.
 # JOML
 
 - Liezens: MIT license 
-- Link: https://joml-ci.github.io/JOML/
+- Link: <https://joml-ci.github.io/JOML/>
 - Entwickelt in: Java
 
 Eine einfache Bibliothek die Operationen der linearen Algebra vereinfachen.
@@ -151,5 +151,5 @@ Definiert Puffer, die Container für Daten sind.
 - Collections
 - HashMap
 - List
-- Map
+[-](-.md) Map
 - Vector
