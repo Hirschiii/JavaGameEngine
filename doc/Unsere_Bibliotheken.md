@@ -114,6 +114,15 @@ Diese Bibliothek ermöglicht es uns und auch später ihnen Level individuell zu
 gestalten und zu formen. Es ermöglicht uns während der Laufzeit Variablen zu
 verändern und so ein optimales Spielerlebnis für den Spielenden vorzubereiten.
 
+# JOML
+
+- Liezens: MIT license 
+- Link: https://joml-ci.github.io/JOML/
+- Entwickelt in: Java
+
+Eine einfache Bibliothek die Operationen der linearen Algebra vereinfachen.
+Diese sind zum verarbeitet von Buffern für OpenGL notwendig.
+
 # Java
 
 Dies sind Java eigenen Pakete die wir verwenden.
