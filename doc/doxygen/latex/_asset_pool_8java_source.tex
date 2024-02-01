@@ -1,0 +1,64 @@
+\doxysection{Asset\+Pool.\+java}
+\hypertarget{_asset_pool_8java_source}{}\label{_asset_pool_8java_source}\index{src/main/java/game/util/AssetPool.java@{src/main/java/game/util/AssetPool.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00001}00001\ \textcolor{keyword}{package\ }game.util;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.io.File;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.util.HashMap;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.util.Map;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00007}00007\ \textcolor{keyword}{import}\ javax.print.attribute.TextSyntax;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00009}00009\ \textcolor{keyword}{import}\ game.components.Spritesheet;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00010}00010\ \textcolor{keyword}{import}\ game.renderer.Shader;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00011}00011\ \textcolor{keyword}{import}\ game.renderer.Texture;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00013}\mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{00013}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ Map<String,\ Shader>\ shaders\ =\ \textcolor{keyword}{new}\ HashMap<>();}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ Map<String,\ Texture>\ textures\ =\ \textcolor{keyword}{new}\ HashMap<>();}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ Map<String,\ Spritesheet>\ spritesheets\ =\ \textcolor{keyword}{new}\ HashMap<>();}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classgame_1_1renderer_1_1_shader}{Shader}}\ getShader(String\ resourceName)\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00019}00019\ \ \ \ \ \ \ \ \ File\ file\ =\ \textcolor{keyword}{new}\ File(resourceName);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.shaders.containsKey(file.getAbsolutePath()))\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shaders.get(file.getAbsolutePath());}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00022}00022\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgame_1_1renderer_1_1_shader}{Shader}}\ shader\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classgame_1_1renderer_1_1_shader}{Shader}}(resourceName);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ shader.compile();}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.shaders.put(file.getAbsolutePath(),\ shader);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shader;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classgame_1_1renderer_1_1_texture}{Texture}}\ getTexture(String\ resourceName)\{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00031}00031\ \ \ \ \ \ \ \ \ File\ file\ =\ \textcolor{keyword}{new}\ File(resourceName);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.textures.containsKey(file.getAbsolutePath()))\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ textures.get(file.getAbsolutePath());}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00034}00034\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgame_1_1renderer_1_1_texture}{Texture}}\ texture\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classgame_1_1renderer_1_1_texture}{Texture}}();}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ texture.init(resourceName);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.textures.put(file.getAbsolutePath(),\ texture);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ texture;}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ addSpritesheet(String\ resourceName,\ \mbox{\hyperlink{classgame_1_1components_1_1_spritesheet}{Spritesheet}}\ spritesheet)\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00043}00043\ \ \ \ \ \ \ \ \ File\ file\ =\ \textcolor{keyword}{new}\ File(resourceName);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.spritesheets.containsKey(file.getAbsolutePath()))\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.spritesheets.put(file.getAbsolutePath(),\ spritesheet);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classgame_1_1components_1_1_spritesheet}{Spritesheet}}\ getSpritesheet(String\ resourceName)\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ File\ file\ =\ \textcolor{keyword}{new}\ File(resourceName);}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.spritesheets.containsKey(file.getAbsolutePath()))\ \{}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ assert\ false\ :\ \textcolor{stringliteral}{"{}Error:\ Tried\ to\ access\ spritesheet"{}}\ +\ resourceName\ +\ \textcolor{stringliteral}{"{}\ and\ its\ not\ in\ Asset\ pool"{}};}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classgame_1_1util_1_1_asset_pool}{AssetPool}}.spritesheets.getOrDefault(file.getAbsolutePath(),\ \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_asset_pool_8java_source_l00058}00058\ \}}
+
+\end{DoxyCode}

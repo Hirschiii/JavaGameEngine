@@ -1,0 +1,168 @@
+\doxysection{game.\+engine.\+Scene Class Reference}
+\hypertarget{classgame_1_1engine_1_1_scene}{}\label{classgame_1_1engine_1_1_scene}\index{game.engine.Scene@{game.engine.Scene}}
+Inheritance diagram for game.\+engine.\+Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.904762cm]{classgame_1_1engine_1_1_scene}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a2ddf9bc7faac7494c5ce8b804ceaefe2}{init}} ()
+\item 
+void \mbox{\hyperlink{classgame_1_1engine_1_1_scene_ab3a7e254daae4b358baba4c01b4079b4}{start}} ()
+\item 
+void \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a90cf85183df4e2dca77334ebc50c9fda}{add\+Game\+Object}} (\mbox{\hyperlink{classgame_1_1engine_1_1_game_object}{Game\+Object}} go)
+\item 
+\Hypertarget{classgame_1_1engine_1_1_scene_a744a5a57dca2986def87fc503397db20}\label{classgame_1_1engine_1_1_scene_a744a5a57dca2986def87fc503397db20} 
+abstract void {\bfseries update} (float dt)
+\item 
+\mbox{\hyperlink{classgame_1_1engine_1_1_camera}{Camera}} \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a6c2845cc9fd2f831633d689aa25c25aa}{camera}} ()
+\item 
+void \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a53be695a779a43fcccc698d9b1f88a6a}{scene\+Imgui}} ()
+\item 
+void \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a5e7243effc21071a5ac0d11032eef44e}{imgui}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgame_1_1renderer_1_1_renderer}{Renderer}} \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a238bd0666743abd6c5e291f21f556fff}{renderer}} = new \mbox{\hyperlink{classgame_1_1renderer_1_1_renderer}{Renderer}}()
+\item 
+\mbox{\hyperlink{classgame_1_1engine_1_1_camera}{Camera}} \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a7c9465593c42abbae6fde8ca0d49204f}{camera}}
+\item 
+List$<$ \mbox{\hyperlink{classgame_1_1engine_1_1_game_object}{Game\+Object}} $>$ \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a67742451790898bdeacdd7e201c8a2b8}{game\+Objects}} = new Array\+List$<$$>$()
+\item 
+\mbox{\hyperlink{classgame_1_1engine_1_1_game_object}{Game\+Object}} \mbox{\hyperlink{classgame_1_1engine_1_1_scene_a7739d44ea750c78a96150d7fbafbb15d}{active\+Game\+Object}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00009}{9}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classgame_1_1engine_1_1_scene_a2b2cca6b73f194e14bc928e6eda66f33}\label{classgame_1_1engine_1_1_scene_a2b2cca6b73f194e14bc928e6eda66f33} 
+\index{game.engine.Scene@{game.engine.Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily game.\+engine.\+Scene.\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00019}{19}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgame_1_1engine_1_1_scene_a90cf85183df4e2dca77334ebc50c9fda}\label{classgame_1_1engine_1_1_scene_a90cf85183df4e2dca77334ebc50c9fda} 
+\index{game.engine.Scene@{game.engine.Scene}!addGameObject@{addGameObject}}
+\index{addGameObject@{addGameObject}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{addGameObject()}{addGameObject()}}
+{\footnotesize\ttfamily void game.\+engine.\+Scene.\+add\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgame_1_1engine_1_1_game_object}{Game\+Object}}}]{go }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00033}{33}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a6c2845cc9fd2f831633d689aa25c25aa}\label{classgame_1_1engine_1_1_scene_a6c2845cc9fd2f831633d689aa25c25aa} 
+\index{game.engine.Scene@{game.engine.Scene}!camera@{camera}}
+\index{camera@{camera}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{camera()}{camera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgame_1_1engine_1_1_camera}{Camera}} game.\+engine.\+Scene.\+camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00046}{46}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a5e7243effc21071a5ac0d11032eef44e}\label{classgame_1_1engine_1_1_scene_a5e7243effc21071a5ac0d11032eef44e} 
+\index{game.engine.Scene@{game.engine.Scene}!imgui@{imgui}}
+\index{imgui@{imgui}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{imgui()}{imgui()}}
+{\footnotesize\ttfamily void game.\+engine.\+Scene.\+imgui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00061}{61}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a2ddf9bc7faac7494c5ce8b804ceaefe2}\label{classgame_1_1engine_1_1_scene_a2ddf9bc7faac7494c5ce8b804ceaefe2} 
+\index{game.engine.Scene@{game.engine.Scene}!init@{init}}
+\index{init@{init}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void game.\+engine.\+Scene.\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00022}{22}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a53be695a779a43fcccc698d9b1f88a6a}\label{classgame_1_1engine_1_1_scene_a53be695a779a43fcccc698d9b1f88a6a} 
+\index{game.engine.Scene@{game.engine.Scene}!sceneImgui@{sceneImgui}}
+\index{sceneImgui@{sceneImgui}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{sceneImgui()}{sceneImgui()}}
+{\footnotesize\ttfamily void game.\+engine.\+Scene.\+scene\+Imgui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00050}{50}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_ab3a7e254daae4b358baba4c01b4079b4}\label{classgame_1_1engine_1_1_scene_ab3a7e254daae4b358baba4c01b4079b4} 
+\index{game.engine.Scene@{game.engine.Scene}!start@{start}}
+\index{start@{start}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void game.\+engine.\+Scene.\+start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00025}{25}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classgame_1_1engine_1_1_scene_a7739d44ea750c78a96150d7fbafbb15d}\label{classgame_1_1engine_1_1_scene_a7739d44ea750c78a96150d7fbafbb15d} 
+\index{game.engine.Scene@{game.engine.Scene}!activeGameObject@{activeGameObject}}
+\index{activeGameObject@{activeGameObject}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{activeGameObject}{activeGameObject}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgame_1_1engine_1_1_game_object}{Game\+Object}} game.\+engine.\+Scene.\+active\+Game\+Object = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00017}{17}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a7c9465593c42abbae6fde8ca0d49204f}\label{classgame_1_1engine_1_1_scene_a7c9465593c42abbae6fde8ca0d49204f} 
+\index{game.engine.Scene@{game.engine.Scene}!camera@{camera}}
+\index{camera@{camera}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgame_1_1engine_1_1_camera}{Camera}} game.\+engine.\+Scene.\+camera\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00012}{12}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a67742451790898bdeacdd7e201c8a2b8}\label{classgame_1_1engine_1_1_scene_a67742451790898bdeacdd7e201c8a2b8} 
+\index{game.engine.Scene@{game.engine.Scene}!gameObjects@{gameObjects}}
+\index{gameObjects@{gameObjects}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{gameObjects}{gameObjects}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classgame_1_1engine_1_1_game_object}{Game\+Object}}$>$ game.\+engine.\+Scene.\+game\+Objects = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00016}{16}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+\Hypertarget{classgame_1_1engine_1_1_scene_a238bd0666743abd6c5e291f21f556fff}\label{classgame_1_1engine_1_1_scene_a238bd0666743abd6c5e291f21f556fff} 
+\index{game.engine.Scene@{game.engine.Scene}!renderer@{renderer}}
+\index{renderer@{renderer}!game.engine.Scene@{game.engine.Scene}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classgame_1_1renderer_1_1_renderer}{Renderer}} game.\+engine.\+Scene.\+renderer = new \mbox{\hyperlink{classgame_1_1renderer_1_1_renderer}{Renderer}}()\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_scene_8java_source_l00011}{11}} of file \mbox{\hyperlink{_scene_8java_source}{Scene.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/game/engine/Scene.\+java\end{DoxyCompactItemize}

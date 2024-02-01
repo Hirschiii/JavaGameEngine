@@ -34,7 +34,10 @@ run:
 	$(JAVA) -cp $(BINDIR):$(LIBARYS) game.App
 
 docs:
-	javadoc -d doc/javadoc -sourcepath src/main/java -classpath "lib/*" src/main/java/gradle_lwjgl/**/*.java
+	javadoc -d doc/javadoc -sourcepath src/main/java -classpath "lib/*" src/main/java/game/**/*.java
+	# Test with UML:
+	# javadoc -d doc/javadoc -sourcepath src/main/java -classpath "lib/*" -docletpath ./lib/umldoclet-2.1.0.jar -doclet nl.talsmasoftware.umldoclet.UMLDoclet  src/main/java/game/**/*.java
+
 # Rule to clean the workspace
 # clean:
 # 	rm -f *.class
