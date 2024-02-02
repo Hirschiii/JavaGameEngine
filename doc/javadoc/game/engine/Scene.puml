@@ -1,0 +1,21 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    abstract class "<size:14>Scene\n<size:10>game.engine" as game.engine.Scene [[Scene.html]] {
+        #renderer: Renderer
+        #camera: Camera
+        #gameObjects: List<GameObject>
+        #activeGameObject: GameObject
+        +init(): void
+        +start(): void
+        +addGameObject(GameObject): void
+        {abstract} +update(float): void
+        +camera(): Camera
+        +sceneImgui(): void
+        +imgui(): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

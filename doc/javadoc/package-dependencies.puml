@@ -1,0 +1,33 @@
+@startuml
+    skinparam backgroundcolor transparent
+    set namespaceSeparator none
+    hide circle
+    hide empty fields
+    hide empty methods
+
+    game.renderer --> org.joml
+    game.renderer --> game.engine
+    game.renderer --> game.components
+    game.util --> game.renderer
+    game.util --> game.components
+    game.components --> game.engine
+    game.components --> org.joml
+    game.components --> game.renderer
+    game.engine --> org.joml
+    game.engine --> game.components
+    game.engine --> game.renderer
+    game.engine --> imgui.gl3
+    game.engine --> imgui.glfw
+
+    ' Package links
+    class "game.renderer" [[game/renderer/package-summary.html]] {
+    }
+    class "game.engine" [[game/engine/package-summary.html]] {
+    }
+    class "game.components" [[game/components/package-summary.html]] {
+    }
+    class "game.util" [[game/util/package-summary.html]] {
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

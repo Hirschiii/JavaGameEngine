@@ -1,0 +1,124 @@
+@startuml
+    namespace game.engine {
+
+        class MouseListener [[MouseListener.html]] {
+            {static} +get(): MouseListener
+            {static} +mousePosCallback(long, double, double): void
+            {static} +mouseButtonCallback(long, int, int, int): void
+            {static} +mouseScrollCallback(long, double, double): void
+            {static} +endFrame(): void
+            {static} +getX(): float
+            {static} +getY(): float
+            {static} +getDx(): float
+            {static} +getDy(): float
+            {static} +getScrollX(): float
+            {static} +getScrollY(): float
+            {static} +isDragging(): boolean
+            {static} +mouseButtonDown(int): boolean
+        }
+
+        class InitMenuScene [[InitMenuScene.html]] {
+            +update(float): void
+            +init(): void
+        }
+
+        class Window [[Window.html]] {
+            +r: float
+            +g: float
+            +b: float
+            +a: float
+            {static} +get(): Window
+            {static} +getScene(): Scene
+            {static} +changeScene(int): void
+            +run(): void
+            +init(): void
+            +loop(): void
+            {static} +getWidth(): int
+            {static} +getHeight(): int
+            {static} +setWidth(int): void
+            {static} +setHeight(int): void
+        }
+
+        class Transform [[Transform.html]] {
+            +position: Vector2f
+            +scale: Vector2f
+            +Transform()
+            +Transform(Vector2f)
+            +Transform(Vector2f, Vector2f)
+            +init(Vector2f, Vector2f): void
+            +copy(): Transform
+            +copy(Transform): void
+        }
+
+        class LevelEditorScene [[LevelEditorScene.html]] {
+            +init(): void
+            +update(float): void
+            +imgui(): void
+        }
+
+        class KeyListener [[KeyListener.html]] {
+            {static} +get(): KeyListener
+            {static} +keyCallback(long, int, int, int, int): void
+            {static} +isKeyPressed(int): boolean
+        }
+
+        class LevelScene [[LevelScene.html]] {
+            +update(float): void
+            +init(): void
+        }
+
+        abstract class Component [[Component.html]] {
+            +start(): void
+            +update(float): void
+            +imgui(): void
+        }
+
+        abstract class Scene [[Scene.html]] {
+            #renderer: Renderer
+            +init(): void
+            +start(): void
+            +addGameObject(GameObject): void
+            {abstract} +update(float): void
+            +camera(): Camera
+            +sceneImgui(): void
+            +imgui(): void
+        }
+
+        class ImGuiLayer [[ImGuiLayer.html]] {
+            +ImGuiLayer(long)
+            +initImGui(): void
+            +update(float, Scene): void
+        }
+
+        class GameObject [[GameObject.html]] {
+            +GameObject(String)
+            +GameObject(String, Transform, int)
+            +getComponent(Class<T extends Component>): T extends Component
+            +removeComponent(Class<T extends Component>): void
+            +addComponent(Component): void
+            +update(float): void
+            +start(): void
+            +imgui(): void
+            +zIndex(): int
+        }
+
+        class Camera [[Camera.html]] {
+            +position: Vector2f
+            +Camera(Vector2f)
+            +adjustProjection(): void
+            +getViewMatrix(): Matrix4f
+            +getProjectionMatrix(): Matrix4f
+        }
+
+        Scene <|-- InitMenuScene
+        Scene <|-- LevelEditorScene
+        Scene <|-- LevelScene
+        Component --> GameObject: gameObject
+        Scene --> Camera: camera
+        Scene --> "*" GameObject: gameObjects
+        Scene --> GameObject: activeGameObject
+        GameObject --> Transform: transform
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

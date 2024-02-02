@@ -36,7 +36,7 @@ run:
 docs:
 	# javadoc -d doc/javadoc -sourcepath src/main/java -classpath "lib/*" src/main/java/game/**/*.java
 	# Test with UML:
-	javadoc -d doc/javadoc -sourcepath src/main/java -classpath "./lib/*" -docletpath ./lib/umldoclet-2.1.0.jar -doclet nl.talsmasoftware.umldoclet.UMLDoclet -subpackages game
+	javadoc -d doc/javadoc -sourcepath src/main/java -classpath "./lib/*" -docletpath ./lib/umldoclet-2.1.0.jar -doclet nl.talsmasoftware.umldoclet.UMLDoclet --create-puml-files -subpackages game
 
 # Rule to clean the workspace
 # clean:

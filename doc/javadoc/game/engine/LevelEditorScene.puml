@@ -1,0 +1,19 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>LevelEditorScene\n<size:10>game.engine" as game.engine.LevelEditorScene [[LevelEditorScene.html]] {
+        +init(): void
+        +update(float): void
+        +imgui(): void
+    }
+
+    abstract class "<size:14>Scene\n<size:10>game.engine" as game.engine.Scene [[Scene.html]] {
+        {abstract} +update(float): void
+    }
+
+    game.engine.Scene <|-- game.engine.LevelEditorScene
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

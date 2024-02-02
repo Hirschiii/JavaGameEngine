@@ -1,0 +1,14 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Sprite\n<size:10>game.components" as game.components.Sprite [[Sprite.html]] {
+        +getTexture(): Texture
+        +getTexCoords(): Vector2f[]
+        +setTexture(Texture): void
+        +setTexCoords(Vector2f[]): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

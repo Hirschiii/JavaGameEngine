@@ -1,0 +1,24 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>SpriteRenderer\n<size:10>game.components" as game.components.SpriteRenderer [[SpriteRenderer.html]] {
+        +start(): void
+        +update(float): void
+        +imgui(): void
+        +getColor(): Vector4f
+        +getTexture(): Texture
+        +getTexCoords(): Vector2f[]
+        +setSprite(Sprite): void
+        +setColor(Vector4f): void
+        +isDirty(): boolean
+        +setClean(): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.engine" as game.engine.Component [[../engine/Component.html]]
+
+    game.engine.Component <|-- game.components.SpriteRenderer
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

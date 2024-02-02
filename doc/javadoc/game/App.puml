@@ -1,0 +1,11 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>App\n<size:10>game" as game.App [[App.html]] {
+        {static} +main(String[]): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

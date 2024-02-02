@@ -1,0 +1,25 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>RenderBatch\n<size:10>game.renderer" as game.renderer.RenderBatch [[RenderBatch.html]] {
+        +RenderBatch(int, int)
+        +start(): void
+        +addSprite(SpriteRenderer): void
+        +render(): void
+        +hasRoom(): boolean
+        +hasTextureRoom(): boolean
+        +hasTexture(Texture): boolean
+        +zIndex(): int
+        +compareTo(RenderBatch): int
+    }
+
+    interface "<size:14>Comparable\n<size:10>java.lang" as java.lang.Comparable<RenderBatch> {
+        {abstract} +compareTo(RenderBatch): int
+    }
+
+    java.lang.Comparable <|.. game.renderer.RenderBatch
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

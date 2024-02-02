@@ -1,0 +1,23 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>MouseListener\n<size:10>game.engine" as game.engine.MouseListener [[MouseListener.html]] {
+        {static} +get(): MouseListener
+        {static} +mousePosCallback(long, double, double): void
+        {static} +mouseButtonCallback(long, int, int, int): void
+        {static} +mouseScrollCallback(long, double, double): void
+        {static} +endFrame(): void
+        {static} +getX(): float
+        {static} +getY(): float
+        {static} +getDx(): float
+        {static} +getDy(): float
+        {static} +getScrollX(): float
+        {static} +getScrollY(): float
+        {static} +isDragging(): boolean
+        {static} +mouseButtonDown(int): boolean
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

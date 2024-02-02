@@ -1,0 +1,23 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Shader\n<size:10>game.renderer" as game.renderer.Shader [[Shader.html]] {
+        +Shader(String)
+        +compile(): void
+        +use(): void
+        +detach(): void
+        +uploadMat4f(String, Matrix4f): void
+        +uploadMat3f(String, Matrix3f): void
+        +uploadVec4f(String, Vector4f): void
+        +uploadVec3f(String, Vector3f): void
+        +uploadVec2f(String, Vector2f): void
+        +uploadFloat(String, float): void
+        +uploadInt(String, int): void
+        +uploadTexture(String, int): void
+        +uploadIntArray(String, int[]): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

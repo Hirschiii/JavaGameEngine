@@ -1,0 +1,13 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>KeyListener\n<size:10>game.engine" as game.engine.KeyListener [[KeyListener.html]] {
+        {static} +get(): KeyListener
+        {static} +keyCallback(long, int, int, int, int): void
+        {static} +isKeyPressed(int): boolean
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

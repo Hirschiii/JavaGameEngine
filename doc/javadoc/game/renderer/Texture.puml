@@ -1,0 +1,15 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Texture\n<size:10>game.renderer" as game.renderer.Texture [[Texture.html]] {
+        +init(String): void
+        +bind(): void
+        +unbind(): void
+        +getWidth(): int
+        +getHeight(): int
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

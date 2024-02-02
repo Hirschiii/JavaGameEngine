@@ -1,0 +1,20 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>GameObject\n<size:10>game.engine" as game.engine.GameObject [[GameObject.html]] {
+        +transform: Transform
+        +GameObject(String)
+        +GameObject(String, Transform, int)
+        +getComponent(Class<T extends Component>): T extends Component
+        +removeComponent(Class<T extends Component>): void
+        +addComponent(Component): void
+        +update(float): void
+        +start(): void
+        +imgui(): void
+        +zIndex(): int
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

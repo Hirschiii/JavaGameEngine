@@ -1,0 +1,11 @@
+@startuml
+    namespace game {
+
+        class App [[App.html]] {
+            {static} +main(String[]): void
+        }
+
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

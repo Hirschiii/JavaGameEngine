@@ -1,0 +1,16 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>FontRenderer\n<size:10>game.components" as game.components.FontRenderer [[FontRenderer.html]] {
+        +start(): void
+        +update(float): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.engine" as game.engine.Component [[../engine/Component.html]]
+
+    game.engine.Component <|-- game.components.FontRenderer
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+    namespace game.components {
+
+        class SpriteRenderer [[SpriteRenderer.html]] {
+            +start(): void
+            +update(float): void
+            +imgui(): void
+            +getColor(): Vector4f
+            +getTexture(): Texture
+            +getTexCoords(): Vector2f[]
+            +setColor(Vector4f): void
+            +isDirty(): boolean
+            +setClean(): void
+        }
+
+        class Sprite [[Sprite.html]] {
+            +getTexture(): Texture
+            +getTexCoords(): Vector2f[]
+            +setTexture(Texture): void
+            +setTexCoords(Vector2f[]): void
+        }
+
+        class Spritesheet [[Spritesheet.html]] {
+            +Spritesheet(Texture, int, int, int, int)
+            +getSprite(int): Sprite
+        }
+
+        class FontRenderer [[FontRenderer.html]] {
+            +start(): void
+            +update(float): void
+        }
+
+        game.engine.Component <|-- SpriteRenderer
+        SpriteRenderer --> Sprite: sprite
+        game.engine.Component <|-- FontRenderer
+    }
+
+    namespace game.engine {
+        abstract class Component [[../engine/Component.html]] {
+            +gameObject: GameObject
+        }
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>AssetPool\n<size:10>game.util" as game.util.AssetPool [[AssetPool.html]] {
+        {static} +getShader(String): Shader
+        {static} +getTexture(String): Texture
+        {static} +addSpritesheet(String, Spritesheet): void
+        {static} +getSpritesheet(String): Spritesheet
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

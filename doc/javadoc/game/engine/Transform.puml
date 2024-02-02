@@ -1,0 +1,18 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Transform\n<size:10>game.engine" as game.engine.Transform [[Transform.html]] {
+        +position: Vector2f
+        +scale: Vector2f
+        +Transform()
+        +Transform(Vector2f)
+        +Transform(Vector2f, Vector2f)
+        +init(Vector2f, Vector2f): void
+        +copy(): Transform
+        +copy(Transform): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+    namespace game.renderer {
+
+        class Texture [[Texture.html]] {
+            +init(String): void
+            +bind(): void
+            +unbind(): void
+            +getWidth(): int
+            +getHeight(): int
+        }
+
+        class Shader [[Shader.html]] {
+            +Shader(String)
+            +compile(): void
+            +use(): void
+            +detach(): void
+            +uploadMat4f(String, Matrix4f): void
+            +uploadMat3f(String, Matrix3f): void
+            +uploadVec4f(String, Vector4f): void
+            +uploadVec3f(String, Vector3f): void
+            +uploadVec2f(String, Vector2f): void
+            +uploadFloat(String, float): void
+            +uploadInt(String, int): void
+            +uploadTexture(String, int): void
+            +uploadIntArray(String, int[]): void
+        }
+
+        class Renderer [[Renderer.html]] {
+            +add(GameObject): void
+            +render(): void
+        }
+
+        class RenderBatch [[RenderBatch.html]] {
+            +RenderBatch(int, int)
+            +start(): void
+            +addSprite(SpriteRenderer): void
+            +render(): void
+            +hasRoom(): boolean
+            +hasTextureRoom(): boolean
+            +hasTexture(Texture): boolean
+            +zIndex(): int
+            +compareTo(RenderBatch): int
+        }
+
+        java.lang.Comparable <|.. RenderBatch
+    }
+
+    namespace java.lang {
+        interface Comparable<T> {
+            {abstract} +compareTo(T): int
+        }
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

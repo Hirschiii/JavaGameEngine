@@ -1,0 +1,14 @@
+@startuml
+    namespace game.util {
+
+        class AssetPool [[AssetPool.html]] {
+            {static} +getShader(String): Shader
+            {static} +getTexture(String): Texture
+            {static} +addSpritesheet(String, Spritesheet): void
+            {static} +getSpritesheet(String): Spritesheet
+        }
+
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Window\n<size:10>game.engine" as game.engine.Window [[Window.html]] {
+        +r: float
+        +g: float
+        +b: float
+        +a: float
+        {static} +get(): Window
+        {static} +getScene(): Scene
+        {static} +changeScene(int): void
+        +run(): void
+        +init(): void
+        +loop(): void
+        {static} +getWidth(): int
+        {static} +getHeight(): int
+        {static} +setWidth(int): void
+        {static} +setHeight(int): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml
