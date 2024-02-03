@@ -11,7 +11,6 @@ import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.util.AssetPool;
-import imgui.ImGui;
 
 public class LevelEditorScene extends Scene {
 
@@ -70,9 +69,9 @@ public class LevelEditorScene extends Scene {
 
 	}
 
-
 	private void loadResources() {
 		AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
+		AssetPool.getTexture("src/main/resources/assets/images/blendImage2.png");
 
 		AssetPool.addSpritesheet("src/main/resources/assets/images/spritesheet.png",
 				new Spritesheet(AssetPool.getTexture("src/main/resources/assets/images/spritesheet.png"),
