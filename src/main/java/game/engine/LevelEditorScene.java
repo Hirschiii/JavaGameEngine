@@ -6,6 +6,7 @@ import org.joml.Vector4f;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import game.components.Rigidbody;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
@@ -25,8 +26,12 @@ public class LevelEditorScene extends Scene {
 	@Override
 	public void init() {
 		loadResources();
-
 		this.camera = new Camera(new Vector2f());
+
+		if (loadedLevel) {
+			this.activeGameObject = gameObjects.get(0);
+			return;
+		}
 
 		// sprites = new
 		// AssetPool().getSpritesheet("src/main/resources/assets/images/spritesheet.png");
@@ -37,6 +42,7 @@ public class LevelEditorScene extends Scene {
 		obj1Sprite = new SpriteRenderer();
 		obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
 		obj1.addComponent(obj1Sprite);
+		obj1.addComponent(new Rigidbody());
 
 		GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(300, 100), new Vector2f(256, 256)), 2);
 		SpriteRenderer obj2SpriteRender = new SpriteRenderer();
@@ -49,22 +55,6 @@ public class LevelEditorScene extends Scene {
 		this.addGameObject(obj1);
 		this.addGameObject(obj2);
 
-		this.activeGameObject = obj1;
-
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-		String serialized = gson.toJson(new Vector2f(1, 2));
-		System.out.println(serialized);
-		Vector2f one = gson.fromJson(serialized, Vector2f.class);
-		System.out.println(one);
-	}
-
-	private void loadResources() {
-		AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
-
-		AssetPool.addSpritesheet("src/main/resources/assets/images/spritesheet.png",
-				new Spritesheet(AssetPool.getTexture("src/main/resources/assets/images/spritesheet.png"),
-						16, 16, 26, 0));
 	}
 
 	@Override
@@ -80,12 +70,13 @@ public class LevelEditorScene extends Scene {
 
 	}
 
-	@Override
-	public void imgui() {
-		ImGui.begin("Test Window");
-		ImGui.text("Random Text");
-		ImGui.end();
 
+	private void loadResources() {
+		AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
+
+		AssetPool.addSpritesheet("src/main/resources/assets/images/spritesheet.png",
+				new Spritesheet(AssetPool.getTexture("src/main/resources/assets/images/spritesheet.png"),
+						16, 16, 26, 0));
 	}
 
 }

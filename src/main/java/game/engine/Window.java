@@ -65,9 +65,9 @@ public class Window {
 		this.height = 1080;
 		this.title = "Hello World";
 
-		this.r = 0;
-		this.g = 0;
-		this.b = 0;
+		this.r = 1;
+		this.g = 1;
+		this.b = 1;
 		this.a = 1;
 
 	}
@@ -85,27 +85,31 @@ public class Window {
 		return get().currenScene;
 	}
 
+	/**
+	 * Aktiviere Scene Nr. n
+	 * 
+	 * @param newScene
+	 */
 	public static void changeScene(int newScene) {
 		switch (newScene) {
 			case 0:
 				currenScene = new LevelEditorScene();
-				currenScene.init();
-				currenScene.start();
 				break;
 			case 1:
 				currenScene = new LevelScene();
-				currenScene.start();
-				currenScene.init();
 				break;
 			case 2:
 				currenScene = new InitMenuScene();
-				currenScene.start();
-				currenScene.init();
 				break;
 			default:
 				assert false : "Unknown Scenen '" + newScene + "'";
 				break;
 		}
+
+		currenScene.load();
+		currenScene.init();
+		currenScene.start();
+
 	}
 
 	public void run() {
@@ -192,7 +196,6 @@ public class Window {
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-
 			if (dt >= 0) {
 				currenScene.update(dt);
 			}
@@ -206,6 +209,8 @@ public class Window {
 			beginTime = endTime;
 
 		}
+
+		currenScene.saveExit();
 	}
 
 	public static int getWidth() {
@@ -222,5 +227,85 @@ public class Window {
 
 	public static void setHeight(int newHeight) {
 		get().width = newHeight;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public long getGlfwWindow() {
+		return glfwWindow;
+	}
+
+	public void setGlfwWindow(long glfwWindow) {
+		this.glfwWindow = glfwWindow;
+	}
+
+	public static Window getWindow() {
+		return window;
+	}
+
+	public static void setWindow(Window window) {
+		Window.window = window;
+	}
+
+	public static Scene getCurrenScene() {
+		return currenScene;
+	}
+
+	public static void setCurrenScene(Scene currenScene) {
+		Window.currenScene = currenScene;
+	}
+
+	public float getR() {
+		return r;
+	}
+
+	public void setR(float r) {
+		this.r = r;
+	}
+
+	public float getG() {
+		return g;
+	}
+
+	public void setG(float g) {
+		this.g = g;
+	}
+
+	public float getB() {
+		return b;
+	}
+
+	public void setB(float b) {
+		this.b = b;
+	}
+
+	public float getA() {
+		return a;
+	}
+
+	public void setA(float a) {
+		this.a = a;
+	}
+
+	public boolean isFadeToBlack() {
+		return fadeToBlack;
+	}
+
+	public void setFadeToBlack(boolean fadeToBlack) {
+		this.fadeToBlack = fadeToBlack;
+	}
+
+	public ImGuiLayer getImguiLayer() {
+		return imguiLayer;
+	}
+
+	public void setImguiLayer(ImGuiLayer imguiLayer) {
+		this.imguiLayer = imguiLayer;
 	}
 }

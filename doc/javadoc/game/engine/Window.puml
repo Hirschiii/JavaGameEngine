@@ -18,6 +18,26 @@
         {static} +getHeight(): int
         {static} +setWidth(int): void
         {static} +setHeight(int): void
+        +getTitle(): String
+        +setTitle(String): void
+        +getGlfwWindow(): long
+        +setGlfwWindow(long): void
+        {static} +getWindow(): Window
+        {static} +setWindow(Window): void
+        {static} +getCurrenScene(): Scene
+        {static} +setCurrenScene(Scene): void
+        +getR(): float
+        +setR(float): void
+        +getG(): float
+        +setG(float): void
+        +getB(): float
+        +setB(float): void
+        +getA(): float
+        +setA(float): void
+        +isFadeToBlack(): boolean
+        +setFadeToBlack(boolean): void
+        +getImguiLayer(): ImGuiLayer
+        +setImguiLayer(ImGuiLayer): void
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
