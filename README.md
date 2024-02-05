@@ -12,6 +12,11 @@
 - Platformer (Paket liefern)
 - Dungeon (Man muss immer weiter nach vorne dringen um Pakete abzugeben)
 
+# Ideen fuer Spaeter:
+
+- Nachrichte System
+- Multiplayer ueber Server
+
 # Inspiration:
 
 - https://cataclysmdda.org/
