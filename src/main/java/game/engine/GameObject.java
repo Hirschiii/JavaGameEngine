@@ -17,7 +17,7 @@ public class GameObject {
 		ID_COUNTER = iD_COUNTER;
 	}
 
-	private String name;
+	public String name;
 	private List<Component> components;
 
 
