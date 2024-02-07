@@ -39,7 +39,11 @@ public class LevelEditorScene extends Scene {
 		sprites = new AssetPool()
 				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
 
-		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(800.0f, 800.0f), new Vector3f(1, 0, 0), 520);
+		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(800.0f, 800.0f),
+		new Vector3f(1, 0, 0), 520);
+		DebugDraw.addLine2D(new Vector2f(20.0f, 0.0f), new Vector2f(820.0f, 800.0f),
+		new Vector3f(0, 1, 0), 520);
+
 		if (loadedLevel) {
 			this.activeGameObject = gameObjects.get(0);
 			return;
@@ -66,11 +70,19 @@ public class LevelEditorScene extends Scene {
 
 	}
 
+	float t = 0.0f;
+
 	@Override
 	public void update(float dt) {
 
 		mouseControls.update(dt);
 		// obj1.transform.position.x += 10 * dt;
+
+		float x = ((float) Math.sin(t) * 200.0f) + 600;
+		float y = ((float) Math.cos(t) * 200.0f) + 400;
+
+		t+=0.05f;
+		DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(1, 0, 0), 10);
 
 		// System.out.println("FPS: " + (1.0f / dt));
 		for (GameObject go : this.gameObjects) {

@@ -233,7 +233,7 @@ public class Window {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			if (dt >= 0) {
-				// currenScene.update(dt);
+				currenScene.update(dt);
 				DebugDraw.draw();
 			}
 

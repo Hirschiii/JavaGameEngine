@@ -105,8 +105,8 @@ public class DebugDraw {
 		}
 
 		glBindBuffer(GL_ARRAY_BUFFER, vboID);
-		// glBufferSubData(GL_ARRAY_BUFFER, 0, Arrays.copyOfRange(vertexArray, 0, lines.size() * 6 * 2));
-		glBufferData(GL_ARRAY_BUFFER, vertexArray, GL_DYNAMIC_DRAW);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, Arrays.copyOfRange(vertexArray, 0, lines.size() * 6 * 2));
+		// glBufferSubData(GL_ARRAY_BUFFER, 0, vertexArray);
 
 		// Use our shader
 		shader.use();
@@ -118,7 +118,7 @@ public class DebugDraw {
 		glEnableVertexAttribArray(1);
 
 		// Draw
-		glDrawArrays(GL_LINES, 0, lines.size());
+		glDrawArrays(GL_LINES, 0, lines.size() * 2);
 
 		// Disable location
 		glDisableVertexAttribArray(0);
@@ -141,8 +141,8 @@ public class DebugDraw {
 	}
 
 	public static void addLine2D(Vector2f from, Vector2f to, Vector3f color, int lifetime) {
+		System.out.println("New Line");
 		if(lines.size() >= MAX_LINES) return;
-		System.out.println("Draw line add");
 		DebugDraw.lines.add(new Line2D(from, to, color, lifetime));
 	}
 }
