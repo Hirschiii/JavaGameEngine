@@ -1,2 +1,0 @@
-Main-Class: game.App
-Class-Path: lwjgl.jar
