@@ -46,7 +46,7 @@ public class AssetPool {
 		}
 	}
 
-	public static Spritesheet getSpritesheet(String resourceName) {
+	public Spritesheet getSpritesheet(String resourceName) {
 		File file = new File(resourceName);
 		if (!AssetPool.spritesheets.containsKey(file.getAbsolutePath())) {
 			assert false : "Error: Tried to access spritesheet" + resourceName + " and its not in Asset pool";

@@ -3,25 +3,37 @@ package game.engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.components.Component;
+
 public class GameObject {
+	private static int ID_COUNTER = 0;
+	public static void init(int maxID) {
+		ID_COUNTER = maxID;
+	}
+	public static int getID_COUNTER() {
+		return ID_COUNTER;
+	}
+	public static void setID_COUNTER(int iD_COUNTER) {
+		ID_COUNTER = iD_COUNTER;
+	}
+
 	private String name;
 	private List<Component> components;
+
+
 	public Transform transform;
+
 	private int zIndex;
 
-	public GameObject(String name) {
-		this.name = name;
-		this.zIndex = 0;
-		this.components = new ArrayList<>();
-		this.transform = new Transform();
-
-	}
+	private int uid = -1;
 
 	public GameObject(String name, Transform transform, int zIndex) {
 		this.name = name;
 		this.zIndex = zIndex;
 		this.components = new ArrayList<>();
 		this.transform = transform;
+
+		this.uid = ID_COUNTER++;
 
 	}
 
@@ -52,6 +64,7 @@ public class GameObject {
 	}
 
 	public void addComponent(Component c) {
+		c.generateID();
 		this.components.add(c);
 		c.gameObject = this;
 	}
@@ -69,12 +82,56 @@ public class GameObject {
 	}
 
 	public void imgui() {
-		for (game.engine.Component c : components) {
+		for (Component c : components) {
 			c.imgui();
 		}
 	}
 
 	public int zIndex() {
 		return this.zIndex;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Component> getComponents() {
+		return components;
+	}
+
+	public void setComponents(List<Component> components) {
+		this.components = components;
+	}
+
+	public Transform getTransform() {
+		return transform;
+	}
+
+	public void setTransform(Transform transform) {
+		this.transform = transform;
+	}
+
+	public int getzIndex() {
+		return zIndex;
+	}
+
+	public void setzIndex(int zIndex) {
+		this.zIndex = zIndex;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public List<Component> getAllComponents(){
+		return this.components;
 	}
 }

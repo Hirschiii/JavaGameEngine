@@ -90,4 +90,30 @@ public class Texture {
 	public int getHeight() {
 		return this.height;
 	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
+	public int getTexID() {
+		return texID;
+	}
+
+	public void setTexID(int texID) {
+		this.texID = texID;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+
 }

@@ -45,33 +45,12 @@ import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
+import game.scene.LevelEditorScene;
+import game.scene.LevelScene;
+import game.scene.Scene;
+
 public class Window {
-	private int width, height;
-	private String title;
-
-	private long glfwWindow;
-
 	private static Window window = null;
-
-	private static Scene currenScene;
-
-	public float r, g, b, a;
-	private boolean fadeToBlack = false;
-
-	private ImGuiLayer imguiLayer;
-
-	private Window() {
-		this.width = 1920;
-		this.height = 1080;
-		this.title = "Hello World";
-
-		this.r = 1;
-		this.g = 1;
-		this.b = 1;
-		this.a = 1;
-
-	}
-
 	public static Window get() {
 		if (Window.window == null) {
 			Window.window = new Window();
@@ -98,9 +77,6 @@ public class Window {
 			case 1:
 				currenScene = new LevelScene();
 				break;
-			case 2:
-				currenScene = new InitMenuScene();
-				break;
 			default:
 				assert false : "Unknown Scenen '" + newScene + "'";
 				break;
@@ -109,6 +85,65 @@ public class Window {
 		currenScene.load();
 		currenScene.init();
 		currenScene.start();
+
+	}
+
+	public static int getWidth() {
+		return get().width;
+	}
+
+	public static int getHeight() {
+		return get().height;
+	}
+	public static void setWidth(int newWidth) {
+		get().width = newWidth;
+	}
+
+	public static void setHeight(int newHeight) {
+		get().width = newHeight;
+	}
+
+	public static Window getWindow() {
+		return window;
+	}
+
+	public static void setWindow(Window window) {
+		Window.window = window;
+	}
+
+	public static Scene getCurrenScene() {
+		return currenScene;
+	}
+
+	public static void setCurrenScene(Scene currenScene) {
+		Window.currenScene = currenScene;
+	}
+
+	private int width, height;
+
+	private String title;
+
+	private long glfwWindow;
+
+	private static Scene currenScene;
+
+	public float r, g, b, a;
+
+	private boolean fadeToBlack = false;
+
+	private ImGuiLayer imguiLayer;
+
+	private Window() {
+		// this.height = 1080;
+		// this.width = 1920;
+		this.height = 2560;
+		this.width = 1600;
+		this.title = "Hello World";
+
+		this.r = 1;
+		this.g = 1;
+		this.b = 1;
+		this.a = 1;
 
 	}
 
@@ -213,22 +248,6 @@ public class Window {
 		currenScene.saveExit();
 	}
 
-	public static int getWidth() {
-		return get().width;
-	}
-
-	public static int getHeight() {
-		return get().height;
-	}
-
-	public static void setWidth(int newWidth) {
-		get().width = newWidth;
-	}
-
-	public static void setHeight(int newHeight) {
-		get().width = newHeight;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -243,22 +262,6 @@ public class Window {
 
 	public void setGlfwWindow(long glfwWindow) {
 		this.glfwWindow = glfwWindow;
-	}
-
-	public static Window getWindow() {
-		return window;
-	}
-
-	public static void setWindow(Window window) {
-		Window.window = window;
-	}
-
-	public static Scene getCurrenScene() {
-		return currenScene;
-	}
-
-	public static void setCurrenScene(Scene currenScene) {
-		Window.currenScene = currenScene;
 	}
 
 	public float getR() {

@@ -3,7 +3,6 @@ package game.components;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-import game.engine.Component;
 
 public class Rigidbody extends Component{
 	private int collider_type = 1;

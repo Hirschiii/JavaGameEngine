@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: game.App
+Class-Path: lwjgl-*.jar .
+Created-By: 21.0.1 (Oracle Corporation)
+

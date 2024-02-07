@@ -3,12 +3,17 @@ package game.engine;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
+import game.engine.Window;
+
+import org.joml.Matrix4f;
+import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 public class MouseListener {
 	private static MouseListener instance;
 	private double scrollX, scrollY;
 	private double xPos, yPos, lastY, lastX;
-	private boolean mouseButtonPressed[] = new boolean[3];
+	private boolean mouseButtonPressed[] = new boolean[9];
 	private boolean isDragging;
 
 	private MouseListener() {
@@ -35,11 +40,11 @@ public class MouseListener {
 
 		get().xPos = xPos;
 		get().yPos = yPos;
-		get().isDragging = get().mouseButtonPressed[0] || get().mouseButtonPressed[1] || get().mouseButtonPressed[2]; 
+		get().isDragging = get().mouseButtonPressed[0] || get().mouseButtonPressed[1] || get().mouseButtonPressed[2];
 	}
 
 	public static void mouseButtonCallback(long window, int button, int action, int mod) {
-		if(action == GLFW_PRESS) {
+		if (action == GLFW_PRESS) {
 			if (button < get().mouseButtonPressed.length) {
 				get().mouseButtonPressed[button] = true;
 			}
@@ -64,27 +69,134 @@ public class MouseListener {
 	}
 
 	public static float getX() {
-		return (float)get().xPos;
-	}
-	public static float getY() {
-		return (float)get().yPos;
-	}
-	public static float getDx() {
-		return (float)(get().lastX - get().xPos);
-	}
-	public static float getDy() {
-		return (float)(get().lastY - get().yPos);
+		return (float) get().xPos;
 	}
 
+	public static float getY() {
+		return (float) get().yPos;
+	}
+
+	public static float getOrthX() {
+		// float currentX = getX();
+		// currentX = (currentX / (float)game.engine.Window.getWidth()) * 2.0f - 1.0f;
+		//
+		// System.out.println("Mouse Pos: " + getX());
+		//
+		// Vector4f tmp =  new Vector4f(currentX, 0, 0, 1);
+		// tmp.mul(game.engine.Window.getScene().camera().getInverseProjection()).mul(game.engine.Window.getScene().camera().getInverseView());
+		// currentX = tmp.x;
+		//
+		// System.out.println("Mouse Cur: " + currentX);
+		// return currentX;
+		return getWorld().x;
+	}
+	public static float getOrthY() {
+		// float currentY = Window.getHeight() - getY();
+		// currentY = (currentY / (float)game.engine.Window.getHeight()) * 2.0f - 1.0f;
+		//
+		// Vector4f tmp =  new Vector4f(0, currentY, 0, 1);
+		// tmp.mul(game.engine.Window.getScene().camera().getInverseProjection()).mul(game.engine.Window.getScene().camera().getInverseView());
+		// currentY = tmp.y;
+
+		return getWorld().y;
+	}
+
+	public static Vector2f getWorld() {
+        // float currentX = getX() - get().gameViewportPos.x;
+        float currentX = getX();
+        // currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
+        currentX = (2.0f * (currentX / (float)Window.getWidth())) - 1.0f;
+        float currentY = Window.getHeight() - getY();
+        // currentY = (2.0f * (1.0f - (currentY / get().gameViewportSize.y))) - 1;
+        currentY = (2.0f * (currentY / (float)Window.getHeight())) - 1.0f;
+
+
+        Camera camera = Window.getScene().camera();
+        Vector4f tmp = new Vector4f(currentX, currentY, 0, 1);
+        Matrix4f inverseView = new Matrix4f(camera.getInverseView());
+        Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjection());
+        tmp.mul(inverseView.mul(inverseProjection));
+        return new Vector2f(tmp.x, tmp.y);
+	}	
+
+	public static float getDx() {
+		return (float) (get().lastX - get().xPos);
+	}
+
+	public static MouseListener getInstance() {
+		return instance;
+	}
+
+	public static void setInstance(MouseListener instance) {
+		MouseListener.instance = instance;
+	}
+
+	public void setScrollX(double scrollX) {
+		this.scrollX = scrollX;
+	}
+
+	public void setScrollY(double scrollY) {
+		this.scrollY = scrollY;
+	}
+
+	public double getxPos() {
+		return xPos;
+	}
+
+	public void setxPos(double xPos) {
+		this.xPos = xPos;
+	}
+
+	public double getyPos() {
+		return yPos;
+	}
+
+	public void setyPos(double yPos) {
+		this.yPos = yPos;
+	}
+
+	public double getLastY() {
+		return lastY;
+	}
+
+	public void setLastY(double lastY) {
+		this.lastY = lastY;
+	}
+
+	public double getLastX() {
+		return lastX;
+	}
+
+	public void setLastX(double lastX) {
+		this.lastX = lastX;
+	}
+
+	public boolean[] getMouseButtonPressed() {
+		return mouseButtonPressed;
+	}
+
+	public void setMouseButtonPressed(boolean[] mouseButtonPressed) {
+		this.mouseButtonPressed = mouseButtonPressed;
+	}
+
+	public void setDragging(boolean isDragging) {
+		this.isDragging = isDragging;
+	}
+
+	public static float getDy() {
+		return (float) (get().lastY - get().yPos);
+	}
 
 	public static float getScrollX() {
-		return (float)get().scrollX;
+		return (float) get().scrollX;
 	}
+
 	public static float getScrollY() {
-		return (float)get().scrollY;
+		return (float) get().scrollY;
 	}
+
 	public static boolean isDragging() {
-		return (boolean)get().isDragging;
+		return (boolean) get().isDragging;
 	}
 
 	public static boolean mouseButtonDown(int button) {

@@ -9,6 +9,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
+import game.components.Component;
+
 public class GameObjectDeserializer implements JsonDeserializer<GameObject> {
 
 	@Override

@@ -3,7 +3,6 @@ package game.components;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
-import game.engine.Component;
 import game.engine.Transform;
 import game.renderer.Texture;
 import imgui.ImGui;

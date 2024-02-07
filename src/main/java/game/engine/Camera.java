@@ -7,7 +7,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 public class Camera {
-	private Matrix4f projectMatrix, viewMatrix;
+	private Matrix4f projectMatrix, viewMatrix, inverseProjection, inverseView;
 	public Vector2f position;
 
 	public Camera(Vector2f position) {
@@ -15,6 +15,8 @@ public class Camera {
 
 		this.projectMatrix = new Matrix4f();
 		this.viewMatrix = new Matrix4f();
+		this.inverseProjection = new Matrix4f();
+		this.inverseView = new Matrix4f();
 
 		adjustProjection();
 	}
@@ -24,6 +26,7 @@ public class Camera {
 
 		// Left, Right, Bottom, Top, Near Clipping, Far Clipping
 		projectMatrix.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+		projectMatrix.invert(inverseProjection);
 	}
 
 	public Matrix4f getViewMatrix() {
@@ -36,11 +39,49 @@ public class Camera {
 				cameraFront.add(position.x, position.y, 0.0f),
 				cameraUp);
 
+		this.viewMatrix.invert(inverseView);
+
 		return this.viewMatrix;
 	}
 
 	public Matrix4f getProjectionMatrix() {
 		return this.projectMatrix;
+	}
+
+	public Matrix4f getProjectMatrix() {
+		return projectMatrix;
+	}
+
+	public void setProjectMatrix(Matrix4f projectMatrix) {
+		this.projectMatrix = projectMatrix;
+	}
+
+	public void setViewMatrix(Matrix4f viewMatrix) {
+		this.viewMatrix = viewMatrix;
+	}
+
+	public Matrix4f getInverseProjection() {
+		return inverseProjection;
+	}
+
+	public void setInverseProjection(Matrix4f inverseProjection) {
+		this.inverseProjection = inverseProjection;
+	}
+
+	public Matrix4f getInverseView() {
+		return inverseView;
+	}
+
+	public void setInverseView(Matrix4f inverseView) {
+		this.inverseView = inverseView;
+	}
+
+	public Vector2f getPosition() {
+		return position;
+	}
+
+	public void setPosition(Vector2f position) {
+		this.position = position;
 	}
 
 }
