@@ -45,6 +45,7 @@ import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
+import game.renderer.DebugDraw;
 import game.scene.LevelEditorScene;
 import game.scene.LevelScene;
 import game.scene.Scene;
@@ -134,10 +135,8 @@ public class Window {
 	private ImGuiLayer imguiLayer;
 
 	private Window() {
-		// this.height = 1080;
-		// this.width = 1920;
-		this.height = 2560;
-		this.width = 1600;
+		this.height = 1080;
+		this.width = 1920;
 		this.title = "Hello World";
 
 		this.r = 1;
@@ -228,11 +227,14 @@ public class Window {
 			// Poll Events
 			glfwPollEvents();
 
+			DebugDraw.beginFrame();
+
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			if (dt >= 0) {
-				currenScene.update(dt);
+				// currenScene.update(dt);
+				DebugDraw.draw();
 			}
 
 			this.imguiLayer.update(dt, currenScene);

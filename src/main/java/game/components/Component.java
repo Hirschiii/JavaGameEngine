@@ -133,10 +133,6 @@ public abstract class Component {
 		return uid;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
 	public static void init(int maxID) {
 		ID_COUNTER = maxID;
 	}

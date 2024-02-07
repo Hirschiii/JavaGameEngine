@@ -1,6 +1,7 @@
 package game.scene;
 
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 import game.components.MouseControls;
@@ -13,6 +14,7 @@ import game.engine.GameObject;
 import game.engine.MouseListener;
 import game.engine.Prefabs;
 import game.engine.Transform;
+import game.renderer.DebugDraw;
 import game.util.AssetPool;
 import imgui.ImGui;
 import imgui.ImVec2;
@@ -37,6 +39,7 @@ public class LevelEditorScene extends Scene {
 		sprites = new AssetPool()
 				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
 
+		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(800.0f, 800.0f), new Vector3f(1, 0, 0), 520);
 		if (loadedLevel) {
 			this.activeGameObject = gameObjects.get(0);
 			return;
@@ -79,7 +82,8 @@ public class LevelEditorScene extends Scene {
 	}
 
 	private void loadResources() {
-		AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
+		// AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
+		AssetPool.getShader("assets/shaders/default.glsl");
 		AssetPool.getTexture("src/main/resources/assets/images/blendImage2.png");
 
 		AssetPool.addSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png",
