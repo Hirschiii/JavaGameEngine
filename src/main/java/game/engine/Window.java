@@ -15,6 +15,7 @@ import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
 import static org.lwjgl.glfw.GLFW.glfwDefaultWindowHints;
 import static org.lwjgl.glfw.GLFW.glfwDestroyWindow;
 import static org.lwjgl.glfw.GLFW.glfwGetTime;
+import static org.lwjgl.glfw.GLFW.glfwGetWindowSize;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
@@ -86,18 +87,18 @@ public class Window {
 	}
 
 	public static int getWidth() {
-		return get().width;
+		return get().width[0];
 	}
 
 	public static int getHeight() {
-		return get().height;
+		return get().height[0];
 	}
 	public static void setWidth(int newWidth) {
-		get().width = newWidth;
+		get().width[0] = newWidth;
 	}
 
 	public static void setHeight(int newHeight) {
-		get().height = newHeight;
+		get().height[0] = newHeight;
 	}
 
 	public static Window getWindow() {
@@ -116,7 +117,8 @@ public class Window {
 		Window.currenScene = currenScene;
 	}
 
-	private int width, height;
+	private int[] width = new int[1];
+	private int[] height = new int[1];
 
 	private String title;
 
@@ -131,8 +133,8 @@ public class Window {
 	private ImGuiLayer imguiLayer;
 
 	private Window() {
-		this.height = 1080;
-		this.width = 1920;
+		this.height[0] = 1080;
+		this.width[0] = 1920;
 		this.title = "Hello World";
 
 		this.r = 1;
@@ -146,6 +148,7 @@ public class Window {
 		System.out.println("Hello LWJGL: " + Version.getVersion() + "!");
 
 		init();
+
 		loop();
 
 		// Free Memory
@@ -171,7 +174,7 @@ public class Window {
 		glfwDefaultWindowHints();
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-		glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+		// glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
@@ -180,7 +183,7 @@ public class Window {
 
 		// Create Window
 
-		glfwWindow = glfwCreateWindow(this.height, this.width, this.title, NULL, NULL);
+		glfwWindow = glfwCreateWindow(this.width[0], this.height[0], this.title, NULL, NULL);
 		if (glfwWindow == NULL) {
 			throw new IllegalStateException("Failed to create GLFW Window");
 		}
@@ -214,9 +217,12 @@ public class Window {
 		this.imguiLayer.initImGui();
 
 		Window.changeScene(0);
+
+		glfwGetWindowSize(glfwWindow, width, height);
 	}
 
 	public void loop() {
+		getScene().camera().adjustProjection();
 		float beginTime = (float) glfwGetTime();
 		float endTime;
 		float dt = -1.0f;

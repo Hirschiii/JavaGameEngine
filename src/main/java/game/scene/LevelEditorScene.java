@@ -12,6 +12,7 @@ import game.components.Spritesheet;
 import game.editor.JImGui;
 import game.engine.Camera;
 import game.engine.GameObject;
+import game.engine.MouseListener;
 import game.engine.Prefabs;
 import game.engine.Transform;
 import game.engine.Window;
@@ -44,6 +45,8 @@ public class LevelEditorScene extends Scene {
 				new Vector3f(1, 0, 0), 520);
 		DebugDraw.addLine2D(new Vector2f(1.0f, 0.0f), new Vector2f(5.0f, 3.0f),
 				new Vector3f(0, 1, 0), 520);
+
+
 
 		if (loadedLevel) {
 			this.activeGameObject = gameObjects.get(0);
@@ -84,6 +87,10 @@ public class LevelEditorScene extends Scene {
 
 		t += 0.05f;
 		DebugDraw.addLine2D(new Vector2f(6, 4), new Vector2f(x, y), new Vector3f(1, 0, 0), 10);
+
+
+		DebugDraw.addLine2D(new Vector2f(MouseListener.getWorldX(), MouseListener.getWorldY()) , new Vector2f(1.0f, 2.0f),
+				new Vector3f(1, 0, 0), 520);
 
 		// System.out.println("FPS: " + (1.0f / dt));
 		for (GameObject go : this.gameObjects) {
