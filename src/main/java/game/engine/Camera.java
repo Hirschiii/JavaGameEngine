@@ -9,11 +9,10 @@ public class Camera {
 	public Vector2f position;
 	public float zoom;
 
-    private float projectionWidth = 32 * 40;
-    private float projectionHeight = 32 * 20;
+    private float projectionHeight = 6;
     // private float projectionWidth = 32 * 6;
     // private float projectionHeight = 32 * 3;
-    private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
+    // private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
 
 
 	public Camera(Vector2f position) {
@@ -95,13 +94,13 @@ public class Camera {
 		this.position = position;
 	}
 
-	public float getProjectionWidth() {
-		return projectionWidth;
-	}
+	// public float getProjectionWidth() {
+	// 	return projectionWidth;
+	// }
 
-	public void setProjectionWidth(float projectionWidth) {
-		this.projectionWidth = projectionWidth;
-	}
+	// public void setProjectionWidth(float projectionWidth) {
+	// 	this.projectionWidth = projectionWidth;
+	// }
 
 	public float getProjectionHeight() {
 		return projectionHeight;
@@ -111,13 +110,13 @@ public class Camera {
 		this.projectionHeight = projectionHeight;
 	}
 
-	public Vector2f getProjectionSize() {
-		return projectionSize;
-	}
-
-	public void setProjectionSize(Vector2f projectionSize) {
-		this.projectionSize = projectionSize;
-	}
+	// public Vector2f getProjectionSize() {
+	// 	return projectionSize;
+	// }
+	//
+	// public void setProjectionSize(Vector2f projectionSize) {
+	// 	this.projectionSize = projectionSize;
+	// }
 
 	public float getZoom() {
 		return zoom;

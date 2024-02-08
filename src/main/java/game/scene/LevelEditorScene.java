@@ -12,7 +12,6 @@ import game.components.Spritesheet;
 import game.editor.JImGui;
 import game.engine.Camera;
 import game.engine.GameObject;
-import game.engine.MouseListener;
 import game.engine.Prefabs;
 import game.engine.Transform;
 import game.engine.Window;
@@ -41,9 +40,9 @@ public class LevelEditorScene extends Scene {
 		sprites = new AssetPool()
 				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
 
-		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(800.0f, 800.0f),
+		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(1.0f, 2.0f),
 				new Vector3f(1, 0, 0), 520);
-		DebugDraw.addLine2D(new Vector2f(20.0f, 0.0f), new Vector2f(820.0f, 800.0f),
+		DebugDraw.addLine2D(new Vector2f(1.0f, 0.0f), new Vector2f(5.0f, 3.0f),
 				new Vector3f(0, 1, 0), 520);
 
 		if (loadedLevel) {
@@ -51,15 +50,15 @@ public class LevelEditorScene extends Scene {
 			return;
 		}
 
-		obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100),
-				new Vector2f(256, 256)), 1);
+		obj1 = new GameObject("Object 1", new Transform(new Vector2f(2, 1),
+				new Vector2f(2, 2)), 1);
 
 		obj1Sprite = new SpriteRenderer();
 		obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
 		obj1.addComponent(obj1Sprite);
 		obj1.addComponent(new Rigidbody());
 
-		GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(300, 100), new Vector2f(256, 256)), 2);
+		GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(3, 1), new Vector2f(2, 2)), 2);
 		SpriteRenderer obj2SpriteRender = new SpriteRenderer();
 		Sprite obj2Sprite = new Sprite();
 		obj2Sprite.setTexture(AssetPool.getTexture("src/main/resources/assets/images/blendImage2.png"));
@@ -80,11 +79,11 @@ public class LevelEditorScene extends Scene {
 		mouseControls.update(dt);
 		// obj1.transform.position.x += 10 * dt;
 
-		float x = ((float) Math.sin(t) * 200.0f) + 600;
-		float y = ((float) Math.cos(t) * 200.0f) + 400;
+		float x = ((float) Math.sin(t) * 2.0f) + 6;
+		float y = ((float) Math.cos(t) * 2.0f) + 4;
 
 		t += 0.05f;
-		DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(1, 0, 0), 10);
+		DebugDraw.addLine2D(new Vector2f(6, 4), new Vector2f(x, y), new Vector3f(1, 0, 0), 10);
 
 		// System.out.println("FPS: " + (1.0f / dt));
 		for (GameObject go : this.gameObjects) {
@@ -133,7 +132,7 @@ public class LevelEditorScene extends Scene {
 			ImGui.pushID(i);
 			if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[0].x, texCoords[0].y, texCoords[2].x,
 					texCoords[2].y)) {
-				GameObject object = Prefabs.generateSpriteObject(sprite, spriteWidth, spriteHeight);
+				GameObject object = Prefabs.generateSpriteObject(sprite, 1, 1);
 				// Attach to mouse Cursor to drop
 				mouseControls.pickupObject(object);
 			}
