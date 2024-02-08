@@ -9,11 +9,13 @@ import game.components.Rigidbody;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
+import game.editor.JImGui;
 import game.engine.Camera;
 import game.engine.GameObject;
 import game.engine.MouseListener;
 import game.engine.Prefabs;
 import game.engine.Transform;
+import game.engine.Window;
 import game.renderer.DebugDraw;
 import game.util.AssetPool;
 import imgui.ImGui;
@@ -40,9 +42,9 @@ public class LevelEditorScene extends Scene {
 				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
 
 		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(800.0f, 800.0f),
-		new Vector3f(1, 0, 0), 520);
+				new Vector3f(1, 0, 0), 520);
 		DebugDraw.addLine2D(new Vector2f(20.0f, 0.0f), new Vector2f(820.0f, 800.0f),
-		new Vector3f(0, 1, 0), 520);
+				new Vector3f(0, 1, 0), 520);
 
 		if (loadedLevel) {
 			this.activeGameObject = gameObjects.get(0);
@@ -81,7 +83,7 @@ public class LevelEditorScene extends Scene {
 		float x = ((float) Math.sin(t) * 200.0f) + 600;
 		float y = ((float) Math.cos(t) * 200.0f) + 400;
 
-		t+=0.05f;
+		t += 0.05f;
 		DebugDraw.addLine2D(new Vector2f(600, 400), new Vector2f(x, y), new Vector3f(1, 0, 0), 10);
 
 		// System.out.println("FPS: " + (1.0f / dt));
@@ -106,6 +108,8 @@ public class LevelEditorScene extends Scene {
 
 	@Override
 	public void imgui() {
+		ImGuiWordSet();
+
 		ImGui.begin("Test Titel");
 
 		ImVec2 windowPos = new ImVec2();
@@ -146,6 +150,16 @@ public class LevelEditorScene extends Scene {
 		}
 
 		ImGui.end();
+	}
+
+	public void ImGuiWordSet() {
+		ImGui.begin("Set World");
+		JImGui.drawVec2Control("CamPos", Window.getScene().camera().getPosition());
+		JImGui.drawVec2Control("Window Size:", new Vector2f(Window.getWidth(), Window.getHeight()));
+		Vector2f zoom = new Vector2f(Window.getScene().camera().getZoom(), 0);
+		JImGui.drawVec2Control("Zoom", zoom);
+		ImGui.end();
+
 	}
 
 }

@@ -74,7 +74,7 @@ public class DebugDraw {
 		// Remove dead lines
 		for (int i=0; i < lines.size(); i++) {
 			if(lines.get(i).beginFrame() < 0) {
-				System.out.println("REmove line");
+				// System.out.println("REmove line");
 				lines.remove(i);
 				i--;
 			}
@@ -141,7 +141,7 @@ public class DebugDraw {
 	}
 
 	public static void addLine2D(Vector2f from, Vector2f to, Vector3f color, int lifetime) {
-		System.out.println("New Line");
+		// System.out.println("New Line");
 		if(lines.size() >= MAX_LINES) return;
 		DebugDraw.lines.add(new Line2D(from, to, color, lifetime));
 	}

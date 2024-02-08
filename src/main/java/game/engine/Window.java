@@ -61,10 +61,6 @@ public class Window {
 
 	}
 
-	public static Scene getScene() {
-		return get().currenScene;
-	}
-
 	/**
 	 * Aktiviere Scene Nr. n
 	 * 
@@ -101,7 +97,7 @@ public class Window {
 	}
 
 	public static void setHeight(int newHeight) {
-		get().width = newHeight;
+		get().height = newHeight;
 	}
 
 	public static Window getWindow() {
@@ -112,7 +108,7 @@ public class Window {
 		Window.window = window;
 	}
 
-	public static Scene getCurrenScene() {
+	public static Scene getScene() {
 		return currenScene;
 	}
 
@@ -196,6 +192,8 @@ public class Window {
 		glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
 			Window.setWidth(newWidth);
 			Window.setHeight(newHeight);
+			getScene().camera().adjustProjection();
+			
 		});
 
 		// Make OpenGL Context Current

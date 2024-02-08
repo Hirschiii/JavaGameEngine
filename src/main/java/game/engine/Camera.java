@@ -1,7 +1,5 @@
 package game.engine;
 
-import java.util.Vector;
-
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -9,6 +7,14 @@ import org.joml.Vector3f;
 public class Camera {
 	private Matrix4f projectMatrix, viewMatrix, inverseProjection, inverseView;
 	public Vector2f position;
+	public float zoom;
+
+    private float projectionWidth = 32 * 40;
+    private float projectionHeight = 32 * 20;
+    // private float projectionWidth = 32 * 6;
+    // private float projectionHeight = 32 * 3;
+    private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
+
 
 	public Camera(Vector2f position) {
 		this.position = position;
@@ -18,14 +24,19 @@ public class Camera {
 		this.inverseProjection = new Matrix4f();
 		this.inverseView = new Matrix4f();
 
+		this.zoom = 1.0f;
+
 		adjustProjection();
 	}
 
 	public void adjustProjection() {
+		float aspectRation = (float) Window.getWidth() / Window.getHeight();
 		projectMatrix.identity();
 
 		// Left, Right, Bottom, Top, Near Clipping, Far Clipping
-		projectMatrix.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+        // projectMatrix.ortho(0.0f, projectionSize.x * zoom,
+        projectMatrix.ortho(0.0f, projectionHeight * aspectRation * zoom,
+                0.0f, projectionHeight * zoom, 0.0f, 100.0f);
 		projectMatrix.invert(inverseProjection);
 	}
 
@@ -82,6 +93,38 @@ public class Camera {
 
 	public void setPosition(Vector2f position) {
 		this.position = position;
+	}
+
+	public float getProjectionWidth() {
+		return projectionWidth;
+	}
+
+	public void setProjectionWidth(float projectionWidth) {
+		this.projectionWidth = projectionWidth;
+	}
+
+	public float getProjectionHeight() {
+		return projectionHeight;
+	}
+
+	public void setProjectionHeight(float projectionHeight) {
+		this.projectionHeight = projectionHeight;
+	}
+
+	public Vector2f getProjectionSize() {
+		return projectionSize;
+	}
+
+	public void setProjectionSize(Vector2f projectionSize) {
+		this.projectionSize = projectionSize;
+	}
+
+	public float getZoom() {
+		return zoom;
+	}
+
+	public void setZoom(float zoom) {
+		this.zoom = zoom;
 	}
 
 }

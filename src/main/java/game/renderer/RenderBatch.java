@@ -26,7 +26,6 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
-import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.engine.Window;
 import game.util.AssetPool;
