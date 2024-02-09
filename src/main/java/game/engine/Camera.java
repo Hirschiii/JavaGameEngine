@@ -4,13 +4,15 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import game.util.Settings;
+
 public class Camera {
 	private Matrix4f projectMatrix, viewMatrix, inverseProjection, inverseView;
 	public Vector2f position;
 	public float zoom;
 
 	private float aspectRation = (float) Window.getWidth() / Window.getHeight();
-	private float projectionHeight = 6;
+	private float projectionHeight = Settings.PROJECTION_HEIGHT;
 	private Vector2f projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
 
 	public Camera(Vector2f position) {

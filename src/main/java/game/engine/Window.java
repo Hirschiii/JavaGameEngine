@@ -47,12 +47,16 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
 import game.renderer.DebugDraw;
+import game.renderer.Framebuffer;
 import game.scene.LevelEditorScene;
 import game.scene.LevelScene;
 import game.scene.Scene;
 
 public class Window {
 	private static Window window = null;
+
+	private Framebuffer framebuffer;
+
 	public static Window get() {
 		if (Window.window == null) {
 			Window.window = new Window();
@@ -93,6 +97,7 @@ public class Window {
 	public static int getHeight() {
 		return get().height[0];
 	}
+
 	public static void setWidth(int newWidth) {
 		get().width[0] = newWidth;
 	}
@@ -196,7 +201,7 @@ public class Window {
 			Window.setWidth(newWidth);
 			Window.setHeight(newHeight);
 			getScene().camera().adjustProjection();
-			
+
 		});
 
 		// Make OpenGL Context Current
@@ -215,6 +220,9 @@ public class Window {
 
 		this.imguiLayer = new ImGuiLayer(glfwWindow);
 		this.imguiLayer.initImGui();
+
+		// TODO Automate 
+		this.framebuffer = new Framebuffer(2560, 1600);
 
 		Window.changeScene(0);
 
@@ -236,10 +244,12 @@ public class Window {
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			// this.framebuffer.bind();
 			if (dt >= 0) {
 				currenScene.update(dt);
 				DebugDraw.draw();
 			}
+			this.framebuffer.unbind();
 
 			this.imguiLayer.update(dt, currenScene);
 

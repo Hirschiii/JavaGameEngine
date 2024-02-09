@@ -25,8 +25,6 @@ import imgui.ImVec2;
 
 public class LevelEditorScene extends Scene {
 
-	private GameObject obj1;
-	private SpriteRenderer obj1Sprite;
 	private Spritesheet sprites;
 
 	GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(new Vector2f()), 0);
@@ -49,35 +47,16 @@ public class LevelEditorScene extends Scene {
 
 
 		if (loadedLevel) {
-			this.activeGameObject = gameObjects.get(0);
+			if(gameObjects.size() > 0) {
+				this.activeGameObject = gameObjects.get(0);
+			}
 			return;
 		}
-
-		obj1 = new GameObject("Object 1", new Transform(new Vector2f(2, 1),
-				new Vector2f(2, 2)), 1);
-
-		obj1Sprite = new SpriteRenderer();
-		obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
-		obj1.addComponent(obj1Sprite);
-		obj1.addComponent(new Rigidbody());
-
-		GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(3, 1), new Vector2f(2, 2)), 2);
-		SpriteRenderer obj2SpriteRender = new SpriteRenderer();
-		Sprite obj2Sprite = new Sprite();
-		obj2Sprite.setTexture(AssetPool.getTexture("src/main/resources/assets/images/blendImage2.png"));
-		obj2SpriteRender.setSprite(obj2Sprite);
-
-		obj2.addComponent(obj2SpriteRender);
-
-		this.addGameObject(obj1);
-		this.addGameObject(obj2);
-
 	}
 
 	@Override
 	public void update(float dt) {
 
-		// obj1.transform.position.x += 10 * dt;
 		levelEditorStuff.update(dt);
 
 		// System.out.println("FPS: " + (1.0f / dt));
@@ -98,6 +77,16 @@ public class LevelEditorScene extends Scene {
 				new Spritesheet(
 						AssetPool.getTexture("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png"),
 						16, 16, 81, 0));
+
+		for (GameObject g : gameObjects) {
+			if(g.getComponent(SpriteRenderer.class) != null) {
+				SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
+
+				if(spr.getTexture() != null) {
+					spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilepath()));
+				}
+			}
+		}
 	}
 
 	@Override
