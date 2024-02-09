@@ -4,6 +4,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import game.components.GridLines;
 import game.components.MouseControls;
 import game.components.Rigidbody;
 import game.components.Sprite;
@@ -18,6 +19,7 @@ import game.engine.Transform;
 import game.engine.Window;
 import game.renderer.DebugDraw;
 import game.util.AssetPool;
+import game.util.Settings;
 import imgui.ImGui;
 import imgui.ImVec2;
 
@@ -27,7 +29,7 @@ public class LevelEditorScene extends Scene {
 	private SpriteRenderer obj1Sprite;
 	private Spritesheet sprites;
 
-	MouseControls mouseControls = new MouseControls();
+	GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(new Vector2f()), 0);
 
 	public LevelEditorScene() {
 
@@ -35,16 +37,14 @@ public class LevelEditorScene extends Scene {
 
 	@Override
 	public void init() {
+		levelEditorStuff.addComponent(new MouseControls());
+		levelEditorStuff.addComponent(new GridLines());
+
 		loadResources();
 		this.camera = new Camera(new Vector2f(0, 0));
 
 		sprites = new AssetPool()
 				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
-
-		DebugDraw.addLine2D(new Vector2f(0.0f, 0.0f), new Vector2f(1.0f, 2.0f),
-				new Vector3f(1, 0, 0), 520);
-		DebugDraw.addLine2D(new Vector2f(1.0f, 0.0f), new Vector2f(5.0f, 3.0f),
-				new Vector3f(0, 1, 0), 520);
 
 
 
@@ -74,23 +74,11 @@ public class LevelEditorScene extends Scene {
 
 	}
 
-	float t = 0.0f;
-
 	@Override
 	public void update(float dt) {
 
-		mouseControls.update(dt);
 		// obj1.transform.position.x += 10 * dt;
-
-		float x = ((float) Math.sin(t) * 2.0f) + 6;
-		float y = ((float) Math.cos(t) * 2.0f) + 4;
-
-		t += 0.05f;
-		DebugDraw.addLine2D(new Vector2f(6, 4), new Vector2f(x, y), new Vector3f(1, 0, 0), 10);
-
-
-		DebugDraw.addLine2D(new Vector2f(MouseListener.getWorldX(), MouseListener.getWorldY()) , new Vector2f(1.0f, 2.0f),
-				new Vector3f(1, 0, 0), 520);
+		levelEditorStuff.update(dt);
 
 		// System.out.println("FPS: " + (1.0f / dt));
 		for (GameObject go : this.gameObjects) {
@@ -137,11 +125,11 @@ public class LevelEditorScene extends Scene {
 			Vector2f[] texCoords = sprite.getTexCoords();
 
 			ImGui.pushID(i);
-			if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[0].x, texCoords[0].y, texCoords[2].x,
+			if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
 					texCoords[2].y)) {
-				GameObject object = Prefabs.generateSpriteObject(sprite, 1, 1);
+				GameObject object = Prefabs.generateSpriteObject(sprite, Settings.GRID_WIDTH, Settings.GRID_HEIGHT);
 				// Attach to mouse Cursor to drop
-				mouseControls.pickupObject(object);
+				levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
 			}
 			ImGui.popID();
 

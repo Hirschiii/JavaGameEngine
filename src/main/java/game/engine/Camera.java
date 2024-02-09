@@ -9,11 +9,9 @@ public class Camera {
 	public Vector2f position;
 	public float zoom;
 
-    private float projectionHeight = 6;
-    // private float projectionWidth = 32 * 6;
-    // private float projectionHeight = 32 * 3;
-    // private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
-
+	private float aspectRation = (float) Window.getWidth() / Window.getHeight();
+	private float projectionHeight = 6;
+	private Vector2f projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
 
 	public Camera(Vector2f position) {
 		this.position = position;
@@ -29,13 +27,15 @@ public class Camera {
 	}
 
 	public void adjustProjection() {
-		float aspectRation = (float) Window.getWidth() / Window.getHeight();
+		aspectRation = (float) Window.getWidth() / Window.getHeight();
+		projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
+
 		projectMatrix.identity();
 
 		// Left, Right, Bottom, Top, Near Clipping, Far Clipping
-        // projectMatrix.ortho(0.0f, projectionSize.x * zoom,
-        projectMatrix.ortho(0.0f, projectionHeight * aspectRation * zoom,
-                0.0f, projectionHeight * zoom, 0.0f, 100.0f);
+		// projectMatrix.ortho(0.0f, projectionSize.x * zoom,
+		projectMatrix.ortho(0.0f, projectionSize.x * zoom,
+				0.0f, projectionSize.y * zoom, 0.0f, 100.0f);
 		projectMatrix.invert(inverseProjection);
 	}
 
@@ -95,11 +95,11 @@ public class Camera {
 	}
 
 	// public float getProjectionWidth() {
-	// 	return projectionWidth;
+	// return projectionWidth;
 	// }
 
 	// public void setProjectionWidth(float projectionWidth) {
-	// 	this.projectionWidth = projectionWidth;
+	// this.projectionWidth = projectionWidth;
 	// }
 
 	public float getProjectionHeight() {
@@ -111,11 +111,11 @@ public class Camera {
 	}
 
 	// public Vector2f getProjectionSize() {
-	// 	return projectionSize;
+	// return projectionSize;
 	// }
 	//
 	// public void setProjectionSize(Vector2f projectionSize) {
-	// 	this.projectionSize = projectionSize;
+	// this.projectionSize = projectionSize;
 	// }
 
 	public float getZoom() {
@@ -124,6 +124,22 @@ public class Camera {
 
 	public void setZoom(float zoom) {
 		this.zoom = zoom;
+	}
+
+	public float getAspectRation() {
+		return aspectRation;
+	}
+
+	public void setAspectRation(float aspectRation) {
+		this.aspectRation = aspectRation;
+	}
+
+	public Vector2f getProjectionSize() {
+		return projectionSize;
+	}
+
+	public void setProjectionSize(Vector2f projectionSize) {
+		this.projectionSize = projectionSize;
 	}
 
 }
