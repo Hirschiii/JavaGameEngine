@@ -129,6 +129,7 @@ public class Camera {
 	}
 
 	public float getAspectRation() {
+		aspectRation = (float) Window.getWidth() / Window.getHeight();
 		return aspectRation;
 	}
 

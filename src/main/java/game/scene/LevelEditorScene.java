@@ -59,7 +59,6 @@ public class LevelEditorScene extends Scene {
 
 		levelEditorStuff.update(dt);
 
-		// System.out.println("FPS: " + (1.0f / dt));
 		for (GameObject go : this.gameObjects) {
 			go.update(dt);
 		}

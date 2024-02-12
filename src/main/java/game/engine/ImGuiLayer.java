@@ -27,6 +27,7 @@ import static org.lwjgl.glfw.GLFW.glfwSetScrollCallback;
 
 import java.io.File;
 
+import game.editor.GameViewWindow;
 import game.scene.Scene;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
@@ -56,10 +57,11 @@ public class ImGuiLayer {
     // private MenuBar menuBar;
     // private SceneHierarchyWindow sceneHeirarchyWindow;
 
+    private GameViewWindow gameViewWindow;
     // public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
     public ImGuiLayer(long glfwWindow) {
         this.glfwWindow = glfwWindow;
-        // this.gameViewWindow = new GameViewWindow();
+        this.gameViewWindow = new GameViewWindow();
         // this.propertiesWindow = new PropertiesWindow(pickingTexture);
         // this.menuBar = new MenuBar();
         // this.sceneHeirarchyWindow = new SceneHierarchyWindow();
@@ -81,7 +83,7 @@ public class ImGuiLayer {
 
         io.setIniFilename("imgui.ini"); // We don't want to save .ini file
         io.addConfigFlags(ImGuiConfigFlags.DockingEnable);
-        io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
+        // io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
         io.setBackendPlatformName("imgui_java_impl_glfw");
 
 		
@@ -206,10 +208,10 @@ public class ImGuiLayer {
 
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         // setupDockspace();
-        currentScene.sceneImgui();
 		setupDockspace();
+        currentScene.sceneImgui();
         // //ImGui.showDemoWindow();
-        // gameViewWindow.imgui();
+        gameViewWindow.imgui();
         // propertiesWindow.imgui();
         // sceneHeirarchyWindow.imgui();
 		ImGui.showDemoWindow();

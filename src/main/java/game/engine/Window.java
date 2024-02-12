@@ -40,6 +40,7 @@ import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glEnable;
+import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 import org.lwjgl.Version;
@@ -221,13 +222,14 @@ public class Window {
 		this.imguiLayer = new ImGuiLayer(glfwWindow);
 		this.imguiLayer.initImGui();
 
-		// TODO Automate 
 		this.framebuffer = new Framebuffer(2560, 1600);
+		glViewport(0, 0, 2560, 1600);
 
 		Window.changeScene(0);
 
 		glfwGetWindowSize(glfwWindow, width, height);
 	}
+
 
 	public void loop() {
 		getScene().camera().adjustProjection();
@@ -241,10 +243,11 @@ public class Window {
 
 			DebugDraw.beginFrame();
 
+			this.framebuffer.bind();
+
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			// this.framebuffer.bind();
 			if (dt >= 0) {
 				currenScene.update(dt);
 				DebugDraw.draw();
@@ -268,48 +271,8 @@ public class Window {
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public long getGlfwWindow() {
 		return glfwWindow;
-	}
-
-	public void setGlfwWindow(long glfwWindow) {
-		this.glfwWindow = glfwWindow;
-	}
-
-	public float getR() {
-		return r;
-	}
-
-	public void setR(float r) {
-		this.r = r;
-	}
-
-	public float getG() {
-		return g;
-	}
-
-	public void setG(float g) {
-		this.g = g;
-	}
-
-	public float getB() {
-		return b;
-	}
-
-	public void setB(float b) {
-		this.b = b;
-	}
-
-	public float getA() {
-		return a;
-	}
-
-	public void setA(float a) {
-		this.a = a;
 	}
 
 	public boolean isFadeToBlack() {
@@ -327,4 +290,16 @@ public class Window {
 	public void setImguiLayer(ImGuiLayer imguiLayer) {
 		this.imguiLayer = imguiLayer;
 	}
+
+	public static Framebuffer getFramebuffer() {
+		return get().framebuffer;
+	}
+
+	public static Scene getCurrenScene() {
+		return currenScene;
+	}
+
+    public static float getTargetAspectRatio() {
+        return getCurrenScene().camera().getAspectRation();
+    }
 }
