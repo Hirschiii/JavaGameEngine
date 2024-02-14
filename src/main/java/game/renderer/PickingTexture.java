@@ -75,7 +75,7 @@ public class PickingTexture {
 
 		glEnable(GL_TEXTURE_2D);
 		depthTexture = glGenTextures();
-		glBindTexture(depthTexture, depthTexture);
+		glBindTexture(GL_TEXTURE_2D, depthTexture);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthTexture, 0);
 
@@ -88,7 +88,6 @@ public class PickingTexture {
 		}
 
 		// Unbinde
-
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		return true;
@@ -109,6 +108,6 @@ public class PickingTexture {
 		float pixels[] = new float[3];
 		glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixels);
 
-		return (int)pixels[0];
+		return (int)(pixels[0]) - 1;
 	}
 }

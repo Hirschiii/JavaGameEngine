@@ -64,6 +64,7 @@ public class Window {
 	private static Window window = null;
 
 	private Framebuffer framebuffer;
+	private Framebuffer entityIdFramebuffer;
 	private PickingTexture pickingtexture;
 
 	public static Window get() {
@@ -231,6 +232,7 @@ public class Window {
 		this.imguiLayer.initImGui();
 
 		// make vars for x and y
+		this.entityIdFramebuffer = new Framebuffer(2560, 1600);
 		this.framebuffer = new Framebuffer(2560, 1600);
 		this.pickingtexture = new PickingTexture(2560, 1600);
 
@@ -257,20 +259,24 @@ public class Window {
 
 			// Render Pass 1 Render to pick id
 			glDisable(GL_BLEND);
-			pickingtexture.enableWriting();
+			// pickingtexture.enableWriting();
+
+			this.entityIdFramebuffer.bind();
 
 			glViewport(0, 0, 2560, 1600);
 			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			Renderer.bindShader(pickingShader);
 			currenScene.render();
+			this.entityIdFramebuffer.unbind();
 
 			if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
 				int x = (int)MouseListener.getScreenX();
 				int y = (int)MouseListener.getScreenY();
 
+				System.out.println("X: " + x);
+				System.out.println("Y: " + y);
 				System.out.println(pickingtexture.readPixel(x, y));
 			}
 
@@ -290,6 +296,7 @@ public class Window {
                 Renderer.bindShader(defaultShader);
 				currenScene.update(dt);
 				currenScene.render();
+
 				DebugDraw.draw();
 			}
 			this.framebuffer.unbind();
@@ -332,7 +339,8 @@ public class Window {
 	}
 
 	public static Framebuffer getFramebuffer() {
-		return get().framebuffer;
+		// return get().framebuffer;
+		return get().entityIdFramebuffer;
 	}
 
 	public static Scene getCurrenScene() {
