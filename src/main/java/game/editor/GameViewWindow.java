@@ -38,7 +38,7 @@ public class GameViewWindow {
         ImGui.imageButton(textureId, windowSize.x, windowSize.y, 0, 1, 1, 0);
         windowIsHovered = ImGui.isItemHovered();
 
-        MouseListener.setGameViewportPos(new Vector2f(windowPos.x, windowPos.y));
+        MouseListener.setGameViewportPos(new Vector2f(windowPos.x + 10, windowPos.y + 30));
         MouseListener.setGameViewportSize(new Vector2f(windowSize.x, windowSize.y));
 
 		ImGui.end();
@@ -55,7 +55,8 @@ public class GameViewWindow {
 			aspectHeight = windowSize.y;
 			aspectWidth = aspectHeight * Window.getTargetAspectRatio();
 		} 
-		return new ImVec2(aspectWidth + ImGui.getCursorPosX(), aspectHeight + ImGui.getCursorPosY());
+		// return new ImVec2(aspectWidth + ImGui.getCursorPosX(), aspectHeight + ImGui.getCursorPosY());
+		return new ImVec2(aspectWidth, aspectHeight);
 	}
 
 	private static ImVec2 getCenteredPositionForViewPort(ImVec2 aspectSize) {

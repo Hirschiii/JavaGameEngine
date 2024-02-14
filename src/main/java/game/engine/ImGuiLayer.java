@@ -207,14 +207,13 @@ public class ImGuiLayer {
         startFrame(dt);
 
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
-        // setupDockspace();
 		setupDockspace();
         currentScene.sceneImgui();
         // //ImGui.showDemoWindow();
         gameViewWindow.imgui();
         // propertiesWindow.imgui();
         // sceneHeirarchyWindow.imgui();
-		ImGui.showDemoWindow();
+		// ImGui.showDemoWindow();
 
         endFrame();
     }

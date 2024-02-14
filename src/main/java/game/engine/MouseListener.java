@@ -172,6 +172,7 @@ public class MouseListener {
 	}
 
 	public static void setGameViewportPos(Vector2f gameViewportPos) {
+		// System.out.println("SetGameViewportPos: " + gameViewportPos);
 		get().gameViewportPos.set(gameViewportPos);
 	}
 
@@ -191,6 +192,7 @@ public class MouseListener {
     public static Vector2f getWorld() {
         float currentX = getX() - get().gameViewportPos.x;
         currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
+
         float currentY = (getY() - get().gameViewportPos.y);
         currentY = (2.0f * (1.0f - (currentY / get().gameViewportSize.y))) - 1;
 
@@ -199,26 +201,9 @@ public class MouseListener {
         Matrix4f inverseView = new Matrix4f(camera.getInverseView());
         Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjection());
         tmp.mul(inverseView.mul(inverseProjection));
+		System.out.println("Cursor Pos: " + getX() + ", " + getY());
+		System.out.println("World  Pos: " + tmp.x + ", " + tmp.y);
         return new Vector2f(tmp.x, tmp.y);
     }
 
-	// public static Vector2f getWorld() {
-	// 	// Bildschirmkoordinaten des Mauszeigers erhalten
-	// 	// float currentX = 4.0f * (getX() / (float) Window.getWidth()) - 1.0f;
-	// 	// float currentY = 1.0f - 4.0f * (getY() / (float) Window.getHeight());
-	//
-	// 	float currentX = (float) ((getX() * 2) / Window.getWidth() - 1.0f);
-	// 	float currentY = (float) (1.0f - (2.0f * getY()) / Window.getHeight());
-	//
-	// 	// Zugriff auf die Kamera und deren inverse View- und Projektionsmatrix
-	// 	Camera camera = Window.getScene().camera();
-	// 	Matrix4f inverseView = new Matrix4f(camera.getViewMatrix()).invert();
-	// 	Matrix4f inverseProjection = new Matrix4f(camera.getProjectionMatrix()).invert();
-	//
-	// 	// Transformiere Bildschirmkoordinaten in Weltkoordinaten
-	// 	Vector4f tmp = new Vector4f(currentX, currentY, 0, 1);
-	// 	tmp.mul(inverseProjection).mul(inverseView);
-	//
-	// 	return new Vector2f(tmp.x, tmp.y);
-	// }
 }
