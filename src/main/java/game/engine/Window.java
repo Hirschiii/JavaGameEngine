@@ -4,7 +4,7 @@ import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.GLFW_CONTEXT_VERSION_MAJOR;
 import static org.lwjgl.glfw.GLFW.GLFW_CONTEXT_VERSION_MINOR;
 import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
-import static org.lwjgl.glfw.GLFW.GLFW_MAXIMIZED;
+import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 import static org.lwjgl.glfw.GLFW.GLFW_OPENGL_CORE_PROFILE;
 import static org.lwjgl.glfw.GLFW.GLFW_OPENGL_FORWARD_COMPAT;
 import static org.lwjgl.glfw.GLFW.GLFW_OPENGL_PROFILE;
@@ -33,12 +33,14 @@ import static org.lwjgl.glfw.GLFW.glfwWindowHint;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_ONE;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TRUE;
 import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
+import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.system.MemoryUtil.NULL;
@@ -48,15 +50,21 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
 import game.renderer.DebugDraw;
+import game.renderer.*;
 import game.renderer.Framebuffer;
+import game.renderer.PickingTexture;
+import game.renderer.Shader;
 import game.scene.LevelEditorScene;
 import game.scene.LevelScene;
 import game.scene.Scene;
+
+import game.util.*;
 
 public class Window {
 	private static Window window = null;
 
 	private Framebuffer framebuffer;
+	private PickingTexture pickingtexture;
 
 	public static Window get() {
 		if (Window.window == null) {
@@ -222,7 +230,10 @@ public class Window {
 		this.imguiLayer = new ImGuiLayer(glfwWindow);
 		this.imguiLayer.initImGui();
 
+		// make vars for x and y
 		this.framebuffer = new Framebuffer(2560, 1600);
+		this.pickingtexture = new PickingTexture(2560, 1600);
+
 		glViewport(0, 0, 2560, 1600);
 
 		Window.changeScene(0);
@@ -237,11 +248,38 @@ public class Window {
 		float endTime;
 		float dt = -1.0f;
 
+		Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+		Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+
 		while (!glfwWindowShouldClose(glfwWindow)) {
 			// Poll Events
 			glfwPollEvents();
 
+			// Render Pass 1 Render to pick id
+			glDisable(GL_BLEND);
+			pickingtexture.enableWriting();
+
+			glViewport(0, 0, 2560, 1600);
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			Renderer.bindShader(pickingShader);
+			currenScene.render();
+
+			if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+				int x = (int)MouseListener.getScreenX();
+				int y = (int)MouseListener.getScreenY();
+
+				System.out.println(pickingtexture.readPixel(x, y));
+			}
+
+			pickingtexture.disableWriting();
+			glEnable(GL_BLEND);
+
+			// Redner Pass 2 Actual Render
 			DebugDraw.beginFrame();
+
 
 			this.framebuffer.bind();
 
@@ -249,7 +287,9 @@ public class Window {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			if (dt >= 0) {
+                Renderer.bindShader(defaultShader);
 				currenScene.update(dt);
+				currenScene.render();
 				DebugDraw.draw();
 			}
 			this.framebuffer.unbind();

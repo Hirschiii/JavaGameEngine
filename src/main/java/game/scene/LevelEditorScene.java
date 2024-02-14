@@ -43,11 +43,10 @@ public class LevelEditorScene extends Scene {
 
 		sprites = new AssetPool()
 				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
-
-
+				// .getSpritesheet("assets/Character/Sheet/Sheet.png");
 
 		if (loadedLevel) {
-			if(gameObjects.size() > 0) {
+			if (gameObjects.size() > 0) {
 				this.activeGameObject = gameObjects.get(0);
 			}
 			return;
@@ -63,8 +62,12 @@ public class LevelEditorScene extends Scene {
 			go.update(dt);
 		}
 
-		this.renderer.render();
 
+	}
+
+	@Override
+	public void render() {
+		this.renderer.render();
 	}
 
 	private void loadResources() {
@@ -76,12 +79,17 @@ public class LevelEditorScene extends Scene {
 				new Spritesheet(
 						AssetPool.getTexture("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png"),
 						16, 16, 81, 0));
+		
+		AssetPool.addSpritesheet("assets/Character/Sheet/Sheet.png",
+				new Spritesheet(
+						AssetPool.getTexture("assets/Character/Sheet/Sheet.png"),
+						32, 32, 32, 0));
 
 		for (GameObject g : gameObjects) {
-			if(g.getComponent(SpriteRenderer.class) != null) {
+			if (g.getComponent(SpriteRenderer.class) != null) {
 				SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
 
-				if(spr.getTexture() != null) {
+				if (spr.getTexture() != null) {
 					spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilepath()));
 				}
 			}

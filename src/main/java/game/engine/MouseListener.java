@@ -179,6 +179,25 @@ public class MouseListener {
 		get().gameViewportSize.set(gameViewportSize);
 	}
 
+	public static float getScreenX() {
+		return getScreen().x;
+	}
+
+	public static float getScreenY() {
+		return getScreen().y;
+	}
+
+	public static Vector2f getScreen() {
+		float currentX = (getX() - get().gameViewportPos.x);
+		currentX = (currentX / get().gameViewportSize.x) * 1600;
+
+		float currentY = (get().gameViewportPos.y - getY());
+		currentY = (currentY / get().gameViewportSize.y) * 2560;
+
+		return new Vector2f(currentX, currentY);
+	}
+
+
 	public static float getWorldX() {
 		return getWorld().x;
 	}

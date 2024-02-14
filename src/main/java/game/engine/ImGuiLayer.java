@@ -29,6 +29,7 @@ import java.io.File;
 
 import game.editor.GameViewWindow;
 import game.scene.Scene;
+import game.renderer.*;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGui;
