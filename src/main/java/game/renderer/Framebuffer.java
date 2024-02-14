@@ -1,13 +1,21 @@
 package game.renderer;
 
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_FLOAT;
+import static org.lwjgl.opengl.GL11.GL_RGB;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11.glEnable;
+import static org.lwjgl.opengl.GL11.glGenTextures;
+import static org.lwjgl.opengl.GL11.glReadBuffer;
+import static org.lwjgl.opengl.GL11.glReadPixels;
 import static org.lwjgl.opengl.GL30.GL_COLOR_ATTACHMENT0;
 import static org.lwjgl.opengl.GL30.GL_DEPTH_ATTACHMENT;
 import static org.lwjgl.opengl.GL30.GL_DEPTH_COMPONENT32F;
 import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER;
 import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER_COMPLETE;
+import static org.lwjgl.opengl.GL30.GL_READ_FRAMEBUFFER;
 import static org.lwjgl.opengl.GL30.GL_RENDERBUFFER;
+import static org.lwjgl.opengl.GL30.GL_RGBA32F;
 import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 import static org.lwjgl.opengl.GL30.glBindRenderbuffer;
 import static org.lwjgl.opengl.GL30.glCheckFramebufferStatus;
@@ -17,6 +25,10 @@ import static org.lwjgl.opengl.GL30.glFramebufferTextureLayer;
 import static org.lwjgl.opengl.GL30.glGenFramebuffers;
 import static org.lwjgl.opengl.GL30.glGenRenderbuffers;
 import static org.lwjgl.opengl.GL30.glRenderbufferStorage;
+
+import java.nio.ByteBuffer;
+
+import org.lwjgl.BufferUtils;
 
 public class Framebuffer {
 	private int fboID = 0;
@@ -46,6 +58,17 @@ public class Framebuffer {
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+	}
+
+	public float[] readPixel(int x, int y) {
+		System.out.println("read from: " + fboID);
+		glBindFramebuffer(GL_FRAMEBUFFER, fboID);
+		glReadBuffer(GL_COLOR_ATTACHMENT0);
+
+		float[] pixel = new float[3];
+		glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixel);
+
+		return pixel;
 	}
 
 	public void bind() {

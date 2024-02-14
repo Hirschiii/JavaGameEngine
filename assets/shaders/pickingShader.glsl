@@ -1,5 +1,5 @@
 #type vertex
-#version 330
+#version 460
 
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec4 aColor;
@@ -25,7 +25,7 @@ void main(){
 }
 
 #type fragment
-#version 330
+#version 460
 
 in vec4 fColor;
 in vec2 fTexCoords;
@@ -48,5 +48,6 @@ void main() {
 		discard;
 	}
 
+	// color = vec3(fEntityId/256, fEntityId/256, fEntityId/256);
 	color = vec3(fEntityId, fEntityId, fEntityId);
 }
