@@ -130,7 +130,11 @@ public class ImGuiLayer {
             }
 
 
-            if (!io.getWantCaptureMouse()) {
+            // if (!io.getWantCaptureMouse()) {
+            //     MouseListener.mouseButtonCallback(w, button, action, mods);
+            // }
+
+            if (gameViewWindow.getWantCaptureMouse()) {
                 MouseListener.mouseButtonCallback(w, button, action, mods);
             }
         });
