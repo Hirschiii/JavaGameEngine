@@ -40,7 +40,7 @@
         "type": "game.components.Rigidbody",
         "properties": {
           "collider_type": 1,
-          "friction": 0.3,
+          "friction": 4.1,
           "velocity": {
             "x": 0.3,
             "y": 1.0,
@@ -73,8 +73,8 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
+            "x": 0.0,
+            "y": 0.52972984,
             "z": 1.0,
             "w": 1.0
           },
@@ -250,9 +250,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "x": 0.68512565,
+            "y": 0.96465224,
+            "z": 0.40368,
             "w": 1.0
           },
           "sprite": {
@@ -309,9 +309,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "x": 0.9122007,
+            "y": 0.11649539,
+            "z": 0.11649539,
             "w": 1.0
           },
           "sprite": {
@@ -368,8 +368,8 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
+            "x": 0.0,
+            "y": 0.88648653,
             "z": 1.0,
             "w": 1.0
           },
@@ -427,9 +427,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -486,9 +486,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -546,8 +546,8 @@
         "properties": {
           "color": {
             "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "y": 0.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -663,9 +663,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
+            "x": 0.9607843,
             "y": 1.0,
-            "z": 1.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -722,9 +722,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
+            "x": 0.96216214,
             "y": 1.0,
-            "z": 1.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -782,8 +782,8 @@
         "properties": {
           "color": {
             "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "y": 0.6162162,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -1136,8 +1136,8 @@
         "properties": {
           "color": {
             "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "y": 0.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -1371,9 +1371,9 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "x": 0.83243245,
+            "y": 0.0,
+            "z": 0.0,
             "w": 1.0
           },
           "sprite": {
@@ -1608,8 +1608,8 @@
         "properties": {
           "color": {
             "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "y": 0.28962374,
+            "z": 0.28962374,
             "w": 1.0
           },
           "sprite": {

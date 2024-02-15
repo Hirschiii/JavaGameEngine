@@ -279,6 +279,7 @@ public class Window {
 				System.out.println("X: " + x);
 				System.out.println("Y: " + y);
 				int pixel = pickingTexture.readPixel(x, y);
+				currenScene.setActiveGameObject(pixel);
 				System.out.println(pixel);
 			}
 

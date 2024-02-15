@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,27 @@ public abstract class Scene {
 	public Camera camera() {
 		return this.camera;
 	}
+
+    public <T extends Component> GameObject getGameObjectWith(Class<T> clazz) {
+        for (GameObject go : gameObjects) {
+            if (go.getComponent(clazz) != null) {
+                return go;
+            }
+        }
+
+        return null;
+    }
+
+    public List<GameObject> getGameObjects() {
+        return this.gameObjects;
+    }
+
+    public GameObject getGameObject(int gameObjectId) {
+        Optional<GameObject> result = this.gameObjects.stream()
+                .filter(gameObject -> gameObject.getUid() == gameObjectId)
+                .findFirst();
+        return result.orElse(null);
+    }
 
 	public void sceneImgui() {
 		if (activeGameObject != null) {
@@ -136,6 +158,10 @@ public abstract class Scene {
 			Component.init(maxComID);
 			this.loadedLevel = true;
 		}
+	}
+
+	public void setActiveGameObject(int gameObjectId) {
+		this.activeGameObject = getGameObject(gameObjectId);
 	}
 
 }
