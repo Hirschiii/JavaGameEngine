@@ -45,7 +45,7 @@ public class GameViewWindow {
 		ImGui.end();
 	}
 
-	private static ImVec2 getLargestSizeForViewPort() {
+	private ImVec2 getLargestSizeForViewPort() {
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
 
@@ -60,7 +60,7 @@ public class GameViewWindow {
 		return new ImVec2(aspectWidth, aspectHeight);
 	}
 
-	private static ImVec2 getCenteredPositionForViewPort(ImVec2 aspectSize) {
+	private ImVec2 getCenteredPositionForViewPort(ImVec2 aspectSize) {
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
 

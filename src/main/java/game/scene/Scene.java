@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import game.components.Component;
 import game.components.ComponentDeserializer;
+import game.components.SpriteRenderer;
 import game.engine.Camera;
 import game.engine.GameObject;
 import game.engine.GameObjectDeserializer;
@@ -28,7 +29,6 @@ public abstract class Scene {
 	private boolean isRunning = false;
 
 	protected List<GameObject> gameObjects = new ArrayList<>();
-	protected GameObject activeGameObject = null;
 
 	public Scene() {
 	}
@@ -83,17 +83,6 @@ public abstract class Scene {
         return result.orElse(null);
     }
 
-	public void sceneImgui() {
-		if (activeGameObject != null) {
-			ImGui.begin("Inspector");
-			activeGameObject.imgui();
-			ImGui.end();
-		}
-
-		imgui();
-
-	}
-
 	/**
 	 * Expose Fields (Vars) to Dear Im GUI
 	 * 
@@ -110,7 +99,13 @@ public abstract class Scene {
 
 		try {
 			FileWriter writer = new FileWriter("level.json");
-			writer.write(gson.toJson(this.gameObjects));
+			List<GameObject> objsToSerialize = new ArrayList<>();
+			for (GameObject obj : this.gameObjects) {
+				if(obj.doSerialization()) {
+					objsToSerialize.add(obj);
+				}
+			}
+			writer.write(gson.toJson(objsToSerialize));
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -160,8 +155,5 @@ public abstract class Scene {
 		}
 	}
 
-	public void setActiveGameObject(int gameObjectId) {
-		this.activeGameObject = getGameObject(gameObjectId);
-	}
 
 }

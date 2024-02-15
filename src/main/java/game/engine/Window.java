@@ -78,6 +78,7 @@ public class Window {
 
 	/**
 	 * Aktiviere Scene Nr. n
+	 * windowja
 	 * 
 	 * @param newScene
 	 */
@@ -228,13 +229,14 @@ public class Window {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-		this.imguiLayer = new ImGuiLayer(glfwWindow);
-		this.imguiLayer.initImGui();
 
 		// make vars for x and y
 		this.entityIdFramebuffer = new Framebuffer(2560, 1600);
 		this.framebuffer = new Framebuffer(2560, 1600);
 		this.pickingTexture = new PickingTexture(2560, 1660);
+
+		this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
+		this.imguiLayer.initImGui();
 
 		glViewport(0, 0, 2560, 1600);
 
@@ -242,7 +244,6 @@ public class Window {
 
 		glfwGetWindowSize(glfwWindow, width, height);
 	}
-
 
 	public void loop() {
 		getScene().camera().adjustProjection();
@@ -272,22 +273,10 @@ public class Window {
 			// this.entityIdFramebuffer.unbind();
 			pickingTexture.disableWriting();
 
-			if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-				int x = (int)MouseListener.getScreenX();
-				int y = (int)MouseListener.getScreenY();
-
-				System.out.println("X: " + x);
-				System.out.println("Y: " + y);
-				int pixel = pickingTexture.readPixel(x, y);
-				currenScene.setActiveGameObject(pixel);
-				System.out.println(pixel);
-			}
-
 			glEnable(GL_BLEND);
 
 			// Redner Pass 2 Actual Render
 			DebugDraw.beginFrame();
-
 
 			this.framebuffer.bind();
 
@@ -295,7 +284,7 @@ public class Window {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			if (dt >= 0) {
-                Renderer.bindShader(defaultShader);
+				Renderer.bindShader(defaultShader);
 				currenScene.update(dt);
 				currenScene.render();
 
@@ -306,6 +295,7 @@ public class Window {
 			this.imguiLayer.update(dt, currenScene);
 
 			glfwSwapBuffers(glfwWindow);
+			MouseListener.endFrame();
 
 			endTime = (float) glfwGetTime();
 			dt = endTime - beginTime;
@@ -332,8 +322,8 @@ public class Window {
 		this.fadeToBlack = fadeToBlack;
 	}
 
-	public ImGuiLayer getImguiLayer() {
-		return imguiLayer;
+	public static ImGuiLayer getImguiLayer() {
+		return get().imguiLayer;
 	}
 
 	public void setImguiLayer(ImGuiLayer imguiLayer) {
@@ -349,7 +339,7 @@ public class Window {
 		return currenScene;
 	}
 
-    public static float getTargetAspectRatio() {
-        return getCurrenScene().camera().getAspectRation();
-    }
+	public static float getTargetAspectRatio() {
+		return getCurrenScene().camera().getAspectRation();
+	}
 }

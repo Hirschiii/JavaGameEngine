@@ -31,7 +31,7 @@ import game.util.AssetPool;
 import net.sourceforge.plantuml.graphic.Line;
 
 public class DebugDraw {
-	private static int MAX_LINES = 500;
+	private static int MAX_LINES = 5000;
 
 	private static List<Line2D> lines = new ArrayList<>();
 	// 6 Floats per vertex, 2 per line

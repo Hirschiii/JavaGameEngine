@@ -3,6 +3,8 @@ package game.engine;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
+import java.util.Arrays;
+
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -13,6 +15,8 @@ public class MouseListener {
 	private double xPos, yPos, lastY, lastX;
 	private boolean mouseButtonPressed[] = new boolean[9];
 	private boolean isDragging;
+
+    private int mouseButtonDown = 0;
 
 	private Vector2f gameViewportPos = new Vector2f();
 	private Vector2f gameViewportSize = new Vector2f();
@@ -28,6 +32,18 @@ public class MouseListener {
 		// this.gameViewportSize = new Vector2f(Window.getWidth(), Window.getHeight());
 		// this.gameViewportPos = new Vector2f(0, 0);
 	}
+
+    public static void clear() {
+        get().scrollX = 0.0;
+        get().scrollY = 0.0;
+        get().xPos = 0.0;
+        get().yPos = 0.0;
+        get().lastX = 0.0;
+        get().lastY = 0.0;
+        get().mouseButtonDown = 0;
+        get().isDragging = false;
+        Arrays.fill(get().mouseButtonPressed, false);
+    }
 
 	public static MouseListener get() {
 		if (MouseListener.instance == null) {
@@ -70,8 +86,6 @@ public class MouseListener {
 	public static void endFrame() {
 		get().scrollX = 0;
 		get().scrollY = 0;
-		get().lastX = get().xPos;
-		get().lastY = get().yPos;
 	}
 
 	public static float getX() {

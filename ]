@@ -136,9 +136,7 @@ public class ImGuiLayer {
 
             if (gameViewWindow.getWantCaptureMouse()) {
                 MouseListener.mouseButtonCallback(w, button, action, mods);
-            } else {
-				MouseListener.clear();
-			}
+            }
         });
 
         glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
@@ -279,7 +277,7 @@ public class ImGuiLayer {
         ImGui.end();
     }
 
-    public PropertiesWindow getPropertiesWindow() {
-        return this.propertiesWindow;
-    }
+    // public PropertiesWindow getPropertiesWindow() {
+    //     return this.propertiesWindow;
+    // }
 }

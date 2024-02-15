@@ -6,6 +6,9 @@ import java.util.List;
 import game.components.Component;
 
 public class GameObject {
+	private boolean isActiveGameObject = false;
+	private boolean doSerialization = true;
+
 	private static int ID_COUNTER = 0;
 	public static void init(int maxID) {
 		ID_COUNTER = maxID;
@@ -133,5 +136,21 @@ public class GameObject {
 
 	public List<Component> getAllComponents(){
 		return this.components;
+	}
+
+	public void setActiveGameObject(boolean state) {
+		this.isActiveGameObject = state;
+	}
+
+	public boolean getIsActiveGameObject() {
+		return isActiveGameObject;
+	}
+
+	public void setNoSerialize() {
+		this.doSerialization = false;
+	}
+
+	public boolean doSerialization() {
+		return this.doSerialization;
 	}
 }
