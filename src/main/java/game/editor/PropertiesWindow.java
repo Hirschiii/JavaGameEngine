@@ -6,28 +6,32 @@ import game.engine.GameObject;
 import game.engine.MouseListener;
 import game.renderer.PickingTexture;
 import game.scene.Scene;
-import gen.lib.cgraph.rec__c;
 import imgui.ImGui;
 
 public class PropertiesWindow {
 	private GameObject activeGameObject = null;
 	private PickingTexture pickingTexture;
 
+	private float debounce = 0.2f;
+
 	public PropertiesWindow(PickingTexture pickingTexture) {
 		this.pickingTexture = pickingTexture;
 	}
 
-	public void update(float dt, Scene currentScene){
+	public void update(float dt, Scene currentScene) {
+		debounce -= dt;
 
-			if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-				int x = (int) MouseListener.getScreenX();
-				int y = (int) MouseListener.getScreenY();
+		if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
+			int x = (int) MouseListener.getScreenX();
+			int y = (int) MouseListener.getScreenY();
 
-				int gameObjectId = pickingTexture.readPixel(x, y);
-				activeGameObject = currentScene.getGameObject(gameObjectId);
-			}
+			int gameObjectId = pickingTexture.readPixel(x, y);
+			activeGameObject = currentScene.getGameObject(gameObjectId);
+			this.debounce = 0.2f;
+		}
 
 	}
+
 	public void imgui() {
 
 		if (activeGameObject != null) {
@@ -44,6 +48,7 @@ public class PropertiesWindow {
 		// this.activeGameObject.setActiveGameObject(true);
 		// this.activeGameObject.getComponent(SpriteRenderer.class).setDirty();
 	}
+
 	public GameObject getActiveGameObject() {
 		return this.activeGameObject;
 	}
