@@ -24,7 +24,7 @@ public class MouseControls extends Component {
 	@Override
 	public void update(float dt) {
 		if (holdingObject != null) {
-			Vector2f WorldPos = MouseListener.getWorld();
+			Vector2f WorldPos = MouseListener.getWorldPos();
 
             holdingObject.transform.position.x = (((int)Math.floor(WorldPos.x / Settings.GRID_WIDTH) * Settings.GRID_WIDTH) + Settings.GRID_WIDTH / 2.0f) - (holdingObject.getTransform().scale.x / 2);
             holdingObject.transform.position.y = (((int)Math.floor(WorldPos.y / Settings.GRID_HEIGHT) * Settings.GRID_HEIGHT) + Settings.GRID_HEIGHT / 2.0f) - (holdingObject.getTransform().scale.y / 2);
