@@ -26,7 +26,6 @@ public class PropertiesWindow {
 			int y = (int) MouseListener.getScreenY();
 
 			int gameObjectId = pickingTexture.readPixel(x, y);
-			System.out.println(gameObjectId);
 			activeGameObject = currentScene.getGameObject(gameObjectId);
 			this.debounce = 0.2f;
 		}
@@ -52,9 +51,5 @@ public class PropertiesWindow {
 
 	public GameObject getActiveGameObject() {
 		return this.activeGameObject;
-	}
-
-	public int readPixel(int x, int y) {
-		return pickingTexture.readPixel(x, y);
 	}
 }
