@@ -39,8 +39,8 @@ public class LevelEditorScene extends Scene {
 	public void init() {
 		loadResources();
 		sprites = new AssetPool()
-			.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
-		// .getSpritesheet("assets/Character/Sheet/Sheet.png");
+			// .getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
+		.getSpritesheet("assets/Character/Sheet/Sheet.png");
 		Spritesheet gizmos = new AssetPool().getSpritesheet("assets/utils/gizmos.png");
 
 		this.camera = new Camera(new Vector2f(0, 0));
