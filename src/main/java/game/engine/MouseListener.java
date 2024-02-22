@@ -3,6 +3,8 @@ package game.engine;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
+import java.util.Arrays;
+
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -13,6 +15,8 @@ public class MouseListener {
 	private double xPos, yPos, lastY, lastX;
 	private boolean mouseButtonPressed[] = new boolean[9];
 	private boolean isDragging;
+
+    private int mouseButtonDown = 0;
 
 	private Vector2f gameViewportPos = new Vector2f();
 	private Vector2f gameViewportSize = new Vector2f();
@@ -28,6 +32,18 @@ public class MouseListener {
 		// this.gameViewportSize = new Vector2f(Window.getWidth(), Window.getHeight());
 		// this.gameViewportPos = new Vector2f(0, 0);
 	}
+
+    public static void clear() {
+        get().scrollX = 0.0;
+        get().scrollY = 0.0;
+        get().xPos = 0.0;
+        get().yPos = 0.0;
+        get().lastX = 0.0;
+        get().lastY = 0.0;
+        get().mouseButtonDown = 0;
+        get().isDragging = false;
+        Arrays.fill(get().mouseButtonPressed, false);
+    }
 
 	public static MouseListener get() {
 		if (MouseListener.instance == null) {
@@ -70,8 +86,6 @@ public class MouseListener {
 	public static void endFrame() {
 		get().scrollX = 0;
 		get().scrollY = 0;
-		get().lastX = get().xPos;
-		get().lastY = get().yPos;
 	}
 
 	public static float getX() {
@@ -81,7 +95,6 @@ public class MouseListener {
 	public static float getY() {
 		return (float) get().yPos;
 	}
-
 
 	public static float getDx() {
 		return (float) (get().lastX - get().xPos);
@@ -180,6 +193,25 @@ public class MouseListener {
 		get().gameViewportSize.set(gameViewportSize);
 	}
 
+	public static float getScreenX() {
+		return getScreen().x;
+	}
+
+	public static float getScreenY() {
+		return getScreen().y;
+	}
+
+	public static Vector2f getScreen() {
+		float currentX = (getX() - get().gameViewportPos.x);
+		currentX = (currentX / get().gameViewportSize.x) * 2560;
+
+		float currentY = (get().gameViewportPos.y - getY());
+		currentY = (currentY / get().gameViewportSize.y) * 1600;
+
+		return new Vector2f(currentX, currentY);
+	}
+
+
 	public static float getWorldX() {
 		return getWorld().x;
 	}
@@ -188,22 +220,20 @@ public class MouseListener {
 		return getWorld().y;
 	}
 
+	public static Vector2f getWorld() {
+		float currentX = getX() - get().gameViewportPos.x;
+		currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
 
-    public static Vector2f getWorld() {
-        float currentX = getX() - get().gameViewportPos.x;
-        currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
+		float currentY = (get().gameViewportPos.y - getY());
+		currentY = (2.0f * (currentY / get().gameViewportSize.y)) - 1;
 
-        float currentY = (getY() - get().gameViewportPos.y);
-        currentY = (2.0f * (1.0f - (currentY / get().gameViewportSize.y))) - 1;
+		Camera camera = Window.getScene().camera();
+		Vector4f tmp = new Vector4f(currentX, currentY, 0, 1);
+		Matrix4f inverseView = new Matrix4f(camera.getInverseView());
+		Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjection());
+		tmp.mul(inverseView.mul(inverseProjection));
 
-        Camera camera = Window.getScene().camera();
-        Vector4f tmp = new Vector4f(currentX, currentY, 0, 1);
-        Matrix4f inverseView = new Matrix4f(camera.getInverseView());
-        Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjection());
-        tmp.mul(inverseView.mul(inverseProjection));
-		System.out.println("Cursor Pos: " + getX() + ", " + getY());
-		System.out.println("World  Pos: " + tmp.x + ", " + tmp.y);
-        return new Vector2f(tmp.x, tmp.y);
-    }
+		return new Vector2f(tmp.x, tmp.y);
+	}
 
 }

@@ -128,6 +128,10 @@ public class Camera {
 		this.zoom = zoom;
 	}
 
+	public void addZoom(float zoom) {
+		this.zoom += zoom;
+	}
+
 	public float getAspectRation() {
 		aspectRation = (float) Window.getWidth() / Window.getHeight();
 		return aspectRation;

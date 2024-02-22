@@ -28,7 +28,9 @@ import static org.lwjgl.glfw.GLFW.glfwSetScrollCallback;
 import java.io.File;
 
 import game.editor.GameViewWindow;
+import game.editor.PropertiesWindow;
 import game.scene.Scene;
+import game.renderer.*;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGui;
@@ -51,17 +53,15 @@ public class ImGuiLayer {
     // LWJGL3 renderer (SHOULD be initialized)
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
     private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
-
-    // private GameViewWindow gameViewWindow;
-    // private PropertiesWindow propertiesWindow;
-    // private MenuBar menuBar;
-    // private SceneHierarchyWindow sceneHeirarchyWindow;
-
     private GameViewWindow gameViewWindow;
+
+	private PropertiesWindow propertiesWindow;
+
     // public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
-    public ImGuiLayer(long glfwWindow) {
+    public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
         this.glfwWindow = glfwWindow;
         this.gameViewWindow = new GameViewWindow();
+		this.propertiesWindow = new PropertiesWindow(pickingTexture);
         // this.propertiesWindow = new PropertiesWindow(pickingTexture);
         // this.menuBar = new MenuBar();
         // this.sceneHeirarchyWindow = new SceneHierarchyWindow();
@@ -130,19 +130,25 @@ public class ImGuiLayer {
             }
 
 
-            if (!io.getWantCaptureMouse()) {
+            // if (!io.getWantCaptureMouse()) {
+            //     MouseListener.mouseButtonCallback(w, button, action, mods);
+            // }
+
+            if (gameViewWindow.getWantCaptureMouse()) {
                 MouseListener.mouseButtonCallback(w, button, action, mods);
-            }
+            } else {
+				MouseListener.clear();
+			}
         });
 
         glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
             io.setMouseWheelH(io.getMouseWheelH() + (float) xOffset);
             io.setMouseWheel(io.getMouseWheel() + (float) yOffset);
-            // if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
-            //     MouseListener.mouseScrollCallback(w, xOffset, yOffset);
-            // } else {
-            //     MouseListener.clear();
-            // }
+            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
+                MouseListener.mouseScrollCallback(w, xOffset, yOffset);
+            } else {
+                MouseListener.clear();
+            }
         });
 
         io.setSetClipboardTextFn(new ImStrConsumer() {
@@ -208,10 +214,11 @@ public class ImGuiLayer {
 
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
 		setupDockspace();
-        currentScene.sceneImgui();
+        currentScene.imgui();
         // //ImGui.showDemoWindow();
         gameViewWindow.imgui();
-        // propertiesWindow.imgui();
+		propertiesWindow.update(dt, currentScene);
+        propertiesWindow.imgui();
         // sceneHeirarchyWindow.imgui();
 		// ImGui.showDemoWindow();
 
@@ -272,7 +279,7 @@ public class ImGuiLayer {
         ImGui.end();
     }
 
-    // public PropertiesWindow getPropertiesWindow() {
-    //     return this.propertiesWindow;
-    // }
+    public PropertiesWindow getPropertiesWindow() {
+        return this.propertiesWindow;
+    }
 }

@@ -4,7 +4,7 @@ import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.GLFW_CONTEXT_VERSION_MAJOR;
 import static org.lwjgl.glfw.GLFW.GLFW_CONTEXT_VERSION_MINOR;
 import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
-import static org.lwjgl.glfw.GLFW.GLFW_MAXIMIZED;
+import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 import static org.lwjgl.glfw.GLFW.GLFW_OPENGL_CORE_PROFILE;
 import static org.lwjgl.glfw.GLFW.GLFW_OPENGL_FORWARD_COMPAT;
 import static org.lwjgl.glfw.GLFW.GLFW_OPENGL_PROFILE;
@@ -33,12 +33,14 @@ import static org.lwjgl.glfw.GLFW.glfwWindowHint;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_ONE;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TRUE;
 import static org.lwjgl.opengl.GL11.glBlendFunc;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
+import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glViewport;
 import static org.lwjgl.system.MemoryUtil.NULL;
@@ -48,15 +50,22 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
 import game.renderer.DebugDraw;
+import game.renderer.*;
 import game.renderer.Framebuffer;
+import game.renderer.PickingTexture;
+import game.renderer.Shader;
 import game.scene.LevelEditorScene;
 import game.scene.LevelScene;
 import game.scene.Scene;
+
+import game.util.*;
 
 public class Window {
 	private static Window window = null;
 
 	private Framebuffer framebuffer;
+	private Framebuffer entityIdFramebuffer;
+	private PickingTexture pickingTexture;
 
 	public static Window get() {
 		if (Window.window == null) {
@@ -69,6 +78,7 @@ public class Window {
 
 	/**
 	 * Aktiviere Scene Nr. n
+	 * windowja
 	 * 
 	 * @param newScene
 	 */
@@ -219,10 +229,15 @@ public class Window {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-		this.imguiLayer = new ImGuiLayer(glfwWindow);
+
+		// make vars for x and y
+		this.entityIdFramebuffer = new Framebuffer(2560, 1600);
+		this.framebuffer = new Framebuffer(2560, 1600);
+		this.pickingTexture = new PickingTexture(2560, 1660);
+
+		this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
 		this.imguiLayer.initImGui();
 
-		this.framebuffer = new Framebuffer(2560, 1600);
 		glViewport(0, 0, 2560, 1600);
 
 		Window.changeScene(0);
@@ -230,17 +245,37 @@ public class Window {
 		glfwGetWindowSize(glfwWindow, width, height);
 	}
 
-
 	public void loop() {
 		getScene().camera().adjustProjection();
 		float beginTime = (float) glfwGetTime();
 		float endTime;
 		float dt = -1.0f;
 
+		Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+		Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+
 		while (!glfwWindowShouldClose(glfwWindow)) {
 			// Poll Events
 			glfwPollEvents();
 
+			// Render Pass 1 Render to pick id
+			glDisable(GL_BLEND);
+
+			// this.entityIdFramebuffer.bind();
+			pickingTexture.enableWriting();
+
+			glViewport(0, 0, 2560, 1600);
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			Renderer.bindShader(pickingShader);
+			currenScene.render();
+			// this.entityIdFramebuffer.unbind();
+			pickingTexture.disableWriting();
+
+			glEnable(GL_BLEND);
+
+			// Redner Pass 2 Actual Render
 			DebugDraw.beginFrame();
 
 			this.framebuffer.bind();
@@ -249,7 +284,10 @@ public class Window {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			if (dt >= 0) {
+				Renderer.bindShader(defaultShader);
 				currenScene.update(dt);
+				currenScene.render();
+
 				DebugDraw.draw();
 			}
 			this.framebuffer.unbind();
@@ -257,6 +295,7 @@ public class Window {
 			this.imguiLayer.update(dt, currenScene);
 
 			glfwSwapBuffers(glfwWindow);
+			MouseListener.endFrame();
 
 			endTime = (float) glfwGetTime();
 			dt = endTime - beginTime;
@@ -283,8 +322,8 @@ public class Window {
 		this.fadeToBlack = fadeToBlack;
 	}
 
-	public ImGuiLayer getImguiLayer() {
-		return imguiLayer;
+	public static ImGuiLayer getImguiLayer() {
+		return get().imguiLayer;
 	}
 
 	public void setImguiLayer(ImGuiLayer imguiLayer) {
@@ -293,13 +332,14 @@ public class Window {
 
 	public static Framebuffer getFramebuffer() {
 		return get().framebuffer;
+		// return get().entityIdFramebuffer;
 	}
 
 	public static Scene getCurrenScene() {
 		return currenScene;
 	}
 
-    public static float getTargetAspectRatio() {
-        return getCurrenScene().camera().getAspectRation();
-    }
+	public static float getTargetAspectRatio() {
+		return getCurrenScene().camera().getAspectRation();
+	}
 }

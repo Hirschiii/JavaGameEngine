@@ -30,21 +30,22 @@ public class GameViewWindow {
         ImGui.endMenuBar();
 
         ImGui.setCursorPos(ImGui.getCursorPosX(), ImGui.getCursorPosY());
-        ImVec2 windowSize = getLargestSizeForWindow();
+        ImVec2 windowSize = getLargestSizeForViewPort();
         ImVec2 windowPos = getCenteredPositionForViewPort(windowSize);
-        ImGui.setCursorPos(windowPos.x, windowPos.y);
+        ImGui.setCursorPos(windowPos.x + ImGui.getCursorPosX(), windowPos.y + ImGui.getCursorPosY());
+        // ImGui.setCursorPos(windowPos.x, windowPos.y);
 
         int textureId = Window.getFramebuffer().getTextureID();
         ImGui.imageButton(textureId, windowSize.x, windowSize.y, 0, 1, 1, 0);
         windowIsHovered = ImGui.isItemHovered();
 
-        MouseListener.setGameViewportPos(new Vector2f(windowPos.x + 10, windowPos.y + 30));
+        MouseListener.setGameViewportPos(new Vector2f(windowPos.x + ImGui.getCursorScreenPosX() + 5, windowPos.y + ImGui.getCursorScreenPosY() - 5));
         MouseListener.setGameViewportSize(new Vector2f(windowSize.x, windowSize.y));
 
 		ImGui.end();
 	}
 
-	private static ImVec2 getLargestSizeForWindow() {
+	private ImVec2 getLargestSizeForViewPort() {
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
 
@@ -59,14 +60,22 @@ public class GameViewWindow {
 		return new ImVec2(aspectWidth, aspectHeight);
 	}
 
-	private static ImVec2 getCenteredPositionForViewPort(ImVec2 aspectSize) {
+	private ImVec2 getCenteredPositionForViewPort(ImVec2 aspectSize) {
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
 
         float viewportX = (windowSize.x / 2.0f) - (aspectSize.x / 2.0f);
         float viewportY = (windowSize.y / 2.0f) - (aspectSize.y / 2.0f);
 
-        return new ImVec2(viewportX + ImGui.getCursorPosX(), viewportY + ImGui.getCursorPosY());
+		// System.out.println("Viewport: " + viewportX + ", " + viewportY);
+		// System.out.println("CursrPos: " + ImGui.getCursorPosX() + ", " + ImGui.getCursorPosY());
+		// System.out.println("CurScrPos:" + ImGui.getCursorScreenPosX() + ", " + ImGui.getCursorScreenPosY());
+
+        return new ImVec2(viewportX, viewportY);
 	}
+
+    public boolean getWantCaptureMouse() {
+        return windowIsHovered;
+    }
 
 }

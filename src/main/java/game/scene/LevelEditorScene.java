@@ -4,12 +4,14 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import game.components.EditorCamera;
 import game.components.GridLines;
 import game.components.MouseControls;
 import game.components.Rigidbody;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
+import game.components.TranslateGizmo;
 import game.editor.JImGui;
 import game.engine.Camera;
 import game.engine.GameObject;
@@ -35,36 +37,42 @@ public class LevelEditorScene extends Scene {
 
 	@Override
 	public void init() {
-		levelEditorStuff.addComponent(new MouseControls());
-		levelEditorStuff.addComponent(new GridLines());
-
 		loadResources();
+		sprites = new AssetPool()
+			// .getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
+		.getSpritesheet("assets/Character/Sheet/Sheet.png");
+		Spritesheet gizmos = new AssetPool().getSpritesheet("assets/utils/gizmos.png");
+
 		this.camera = new Camera(new Vector2f(0, 0));
 
-		sprites = new AssetPool()
-				.getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
+		levelEditorStuff.addComponent(new MouseControls());
+		levelEditorStuff.addComponent(new GridLines());
+		levelEditorStuff.addComponent(new EditorCamera(this.camera));
+		levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
+					Window.getImguiLayer().getPropertiesWindow()));
+
+		levelEditorStuff.start();
 
 
-
-		if (loadedLevel) {
-			if(gameObjects.size() > 0) {
-				this.activeGameObject = gameObjects.get(0);
-			}
-			return;
-		}
 	}
 
 	@Override
 	public void update(float dt) {
 
 		levelEditorStuff.update(dt);
+		this.camera.adjustProjection();
+
 
 		for (GameObject go : this.gameObjects) {
 			go.update(dt);
 		}
 
-		this.renderer.render();
 
+	}
+
+	@Override
+	public void render() {
+		this.renderer.render();
 	}
 
 	private void loadResources() {
@@ -76,12 +84,21 @@ public class LevelEditorScene extends Scene {
 				new Spritesheet(
 						AssetPool.getTexture("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png"),
 						16, 16, 81, 0));
+		
+		AssetPool.addSpritesheet("assets/Character/Sheet/Sheet.png",
+				new Spritesheet(
+						AssetPool.getTexture("assets/Character/Sheet/Sheet.png"),
+						32, 32, 32, 0));
+		AssetPool.addSpritesheet("assets/utils/gizmos.png",
+				new Spritesheet(
+					AssetPool.getTexture("assets/utils/gizmos.png"),
+					24, 48, 2, 0));
 
 		for (GameObject g : gameObjects) {
-			if(g.getComponent(SpriteRenderer.class) != null) {
+			if (g.getComponent(SpriteRenderer.class) != null) {
 				SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
 
-				if(spr.getTexture() != null) {
+				if (spr.getTexture() != null) {
 					spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilepath()));
 				}
 			}
@@ -90,7 +107,10 @@ public class LevelEditorScene extends Scene {
 
 	@Override
 	public void imgui() {
-		ImGuiWordSet();
+		ImGui.begin("LevelEditor Stuff");
+		levelEditorStuff.imgui();
+		ImGui.end();
+
 
 		ImGui.begin("Test Titel");
 

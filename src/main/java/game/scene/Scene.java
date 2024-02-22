@@ -6,12 +6,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import game.components.Component;
 import game.components.ComponentDeserializer;
+import game.components.SpriteRenderer;
 import game.engine.Camera;
 import game.engine.GameObject;
 import game.engine.GameObjectDeserializer;
@@ -27,7 +29,6 @@ public abstract class Scene {
 	private boolean isRunning = false;
 
 	protected List<GameObject> gameObjects = new ArrayList<>();
-	protected GameObject activeGameObject = null;
 
 	public Scene() {
 	}
@@ -55,21 +56,32 @@ public abstract class Scene {
 	}
 
 	public abstract void update(float dt);
+	public abstract void render();
 
 	public Camera camera() {
 		return this.camera;
 	}
 
-	public void sceneImgui() {
-		if (activeGameObject != null) {
-			ImGui.begin("Inspector");
-			activeGameObject.imgui();
-			ImGui.end();
-		}
+    public <T extends Component> GameObject getGameObjectWith(Class<T> clazz) {
+        for (GameObject go : gameObjects) {
+            if (go.getComponent(clazz) != null) {
+                return go;
+            }
+        }
 
-		imgui();
+        return null;
+    }
 
-	}
+    public List<GameObject> getGameObjects() {
+        return this.gameObjects;
+    }
+
+    public GameObject getGameObject(int gameObjectId) {
+        Optional<GameObject> result = this.gameObjects.stream()
+                .filter(gameObject -> gameObject.getUid() == gameObjectId)
+                .findFirst();
+        return result.orElse(null);
+    }
 
 	/**
 	 * Expose Fields (Vars) to Dear Im GUI
@@ -87,7 +99,13 @@ public abstract class Scene {
 
 		try {
 			FileWriter writer = new FileWriter("level.json");
-			writer.write(gson.toJson(this.gameObjects));
+			List<GameObject> objsToSerialize = new ArrayList<>();
+			for (GameObject obj : this.gameObjects) {
+				if(obj.doSerialization()) {
+					objsToSerialize.add(obj);
+				}
+			}
+			writer.write(gson.toJson(objsToSerialize));
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -136,5 +154,6 @@ public abstract class Scene {
 			this.loadedLevel = true;
 		}
 	}
+
 
 }
