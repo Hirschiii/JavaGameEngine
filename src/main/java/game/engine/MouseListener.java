@@ -13,6 +13,8 @@ public class MouseListener {
 	private static MouseListener instance;
 	private double scrollX, scrollY;
 	private double xPos, yPos, lastY, lastX;
+
+	private Vector2f worldPos, lastWorldPos;
 	private boolean mouseButtonPressed[] = new boolean[9];
 	private boolean isDragging;
 
@@ -28,6 +30,8 @@ public class MouseListener {
 		this.yPos = 0.0;
 		this.lastX = 0.0;
 		this.lastY = 0.0;
+		this.worldPos = new Vector2f(0, 0);
+		this.lastWorldPos = new Vector2f(0, 0);
 
 		// this.gameViewportSize = new Vector2f(Window.getWidth(), Window.getHeight());
 		// this.gameViewportPos = new Vector2f(0, 0);
@@ -42,6 +46,7 @@ public class MouseListener {
         get().lastY = 0.0;
         get().mouseButtonDown = 0;
         get().isDragging = false;
+
         Arrays.fill(get().mouseButtonPressed, false);
     }
 
@@ -55,8 +60,9 @@ public class MouseListener {
 	}
 
 	public static void mousePosCallback(long window, double xPos, double yPos) {
-		// System.out.println("set xPos: "+ xPos);
-		// System.out.println("set yPos: "+ yPos);
+		get().lastWorldPos = get().worldPos;
+		calcWorld();
+
 		get().lastX = get().xPos;
 		get().lastY = get().yPos;
 
@@ -213,14 +219,18 @@ public class MouseListener {
 
 
 	public static float getWorldX() {
-		return getWorld().x;
+		return get().worldPos.x;
 	}
 
 	public static float getWorldY() {
-		return getWorld().y;
+		return get().worldPos.y;
 	}
 
 	public static Vector2f getWorld() {
+		return get().worldPos;
+	}
+
+	private static void calcWorld() {
 		float currentX = getX() - get().gameViewportPos.x;
 		currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
 
@@ -233,7 +243,7 @@ public class MouseListener {
 		Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjection());
 		tmp.mul(inverseView.mul(inverseProjection));
 
-		return new Vector2f(tmp.x, tmp.y);
+		get().worldPos = new Vector2f(tmp.x, tmp.y);
 	}
 
 }

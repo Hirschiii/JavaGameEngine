@@ -2,6 +2,7 @@
     namespace game.engine {
 
         class MouseListener [[MouseListener.html]] {
+            {static} +clear(): void
             {static} +get(): MouseListener
             {static} +mousePosCallback(long, double, double): void
             {static} +mouseButtonCallback(long, int, int, int): void
@@ -10,16 +11,34 @@
             {static} +getX(): float
             {static} +getY(): float
             {static} +getDx(): float
+            {static} +getInstance(): MouseListener
+            {static} +setInstance(MouseListener): void
+            +setScrollX(double): void
+            +setScrollY(double): void
+            +getxPos(): double
+            +setxPos(double): void
+            +getyPos(): double
+            +setyPos(double): void
+            +getLastY(): double
+            +setLastY(double): void
+            +getLastX(): double
+            +setLastX(double): void
+            +getMouseButtonPressed(): boolean[]
+            +setMouseButtonPressed(boolean[]): void
+            +setDragging(boolean): void
             {static} +getDy(): float
             {static} +getScrollX(): float
             {static} +getScrollY(): float
             {static} +isDragging(): boolean
             {static} +mouseButtonDown(int): boolean
-        }
-
-        class InitMenuScene [[InitMenuScene.html]] {
-            +update(float): void
-            +init(): void
+            {static} +setGameViewportPos(Vector2f): void
+            {static} +setGameViewportSize(Vector2f): void
+            {static} +getScreenX(): float
+            {static} +getScreenY(): float
+            {static} +getScreen(): Vector2f
+            {static} +getWorldX(): float
+            {static} +getWorldY(): float
+            {static} +getWorld(): Vector2f
         }
 
         class Window [[Window.html]] {
@@ -28,50 +47,40 @@
             +b: float
             +a: float
             {static} +get(): Window
-            {static} +getScene(): Scene
             {static} +changeScene(int): void
-            +run(): void
-            +init(): void
-            +loop(): void
             {static} +getWidth(): int
             {static} +getHeight(): int
             {static} +setWidth(int): void
             {static} +setHeight(int): void
-            +getTitle(): String
-            +setTitle(String): void
-            +getGlfwWindow(): long
-            +setGlfwWindow(long): void
             {static} +getWindow(): Window
             {static} +setWindow(Window): void
-            {static} +getCurrenScene(): Scene
+            {static} +getScene(): Scene
             {static} +setCurrenScene(Scene): void
-            +getR(): float
-            +setR(float): void
-            +getG(): float
-            +setG(float): void
-            +getB(): float
-            +setB(float): void
-            +getA(): float
-            +setA(float): void
+            +run(): void
+            +init(): void
+            +loop(): void
+            +getTitle(): String
+            +getGlfwWindow(): long
             +isFadeToBlack(): boolean
             +setFadeToBlack(boolean): void
+            {static} +getImguiLayer(): ImGuiLayer
+            {static} +getFramebuffer(): Framebuffer
+            {static} +getCurrenScene(): Scene
+            {static} +getTargetAspectRatio(): float
         }
 
         class Transform [[Transform.html]] {
             +position: Vector2f
             +scale: Vector2f
+            +rotation: float
+            +zIndex: int
             +Transform()
             +Transform(Vector2f)
             +Transform(Vector2f, Vector2f)
             +init(Vector2f, Vector2f): void
             +copy(): Transform
-            +copy(Transform): void
-        }
-
-        class LevelEditorScene [[LevelEditorScene.html]] {
-            +init(): void
-            +update(float): void
             +imgui(): void
+            +copy(Transform): void
         }
 
         class KeyListener [[KeyListener.html]] {
@@ -80,37 +89,24 @@
             {static} +isKeyPressed(int): boolean
         }
 
-        class LevelScene [[LevelScene.html]] {
-            +update(float): void
-            +init(): void
-        }
-
-        abstract class Component [[Component.html]] {
-            +start(): void
-            +update(float): void
-            +imgui(): void
-        }
-
-        abstract class Scene [[Scene.html]] {
-            #renderer: Renderer
-            +init(): void
-            +start(): void
-            +addGameObject(GameObject): void
-            {abstract} +update(float): void
-            +camera(): Camera
-            +sceneImgui(): void
-            +imgui(): void
+        class Prefabs [[Prefabs.html]] {
+            {static} +generateSpriteObject(Sprite, float, float): GameObject
+            {static} +generateSpriteObject(Sprite, float, float, int): GameObject
         }
 
         class ImGuiLayer [[ImGuiLayer.html]] {
-            +ImGuiLayer(long)
+            +ImGuiLayer(long, PickingTexture)
             +initImGui(): void
             +update(float, Scene): void
+            +getPropertiesWindow(): PropertiesWindow
         }
 
         class GameObject [[GameObject.html]] {
-            +GameObject(String)
+            +name: String
             +GameObject(String, Transform, int)
+            {static} +init(int): void
+            {static} +getID_COUNTER(): int
+            {static} +setID_COUNTER(int): void
             +getComponent(Class<T extends Component>): T extends Component
             +removeComponent(Class<T extends Component>): void
             +addComponent(Component): void
@@ -118,25 +114,68 @@
             +start(): void
             +imgui(): void
             +zIndex(): int
+            +getName(): String
+            +setName(String): void
+            +getComponents(): List<Component>
+            +setComponents(List<Component>): void
+            +getzIndex(): int
+            +setzIndex(int): void
+            +getUid(): int
+            +setUid(int): void
+            +getAllComponents(): List<Component>
+            +setActiveGameObject(boolean): void
+            +getIsActiveGameObject(): boolean
+            +setNoSerialize(): void
+            +doSerialization(): boolean
         }
 
         class Camera [[Camera.html]] {
             +position: Vector2f
+            +zoom: float
             +Camera(Vector2f)
             +adjustProjection(): void
             +getViewMatrix(): Matrix4f
             +getProjectionMatrix(): Matrix4f
+            +getProjectMatrix(): Matrix4f
+            +setProjectMatrix(Matrix4f): void
+            +setViewMatrix(Matrix4f): void
+            +getInverseProjection(): Matrix4f
+            +setInverseProjection(Matrix4f): void
+            +getInverseView(): Matrix4f
+            +setInverseView(Matrix4f): void
+            +getPosition(): Vector2f
+            +setPosition(Vector2f): void
+            +getProjectionHeight(): float
+            +setProjectionHeight(float): void
+            +getZoom(): float
+            +setZoom(float): void
+            +addZoom(float): void
+            +getAspectRation(): float
+            +setAspectRation(float): void
+            +getProjectionSize(): Vector2f
+            +setProjectionSize(Vector2f): void
         }
 
-        Scene <|-- InitMenuScene
+        class GameObjectDeserializer [[GameObjectDeserializer.html]] {
+            +deserialize(JsonElement, Type, JsonDeserializationContext): GameObject
+        }
+
         Window --> ImGuiLayer: imguiLayer
-        Scene <|-- LevelEditorScene
-        Scene <|-- LevelScene
-        Component --> GameObject: gameObject
-        Scene --> Camera: camera
-        Scene --> "*" GameObject: gameObjects
-        Scene --> GameObject: activeGameObject
+        game.components.Component <|-- Transform
         GameObject --> Transform: transform
+        com.google.gson.JsonDeserializer <|.. GameObjectDeserializer
+    }
+
+    namespace game.components {
+        abstract class Component [[../components/Component.html]] {
+            +gameObject: GameObject
+        }
+    }
+
+    namespace com.google.gson {
+        interface JsonDeserializer<T> {
+            {abstract} +deserialize(JsonElement, Type, JsonDeserializationContext): T
+        }
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

@@ -1,0 +1,15 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>GridLines\n<size:10>game.components" as game.components.GridLines [[GridLines.html]] {
+        +update(float): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.GridLines
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

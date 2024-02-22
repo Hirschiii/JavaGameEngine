@@ -58,6 +58,250 @@
       "uid": -1
     },
     "zIndex": 0,
+    "uid": 1
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/Character/Sheet/Sheet.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.625,
+                "y": 1.0
+              },
+              {
+                "x": 0.625,
+                "y": 0.75
+              },
+              {
+                "x": 0.5,
+                "y": 0.75
+              },
+              {
+                "x": 0.5,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 13
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 6.0,
+        "y": 10.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 0.0,
+      "zIndex": 0,
+      "uid": -1
+    },
+    "zIndex": 0,
+    "uid": 2
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/Character/Sheet/Sheet.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.75,
+                "y": 1.0
+              },
+              {
+                "x": 0.75,
+                "y": 0.75
+              },
+              {
+                "x": 0.625,
+                "y": 0.75
+              },
+              {
+                "x": 0.625,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 14
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 9.0,
+        "y": 8.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 0.0,
+      "zIndex": 0,
+      "uid": -1
+    },
+    "zIndex": 0,
     "uid": 3
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/Character/Sheet/Sheet.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.875,
+                "y": 1.0
+              },
+              {
+                "x": 0.875,
+                "y": 0.75
+              },
+              {
+                "x": 0.75,
+                "y": 0.75
+              },
+              {
+                "x": 0.75,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 15
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 4.0,
+        "y": 10.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 0.0,
+      "zIndex": 0,
+      "uid": -1
+    },
+    "zIndex": 0,
+    "uid": 4
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/Character/Sheet/Sheet.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.5,
+                "y": 1.0
+              },
+              {
+                "x": 0.5,
+                "y": 0.75
+              },
+              {
+                "x": 0.375,
+                "y": 0.75
+              },
+              {
+                "x": 0.375,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 22
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 3.0,
+        "y": 8.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0
+      },
+      "rotation": 0.0,
+      "zIndex": 0,
+      "uid": -1
+    },
+    "zIndex": 0,
+    "uid": 7
   }
 ]

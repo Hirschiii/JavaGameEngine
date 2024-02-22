@@ -5,6 +5,8 @@
 
     class "<size:14>Renderer\n<size:10>game.renderer" as game.renderer.Renderer [[Renderer.html]] {
         +add(GameObject): void
+        {static} +bindShader(Shader): void
+        {static} +getBoundShader(): Shader
         +render(): void
     }
 

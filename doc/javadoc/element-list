@@ -1,5 +1,7 @@
 game
 game.components
+game.editor
 game.engine
 game.renderer
+game.scene
 game.util

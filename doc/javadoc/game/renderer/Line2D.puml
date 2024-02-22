@@ -1,0 +1,18 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Line2D\n<size:10>game.renderer" as game.renderer.Line2D [[Line2D.html]] {
+        +Line2D(Vector2f, Vector2f, Vector3f, int)
+        +beginFrame(): int
+        +getFrom(): Vector2f
+        +setFrom(Vector2f): void
+        +getTo(): Vector2f
+        +setTo(Vector2f): void
+        +getColor(): Vector3f
+        +setColor(Vector3f): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

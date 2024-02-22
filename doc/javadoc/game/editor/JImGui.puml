@@ -1,0 +1,20 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>JImGui\n<size:10>game.editor" as game.editor.JImGui [[JImGui.html]] {
+        {static} +drawVec2Control(String, Vector2f): void
+        {static} +drawVec2Control(String, Vector2f, float): void
+        {static} +drawVec2Control(String, Vector2f, float, float): void
+        {static} +drawVec3Control(String, Vector3f): void
+        {static} +drawVec3Control(String, Vector3f, float): void
+        {static} +drawVec3Control(String, Vector3f, float, float): void
+        {static} +dragFloat(String, float): float
+        {static} +dragInt(String, int): int
+        {static} +colorPicker4(String, Vector4f): boolean
+        {static} +inputText(String, String): String
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

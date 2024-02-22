@@ -4,9 +4,12 @@
     hide empty methods
 
     class "<size:14>GameObject\n<size:10>game.engine" as game.engine.GameObject [[GameObject.html]] {
+        +name: String
         +transform: Transform
-        +GameObject(String)
         +GameObject(String, Transform, int)
+        {static} +init(int): void
+        {static} +getID_COUNTER(): int
+        {static} +setID_COUNTER(int): void
         +getComponent(Class<T extends Component>): T extends Component
         +removeComponent(Class<T extends Component>): void
         +addComponent(Component): void
@@ -14,6 +17,21 @@
         +start(): void
         +imgui(): void
         +zIndex(): int
+        +getName(): String
+        +setName(String): void
+        +getComponents(): List<Component>
+        +setComponents(List<Component>): void
+        +getTransform(): Transform
+        +setTransform(Transform): void
+        +getzIndex(): int
+        +setzIndex(int): void
+        +getUid(): int
+        +setUid(int): void
+        +getAllComponents(): List<Component>
+        +setActiveGameObject(boolean): void
+        +getIsActiveGameObject(): boolean
+        +setNoSerialize(): void
+        +doSerialization(): boolean
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

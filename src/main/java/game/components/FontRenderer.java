@@ -1,7 +1,5 @@
 package game.components;
 
-import game.engine.Component;
-
 public class FontRenderer extends Component {
 	@Override
 	public void start() {

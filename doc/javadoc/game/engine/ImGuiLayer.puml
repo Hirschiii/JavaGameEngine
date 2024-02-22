@@ -4,9 +4,10 @@
     hide empty methods
 
     class "<size:14>ImGuiLayer\n<size:10>game.engine" as game.engine.ImGuiLayer [[ImGuiLayer.html]] {
-        +ImGuiLayer(long)
+        +ImGuiLayer(long, PickingTexture)
         +initImGui(): void
         +update(float, Scene): void
+        +getPropertiesWindow(): PropertiesWindow
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

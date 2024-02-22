@@ -4,6 +4,7 @@
     hide empty methods
 
     class "<size:14>MouseListener\n<size:10>game.engine" as game.engine.MouseListener [[MouseListener.html]] {
+        {static} +clear(): void
         {static} +get(): MouseListener
         {static} +mousePosCallback(long, double, double): void
         {static} +mouseButtonCallback(long, int, int, int): void
@@ -12,11 +13,34 @@
         {static} +getX(): float
         {static} +getY(): float
         {static} +getDx(): float
+        {static} +getInstance(): MouseListener
+        {static} +setInstance(MouseListener): void
+        +setScrollX(double): void
+        +setScrollY(double): void
+        +getxPos(): double
+        +setxPos(double): void
+        +getyPos(): double
+        +setyPos(double): void
+        +getLastY(): double
+        +setLastY(double): void
+        +getLastX(): double
+        +setLastX(double): void
+        +getMouseButtonPressed(): boolean[]
+        +setMouseButtonPressed(boolean[]): void
+        +setDragging(boolean): void
         {static} +getDy(): float
         {static} +getScrollX(): float
         {static} +getScrollY(): float
         {static} +isDragging(): boolean
         {static} +mouseButtonDown(int): boolean
+        {static} +setGameViewportPos(Vector2f): void
+        {static} +setGameViewportSize(Vector2f): void
+        {static} +getScreenX(): float
+        {static} +getScreenY(): float
+        {static} +getScreen(): Vector2f
+        {static} +getWorldX(): float
+        {static} +getWorldY(): float
+        {static} +getWorld(): Vector2f
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

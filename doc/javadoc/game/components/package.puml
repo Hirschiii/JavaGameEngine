@@ -10,7 +10,15 @@
             +getTexCoords(): Vector2f[]
             +setColor(Vector4f): void
             +isDirty(): boolean
+            +setDirty(): void
             +setClean(): void
+            +setTexture(Texture): void
+        }
+
+        class MouseControls [[MouseControls.html]] {
+            +pickupObject(GameObject): void
+            +place(): void
+            +update(float): void
         }
 
         class Sprite [[Sprite.html]] {
@@ -18,11 +26,48 @@
             +getTexCoords(): Vector2f[]
             +setTexture(Texture): void
             +setTexCoords(Vector2f[]): void
+            +getWidth(): float
+            +setWidth(float): void
+            +getHeight(): float
+            +setHeight(float): void
+            +getTexId(): int
+        }
+
+        class TranslateGizmo [[TranslateGizmo.html]] {
+            +TranslateGizmo(Sprite, PropertiesWindow)
+            +start(): void
+            +update(float): void
+            +setActive(): void
+            +setInactive(): void
+        }
+
+        class ComponentDeserializer [[ComponentDeserializer.html]] {
+            +deserialize(JsonElement, Type, JsonDeserializationContext): Component
+            +serialize(Component, Type, JsonSerializationContext): JsonElement
+        }
+
+        abstract class Component [[Component.html]] {
+            +gameObject: GameObject
+            +start(): void
+            +update(float): void
+            +imgui(): void
+            +generateID(): void
+            +getGameObject(): GameObject
+            +setGameObject(GameObject): void
+            {static} +getID_COUNTER(): int
+            {static} +setID_COUNTER(int): void
+            +getUid(): int
+            {static} +init(int): void
         }
 
         class Spritesheet [[Spritesheet.html]] {
             +Spritesheet(Texture, int, int, int, int)
             +getSprite(int): Sprite
+            +size(): int
+        }
+
+        class GridLines [[GridLines.html]] {
+            +update(float): void
         }
 
         class FontRenderer [[FontRenderer.html]] {
@@ -30,14 +75,34 @@
             +update(float): void
         }
 
-        game.engine.Component <|-- SpriteRenderer
+        class EditorCamera [[EditorCamera.html]] {
+            +EditorCamera(Camera)
+            +update(float): void
+        }
+
+        class Rigidbody [[Rigidbody.html]] {
+            +velocity: Vector3f
+            +tmp: Vector4f
+        }
+
+        Component <|-- SpriteRenderer
         SpriteRenderer --> Sprite: sprite
-        game.engine.Component <|-- FontRenderer
+        Component <|-- MouseControls
+        Component <|-- TranslateGizmo
+        com.google.gson.JsonSerializer <|.. ComponentDeserializer
+        com.google.gson.JsonDeserializer <|.. ComponentDeserializer
+        Component <|-- GridLines
+        Component <|-- FontRenderer
+        Component <|-- EditorCamera
+        Component <|-- Rigidbody
     }
 
-    namespace game.engine {
-        abstract class Component [[../engine/Component.html]] {
-            +gameObject: GameObject
+    namespace com.google.gson {
+        interface JsonSerializer<T> {
+            {abstract} +serialize(T, Type, JsonSerializationContext): JsonElement
+        }
+        interface JsonDeserializer<T> {
+            {abstract} +deserialize(JsonElement, Type, JsonDeserializationContext): T
         }
     }
 

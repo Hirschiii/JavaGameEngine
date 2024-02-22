@@ -6,13 +6,20 @@
     class "<size:14>Transform\n<size:10>game.engine" as game.engine.Transform [[Transform.html]] {
         +position: Vector2f
         +scale: Vector2f
+        +rotation: float
+        +zIndex: int
         +Transform()
         +Transform(Vector2f)
         +Transform(Vector2f, Vector2f)
         +init(Vector2f, Vector2f): void
         +copy(): Transform
+        +imgui(): void
         +copy(Transform): void
     }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[../components/Component.html]]
+
+    game.components.Component <|-- game.engine.Transform
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
 @enduml

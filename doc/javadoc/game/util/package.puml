@@ -5,7 +5,13 @@
             {static} +getShader(String): Shader
             {static} +getTexture(String): Texture
             {static} +addSpritesheet(String, Spritesheet): void
-            {static} +getSpritesheet(String): Spritesheet
+            +getSpritesheet(String): Spritesheet
+        }
+
+        class Settings [[Settings.html]] {
+            {static} +GRID_WIDTH: float
+            {static} +GRID_HEIGHT: float
+            {static} +PROJECTION_HEIGHT: float
         }
 
     }
