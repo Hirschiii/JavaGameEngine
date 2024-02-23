@@ -52,4 +52,9 @@ public class PropertiesWindow {
 	public GameObject getActiveGameObject() {
 		return this.activeGameObject;
 	}
+
+	public PickingTexture getPickingTexture() {
+		return this.pickingTexture;
+	}
+
 }
