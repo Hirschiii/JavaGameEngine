@@ -2,9 +2,14 @@ package game.editor;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
+import game.components.Gizmo;
+import game.components.TranslateGizmo;
 import game.engine.GameObject;
 import game.engine.MouseListener;
 import game.renderer.PickingTexture;
+import game.scene.LevelEditorScene;
 import game.scene.Scene;
 import imgui.ImGui;
 
