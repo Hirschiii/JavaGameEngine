@@ -53,8 +53,4 @@ public class PropertiesWindow {
 		return this.activeGameObject;
 	}
 
-	public PickingTexture getPickingTexture() {
-		return this.pickingTexture;
-	}
-
 }
