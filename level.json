@@ -1,6 +1,7 @@
 [
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -46,8 +47,8 @@
     ],
     "transform": {
       "position": {
-        "x": 4.0,
-        "y": 8.0
+        "x": 9.050157,
+        "y": 16.949837
       },
       "scale": {
         "x": 1.0,
@@ -62,6 +63,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -107,7 +109,7 @@
     ],
     "transform": {
       "position": {
-        "x": 6.0,
+        "x": 12.660088,
         "y": 10.0
       },
       "scale": {
@@ -123,6 +125,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -169,7 +172,7 @@
     "transform": {
       "position": {
         "x": 9.0,
-        "y": 8.0
+        "y": 16.934444
       },
       "scale": {
         "x": 1.0,
@@ -184,6 +187,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -229,8 +233,8 @@
     ],
     "transform": {
       "position": {
-        "x": 4.0,
-        "y": 10.0
+        "x": 9.8862295,
+        "y": 9.762053
       },
       "scale": {
         "x": 1.0,
@@ -245,6 +249,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -290,7 +295,7 @@
     ],
     "transform": {
       "position": {
-        "x": 3.0,
+        "x": 14.57091,
         "y": 8.0
       },
       "scale": {
@@ -306,6 +311,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -351,7 +357,7 @@
     ],
     "transform": {
       "position": {
-        "x": 4.0,
+        "x": 19.033236,
         "y": 7.0
       },
       "scale": {
@@ -367,6 +373,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -412,7 +419,7 @@
     ],
     "transform": {
       "position": {
-        "x": 7.0,
+        "x": 14.827785,
         "y": 10.0
       },
       "scale": {
@@ -428,6 +435,7 @@
   },
   {
     "isActiveGameObject": false,
+    "wantAktiveGameObject": true,
     "doSerialization": true,
     "name": "Sprite_Object_Gen",
     "components": [
@@ -473,7 +481,7 @@
     ],
     "transform": {
       "position": {
-        "x": 10.0,
+        "x": 20.85711,
         "y": 11.0
       },
       "scale": {

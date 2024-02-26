@@ -24,7 +24,10 @@ public class TranslateGizmo extends Gizmo {
 		super.update(dt);
 		if(activeGameObject != null) {
 			if (xAxisActive) {
-				activeGameObject.transform.position.x += MouseListener.getWorldX();
+				activeGameObject.transform.position.x -= MouseListener.getWorldDX();
+			}
+			if (yAxisActive) {
+				activeGameObject.transform.position.y -= MouseListener.getWorldDY();
 			}
 		}
 	}
