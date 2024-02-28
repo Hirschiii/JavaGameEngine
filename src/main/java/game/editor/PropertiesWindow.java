@@ -36,6 +36,8 @@ public class PropertiesWindow {
 
 			if (go != null && go.getComponent(NonPickable.class) == null) {
 				activeGameObject = go;
+			} else if(pickingTexture == null  && !MouseListener.isDragging()) {
+				activeGameObject = null;
 			}
 			this.debounce = 0.2f;
 		}

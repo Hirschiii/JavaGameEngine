@@ -70,34 +70,34 @@ public class Gizmo extends Component {
 	@Override
 	public void update(float dt) {
 
-		this.activeGameObject = propertiesWindow.getActiveGameObject();
+        this.activeGameObject = this.propertiesWindow.getActiveGameObject();
+        if (this.activeGameObject != null) {
+            this.setActive();
+        } else {
+            this.setInactive();
+            return;
+        }
 
-		if (this.activeGameObject != null) {
-			this.xAxisObject.transform.position.set(this.activeGameObject.transform.position);
-			this.yAxisObject.transform.position.set(this.activeGameObject.transform.position);
+        boolean xAxisHot = checkXHoverState();
+        boolean yAxisHot = checkYHoverState();
 
-			this.xAxisObject.transform.position.add(this.xAxisOffset);
-			this.yAxisObject.transform.position.add(this.yAxisOffset);
+        if ((xAxisHot || xAxisActive) && MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+            xAxisActive = true;
+            yAxisActive = false;
+        } else if ((yAxisHot || yAxisActive) && MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+            yAxisActive = true;
+            xAxisActive = false;
+        } else {
+            xAxisActive = false;
+            yAxisActive = false;
+        }
 
-			this.setActive();
-		} else {
-			this.setInactive();
-			return;
-		}
-
-		boolean xAxisHot = checkXHoverState();
-		boolean yAxisHot = checkYHoverState();
-
-		if ((xAxisHot) && MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-			xAxisActive = true;
-			yAxisActive = false;
-		} else if ((yAxisHot) && MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-			xAxisActive = false;
-			yAxisActive = true;
-		} else {
-			xAxisActive = false;
-			yAxisActive = false;
-		}
+        if (this.activeGameObject != null) {
+            this.xAxisObject.transform.position.set(this.activeGameObject.transform.position);
+            this.yAxisObject.transform.position.set(this.activeGameObject.transform.position);
+            this.xAxisObject.transform.position.add(this.xAxisOffset);
+            this.yAxisObject.transform.position.add(this.yAxisOffset);
+        }
 	}
 
 	public void setActive() {
