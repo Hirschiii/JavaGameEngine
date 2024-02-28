@@ -8,6 +8,7 @@ import game.components.EditorCamera;
 import game.components.GridLines;
 import game.components.MouseControls;
 import game.components.Rigidbody;
+import game.components.ScaleGizmo;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
@@ -49,6 +50,8 @@ public class LevelEditorScene extends Scene {
 		levelEditorStuff.addComponent(new GridLines());
 		levelEditorStuff.addComponent(new EditorCamera(this.camera));
 		levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
+					Window.getImguiLayer().getPropertiesWindow()));
+		levelEditorStuff.addComponent(new ScaleGizmo(gizmos.getSprite(2),
 					Window.getImguiLayer().getPropertiesWindow()));
 
 		levelEditorStuff.start();
@@ -92,7 +95,7 @@ public class LevelEditorScene extends Scene {
 		AssetPool.addSpritesheet("assets/utils/gizmos.png",
 				new Spritesheet(
 					AssetPool.getTexture("assets/utils/gizmos.png"),
-					24, 48, 2, 0));
+					24, 48, 3, 0));
 
 		for (GameObject g : gameObjects) {
 			if (g.getComponent(SpriteRenderer.class) != null) {

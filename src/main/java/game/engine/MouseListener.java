@@ -43,9 +43,6 @@ public class MouseListener {
 		get().mouseButtonDown = 0;
 		get().isDragging = false;
 
-		get().worldPos = new Vector2f(0, 0);
-		get().lastWorldPos = new Vector2f(0, 0);
-
 		Arrays.fill(get().mouseButtonPressed, false);
 	}
 
@@ -97,6 +94,9 @@ public class MouseListener {
 	public static void endFrame() {
 		get().scrollX = 0;
 		get().scrollY = 0;
+		get().lastWorldPos = get().worldPos;
+		get().lastX = get().xPos;
+		get().lastY = get().yPos;
 	}
 
 	public static float getX() {
@@ -224,14 +224,11 @@ public class MouseListener {
 
 	public static float getWorldDX() {
 		float d = get().lastWorldPos.x - get().worldPos.x;
-		System.out.println(d);
 		return d;
 	}
 
 	public static float getWorldDY() {
-		calcWorld();
 		float d = get().lastWorldPos.y - get().worldPos.y;
-		System.out.println(d);
 		return d;
 	}
 
@@ -244,7 +241,6 @@ public class MouseListener {
 	}
 
 	public static Vector2f getWorld() {
-		calcWorld();
 		return get().worldPos;
 	}
 

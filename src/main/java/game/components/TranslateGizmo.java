@@ -21,14 +21,14 @@ public class TranslateGizmo extends Gizmo {
 
 	@Override
 	public void update(float dt) {
-		super.update(dt);
-		if(activeGameObject != null) {
-			if (xAxisActive) {
+		if (activeGameObject != null) {
+			if (xAxisActive && !yAxisActive) {
 				activeGameObject.transform.position.x -= MouseListener.getWorldDX();
 			}
 			if (yAxisActive) {
 				activeGameObject.transform.position.y -= MouseListener.getWorldDY();
 			}
 		}
+		super.update(dt);
 	}
 }
