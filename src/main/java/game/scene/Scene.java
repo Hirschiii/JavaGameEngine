@@ -17,6 +17,7 @@ import game.components.SpriteRenderer;
 import game.engine.Camera;
 import game.engine.GameObject;
 import game.engine.GameObjectDeserializer;
+import game.engine.Transform;
 import game.renderer.Renderer;
 import imgui.ImGui;
 
@@ -88,6 +89,13 @@ public abstract class Scene {
 	 * 
 	 */
 	public void imgui() {
+	}
+
+	public GameObject createGameObject(String name) {
+		GameObject go = new GameObject(name);
+		go.addComponent(new Transform());
+		go.transform = go.getComponent(Transform.class);
+		return go;
 	}
 
 	public void saveExit() {

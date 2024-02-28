@@ -57,4 +57,22 @@ public class Transform extends Component {
         return t.position.equals(this.position) && t.scale.equals(this.scale) &&
                 t.rotation == this.rotation && t.zIndex == this.zIndex;
     }
+
+	public Vector2f getPosition() {
+		return position;
+	}
+
+	public Vector2f getScale() {
+		return scale;
+	}
+
+	public float getRotation() {
+		return rotation;
+	}
+
+	public int getzIndex() {
+		return zIndex;
+	}
+
+
 }

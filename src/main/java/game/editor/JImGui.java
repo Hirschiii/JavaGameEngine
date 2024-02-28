@@ -10,7 +10,7 @@ import org.joml.Vector4f;
 
 public class JImGui {
 
-    private static float defaultColumnWidth = 220.0f;
+    private static float defaultColumnWidth = 100.0f;
 
     public static void drawVec2Control(String label, Vector2f values) {
         drawVec2Control(label, values, 0.0f, defaultColumnWidth);
@@ -93,7 +93,7 @@ public class JImGui {
         ImGui.pushStyleVar(ImGuiStyleVar.ItemSpacing, 0, 0);
 
         float lineHeight = ImGui.getFontSize() + ImGui.getStyle().getFramePaddingY() * 2.0f;
-        Vector2f buttonSize = new Vector2f(lineHeight + 3.0f, lineHeight);
+        Vector2f buttonSize = new Vector2f(lineHeight - 3, lineHeight);
         float widthEach = (ImGui.calcItemWidth() - buttonSize.x * 3.0f) / 3.0f;
 
         ImGui.pushItemWidth(widthEach);

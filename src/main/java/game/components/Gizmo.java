@@ -31,8 +31,8 @@ public class Gizmo extends Component {
 	private Vector2f xAxisOffset = new Vector2f();
 	private Vector2f yAxisOffset = new Vector2f();
 
-	private float gizmoWidth = 0.5f;
-	private float gizmoHeight = (48.0f / 16.0f) / 2;
+	private float gizmoWidth = 0.5f * 32f;
+	private float gizmoHeight = ((48.0f / 16.0f) / 2) * 32;
 
 	protected boolean xAxisActive = false;
 	protected boolean yAxisActive = false;
@@ -42,8 +42,8 @@ public class Gizmo extends Component {
 	public Gizmo(Sprite arrowSprite, PropertiesWindow propertiesWindow) {
 		this.propertiesWindow = propertiesWindow;
 
-		this.xAxisObject = Prefabs.generateSpriteObject(arrowSprite, gizmoWidth, gizmoHeight, 2);
-		this.yAxisObject = Prefabs.generateSpriteObject(arrowSprite, gizmoWidth, gizmoHeight, 2);
+		this.xAxisObject = Prefabs.generateSpriteObject(arrowSprite, gizmoWidth, gizmoHeight);
+		this.yAxisObject = Prefabs.generateSpriteObject(arrowSprite, gizmoWidth, gizmoHeight);
 
         this.xAxisObject.addComponent(new NonPickable());
         this.yAxisObject.addComponent(new NonPickable());
@@ -51,8 +51,8 @@ public class Gizmo extends Component {
 		this.xAxisSprite = this.xAxisObject.getComponent(SpriteRenderer.class);
 		this.yAxisSprite = this.yAxisObject.getComponent(SpriteRenderer.class);
 
-		this.xAxisOffset = new Vector2f(1.75f, -0.25f);
-		this.yAxisOffset = new Vector2f(0.25f, 1.75f);
+		this.xAxisOffset = new Vector2f(1.75f * 32, -0.25f * 32);
+		this.yAxisOffset = new Vector2f(0.25f * 32, 1.75f * 32);
 
 		Window.getScene().addGameObject(this.xAxisObject);
 		Window.getScene().addGameObject(this.yAxisObject);
@@ -64,6 +64,8 @@ public class Gizmo extends Component {
 	public void start() {
 		this.xAxisObject.transform.rotation = 90;
 		this.yAxisObject.transform.rotation = 180;
+		this.xAxisObject.transform.zIndex = 100;
+		this.yAxisObject.transform.zIndex = 100;
 		this.xAxisObject.setNoSerialize();
 		this.yAxisObject.setNoSerialize();
 
