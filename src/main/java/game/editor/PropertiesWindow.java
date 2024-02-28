@@ -66,12 +66,8 @@ public class PropertiesWindow {
 		}
 	}
 
-	public void setActiveGameObject(int gameObjectId) {
-		// this.activeGameObject.setActiveGameObject(false);
-		// this.activeGameObject.getComponent(SpriteRenderer.class).setDirty();
-		// this.activeGameObject = getGameObject(gameObjectId);
-		// this.activeGameObject.setActiveGameObject(true);
-		// this.activeGameObject.getComponent(SpriteRenderer.class).setDirty();
+	public void setActiveGameObject(GameObject go) {
+		this.activeGameObject = go;
 	}
 
 	public GameObject getActiveGameObject() {

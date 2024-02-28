@@ -53,15 +53,13 @@ import game.renderer.DebugDraw;
 import game.observers.EventSystem;
 import game.observers.Observer;
 import game.observers.events.Event;
-import game.observers.events.EventType;
 import game.renderer.*;
 import game.renderer.Framebuffer;
 import game.renderer.PickingTexture;
 import game.renderer.Shader;
-import game.scene.LevelEditorScene;
-import game.scene.LevelScene;
+import game.scene.LevelEditorSceneInitializer;
 import game.scene.Scene;
-
+import game.scene.SceneInitializer;
 import game.util.*;
 
 public class Window implements Observer {
@@ -86,23 +84,16 @@ public class Window implements Observer {
 	 * 
 	 * @param newScene
 	 */
-	public static void changeScene(int newScene) {
-		switch (newScene) {
-			case 0:
-				currenScene = new LevelEditorScene();
-				break;
-			case 1:
-				currenScene = new LevelScene();
-				break;
-			default:
-				assert false : "Unknown Scenen '" + newScene + "'";
-				break;
+	public static void changeScene(SceneInitializer sceneInitializer) {
+		if (currenScene != null) {
+			currenScene.destroy();
 		}
 
+		getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
+		currenScene = new Scene(sceneInitializer);
 		currenScene.load();
 		currenScene.init();
 		currenScene.start();
-
 	}
 
 	public static int getWidth() {
@@ -145,6 +136,7 @@ public class Window implements Observer {
 	private long glfwWindow;
 
 	private static Scene currenScene;
+	private boolean runntimePlaying = false;
 
 	public float r, g, b, a;
 
@@ -228,7 +220,6 @@ public class Window implements Observer {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-
 		// make vars for x and y
 		this.entityIdFramebuffer = new Framebuffer(2560, 1600);
 		this.framebuffer = new Framebuffer(2560, 1600);
@@ -239,7 +230,7 @@ public class Window implements Observer {
 
 		glViewport(0, 0, 2560, 1600);
 
-		Window.changeScene(0);
+		Window.changeScene(new LevelEditorSceneInitializer());
 
 		glfwGetWindowSize(glfwWindow, width, height);
 	}
@@ -284,7 +275,11 @@ public class Window implements Observer {
 
 			if (dt >= 0) {
 				Renderer.bindShader(defaultShader);
-				currenScene.update(dt);
+				if (runntimePlaying) {
+					currenScene.update(dt);
+				} else {
+					currenScene.editorUpdate(dt);
+				}
 				currenScene.render();
 
 				DebugDraw.draw();
@@ -302,7 +297,6 @@ public class Window implements Observer {
 
 		}
 
-		currenScene.saveExit();
 	}
 
 	public String getTitle() {
@@ -344,10 +338,24 @@ public class Window implements Observer {
 
 	@Override
 	public void onNotify(GameObject object, Event event) {
-		if(event.type == EventType.GameEngineStartPlay) {
-			System.out.println("Starting Play");
-
-		} else if(event.type == EventType.GameEngineStopPlay)
-			System.out.println("Stop Play");
+		switch (event.type) {
+			case GameEngineStartPlay:
+				this.runntimePlaying = true;
+				currenScene.save();
+				Window.changeScene(new LevelEditorSceneInitializer());
+				break;
+			case GameEngineStopPlay:
+				this.runntimePlaying = false;
+				Window.changeScene(new LevelEditorSceneInitializer());
+				break;
+			case LoadLevel:
+				Window.changeScene(new LevelEditorSceneInitializer());
+				break;
+			case SaveLevel:
+				Window.getScene().save();
+				break;
+			case UserEvent:
+				break;
+		}
 	}
 }

@@ -9,8 +9,10 @@ import imgui.ImGui;
 public class GameObject {
 	private boolean isActiveGameObject = false;
 	private boolean doSerialization = true;
+	private boolean isDead = false;
 
 	private static int ID_COUNTER = 0;
+
 	public static void init(int maxID) {
 		ID_COUNTER = maxID;
 	}
@@ -139,4 +141,20 @@ public class GameObject {
 	public boolean doSerialization() {
 		return this.doSerialization;
 	}
+
+	public boolean isDead() {
+		return this.isDead;
+	}
+
+    public void destroy() {
+		this.isDead = true;
+		for (int i=0; i < components.size(); i++) {
+			components.get(i).destroy();
+		}
+    }
+    public void editorUpdate(float dt) {
+		for (int i=0; i < components.size(); i++){
+			components.get(i).editorUpdate(dt);
+		}
+    }
 }

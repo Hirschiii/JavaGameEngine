@@ -87,25 +87,25 @@ public abstract class Component {
 		}
 	}
 
-    private <T extends Enum<T>> String[] getEnumValues(Class<T> enumType) {
-        String[] enumValues = new String[enumType.getEnumConstants().length];
-        int i = 0;
-        for (T enumIntegerValue : enumType.getEnumConstants()) {
-            enumValues[i] = enumIntegerValue.name();
-            i++;
-        }
-        return enumValues;
-    }
+	private <T extends Enum<T>> String[] getEnumValues(Class<T> enumType) {
+		String[] enumValues = new String[enumType.getEnumConstants().length];
+		int i = 0;
+		for (T enumIntegerValue : enumType.getEnumConstants()) {
+			enumValues[i] = enumIntegerValue.name();
+			i++;
+		}
+		return enumValues;
+	}
 
-    private int indexOf(String str, String[] arr) {
-        for (int i=0; i < arr.length; i++) {
-            if (str.equals(arr[i])) {
-                return i;
-            }
-        }
+	private int indexOf(String str, String[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (str.equals(arr[i])) {
+				return i;
+			}
+		}
 
-        return -1;
-    }
+		return -1;
+	}
 
 	public void generateID() {
 		if (this.uid == -1) {
@@ -135,6 +135,13 @@ public abstract class Component {
 
 	public static void init(int maxID) {
 		ID_COUNTER = maxID;
+	}
+
+	public void destroy() {
+		// Play Sound when dieing
+	}
+
+	public void editorUpdate(float dt) {
 	}
 
 }

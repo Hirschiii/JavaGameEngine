@@ -28,6 +28,7 @@ import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import game.components.SpriteRenderer;
+import game.engine.GameObject;
 import game.engine.Window;
 import game.util.AssetPool;
 
@@ -316,4 +317,20 @@ public class RenderBatch implements Comparable<RenderBatch> {
 	public int compareTo(RenderBatch o) {
 		return Integer.compare(this.zIndex, o.zIndex());
 	}
+
+    public boolean destroyIfExists(GameObject go) {
+		SpriteRenderer sprite = go.getComponent(SpriteRenderer.class);
+		for (int i=0; i < numSprites; i++) {
+			if(sprites[i] == sprite) {
+				for (int j=i; j < numSprites - 1; j++) {
+					sprites[j] = sprites[j+1];
+					sprites[j].setDirty();
+				}
+				numSprites--;
+				return true;
+			}
+		}
+
+		return false;
+    }
 }

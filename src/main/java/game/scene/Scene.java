@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.joml.Vector2f;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,26 +23,36 @@ import game.engine.Transform;
 import game.renderer.Renderer;
 import imgui.ImGui;
 
-public abstract class Scene {
+public class Scene {
 
 	private Renderer renderer = new Renderer();
 	private Camera camera;
-	private boolean loadedLevel = false;
 
-	private boolean isRunning = false;
+	private boolean isRunning;
 
-	protected List<GameObject> gameObjects = new ArrayList<>();
+	protected List<GameObject> gameObjects;
 
-	public Scene() {
+	private SceneInitializer sceneInitializer;
+
+	public Scene(SceneInitializer sceneInitializer) {
+		this.sceneInitializer = sceneInitializer;
+		this.renderer = new Renderer();
+		this.gameObjects = new ArrayList<>();
+		this.isRunning = false;
 	}
 
 	public void init() {
+		this.camera = new Camera(new Vector2f(0, 0));
+		this.sceneInitializer.loadResources(this);
+		this.sceneInitializer.init(this);
 	}
 
 	public void start() {
-		for (GameObject go : gameObjects) {
+		for (int i=0; i < gameObjects.size(); i++) {
+			GameObject go = gameObjects.get(i);
 			go.start();
 			this.renderer.add(go);
+			// Add here to physics
 		}
 		isRunning = true;
 	}
@@ -52,12 +64,45 @@ public abstract class Scene {
 			gameObjects.add(go);
 			go.start();
 			this.renderer.add(go);
+			//Add here to physics
 		}
 
 	}
 
-	public abstract void update(float dt);
-	public abstract void render();
+	public void editorUpdate(float dt) {
+		this.camera.adjustProjection();
+		for (int i=0; i < gameObjects.size(); i++) {
+			GameObject go = gameObjects.get(i);
+			go.editorUpdate(dt);
+
+			if(go.isDead()) {
+				gameObjects.remove(i);
+				this.renderer.destroyGameObject(go);
+				// this.physics.destryGameObject(go);
+				i--;
+			}
+		}
+	}
+
+	public void update(float dt) {
+		this.camera.adjustProjection();
+		// Update Physics...
+		for (int i=0; i < gameObjects.size(); i++) {
+			GameObject go = gameObjects.get(i);
+			go.update(dt);
+
+			if(go.isDead()) {
+				gameObjects.remove(i);
+				this.renderer.destroyGameObject(go);
+				// this.physics.destryGameObject(go);
+				i--;
+			}
+		}
+	};
+	public void render() {
+		this.renderer.render();
+
+	};
 
 	public Camera camera() {
 		return this.camera;
@@ -89,6 +134,7 @@ public abstract class Scene {
 	 * 
 	 */
 	public void imgui() {
+		this.sceneInitializer.imgui();
 	}
 
 	public GameObject createGameObject(String name) {
@@ -98,7 +144,8 @@ public abstract class Scene {
 		return go;
 	}
 
-	public void saveExit() {
+	// public void save(String filepath) {
+	public void save() {
 		Gson gson = new GsonBuilder()
 				.setPrettyPrinting()
 				.registerTypeAdapter(Component.class, new ComponentDeserializer())
@@ -159,7 +206,12 @@ public abstract class Scene {
 
 			GameObject.init(maxGoID);
 			Component.init(maxComID);
-			this.loadedLevel = true;
+		}
+	}
+
+	public void destroy() {
+		for (GameObject go : gameObjects) {
+			go.destroy();
 		}
 	}
 
