@@ -3,7 +3,15 @@ package game.engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Spring;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import game.components.Component;
+import game.components.ComponentDeserializer;
+import game.components.SpriteRenderer;
+import game.util.AssetPool;
 import imgui.ImGui;
 
 public class GameObject {
@@ -157,4 +165,28 @@ public class GameObject {
 			components.get(i).editorUpdate(dt);
 		}
     }
+    public GameObject copy() {
+		Gson gson = new GsonBuilder()
+				.registerTypeAdapter(Component.class, new ComponentDeserializer())
+				.registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
+				.create();
+		String objAsJson = gson.toJson(this);
+
+		GameObject obj = gson.fromJson(objAsJson, GameObject.class);
+		obj.generateUID();
+
+		for(Component c : obj.getAllComponents()) {
+			c.generateID();
+		}
+
+		SpriteRenderer sprite = obj.getComponent(SpriteRenderer.class);
+		if(sprite != null && sprite.getTexture() != null) {
+			sprite.setTexture(AssetPool.getTexture(sprite.getTexture().getFilepath()));
+		}
+
+		return obj;
+    }
+	private void generateUID() {
+		this.uid = ID_COUNTER++;
+	}
 }

@@ -1,14 +1,14 @@
 package game.components;
 
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import game.components.enums.BodyType;
 
-public class Rigidbody extends Component{
-	private boolean active = false;
-	private int collider_type = 1;
-	private float friction = 0.3f;
-	public Vector3f velocity = new Vector3f();
+public class Rigidbody extends Component {
+	private Vector2f velocity = new Vector2f();
+	private float mass = 0;
+	private BodyType bodyType = BodyType.Dynamic;
 
-	
 }
