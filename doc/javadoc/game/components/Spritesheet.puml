@@ -6,6 +6,7 @@
     class "<size:14>Spritesheet\n<size:10>game.components" as game.components.Spritesheet [[Spritesheet.html]] {
         +Spritesheet(Texture, int, int, int, int)
         +getSprite(int): Sprite
+        +size(): int
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

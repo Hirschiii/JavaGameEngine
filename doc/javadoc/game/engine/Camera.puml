@@ -5,10 +5,29 @@
 
     class "<size:14>Camera\n<size:10>game.engine" as game.engine.Camera [[Camera.html]] {
         +position: Vector2f
+        +zoom: float
         +Camera(Vector2f)
         +adjustProjection(): void
         +getViewMatrix(): Matrix4f
         +getProjectionMatrix(): Matrix4f
+        +getProjectMatrix(): Matrix4f
+        +setProjectMatrix(Matrix4f): void
+        +setViewMatrix(Matrix4f): void
+        +getInverseProjection(): Matrix4f
+        +setInverseProjection(Matrix4f): void
+        +getInverseView(): Matrix4f
+        +setInverseView(Matrix4f): void
+        +getPosition(): Vector2f
+        +setPosition(Vector2f): void
+        +getProjectionHeight(): float
+        +setProjectionHeight(float): void
+        +getZoom(): float
+        +setZoom(float): void
+        +addZoom(float): void
+        +getAspectRation(): float
+        +setAspectRation(float): void
+        +getProjectionSize(): Vector2f
+        +setProjectionSize(Vector2f): void
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

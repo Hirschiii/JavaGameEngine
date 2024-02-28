@@ -4,6 +4,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 
 import java.util.Arrays;
+import java.util.Vector;
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -13,10 +14,12 @@ public class MouseListener {
 	private static MouseListener instance;
 	private double scrollX, scrollY;
 	private double xPos, yPos, lastY, lastX;
+
+	private Vector2f worldPos, lastWorldPos;
 	private boolean mouseButtonPressed[] = new boolean[9];
 	private boolean isDragging;
 
-    private int mouseButtonDown = 0;
+	private int mouseButtonDown = 0;
 
 	private Vector2f gameViewportPos = new Vector2f();
 	private Vector2f gameViewportSize = new Vector2f();
@@ -28,22 +31,20 @@ public class MouseListener {
 		this.yPos = 0.0;
 		this.lastX = 0.0;
 		this.lastY = 0.0;
-
-		// this.gameViewportSize = new Vector2f(Window.getWidth(), Window.getHeight());
-		// this.gameViewportPos = new Vector2f(0, 0);
 	}
 
-    public static void clear() {
-        get().scrollX = 0.0;
-        get().scrollY = 0.0;
-        get().xPos = 0.0;
-        get().yPos = 0.0;
-        get().lastX = 0.0;
-        get().lastY = 0.0;
-        get().mouseButtonDown = 0;
-        get().isDragging = false;
-        Arrays.fill(get().mouseButtonPressed, false);
-    }
+	public static void clear() {
+		get().scrollX = 0.0;
+		get().scrollY = 0.0;
+		get().xPos = 0.0;
+		get().yPos = 0.0;
+		get().lastX = 0.0;
+		get().lastY = 0.0;
+		get().mouseButtonDown = 0;
+		get().isDragging = false;
+
+		Arrays.fill(get().mouseButtonPressed, false);
+	}
 
 	public static MouseListener get() {
 		if (MouseListener.instance == null) {
@@ -55,22 +56,29 @@ public class MouseListener {
 	}
 
 	public static void mousePosCallback(long window, double xPos, double yPos) {
-		// System.out.println("set xPos: "+ xPos);
-		// System.out.println("set yPos: "+ yPos);
+		if (get().mouseButtonDown > 0) {
+			get().isDragging = true;
+		}
+		get().lastWorldPos = get().worldPos;
+		calcWorld();
+
+
 		get().lastX = get().xPos;
 		get().lastY = get().yPos;
-
 		get().xPos = xPos;
 		get().yPos = yPos;
-		get().isDragging = get().mouseButtonPressed[0] || get().mouseButtonPressed[1] || get().mouseButtonPressed[2];
 	}
 
 	public static void mouseButtonCallback(long window, int button, int action, int mod) {
 		if (action == GLFW_PRESS) {
+			get().mouseButtonDown++;
+
 			if (button < get().mouseButtonPressed.length) {
 				get().mouseButtonPressed[button] = true;
 			}
 		} else if (action == GLFW_RELEASE) {
+			get().mouseButtonDown--;
+
 			if (button < get().mouseButtonPressed.length) {
 				get().mouseButtonPressed[button] = false;
 				get().isDragging = false;
@@ -86,6 +94,9 @@ public class MouseListener {
 	public static void endFrame() {
 		get().scrollX = 0;
 		get().scrollY = 0;
+		get().lastWorldPos = get().worldPos;
+		get().lastX = get().xPos;
+		get().lastY = get().yPos;
 	}
 
 	public static float getX() {
@@ -211,16 +222,29 @@ public class MouseListener {
 		return new Vector2f(currentX, currentY);
 	}
 
+	public static float getWorldDX() {
+		float d = get().lastWorldPos.x - get().worldPos.x;
+		return d;
+	}
+
+	public static float getWorldDY() {
+		float d = get().lastWorldPos.y - get().worldPos.y;
+		return d;
+	}
 
 	public static float getWorldX() {
-		return getWorld().x;
+		return get().worldPos.x;
 	}
 
 	public static float getWorldY() {
-		return getWorld().y;
+		return get().worldPos.y;
 	}
 
 	public static Vector2f getWorld() {
+		return get().worldPos;
+	}
+
+	private static void calcWorld() {
 		float currentX = getX() - get().gameViewportPos.x;
 		currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
 
@@ -233,7 +257,7 @@ public class MouseListener {
 		Matrix4f inverseProjection = new Matrix4f(camera.getInverseProjection());
 		tmp.mul(inverseView.mul(inverseProjection));
 
-		return new Vector2f(tmp.x, tmp.y);
+		get().worldPos = new Vector2f(tmp.x, tmp.y);
 	}
 
 }

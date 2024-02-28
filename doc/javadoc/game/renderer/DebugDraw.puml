@@ -1,0 +1,16 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>DebugDraw\n<size:10>game.renderer" as game.renderer.DebugDraw [[DebugDraw.html]] {
+        {static} +start(): void
+        {static} +beginFrame(): void
+        {static} +draw(): void
+        {static} +addLine2D(Vector2f, Vector2f): void
+        {static} +addLine2D(Vector2f, Vector2f, Vector3f): void
+        {static} +addLine2D(Vector2f, Vector2f, Vector3f, int): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

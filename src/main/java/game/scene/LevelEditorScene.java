@@ -5,9 +5,11 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 import game.components.EditorCamera;
+import game.components.GizmoSystem;
 import game.components.GridLines;
 import game.components.MouseControls;
 import game.components.Rigidbody;
+import game.components.ScaleGizmo;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
@@ -29,7 +31,7 @@ public class LevelEditorScene extends Scene {
 
 	private Spritesheet sprites;
 
-	GameObject levelEditorStuff = new GameObject("LevelEditor", new Transform(new Vector2f()), 0);
+	GameObject levelEditorStuff = new GameObject("LevelEditor");
 
 	public LevelEditorScene() {
 
@@ -48,8 +50,7 @@ public class LevelEditorScene extends Scene {
 		levelEditorStuff.addComponent(new MouseControls());
 		levelEditorStuff.addComponent(new GridLines());
 		levelEditorStuff.addComponent(new EditorCamera(this.camera));
-		levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
-					Window.getImguiLayer().getPropertiesWindow()));
+		levelEditorStuff.addComponent(new GizmoSystem(gizmos));
 
 		levelEditorStuff.start();
 
@@ -92,7 +93,7 @@ public class LevelEditorScene extends Scene {
 		AssetPool.addSpritesheet("assets/utils/gizmos.png",
 				new Spritesheet(
 					AssetPool.getTexture("assets/utils/gizmos.png"),
-					24, 48, 2, 0));
+					24, 48, 3, 0));
 
 		for (GameObject g : gameObjects) {
 			if (g.getComponent(SpriteRenderer.class) != null) {

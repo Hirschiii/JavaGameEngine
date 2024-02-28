@@ -1,0 +1,17 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>MouseControls\n<size:10>game.components" as game.components.MouseControls [[MouseControls.html]] {
+        +pickupObject(GameObject): void
+        +place(): void
+        +update(float): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.MouseControls
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

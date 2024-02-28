@@ -1,0 +1,12 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>GameViewWindow\n<size:10>game.editor" as game.editor.GameViewWindow [[GameViewWindow.html]] {
+        +imgui(): void
+        +getWantCaptureMouse(): boolean
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

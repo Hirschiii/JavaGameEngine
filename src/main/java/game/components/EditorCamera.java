@@ -3,7 +3,7 @@ package game.components;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_COMMA;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_KP_DECIMAL;
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
-import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_MIDDLE;
+import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_RIGHT;
 
 import org.joml.Vector2f;
 
@@ -29,11 +29,11 @@ public class EditorCamera extends Component {
 
 	@Override
 	public void update(float dt) {
-		if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE) && dragDebounce > 0) {
+		if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT) && dragDebounce > 0) {
 			this.clickOrigin = MouseListener.getWorld();
 			dragDebounce -= dt;
 			return;
-		} else if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE)) {
+		} else if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
 			Vector2f mousePos = new Vector2f(MouseListener.getWorld());
 			Vector2f delta = new Vector2f(mousePos).sub(this.clickOrigin);
 
@@ -41,7 +41,7 @@ public class EditorCamera extends Component {
 			this.clickOrigin.lerp(mousePos, dt);
 		}
 
-		if (dragDebounce <= 0.0f && !MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE)) {
+		if (dragDebounce <= 0.0f && !MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
 			this.dragDebounce = 0.32f;
 		}
 

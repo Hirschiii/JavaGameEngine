@@ -8,6 +8,11 @@
         +getTexCoords(): Vector2f[]
         +setTexture(Texture): void
         +setTexCoords(Vector2f[]): void
+        +getWidth(): float
+        +setWidth(float): void
+        +getHeight(): float
+        +setHeight(float): void
+        +getTexId(): int
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

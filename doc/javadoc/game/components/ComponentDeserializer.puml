@@ -1,0 +1,22 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>ComponentDeserializer\n<size:10>game.components" as game.components.ComponentDeserializer [[ComponentDeserializer.html]] {
+        +deserialize(JsonElement, Type, JsonDeserializationContext): Component
+        +serialize(Component, Type, JsonSerializationContext): JsonElement
+    }
+
+    interface "<size:14>JsonSerializer\n<size:10>com.google.gson" as com.google.gson.JsonSerializer<Component> {
+        {abstract} +serialize(Component, Type, JsonSerializationContext): JsonElement
+    }
+    interface "<size:14>JsonDeserializer\n<size:10>com.google.gson" as com.google.gson.JsonDeserializer<Component> {
+        {abstract} +deserialize(JsonElement, Type, JsonDeserializationContext): Component
+    }
+
+    com.google.gson.JsonSerializer <|.. game.components.ComponentDeserializer
+    com.google.gson.JsonDeserializer <|.. game.components.ComponentDeserializer
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

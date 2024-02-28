@@ -4,11 +4,19 @@
     hide empty methods
 
     class "<size:14>Texture\n<size:10>game.renderer" as game.renderer.Texture [[Texture.html]] {
+        +Texture()
+        +Texture(int, int)
         +init(String): void
         +bind(): void
         +unbind(): void
         +getWidth(): int
         +getHeight(): int
+        +getFilepath(): String
+        +setFilepath(String): void
+        +getTexID(): int
+        +setTexID(int): void
+        +setWidth(int): void
+        +setHeight(int): void
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

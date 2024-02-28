@@ -2,11 +2,30 @@
     namespace game.renderer {
 
         class Texture [[Texture.html]] {
+            +Texture()
+            +Texture(int, int)
             +init(String): void
             +bind(): void
             +unbind(): void
             +getWidth(): int
             +getHeight(): int
+            +getFilepath(): String
+            +setFilepath(String): void
+            +getTexID(): int
+            +setTexID(int): void
+            +setWidth(int): void
+            +setHeight(int): void
+        }
+
+        class Line2D [[Line2D.html]] {
+            +Line2D(Vector2f, Vector2f, Vector3f, int)
+            +beginFrame(): int
+            +getFrom(): Vector2f
+            +setFrom(Vector2f): void
+            +getTo(): Vector2f
+            +setTo(Vector2f): void
+            +getColor(): Vector3f
+            +setColor(Vector3f): void
         }
 
         class Shader [[Shader.html]] {
@@ -25,8 +44,37 @@
             +uploadIntArray(String, int[]): void
         }
 
+        class PickingTexture [[PickingTexture.html]] {
+            +PickingTexture(int, int)
+            +init(int, int): boolean
+            +enableWriting(): void
+            +disableWriting(): void
+            +readPixel(int, int): int
+            +readPixels(Vector2i, Vector2i): float[]
+        }
+
+        class Framebuffer [[Framebuffer.html]] {
+            +Framebuffer(int, int)
+            +readPixel(int, int): float[]
+            +bind(): void
+            +unbind(): void
+            +getFboID(): int
+            +getTextureID(): int
+        }
+
+        class DebugDraw [[DebugDraw.html]] {
+            {static} +start(): void
+            {static} +beginFrame(): void
+            {static} +draw(): void
+            {static} +addLine2D(Vector2f, Vector2f): void
+            {static} +addLine2D(Vector2f, Vector2f, Vector3f): void
+            {static} +addLine2D(Vector2f, Vector2f, Vector3f, int): void
+        }
+
         class Renderer [[Renderer.html]] {
             +add(GameObject): void
+            {static} +bindShader(Shader): void
+            {static} +getBoundShader(): Shader
             +render(): void
         }
 
@@ -42,6 +90,7 @@
             +compareTo(RenderBatch): int
         }
 
+        Framebuffer --> Texture: texture
         java.lang.Comparable <|.. RenderBatch
     }
 

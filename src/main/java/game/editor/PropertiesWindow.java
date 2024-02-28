@@ -2,9 +2,15 @@ package game.editor;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
+import game.components.Gizmo;
+import game.components.NonPickable;
+import game.components.TranslateGizmo;
 import game.engine.GameObject;
 import game.engine.MouseListener;
 import game.renderer.PickingTexture;
+import game.scene.LevelEditorScene;
 import game.scene.Scene;
 import imgui.ImGui;
 
@@ -26,7 +32,13 @@ public class PropertiesWindow {
 			int y = (int) MouseListener.getScreenY();
 
 			int gameObjectId = pickingTexture.readPixel(x, y);
-			activeGameObject = currentScene.getGameObject(gameObjectId);
+			GameObject go = currentScene.getGameObject(gameObjectId);
+
+			if (go != null && go.getComponent(NonPickable.class) == null) {
+				activeGameObject = go;
+			} else if(pickingTexture == null  && !MouseListener.isDragging()) {
+				activeGameObject = null;
+			}
 			this.debounce = 0.2f;
 		}
 
@@ -52,4 +64,5 @@ public class PropertiesWindow {
 	public GameObject getActiveGameObject() {
 		return this.activeGameObject;
 	}
+
 }

@@ -1,0 +1,17 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Framebuffer\n<size:10>game.renderer" as game.renderer.Framebuffer [[Framebuffer.html]] {
+        +Framebuffer(int, int)
+        +readPixel(int, int): float[]
+        +bind(): void
+        +unbind(): void
+        +getFboID(): int
+        +getTexture(): Texture
+        +getTextureID(): int
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

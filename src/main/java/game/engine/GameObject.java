@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.components.Component;
+import imgui.ImGui;
 
 public class GameObject {
 	private boolean isActiveGameObject = false;
@@ -24,17 +25,13 @@ public class GameObject {
 	private List<Component> components;
 
 
-	public Transform transform;
-
-	private int zIndex;
+	public transient Transform transform;
 
 	private int uid = -1;
 
-	public GameObject(String name, Transform transform, int zIndex) {
+	public GameObject(String name) {
 		this.name = name;
-		this.zIndex = zIndex;
 		this.components = new ArrayList<>();
-		this.transform = transform;
 
 		this.uid = ID_COUNTER++;
 
@@ -85,13 +82,10 @@ public class GameObject {
 	}
 
 	public void imgui() {
-		for (Component c : components) {
-			c.imgui();
-		}
-	}
-
-	public int zIndex() {
-		return this.zIndex;
+        for (Component c : components) {
+            if (ImGui.collapsingHeader(c.getClass().getSimpleName()))
+                c.imgui();
+        }
 	}
 
 	public String getName() {
@@ -116,14 +110,6 @@ public class GameObject {
 
 	public void setTransform(Transform transform) {
 		this.transform = transform;
-	}
-
-	public int getzIndex() {
-		return zIndex;
-	}
-
-	public void setzIndex(int zIndex) {
-		this.zIndex = zIndex;
 	}
 
 	public int getUid() {

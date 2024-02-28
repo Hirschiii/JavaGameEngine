@@ -9,35 +9,27 @@
         +b: float
         +a: float
         {static} +get(): Window
-        {static} +getScene(): Scene
         {static} +changeScene(int): void
-        +run(): void
-        +init(): void
-        +loop(): void
         {static} +getWidth(): int
         {static} +getHeight(): int
         {static} +setWidth(int): void
         {static} +setHeight(int): void
-        +getTitle(): String
-        +setTitle(String): void
-        +getGlfwWindow(): long
-        +setGlfwWindow(long): void
         {static} +getWindow(): Window
         {static} +setWindow(Window): void
-        {static} +getCurrenScene(): Scene
+        {static} +getScene(): Scene
         {static} +setCurrenScene(Scene): void
-        +getR(): float
-        +setR(float): void
-        +getG(): float
-        +setG(float): void
-        +getB(): float
-        +setB(float): void
-        +getA(): float
-        +setA(float): void
+        +run(): void
+        +init(): void
+        +loop(): void
+        +getTitle(): String
+        +getGlfwWindow(): long
         +isFadeToBlack(): boolean
         +setFadeToBlack(boolean): void
-        +getImguiLayer(): ImGuiLayer
+        {static} +getImguiLayer(): ImGuiLayer
         +setImguiLayer(ImGuiLayer): void
+        {static} +getFramebuffer(): Framebuffer
+        {static} +getCurrenScene(): Scene
+        {static} +getTargetAspectRatio(): float
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
