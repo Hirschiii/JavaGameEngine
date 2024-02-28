@@ -5,6 +5,7 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 import game.components.EditorCamera;
+import game.components.GizmoSystem;
 import game.components.GridLines;
 import game.components.MouseControls;
 import game.components.Rigidbody;
@@ -49,10 +50,7 @@ public class LevelEditorScene extends Scene {
 		levelEditorStuff.addComponent(new MouseControls());
 		levelEditorStuff.addComponent(new GridLines());
 		levelEditorStuff.addComponent(new EditorCamera(this.camera));
-		levelEditorStuff.addComponent(new TranslateGizmo(gizmos.getSprite(1),
-					Window.getImguiLayer().getPropertiesWindow()));
-		levelEditorStuff.addComponent(new ScaleGizmo(gizmos.getSprite(2),
-					Window.getImguiLayer().getPropertiesWindow()));
+		levelEditorStuff.addComponent(new GizmoSystem(gizmos));
 
 		levelEditorStuff.start();
 

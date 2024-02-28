@@ -12,6 +12,8 @@ import game.engine.Prefabs;
 import game.engine.Window;
 
 public class Gizmo extends Component {
+	private boolean using = false;
+
 	private Vector4f xAxisColor = new Vector4f(1, 0, 0, 1);
 	private Vector4f xAxisColorHover = new Vector4f(0.5f, 0, 0, 1);
 
@@ -69,6 +71,7 @@ public class Gizmo extends Component {
 
 	@Override
 	public void update(float dt) {
+		if (!using) return;
 
         this.activeGameObject = this.propertiesWindow.getActiveGameObject();
         if (this.activeGameObject != null) {
@@ -135,5 +138,13 @@ public class Gizmo extends Component {
 		}
 		this.yAxisSprite.setColor(yAxisColor);
 		return false;
+	}
+
+	public void setUsing() {
+		this.using = true;
+	}
+	public void setNotUsing() {
+		this.setInactive();
+		this.using = false;
 	}
 }
