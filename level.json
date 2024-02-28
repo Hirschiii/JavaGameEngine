@@ -8,15 +8,15 @@
         "type": "game.engine.Transform",
         "properties": {
           "position": {
-            "x": 230.643,
-            "y": 205.26
+            "x": 89.32898,
+            "y": 267.31357
           },
           "scale": {
-            "x": 297.5546,
-            "y": 166.66695
+            "x": 32.0,
+            "y": 32.0
           },
-          "rotation": 6.7,
-          "zIndex": 0,
+          "rotation": 20.5,
+          "zIndex": 200,
           "uid": 18
         }
       },
@@ -71,7 +71,7 @@
         "type": "game.engine.Transform",
         "properties": {
           "position": {
-            "x": 384.0,
+            "x": 222.08997,
             "y": 235.10211
           },
           "scale": {
@@ -134,7 +134,7 @@
         "type": "game.engine.Transform",
         "properties": {
           "position": {
-            "x": 291.76093,
+            "x": 377.77875,
             "y": 158.8995
           },
           "scale": {
