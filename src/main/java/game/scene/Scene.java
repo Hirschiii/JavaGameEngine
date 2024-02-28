@@ -23,9 +23,9 @@ import imgui.ImGui;
 
 public abstract class Scene {
 
-	protected Renderer renderer = new Renderer();
-	protected Camera camera;
-	protected boolean loadedLevel = false;
+	private Renderer renderer = new Renderer();
+	private Camera camera;
+	private boolean loadedLevel = false;
 
 	private boolean isRunning = false;
 

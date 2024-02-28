@@ -50,6 +50,10 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
 import game.renderer.DebugDraw;
+import game.observers.EventSystem;
+import game.observers.Observer;
+import game.observers.events.Event;
+import game.observers.events.EventType;
 import game.renderer.*;
 import game.renderer.Framebuffer;
 import game.renderer.PickingTexture;
@@ -60,7 +64,7 @@ import game.scene.Scene;
 
 import game.util.*;
 
-public class Window {
+public class Window implements Observer {
 	private static Window window = null;
 
 	private Framebuffer framebuffer;
@@ -151,13 +155,8 @@ public class Window {
 	private Window() {
 		this.height[0] = 1080;
 		this.width[0] = 1920;
-		this.title = "Hello World";
-
-		this.r = 1;
-		this.g = 1;
-		this.b = 1;
-		this.a = 1;
-
+		this.title = "The Last Package";
+		EventSystem.addObserver(this);
 	}
 
 	public void run() {
@@ -280,7 +279,7 @@ public class Window {
 
 			this.framebuffer.bind();
 
-			glClearColor(r, g, b, a);
+			glClearColor(1, 1, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			if (dt >= 0) {
@@ -341,5 +340,14 @@ public class Window {
 
 	public static float getTargetAspectRatio() {
 		return getCurrenScene().camera().getAspectRation();
+	}
+
+	@Override
+	public void onNotify(GameObject object, Event event) {
+		if(event.type == EventType.GameEngineStartPlay) {
+			System.out.println("Starting Play");
+
+		} else if(event.type == EventType.GameEngineStopPlay)
+			System.out.println("Stop Play");
 	}
 }
