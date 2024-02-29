@@ -4,6 +4,9 @@ import org.joml.Vector2f;
 
 import game.engine.MouseListener;
 import game.engine.Window;
+import game.observers.EventSystem;
+import game.observers.events.Event;
+import game.observers.events.EventType;
 import imgui.ImGui;
 import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
@@ -21,11 +24,11 @@ public class GameViewWindow {
         ImGui.beginMenuBar();
         if (ImGui.menuItem("Play", "", isPlaying, !isPlaying)) {
             isPlaying = true;
-            // EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
+            EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
         }
         if (ImGui.menuItem("Stop", "", !isPlaying, isPlaying)) {
             isPlaying = false;
-            // EventSystem.notify(null, new Event(EventType.GameEngineStopPlay));
+            EventSystem.notify(null, new Event(EventType.GameEngineStopPlay));
         }
         ImGui.endMenuBar();
 

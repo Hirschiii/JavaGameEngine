@@ -28,6 +28,7 @@ import static org.lwjgl.glfw.GLFW.glfwSetScrollCallback;
 import java.io.File;
 
 import game.editor.GameViewWindow;
+import game.editor.MenuBar;
 import game.editor.PropertiesWindow;
 import game.scene.Scene;
 import game.renderer.*;
@@ -54,6 +55,7 @@ public class ImGuiLayer {
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
     private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
     private GameViewWindow gameViewWindow;
+	private MenuBar menuBar;
 
 	private PropertiesWindow propertiesWindow;
 
@@ -63,7 +65,7 @@ public class ImGuiLayer {
         this.gameViewWindow = new GameViewWindow();
 		this.propertiesWindow = new PropertiesWindow(pickingTexture);
         // this.propertiesWindow = new PropertiesWindow(pickingTexture);
-        // this.menuBar = new MenuBar();
+        this.menuBar = new MenuBar();
         // this.sceneHeirarchyWindow = new SceneHierarchyWindow();
     }
 
@@ -219,6 +221,7 @@ public class ImGuiLayer {
         gameViewWindow.imgui();
 		propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
+		menuBar.imgui();
         // sceneHeirarchyWindow.imgui();
 		// ImGui.showDemoWindow();
 
