@@ -24,6 +24,12 @@ import static org.lwjgl.glfw.GLFW.glfwSetClipboardString;
 import static org.lwjgl.glfw.GLFW.glfwSetKeyCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetMouseButtonCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetScrollCallback;
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.glClear;
+import static org.lwjgl.opengl.GL11.glClearColor;
+import static org.lwjgl.opengl.GL11.glViewport;
+import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER;
+import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 
 import java.io.File;
 
@@ -64,7 +70,6 @@ public class ImGuiLayer {
         this.glfwWindow = glfwWindow;
         this.gameViewWindow = new GameViewWindow();
 		this.propertiesWindow = new PropertiesWindow(pickingTexture);
-        // this.propertiesWindow = new PropertiesWindow(pickingTexture);
         this.menuBar = new MenuBar();
         // this.sceneHeirarchyWindow = new SceneHierarchyWindow();
     }
@@ -221,7 +226,7 @@ public class ImGuiLayer {
         gameViewWindow.imgui();
 		propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
-		menuBar.imgui();
+		// menuBar.imgui();
         // sceneHeirarchyWindow.imgui();
 		// ImGui.showDemoWindow();
 
@@ -234,10 +239,10 @@ public class ImGuiLayer {
     }
 
     private void endFrame() {
-        // glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        // glViewport(0, 0, Window.getWidth(), Window.getHeight());
-        // glClearColor(0, 0, 0, 1);
-        // glClear(GL_COLOR_BUFFER_BIT);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, Window.getWidth(), Window.getHeight());
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
 
         // After Dear ImGui prepared a draw data, we use it in the LWJGL3 renderer.
         // At that moment ImGui will be rendered to the current OpenGL context.
@@ -259,12 +264,12 @@ public class ImGuiLayer {
     private void setupDockspace() {
         int windowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking;
 
-        ImGuiViewport mainViewport = ImGui.getMainViewport();
-        ImGui.setNextWindowPos(mainViewport.getWorkPosX(), mainViewport.getWorkPosY());
-        ImGui.setNextWindowSize(mainViewport.getWorkSizeX(), mainViewport.getWorkSizeY());
-        ImGui.setNextWindowViewport(mainViewport.getID());
-        ImGui.setNextWindowPos(0.0f, 0.0f);
-        ImGui.setNextWindowSize(Window.getWidth(), Window.getHeight());
+        // ImGuiViewport mainViewport = ImGui.getMainViewport();
+        // ImGui.setNextWindowPos(mainViewport.getWorkPosX(), mainViewport.getWorkPosY());
+        // ImGui.setNextWindowSize(mainViewport.getWorkSizeX(), mainViewport.getWorkSizeY());
+        // ImGui.setNextWindowViewport(mainViewport.getID());
+        // ImGui.setNextWindowPos(0.0f, 0.0f);
+        // ImGui.setNextWindowSize(Window.getWidth(), Window.getHeight());
         ImGui.pushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
         ImGui.pushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
         windowFlags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse |
@@ -277,7 +282,7 @@ public class ImGuiLayer {
         // Dockspace
         ImGui.dockSpace(ImGui.getID("Dockspace"));
 
-        // menuBar.imgui();
+        menuBar.imgui();
 
         ImGui.end();
     }
