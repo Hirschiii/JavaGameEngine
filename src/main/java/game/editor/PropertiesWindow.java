@@ -35,7 +35,7 @@ public class PropertiesWindow {
 			int gameObjectId = pickingTexture.readPixel(x, y);
 			GameObject go = currentScene.getGameObject(gameObjectId);
 
-			if (go != null && go.getComponent(NonPickable.class) == null) {
+			if (go != null && go.getComponent(NonPickable.class) == null && !MouseListener.isDragging()) {
 				activeGameObject = go;
 			} else if (pickingTexture == null && !MouseListener.isDragging()) {
 				activeGameObject = null;
