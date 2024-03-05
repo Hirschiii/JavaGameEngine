@@ -65,9 +65,13 @@ import game.util.*;
 public class Window implements Observer {
 	private static Window window = null;
 
-	private Framebuffer framebuffer;
+	// TODO Rename framebuffers
+	private Framebuffer framebuffer_before;
+	private Framebuffer framebuffer_ShaderApplied;
 	private Framebuffer entityIdFramebuffer;
 	private PickingTexture pickingTexture;
+
+	private static float startingTime;
 
 	public static Window get() {
 		if (Window.window == null) {
@@ -221,8 +225,8 @@ public class Window implements Observer {
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
 		// make vars for x and y
-		this.entityIdFramebuffer = new Framebuffer(2560, 1600);
-		this.framebuffer = new Framebuffer(2560, 1600);
+		this.framebuffer_before = new Framebuffer(2560, 1600);
+		this.framebuffer_ShaderApplied = new Framebuffer(2560, 1600);
 		this.pickingTexture = new PickingTexture(2560, 1660);
 
 		this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
@@ -238,10 +242,12 @@ public class Window implements Observer {
 	public void loop() {
 		getScene().camera().adjustProjection();
 		float beginTime = (float) glfwGetTime();
+		startingTime = (float) glfwGetTime();
 		float endTime;
 		float dt = -1.0f;
 
 		Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+		Shader vhsShader = AssetPool.getShader("assets/shaders/vhs.glsl");
 		Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
 		while (!glfwWindowShouldClose(glfwWindow)) {
@@ -268,7 +274,7 @@ public class Window implements Observer {
 			// Redner Pass 2 Actual Render
 			DebugDraw.beginFrame();
 
-			this.framebuffer.bind();
+			this.framebuffer_before.bind();
 
 			glClearColor(1, 1, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
@@ -284,7 +290,17 @@ public class Window implements Observer {
 
 				DebugDraw.draw();
 			}
-			this.framebuffer.unbind();
+			this.framebuffer_before.unbind();
+
+			this.framebuffer_ShaderApplied.bind();
+
+			glClearColor(1, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			Renderer.bindShader(vhsShader);
+
+			this.framebuffer_before.getTextureID();
+
+			this.framebuffer_ShaderApplied.unbind();
 
 			this.imguiLayer.update(dt, currenScene);
 
@@ -324,7 +340,7 @@ public class Window implements Observer {
 	}
 
 	public static Framebuffer getFramebuffer() {
-		return get().framebuffer;
+		return get().framebuffer_ShaderApplied;
 		// return get().entityIdFramebuffer;
 	}
 
@@ -334,6 +350,11 @@ public class Window implements Observer {
 
 	public static float getTargetAspectRatio() {
 		return getCurrenScene().camera().getAspectRation();
+	}
+
+	public static float getCurrentTime() {
+		float currenTime = (float) glfwGetTime();
+		return currenTime - startingTime;
 	}
 
 	@Override
