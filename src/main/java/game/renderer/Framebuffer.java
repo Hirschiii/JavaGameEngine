@@ -1,76 +1,130 @@
 package game.renderer;
 
-import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
 import static org.lwjgl.opengl.GL11.GL_RGB;
+import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
+import static org.lwjgl.opengl.GL11.glBindTexture;
+import static org.lwjgl.opengl.GL11.glBlendFunc;
+import static org.lwjgl.opengl.GL11.glDrawArrays;
 import static org.lwjgl.opengl.GL11.glEnable;
-import static org.lwjgl.opengl.GL11.glGenTextures;
 import static org.lwjgl.opengl.GL11.glReadBuffer;
 import static org.lwjgl.opengl.GL11.glReadPixels;
+import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
+import static org.lwjgl.opengl.GL15.glBindBuffer;
+import static org.lwjgl.opengl.GL15.glGenBuffers;
 import static org.lwjgl.opengl.GL20.glUseProgram;
 import static org.lwjgl.opengl.GL30.GL_COLOR_ATTACHMENT0;
 import static org.lwjgl.opengl.GL30.GL_DEPTH_ATTACHMENT;
 import static org.lwjgl.opengl.GL30.GL_DEPTH_COMPONENT32F;
 import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER;
 import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER_COMPLETE;
-import static org.lwjgl.opengl.GL30.GL_READ_FRAMEBUFFER;
 import static org.lwjgl.opengl.GL30.GL_RENDERBUFFER;
-import static org.lwjgl.opengl.GL30.GL_RGBA32F;
 import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 import static org.lwjgl.opengl.GL30.glBindRenderbuffer;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glCheckFramebufferStatus;
 import static org.lwjgl.opengl.GL30.glFramebufferRenderbuffer;
 import static org.lwjgl.opengl.GL30.glFramebufferTexture2D;
-import static org.lwjgl.opengl.GL30.glFramebufferTextureLayer;
 import static org.lwjgl.opengl.GL30.glGenFramebuffers;
 import static org.lwjgl.opengl.GL30.glGenRenderbuffers;
+import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 import static org.lwjgl.opengl.GL30.glRenderbufferStorage;
 
-import java.nio.ByteBuffer;
+import static org.lwjgl.opengl.GL11.GL_FLOAT;
+import static org.lwjgl.opengl.GL11.GL_LINE;
+import static org.lwjgl.opengl.GL11.GL_LINES;
+import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.glDisable;
+import static org.lwjgl.opengl.GL11.glDrawArrays;
+import static org.lwjgl.opengl.GL11.glLineWidth;
+import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
+import static org.lwjgl.opengl.GL15.GL_DYNAMIC_DRAW;
+import static org.lwjgl.opengl.GL15.GL_STATIC_DRAW;
+import static org.lwjgl.opengl.GL15.glBindBuffer;
+import static org.lwjgl.opengl.GL15.glBufferData;
+import static org.lwjgl.opengl.GL15.glBufferSubData;
+import static org.lwjgl.opengl.GL15.glGenBuffers;
+import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
+import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
+import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.opengl.GL30.glGenVertexArrays;
+
+import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
-import game.util.*;
 
 public class Framebuffer {
-	private int fboID = 0;
-	private Texture texture = null;
+	private static final int GL_BLEND = 0;
+	private int fboID;
+	private Texture texture;
+	private int quadVAO, quadVBO;
+	private Shader screenShader; // This needs to be implemented
 
-	float[] quadVertices = {
-			// positions // texCoords
-			-1.0f, 1.0f, 0.0f, 1.0f,
-			-1.0f, -1.0f, 0.0f, 0.0f,
-			1.0f, -1.0f, 1.0f, 0.0f,
-
-			-1.0f, 1.0f, 0.0f, 1.0f,
-			1.0f, -1.0f, 1.0f, 0.0f,
-			1.0f, 1.0f, 1.0f, 1.0f
-	};
-
-	public Framebuffer(int width, int height) {
-		// Same as VBO
-
+	public Framebuffer(int width, int height, Shader shader) {
+		// Initialize FBO and texture as before
 		fboID = glGenFramebuffers();
 		glBindFramebuffer(GL_FRAMEBUFFER, fboID);
-
-		// Create Texture, render data to, attach to fb
 		this.texture = new Texture(width, height);
-		// Change COLOR_ATTACHMENT0 for heightmap etc (More infos)
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this.texture.getTexID(), 0);
-
-		// Create Render Buffer with Depth info
 		int rboID = glGenRenderbuffers();
-
 		glBindRenderbuffer(GL_RENDERBUFFER, rboID);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT32F, width, height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rboID);
-
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-			assert false : "Error: FramBuffer not complete";
+			throw new RuntimeException("Framebuffer is not complete");
 		}
-
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+		// Setup full-screen quad
+		setupFullscreenQuad();
+
+		// Initialize the screen shader
+		this.screenShader = shader;
+	}
+
+	private void setupFullscreenQuad() {
+		float[] quadVertices = {
+				// positions // texCoords
+				-1.0f, 1.0f, 0.0f, 1.0f,
+				-1.0f, -1.0f, 0.0f, 0.0f,
+				1.0f, -1.0f, 1.0f, 0.0f,
+				-1.0f, 1.0f, 0.0f, 1.0f,
+				1.0f, 1.0f, 1.0f, 1.0f,
+				1.0f, -1.0f, 1.0f, 0.0f
+		};
+
+		quadVAO = glGenVertexArrays();
+		glBindVertexArray(quadVAO);
+
+		quadVBO = glGenBuffers();
+		glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+		FloatBuffer quadBuffer = BufferUtils.createFloatBuffer(quadVertices.length);
+		quadBuffer.put(quadVertices).flip();
+		glBufferData(GL_ARRAY_BUFFER, quadBuffer, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0); // Position attribute
+		glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * Float.BYTES, 0L);
+
+		glEnableVertexAttribArray(1); // Texture coordinate attribute
+		glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * Float.BYTES, 2 * Float.BYTES);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
+	}
+
+	public void renderToScreen() {
+		// glUseProgram(screenShader.getProgramID());
+		screenShader.use();
+		glBindVertexArray(quadVAO);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glBindTexture(GL_TEXTURE_2D, texture.getTexID());
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glBindVertexArray(0);
+		glUseProgram(0);
 	}
 
 	public float[] readPixel(int x, int y) {
@@ -84,16 +138,14 @@ public class Framebuffer {
 		return pixel;
 	}
 
-  //   public void renderToScreen() {
-		// Shader vhsShader = AssetPool.getShader("/assets/shader/vhsShader.glsl");
-  //       vhsShader.bind(); // Activate the shader program
-  //       glBindVertexArray(texture.); // Bind the VAO for the quad
-  //       glEnable(GL_TEXTURE_2D);
-  //       glBindTexture(GL_TEXTURE_2D, texture.getTexID()); // Bind the framebuffer texture
-  //       glDrawArrays(GL_TRIANGLES, 0, 6); // Draw the quad
-  //       glBindVertexArray(0); // Unbind the VAO
-  //       screenShader.unbind(); // Unbind the shader program
-  //   }
+	// public void renderToScreen() {
+	// Shader vhsShader = AssetPool.getShader("/assets/shader/vhsShader.glsl");
+	// vhsShader.use(); // Activate the shader program
+	// texture.bind();
+	//
+	// // glDrawArrays(GL_TRIANGLES, 0, 6); // Draw the quad
+	// vhsShader.detach(); // Unbind the shader program
+	// }
 
 	public void bind() {
 		glBindFramebuffer(GL_FRAMEBUFFER, fboID);

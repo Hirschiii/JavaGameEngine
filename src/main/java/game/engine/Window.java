@@ -224,9 +224,13 @@ public class Window implements Observer {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
+		Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+		Shader vhsShader = AssetPool.getShader("assets/shaders/vhs.glsl");
+		Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+
 		// make vars for x and y
-		this.framebuffer_before = new Framebuffer(2560, 1600);
-		this.framebuffer_ShaderApplied = new Framebuffer(2560, 1600);
+		this.framebuffer_before = new Framebuffer(2560, 1600, defaultShader);
+		this.framebuffer_ShaderApplied = new Framebuffer(2560, 1600, vhsShader);
 		this.pickingTexture = new PickingTexture(2560, 1660);
 
 		this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
@@ -245,10 +249,6 @@ public class Window implements Observer {
 		startingTime = (float) glfwGetTime();
 		float endTime;
 		float dt = -1.0f;
-
-		Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
-		Shader vhsShader = AssetPool.getShader("assets/shaders/vhs.glsl");
-		Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
 		while (!glfwWindowShouldClose(glfwWindow)) {
 			// Poll Events
@@ -297,6 +297,8 @@ public class Window implements Observer {
 			glClearColor(1, 1, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			Renderer.bindShader(vhsShader);
+			// framebuffer_ShaderApplied.renderToScreen();
+			// currenScene.render();
 
 			this.framebuffer_before.getTextureID();
 
