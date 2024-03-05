@@ -292,15 +292,15 @@ public class Window implements Observer {
 			}
 			this.framebuffer_before.unbind();
 
-			this.framebuffer_ShaderApplied.bind();
-
-			glClearColor(1, 1, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-			Renderer.bindShader(vhsShader);
-
-			this.framebuffer_before.getTextureID();
-
-			this.framebuffer_ShaderApplied.unbind();
+			// this.framebuffer_ShaderApplied.bind();
+			//
+			// glClearColor(1, 1, 1, 1);
+			// glClear(GL_COLOR_BUFFER_BIT);
+			// Renderer.bindShader(vhsShader);
+			//
+			// this.framebuffer_before.getTextureID();
+			//
+			// this.framebuffer_ShaderApplied.unbind();
 
 			this.imguiLayer.update(dt, currenScene);
 
@@ -340,7 +340,7 @@ public class Window implements Observer {
 	}
 
 	public static Framebuffer getFramebuffer() {
-		return get().framebuffer_ShaderApplied;
+		return get().framebuffer_before;
 		// return get().entityIdFramebuffer;
 	}
 
