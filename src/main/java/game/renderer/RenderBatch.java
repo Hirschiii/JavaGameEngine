@@ -67,7 +67,9 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
 	private int zIndex;
 
-	public RenderBatch(int maxBatchSize, int zIndex) {
+	private Renderer renderer;
+
+	public RenderBatch(int maxBatchSize, int zIndex, Renderer renderer) {
 		// shader =
 		// AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
 		// shader = AssetPool.getShader("assets/shaders/default.glsl");
@@ -83,6 +85,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
 		this.numSprites = 0;
 		this.hasRoom = true;
 		this.textures = new ArrayList<>();
+
+		this.renderer = renderer;
 	}
 
 	public void start() {
@@ -150,6 +154,12 @@ public class RenderBatch implements Comparable<RenderBatch> {
 				loadVertexProperties(i);
 				spr.setClean();
 				rebufferData = true;
+			}
+
+			if(spr.gameObject.transform.zIndex != this.zIndex) {
+				destroyIfExists(spr.gameObject);
+				renderer.add(spr.gameObject);
+				i--;
 			}
 		}
 
