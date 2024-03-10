@@ -67,7 +67,9 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
 	private int zIndex;
 
-	public RenderBatch(int maxBatchSize, int zIndex) {
+	private Renderer renderer;
+
+	public RenderBatch(int maxBatchSize, int zIndex, Renderer renderer) {
 		// shader =
 		// AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
 		// shader = AssetPool.getShader("assets/shaders/default.glsl");
@@ -83,6 +85,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
 		this.numSprites = 0;
 		this.hasRoom = true;
 		this.textures = new ArrayList<>();
+
+		this.renderer = renderer;
 	}
 
 	public void start() {
@@ -151,6 +155,12 @@ public class RenderBatch implements Comparable<RenderBatch> {
 				spr.setClean();
 				rebufferData = true;
 			}
+
+			if (spr.gameObject.transform.zIndex != this.zIndex) {
+				destroyIfExists(spr.gameObject);
+				renderer.add(spr.gameObject);
+				i--;
+			}
 		}
 
 		if (rebufferData) {
@@ -159,10 +169,13 @@ public class RenderBatch implements Comparable<RenderBatch> {
 		}
 
 		// Use shader
+		//
+		float currentTime = Window.getCurrentTime();
 
 		Shader shader = Renderer.getBoundShader();
 		shader.uploadMat4f("uProjection", Window.getScene().camera().getProjectionMatrix());
 		shader.uploadMat4f("uView", Window.getScene().camera().getViewMatrix());
+		shader.uploadFloat("time", currentTime);
 
 		for (int i = 0; i < textures.size(); i++) {
 			// First slot (0) reserved for no Texture
@@ -237,9 +250,9 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
 			Vector4f currentPos = new Vector4f(
 					sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x),
-					sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y), 
+					sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y),
 					0, 1);
-			if(isRotated) {
+			if (isRotated) {
 				currentPos = new Vector4f(xAdd, yAdd, 0, 1).mul(transformMatrix);
 			}
 
@@ -318,12 +331,12 @@ public class RenderBatch implements Comparable<RenderBatch> {
 		return Integer.compare(this.zIndex, o.zIndex());
 	}
 
-    public boolean destroyIfExists(GameObject go) {
+	public boolean destroyIfExists(GameObject go) {
 		SpriteRenderer sprite = go.getComponent(SpriteRenderer.class);
-		for (int i=0; i < numSprites; i++) {
-			if(sprites[i] == sprite) {
-				for (int j=i; j < numSprites - 1; j++) {
-					sprites[j] = sprites[j+1];
+		for (int i = 0; i < numSprites; i++) {
+			if (sprites[i] == sprite) {
+				for (int j = i; j < numSprites - 1; j++) {
+					sprites[j] = sprites[j + 1];
 					sprites[j].setDirty();
 				}
 				numSprites--;
@@ -332,5 +345,5 @@ public class RenderBatch implements Comparable<RenderBatch> {
 		}
 
 		return false;
-    }
+	}
 }

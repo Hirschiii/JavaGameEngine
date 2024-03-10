@@ -38,15 +38,15 @@ out vec3 color;
 
 void main() {
 	// color = texture(TEX_SAMPLER, fTexCoords);
-	vec4 texColor = vec4(1, 1, 1, 1);
-	if (fTexId > 0) {
-		int id = int(fTexId);
-		texColor = fColor * texture(uTextures[id], fTexCoords);
-		// color = vec4(fTexCoords, 0, 1);
-	} 
-	if(texColor.a < 0.5) {
-		discard;
-	}
+	// vec4 texColor = vec4(1, 1, 1, 1);
+	// if (fTexId > 0) {
+	// 	int id = int(fTexId);
+	// 	texColor = fColor * texture(uTextures[id], fTexCoords);
+	// 	// color = vec4(fTexCoords, 0, 1);
+	// } 
+	// if(texColor.a < 0.5) {
+	// 	discard;
+	// }
 
 	// color = vec3(fEntityId/256, fEntityId/256, fEntityId/256);
 	color = vec3(fEntityId, fEntityId, fEntityId);

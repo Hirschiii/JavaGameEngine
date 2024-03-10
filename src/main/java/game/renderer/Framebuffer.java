@@ -8,6 +8,7 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glGenTextures;
 import static org.lwjgl.opengl.GL11.glReadBuffer;
 import static org.lwjgl.opengl.GL11.glReadPixels;
+import static org.lwjgl.opengl.GL20.glUseProgram;
 import static org.lwjgl.opengl.GL30.GL_COLOR_ATTACHMENT0;
 import static org.lwjgl.opengl.GL30.GL_DEPTH_ATTACHMENT;
 import static org.lwjgl.opengl.GL30.GL_DEPTH_COMPONENT32F;
@@ -29,12 +30,17 @@ import static org.lwjgl.opengl.GL30.glRenderbufferStorage;
 import java.nio.ByteBuffer;
 
 import org.lwjgl.BufferUtils;
+import game.util.*;
 
 public class Framebuffer {
 	private int fboID = 0;
 	private Texture texture = null;
 
+	public int width, height;
+
 	public Framebuffer(int width, int height) {
+		this.width = width;
+		this.height = height;
 		// Same as VBO
 
 		fboID = glGenFramebuffers();
@@ -52,7 +58,7 @@ public class Framebuffer {
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT32F, width, height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rboID);
 
-		if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 			assert false : "Error: FramBuffer not complete";
 		}
 
@@ -70,6 +76,18 @@ public class Framebuffer {
 
 		return pixel;
 	}
+
+	// public void renderToScreen() {
+	// Shader vhsShader = AssetPool.getShader("/assets/shader/vhsShader.glsl");
+	// vhsShader.bind(); // Activate the shader program
+	// glBindVertexArray(texture.); // Bind the VAO for the quad
+	// glEnable(GL_TEXTURE_2D);
+	// glBindTexture(GL_TEXTURE_2D, texture.getTexID()); // Bind the framebuffer
+	// texture
+	// glDrawArrays(GL_TRIANGLES, 0, 6); // Draw the quad
+	// glBindVertexArray(0); // Unbind the VAO
+	// screenShader.unbind(); // Unbind the shader program
+	// }
 
 	public void bind() {
 		glBindFramebuffer(GL_FRAMEBUFFER, fboID);
