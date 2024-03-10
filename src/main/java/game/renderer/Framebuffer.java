@@ -36,18 +36,11 @@ public class Framebuffer {
 	private int fboID = 0;
 	private Texture texture = null;
 
-	float[] quadVertices = {
-			// positions // texCoords
-			-1.0f, 1.0f, 0.0f, 1.0f,
-			-1.0f, -1.0f, 0.0f, 0.0f,
-			1.0f, -1.0f, 1.0f, 0.0f,
-
-			-1.0f, 1.0f, 0.0f, 1.0f,
-			1.0f, -1.0f, 1.0f, 0.0f,
-			1.0f, 1.0f, 1.0f, 1.0f
-	};
+	public int width, height;
 
 	public Framebuffer(int width, int height) {
+		this.width = width;
+		this.height = height;
 		// Same as VBO
 
 		fboID = glGenFramebuffers();
@@ -84,16 +77,17 @@ public class Framebuffer {
 		return pixel;
 	}
 
-  //   public void renderToScreen() {
-		// Shader vhsShader = AssetPool.getShader("/assets/shader/vhsShader.glsl");
-  //       vhsShader.bind(); // Activate the shader program
-  //       glBindVertexArray(texture.); // Bind the VAO for the quad
-  //       glEnable(GL_TEXTURE_2D);
-  //       glBindTexture(GL_TEXTURE_2D, texture.getTexID()); // Bind the framebuffer texture
-  //       glDrawArrays(GL_TRIANGLES, 0, 6); // Draw the quad
-  //       glBindVertexArray(0); // Unbind the VAO
-  //       screenShader.unbind(); // Unbind the shader program
-  //   }
+	// public void renderToScreen() {
+	// Shader vhsShader = AssetPool.getShader("/assets/shader/vhsShader.glsl");
+	// vhsShader.bind(); // Activate the shader program
+	// glBindVertexArray(texture.); // Bind the VAO for the quad
+	// glEnable(GL_TEXTURE_2D);
+	// glBindTexture(GL_TEXTURE_2D, texture.getTexID()); // Bind the framebuffer
+	// texture
+	// glDrawArrays(GL_TRIANGLES, 0, 6); // Draw the quad
+	// glBindVertexArray(0); // Unbind the VAO
+	// screenShader.unbind(); // Unbind the shader program
+	// }
 
 	public void bind() {
 		glBindFramebuffer(GL_FRAMEBUFFER, fboID);

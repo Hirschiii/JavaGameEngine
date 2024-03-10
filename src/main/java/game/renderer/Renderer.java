@@ -1,5 +1,8 @@
 package game.renderer;
 
+import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +59,7 @@ public class Renderer {
 
 	public void render() {
 		currentShader.use();
-		for (int i=0; i < batches.size(); i++) {
+		for (int i = 0; i < batches.size(); i++) {
 			RenderBatch batch = batches.get(i);
 			batch.render();
 		}
@@ -66,7 +69,7 @@ public class Renderer {
 		if (go.getComponent(SpriteRenderer.class) == null)
 			return;
 
-		for (int i=0; i < batches.size(); i++) {
+		for (int i = 0; i < batches.size(); i++) {
 			RenderBatch batch = batches.get(i);
 			if (batch.destroyIfExists(go)) {
 				return;
