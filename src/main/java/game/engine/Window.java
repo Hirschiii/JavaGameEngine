@@ -70,346 +70,346 @@ import game.scene.SceneInitializer;
 import game.util.*;
 
 public class Window implements Observer {
-	private static Window window = null;
+    private static Window window = null;
 
-	// TODO Rename framebuffers
-	private Framebuffer framebuffer_before;
-	private Framebuffer framebuffer_ShaderApplied;
-	private Framebuffer entityIdFramebuffer;
-	private PickingTexture pickingTexture;
+    // TODO Rename framebuffers
+    private Framebuffer framebuffer_before;
+    private Framebuffer framebuffer_ShaderApplied;
+    private Framebuffer entityIdFramebuffer;
+    private PickingTexture pickingTexture;
 
-	private static float startingTime;
+    private static float startingTime;
 
-	public static Window get() {
-		if (Window.window == null) {
-			Window.window = new Window();
-		}
+    public static Window get() {
+        if (Window.window == null) {
+            Window.window = new Window();
+        }
 
-		return Window.window;
+        return Window.window;
 
-	}
+    }
 
-	/**
-	 * Aktiviere Scene Nr. n
-	 * windowja
-	 * 
-	 * @param newScene
-	 */
-	public static void changeScene(SceneInitializer sceneInitializer) {
-		if (currenScene != null) {
-			currenScene.destroy();
-		}
+    /**
+     * Aktiviere Scene Nr. n
+     * windowja
+     *
+     * @param newScene
+     */
+    public static void changeScene(SceneInitializer sceneInitializer) {
+        if (currenScene != null) {
+            currenScene.destroy();
+        }
 
-		getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
-		currenScene = new Scene(sceneInitializer);
-		currenScene.load();
-		currenScene.init();
-		currenScene.start();
-	}
+        getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
+        currenScene = new Scene(sceneInitializer);
+        currenScene.load();
+        currenScene.init();
+        currenScene.start();
+    }
 
-	public static int getWidth() {
-		return get().width[0];
-	}
+    public static int getWidth() {
+        return get().width[0];
+    }
 
-	public static int getHeight() {
-		return get().height[0];
-	}
+    public static int getHeight() {
+        return get().height[0];
+    }
 
-	public static void setWidth(int newWidth) {
-		get().width[0] = newWidth;
-	}
+    public static void setWidth(int newWidth) {
+        get().width[0] = newWidth;
+    }
 
-	public static void setHeight(int newHeight) {
-		get().height[0] = newHeight;
-	}
+    public static void setHeight(int newHeight) {
+        get().height[0] = newHeight;
+    }
 
-	public static Window getWindow() {
-		return window;
-	}
+    public static Window getWindow() {
+        return window;
+    }
 
-	public static void setWindow(Window window) {
-		Window.window = window;
-	}
+    public static void setWindow(Window window) {
+        Window.window = window;
+    }
 
-	public static Scene getScene() {
-		return currenScene;
-	}
+    public static Scene getScene() {
+        return currenScene;
+    }
 
-	public static void setCurrenScene(Scene currenScene) {
-		Window.currenScene = currenScene;
-	}
+    public static void setCurrenScene(Scene currenScene) {
+        Window.currenScene = currenScene;
+    }
 
-	private int[] width = new int[1];
-	private int[] height = new int[1];
+    private int[] width = new int[1];
+    private int[] height = new int[1];
 
-	private String title;
+    private String title;
 
-	private long glfwWindow;
+    private long glfwWindow;
 
-	private static Scene currenScene;
-	private boolean runntimePlaying = false;
+    private static Scene currenScene;
+    private boolean runntimePlaying = false;
 
-	public float r, g, b, a;
+    public float r, g, b, a;
 
-	private boolean fadeToBlack = false;
+    private boolean fadeToBlack = false;
 
-	private ImGuiLayer imguiLayer;
+    private ImGuiLayer imguiLayer;
 
-	private Window() {
-		this.height[0] = 1080;
-		this.width[0] = 1920;
-		this.title = "The Last Package";
-		EventSystem.addObserver(this);
-	}
+    private Window() {
+        this.height[0] = 1080;
+        this.width[0] = 1920;
+        this.title = "The Last Package";
+        EventSystem.addObserver(this);
+    }
 
-	public void run() {
-		System.out.println("Hello LWJGL: " + Version.getVersion() + "!");
+    public void run() {
+        System.out.println("Hello LWJGL: " + Version.getVersion() + "!");
 
-		init();
+        init();
 
-		loop();
+        loop();
 
-		// Free Memory
+        // Free Memory
 
-		glfwFreeCallbacks(glfwWindow);
-		glfwDestroyWindow(glfwWindow);
+        glfwFreeCallbacks(glfwWindow);
+        glfwDestroyWindow(glfwWindow);
 
-		// Terminate GLFW and free the memory
+        // Terminate GLFW and free the memory
 
-		glfwTerminate();
-		glfwSetErrorCallback(null).free();
-	}
+        glfwTerminate();
+        glfwSetErrorCallback(null).free();
+    }
 
-	public void init() {
-		GLFWErrorCallback.createPrint(System.err).set();
+    public void init() {
+        GLFWErrorCallback.createPrint(System.err).set();
 
-		if (!glfwInit()) {
-			throw new IllegalStateException("Unable to init GLFW");
-		}
+        if (!glfwInit()) {
+            throw new IllegalStateException("Unable to init GLFW");
+        }
 
-		// Configure GLFW
+        // Configure GLFW
 
-		glfwDefaultWindowHints();
-		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-		// glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
+        glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        // glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		// Create Window
+        // Create Window
 
-		glfwWindow = glfwCreateWindow(this.width[0], this.height[0], this.title, NULL, NULL);
-		if (glfwWindow == NULL) {
-			throw new IllegalStateException("Failed to create GLFW Window");
-		}
+        glfwWindow = glfwCreateWindow(this.width[0], this.height[0], this.title, NULL, NULL);
+        if (glfwWindow == NULL) {
+            throw new IllegalStateException("Failed to create GLFW Window");
+        }
 
-		glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
-		glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
-		glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
-		glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
-		glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
-			Window.setWidth(newWidth);
-			Window.setHeight(newHeight);
-			getScene().camera().adjustProjection();
+        glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
+        glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
+        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
+        glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+        glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+            Window.setWidth(newWidth);
+            Window.setHeight(newHeight);
+            getScene().camera().adjustProjection();
 
-		});
+        });
 
-		// Make OpenGL Context Current
-		glfwMakeContextCurrent(glfwWindow);
-
-		// Enable vsync
-		glfwSwapInterval(1);
-
-		// Make The window Visible
-		glfwShowWindow(glfwWindow);
-
-		GL.createCapabilities();
-
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
-		// make vars for x and y
-		this.framebuffer_before = new Framebuffer(2560, 1600);
-		this.framebuffer_ShaderApplied = new Framebuffer(2560, 1600);
-		this.pickingTexture = new PickingTexture(2560, 1660);
-
-		this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
-		this.imguiLayer.initImGui();
-
-		glViewport(0, 0, 2560, 1600);
-
-		Window.changeScene(new LevelEditorSceneInitializer());
-
-		glfwGetWindowSize(glfwWindow, width, height);
-	}
-
-	public void loop() {
-		getScene().camera().adjustProjection();
-		float beginTime = (float) glfwGetTime();
-		startingTime = (float) glfwGetTime();
-		float endTime;
-		float dt = -1.0f;
-
-		Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
-		Shader vhsShader = AssetPool.getShader("assets/shaders/vhs.glsl");
-		Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
-
-		while (!glfwWindowShouldClose(glfwWindow)) {
-			// Poll Events
-			glfwPollEvents();
-
-			// Render Pass 1 Render to pick id
-			glDisable(GL_BLEND);
-
-			// this.entityIdFramebuffer.bind();
-			pickingTexture.enableWriting();
-
-			glViewport(0, 0, 2560, 1600);
-			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			Renderer.bindShader(pickingShader);
-			currenScene.render();
-			// this.entityIdFramebuffer.unbind();
-			pickingTexture.disableWriting();
-
-			glEnable(GL_BLEND);
-
-			// Redner Pass 2 Actual Render
-			DebugDraw.beginFrame();
-
-			this.framebuffer_before.bind();
-
-			glClearColor(1, 1, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			if (dt >= 0) {
-				Renderer.bindShader(defaultShader);
-				if (runntimePlaying) {
-					currenScene.update(dt);
-				} else {
-					currenScene.editorUpdate(dt);
-				}
-				currenScene.render();
-
-				DebugDraw.draw();
-			}
-			this.framebuffer_before.unbind();
-
-			this.framebuffer_ShaderApplied.bind();
-			glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer_before.getFboID());
-			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-			glBlitFramebuffer(0, 0, framebuffer_before.width, framebuffer_before.height, 0, 0, this.width[0],
-					this.height[0],
-					GL_COLOR_BUFFER_BIT, GL_NEAREST);
-			this.framebuffer_ShaderApplied.unbind();
-
-			if (RELEASE_BUILD) {
-				// NOTE: This is the most complicated piece for release builds. In release
-				// builds
-				// we want to just blit the framebuffer to the main window so we can see the
-				// game
-				//
-				// In non-release builds, we usually draw the framebuffer to an ImGui component
-				// as an image.
-				glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer_before.getFboID());
-				glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-				glBlitFramebuffer(0, 0, framebuffer_before.width, framebuffer_before.height, 0, 0, this.width[0],
-						this.height[0],
-						GL_COLOR_BUFFER_BIT, GL_NEAREST);
-			} else {
-				this.imguiLayer.update(dt, currenScene);
-			}
-
-			// this.framebuffer_ShaderApplied.bind();
-			//
-			// glClearColor(1, 1, 1, 1);
-			// glClear(GL_COLOR_BUFFER_BIT);
-			// Renderer.bindShader(vhsShader);
-			// // currenScene.render();
-			// this.framebuffer_before.renderToScreen();
-			//
-			// this.framebuffer_ShaderApplied.unbind();
-			//
-			// this.imguiLayer.update(dt, currenScene);
-
-			glfwSwapBuffers(glfwWindow);
-			MouseListener.endFrame();
-
-			endTime = (float) glfwGetTime();
-			dt = endTime - beginTime;
-			beginTime = endTime;
-
-		}
-
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public long getGlfwWindow() {
-		return glfwWindow;
-	}
-
-	public boolean isFadeToBlack() {
-		return fadeToBlack;
-	}
-
-	public void setFadeToBlack(boolean fadeToBlack) {
-		this.fadeToBlack = fadeToBlack;
-	}
-
-	public static ImGuiLayer getImguiLayer() {
-		return get().imguiLayer;
-	}
-
-	public void setImguiLayer(ImGuiLayer imguiLayer) {
-		this.imguiLayer = imguiLayer;
-	}
-
-	public static Framebuffer getFramebuffer() {
-		// return get().framebuffer_before;
-		return get().framebuffer_ShaderApplied;
-		// return get().entityIdFramebuffer;
-	}
-
-	public static Scene getCurrenScene() {
-		return currenScene;
-	}
-
-	public static float getTargetAspectRatio() {
-		return getCurrenScene().camera().getAspectRation();
-	}
-
-	public static float getCurrentTime() {
-		float currenTime = (float) glfwGetTime();
-		return currenTime - startingTime;
-	}
-
-	@Override
-	public void onNotify(GameObject object, Event event) {
-		switch (event.type) {
-			case GameEngineStartPlay:
-				this.runntimePlaying = true;
-				currenScene.save();
-				Window.changeScene(new LevelEditorSceneInitializer());
-				break;
-			case GameEngineStopPlay:
-				this.runntimePlaying = false;
-				Window.changeScene(new LevelEditorSceneInitializer());
-				break;
-			case LoadLevel:
-				Window.changeScene(new LevelEditorSceneInitializer());
-				break;
-			case SaveLevel:
-				Window.getScene().save();
-				break;
-			case UserEvent:
-				break;
-		}
-	}
+        // Make OpenGL Context Current
+        glfwMakeContextCurrent(glfwWindow);
+
+        // Enable vsync
+        glfwSwapInterval(1);
+
+        // Make The window Visible
+        glfwShowWindow(glfwWindow);
+
+        GL.createCapabilities();
+
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+        // make vars for x and y
+        this.framebuffer_before = new Framebuffer(2560, 1600);
+        this.framebuffer_ShaderApplied = new Framebuffer(2560, 1600);
+        this.pickingTexture = new PickingTexture(2560, 1660);
+
+        this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
+        this.imguiLayer.initImGui();
+
+        glViewport(0, 0, 2560, 1600);
+
+        Window.changeScene(new LevelEditorSceneInitializer());
+
+        glfwGetWindowSize(glfwWindow, width, height);
+    }
+
+    public void loop() {
+        getScene().camera().adjustProjection();
+        float beginTime = (float) glfwGetTime();
+        startingTime = (float) glfwGetTime();
+        float endTime;
+        float dt = -1.0f;
+
+        Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+        // Shader vhsShader = AssetPool.getShader("assets/shaders/vhs.glsl");
+        Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+
+        while (!glfwWindowShouldClose(glfwWindow)) {
+            // Poll Events
+            glfwPollEvents();
+
+            // Render Pass 1 Render to pick id
+            glDisable(GL_BLEND);
+
+            // this.entityIdFramebuffer.bind();
+            pickingTexture.enableWriting();
+
+            glViewport(0, 0, 2560, 1600);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            Renderer.bindShader(pickingShader);
+            currenScene.render();
+            // this.entityIdFramebuffer.unbind();
+            pickingTexture.disableWriting();
+
+            glEnable(GL_BLEND);
+
+            // Redner Pass 2 Actual Render
+            DebugDraw.beginFrame();
+
+            this.framebuffer_before.bind();
+
+            glClearColor(1, 1, 1, 1);
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            if (dt >= 0) {
+                Renderer.bindShader(defaultShader);
+                if (runntimePlaying) {
+                    currenScene.update(dt);
+                } else {
+                    currenScene.editorUpdate(dt);
+                }
+                currenScene.render();
+
+                DebugDraw.draw();
+            }
+            this.framebuffer_before.unbind();
+
+            this.framebuffer_ShaderApplied.bind();
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer_before.getFboID());
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+            glBlitFramebuffer(0, 0, framebuffer_before.width, framebuffer_before.height, 0, 0, this.width[0],
+                    this.height[0],
+                    GL_COLOR_BUFFER_BIT, GL_NEAREST);
+            this.framebuffer_ShaderApplied.unbind();
+
+            if (RELEASE_BUILD) {
+                // NOTE: This is the most complicated piece for release builds. In release
+                // builds
+                // we want to just blit the framebuffer to the main window so we can see the
+                // game
+                //
+                // In non-release builds, we usually draw the framebuffer to an ImGui component
+                // as an image.
+                glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer_before.getFboID());
+                glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+                glBlitFramebuffer(0, 0, framebuffer_before.width, framebuffer_before.height, 0, 0, this.width[0],
+                        this.height[0],
+                        GL_COLOR_BUFFER_BIT, GL_NEAREST);
+            } else {
+                this.imguiLayer.update(dt, currenScene);
+            }
+
+            // this.framebuffer_ShaderApplied.bind();
+            //
+            // glClearColor(1, 1, 1, 1);
+            // glClear(GL_COLOR_BUFFER_BIT);
+            // Renderer.bindShader(vhsShader);
+            // // currenScene.render();
+            // this.framebuffer_before.renderToScreen();
+            //
+            // this.framebuffer_ShaderApplied.unbind();
+            //
+            // this.imguiLayer.update(dt, currenScene);
+
+            glfwSwapBuffers(glfwWindow);
+            MouseListener.endFrame();
+
+            endTime = (float) glfwGetTime();
+            dt = endTime - beginTime;
+            beginTime = endTime;
+
+        }
+
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getGlfwWindow() {
+        return glfwWindow;
+    }
+
+    public boolean isFadeToBlack() {
+        return fadeToBlack;
+    }
+
+    public void setFadeToBlack(boolean fadeToBlack) {
+        this.fadeToBlack = fadeToBlack;
+    }
+
+    public static ImGuiLayer getImguiLayer() {
+        return get().imguiLayer;
+    }
+
+    public void setImguiLayer(ImGuiLayer imguiLayer) {
+        this.imguiLayer = imguiLayer;
+    }
+
+    public static Framebuffer getFramebuffer() {
+        return get().framebuffer_before;
+        //return get().framebuffer_ShaderApplied;
+        // return get().entityIdFramebuffer;
+    }
+
+    public static Scene getCurrenScene() {
+        return currenScene;
+    }
+
+    public static float getTargetAspectRatio() {
+        return getCurrenScene().camera().getAspectRation();
+    }
+
+    public static float getCurrentTime() {
+        float currenTime = (float) glfwGetTime();
+        return currenTime - startingTime;
+    }
+
+    @Override
+    public void onNotify(GameObject object, Event event) {
+        switch (event.type) {
+            case GameEngineStartPlay:
+                this.runntimePlaying = true;
+                currenScene.save();
+                Window.changeScene(new LevelEditorSceneInitializer());
+                break;
+            case GameEngineStopPlay:
+                this.runntimePlaying = false;
+                Window.changeScene(new LevelEditorSceneInitializer());
+                break;
+            case LoadLevel:
+                Window.changeScene(new LevelEditorSceneInitializer());
+                break;
+            case SaveLevel:
+                Window.getScene().save();
+                break;
+            case UserEvent:
+                break;
+        }
+    }
 }
