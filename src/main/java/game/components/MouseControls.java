@@ -9,29 +9,29 @@ import game.engine.MouseListener;
 import game.util.Settings;
 
 public class MouseControls extends Component {
-	GameObject holdingObject = null;	
+    GameObject holdingObject = null;
 
-	public void pickupObject(GameObject go) {
-		this.holdingObject = go;
+    public void pickupObject(GameObject go) {
+        this.holdingObject = go;
 
-		game.engine.Window.getScene().addGameObject(go);
-	}
+        game.engine.Window.getScene().addGameObject(go);
+    }
 
-	public void place() {
-		this.holdingObject = null;
-	}
+    public void place() {
+        this.holdingObject = null;
+    }
 
-	@Override
-	public void editorUpdate(float dt) {
-		if (holdingObject != null) {
-			Vector2f WorldPos = MouseListener.getWorld();
+    @Override
+    public void editorUpdate(float dt) {
+        if (holdingObject != null) {
+            float x = MouseListener.getWorldX();
+            float y = MouseListener.getWorldY();
+            holdingObject.transform.position.x = ((int)Math.floor(x / Settings.GRID_WIDTH) * Settings.GRID_WIDTH) + Settings.GRID_WIDTH / 2.0f;
+            holdingObject.transform.position.y = ((int)Math.floor(y / Settings.GRID_HEIGHT) * Settings.GRID_HEIGHT) + Settings.GRID_HEIGHT / 2.0f;
 
-            holdingObject.transform.position.x = (((int)Math.floor(WorldPos.x / Settings.GRID_WIDTH) * Settings.GRID_WIDTH) + Settings.GRID_WIDTH / 2.0f) - (holdingObject.getTransform().scale.x / 2);
-            holdingObject.transform.position.y = (((int)Math.floor(WorldPos.y / Settings.GRID_HEIGHT) * Settings.GRID_HEIGHT) + Settings.GRID_HEIGHT / 2.0f) - (holdingObject.getTransform().scale.y / 2);
-
-			if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-				place();
-			}
-		}
-	}
+            if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+                place();
+            }
+        }
+    }
 }
