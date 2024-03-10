@@ -58,7 +58,32 @@ void main() {
 		// 		color = vec4(0.0, 0.0, 0.0, 1.0);
 		// 	}
 		// } else {
-			color = fColor * texture(uTextures[id], fTexCoords);
+        switch (id) {
+            case 0:
+                color = fColor * texture(uTextures[0], fTexCoords);
+            break;
+            case 1:
+                color = fColor * texture(uTextures[1], fTexCoords);
+            break;
+            case 2:
+                color = fColor * texture(uTextures[2], fTexCoords);
+            break;
+            case 3:
+                color = fColor * texture(uTextures[3], fTexCoords);
+            break;
+            case 4:
+                color = fColor * texture(uTextures[4], fTexCoords);
+            break;
+            case 5:
+                color = fColor * texture(uTextures[5], fTexCoords);
+            break;
+            case 6:
+                color = fColor * texture(uTextures[6], fTexCoords);
+            break;
+            case 7:
+                color = fColor * texture(uTextures[7], fTexCoords);
+            break;
+		}
 		// }
 		// color = vec4(fTexCoords, 0, 1);
 	} else {
