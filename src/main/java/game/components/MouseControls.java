@@ -19,23 +19,26 @@ public class MouseControls extends Component {
     private Vector2f hoverSquare = new Vector2f();
 
     public void pickupObject(GameObject go) {
+        if (this.holdingObject != null) {
+            this.holdingObject.destroy();
+        }
         this.holdingObject = go;
-        go.getComponent(SpriteRenderer.class).setColor(new Vector4f(0.8f, 0.8f, 0.8f, 0.8f));
+        this.holdingObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0.8f, 0.8f, 0.8f, 0.8f));
+        this.holdingObject.addComponent(new NonPickable());
 
         game.engine.Window.getScene().addGameObject(go);
     }
 
     public void place() {
-        System.out.println(hoverSquare);
-        System.out.println(getHoverSquare());
         if (!hoverSquare.equals(getHoverSquare())) {
-            System.out.println("Equal");
             GameObject newObj = this.holdingObject.copy();
+            if(newObj.getComponent(StateMachine.class) != null) {
+                newObj.getComponent(StateMachine.class).refreshTexture();
+            }
             newObj.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+            newObj.removeComponent(NonPickable.class);
             Window.getScene().addGameObject(newObj);
             hoverSquare = getHoverSquare();
-        } else {
-            System.out.println("NOt");
         }
 
     }

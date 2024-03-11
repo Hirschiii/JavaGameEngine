@@ -16,61 +16,61 @@ import game.scene.Scene;
 import imgui.ImGui;
 
 public class PropertiesWindow {
-	private GameObject activeGameObject = null;
-	private PickingTexture pickingTexture;
+    private GameObject activeGameObject = null;
+    private PickingTexture pickingTexture;
 
-	private float debounce = 0.2f;
+    private float debounce = 0.2f;
 
-	public PropertiesWindow(PickingTexture pickingTexture) {
-		this.pickingTexture = pickingTexture;
-	}
+    public PropertiesWindow(PickingTexture pickingTexture) {
+        this.pickingTexture = pickingTexture;
+    }
 
-	public void update(float dt, Scene currentScene) {
-		debounce -= dt;
+    public void update(float dt, Scene currentScene) {
+        debounce -= dt;
 
-		if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
-			int x = (int) MouseListener.getScreenX();
-			int y = (int) MouseListener.getScreenY();
+        if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
+            int x = (int) MouseListener.getScreenX();
+            int y = (int) MouseListener.getScreenY();
 
-			int gameObjectId = pickingTexture.readPixel(x, y);
-			GameObject go = currentScene.getGameObject(gameObjectId);
+            int gameObjectId = pickingTexture.readPixel(x, y);
+            GameObject go = currentScene.getGameObject(gameObjectId);
 
-			if (go != null && go.getComponent(NonPickable.class) == null && !MouseListener.isDragging()) {
-				activeGameObject = go;
-			} else if (pickingTexture == null && !MouseListener.isDragging()) {
-				activeGameObject = null;
-			}
-			this.debounce = 0.2f;
-		}
+            if (go != null && go.getComponent(NonPickable.class) == null && !MouseListener.isDragging()) {
+                activeGameObject = go;
+            } else if (!MouseListener.isDragging()) {
+                activeGameObject = null;
+            }
+            this.debounce = 0.2f;
+        }
 
-	}
+    }
 
-	public void imgui() {
+    public void imgui() {
 
-		if (activeGameObject != null) {
-			ImGui.begin("Properties");
+        if (activeGameObject != null) {
+            ImGui.begin("Properties");
 
-			if (ImGui.beginPopupContextWindow("ComponentAdder")) {
-				// TODO Iterate through Components
-				if (activeGameObject.getComponent(Rigidbody.class) == null) {
-					if (ImGui.menuItem("Add Rigidbody")) {
-						activeGameObject.addComponent(new Rigidbody());
-					}
-				}
-				ImGui.endPopup();
-			}
+            if (ImGui.beginPopupContextWindow("ComponentAdder")) {
+                // TODO Iterate through Components
+                if (activeGameObject.getComponent(Rigidbody.class) == null) {
+                    if (ImGui.menuItem("Add Rigidbody")) {
+                        activeGameObject.addComponent(new Rigidbody());
+                    }
+                }
+                ImGui.endPopup();
+            }
 
-			activeGameObject.imgui();
-			ImGui.end();
-		}
-	}
+            activeGameObject.imgui();
+            ImGui.end();
+        }
+    }
 
-	public void setActiveGameObject(GameObject go) {
-		this.activeGameObject = go;
-	}
+    public void setActiveGameObject(GameObject go) {
+        this.activeGameObject = go;
+    }
 
-	public GameObject getActiveGameObject() {
-		return this.activeGameObject;
-	}
+    public GameObject getActiveGameObject() {
+        return this.activeGameObject;
+    }
 
 }
