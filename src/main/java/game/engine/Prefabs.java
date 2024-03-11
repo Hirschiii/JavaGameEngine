@@ -3,6 +3,7 @@ package game.engine;
 import org.joml.Vector2f;
 
 import game.components.AnimationState;
+import game.components.PlayerController;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
@@ -21,27 +22,120 @@ public class Prefabs {
         return block;
     }
 
-    public static GameObject generateMario() {
+    public static GameObject generatePlayer() {
         Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
-        GameObject mario = generateSpriteObject(playerSprites.getSprite(0), 1, 1);
-        AnimationState run = new AnimationState();
-        run.title = "Run";
+        GameObject player = generateSpriteObject(playerSprites.getSprite(0), 1, 1);
+        AnimationState idleFront = new AnimationState();
+
+        idleFront.title = "IdleFront";
         float defaultFrameTime = 0.35f;
 
-        run.addFrame(playerSprites.getSprite(0), defaultFrameTime);
-        run.addFrame(playerSprites.getSprite(1), defaultFrameTime);
-        run.addFrame(playerSprites.getSprite(2), defaultFrameTime);
-        run.addFrame(playerSprites.getSprite(3), defaultFrameTime);
+        idleFront.addFrame(playerSprites.getSprite(0), defaultFrameTime);
+        idleFront.addFrame(playerSprites.getSprite(1), defaultFrameTime);
+        idleFront.addFrame(playerSprites.getSprite(2), defaultFrameTime);
+        idleFront.addFrame(playerSprites.getSprite(3), defaultFrameTime);
 
-        run.setLoop(true);
+        idleFront.setLoop(true);
+
+        AnimationState idleBack = new AnimationState();
+
+        idleBack.title = "IdleBack";
+
+        int idleBackOffset = 9;
+        idleBack.addFrame(playerSprites.getSprite(idleBackOffset), defaultFrameTime);
+        idleBack.addFrame(playerSprites.getSprite(idleBackOffset + 1), defaultFrameTime);
+        idleBack.addFrame(playerSprites.getSprite(idleBackOffset + 2), defaultFrameTime);
+        idleBack.addFrame(playerSprites.getSprite(idleBackOffset + 3), defaultFrameTime);
+
+        idleBack.setLoop(true);
+
+        AnimationState runDown = new AnimationState();
+        runDown.title = "RunDown";
+
+        int runDownOffset = 4;
+        runDown.addFrame(playerSprites.getSprite(runDownOffset), defaultFrameTime);
+        runDown.addFrame(playerSprites.getSprite(runDownOffset + 1), defaultFrameTime);
+        runDown.addFrame(playerSprites.getSprite(runDownOffset + 2), defaultFrameTime);
+        runDown.addFrame(playerSprites.getSprite(runDownOffset + 3), defaultFrameTime);
+
+        runDown.setLoop(true);
+
+        AnimationState runUp = new AnimationState();
+        runUp.title = "RunUp";
+
+        int runUpOffset = 12;
+        runUp.addFrame(playerSprites.getSprite(runUpOffset), defaultFrameTime);
+        runUp.addFrame(playerSprites.getSprite(runUpOffset + 1), defaultFrameTime);
+        runUp.addFrame(playerSprites.getSprite(runUpOffset + 2), defaultFrameTime);
+        runUp.addFrame(playerSprites.getSprite(runUpOffset + 3), defaultFrameTime);
+
+        runUp.setLoop(true);
+
+        AnimationState runRight = new AnimationState();
+        runRight.title = "RunRight";
+
+        int runRightOffset = 20;
+        runRight.addFrame(playerSprites.getSprite(runRightOffset), defaultFrameTime);
+        runRight.addFrame(playerSprites.getSprite(runRightOffset + 1), defaultFrameTime);
+
+        runRight.setLoop(true);
+
+        AnimationState runLeft = new AnimationState();
+        runLeft.title = "RunLeft";
+
+        int runLeftOffset = 28;
+        runLeft.addFrame(playerSprites.getSprite(runLeftOffset), defaultFrameTime);
+        runLeft.addFrame(playerSprites.getSprite(runLeftOffset + 1), defaultFrameTime);
+
+        runLeft.setLoop(true);
+
+        AnimationState switchDirection = new AnimationState();
+        switchDirection.title = "Switch Direction";
+        switchDirection.addFrame(playerSprites.getSprite(0), 0.1f);
+        switchDirection.setLoop(false);
 
         StateMachine stateMachine = new StateMachine();
 
-        stateMachine.addState(run);
-        stateMachine.setDefaultState(run.title);
-        mario.addComponent(stateMachine);
+        stateMachine.addState(idleFront);
+        stateMachine.addState(idleBack);
+        stateMachine.addState(switchDirection);
+        stateMachine.addState(runDown);
+        stateMachine.addState(runUp);
+        stateMachine.addState(runLeft);
+        stateMachine.addState(runRight);
 
+        stateMachine.setDefaultState(idleFront.title);
 
-        return mario;
+        stateMachine.addState(switchDirection.title, runRight.title, "StartRunRight");
+        stateMachine.addState(switchDirection.title, runLeft.title, "StartRunLeft");
+        stateMachine.addState(switchDirection.title, runUp.title, "StartRunUp");
+        stateMachine.addState(switchDirection.title, runDown.title, "StartRunDown");
+
+        stateMachine.addState(switchDirection.title, idleFront.title, "StopRun");
+
+        stateMachine.addState(idleBack.title, runRight.title, "StartRunRight");
+        stateMachine.addState(idleBack.title, runLeft.title, "StartRunLeft");
+        stateMachine.addState(idleBack.title, runUp.title, "StartRunUp");
+        stateMachine.addState(idleBack.title, runDown.title, "StartRunDown");
+
+        stateMachine.addState(idleFront.title, runRight.title, "StartRunRight");
+        stateMachine.addState(idleFront.title, runLeft.title, "StartRunLeft");
+        stateMachine.addState(idleFront.title, runUp.title, "StartRunUp");
+        stateMachine.addState(idleFront.title, runDown.title, "StartRunDown");
+
+        stateMachine.addState(runRight.title, idleFront.title, "StopRun");
+        stateMachine.addState(runRight.title, switchDirection.title, "SwitchDirection");
+        stateMachine.addState(runLeft.title, idleFront.title, "StopRun");
+        stateMachine.addState(runLeft.title, switchDirection.title, "SwitchDirection");
+        stateMachine.addState(runDown.title, idleFront.title, "StopRun");
+        stateMachine.addState(runDown.title, switchDirection.title, "SwitchDirection");
+        stateMachine.addState(runUp.title, idleBack.title, "StopRun");
+        stateMachine.addState(runUp.title, switchDirection.title, "SwitchDirection");
+
+        player.addComponent(stateMachine);
+
+        player.addComponent(new PlayerController());
+
+        return player;
     }
 }

@@ -159,7 +159,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                         texCoords[2].y)) {
-                    GameObject object = Prefabs.generateMario();
+                    GameObject object = Prefabs.generatePlayer();
                     // Attach to mouse Cursor to drop
                     levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                 }
