@@ -1,0 +1,1618 @@
+[
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 1.4636879,
+            "y": 5.504263
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 0
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 3.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 1
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 4.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 2
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 6.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 3
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 7.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 4
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 8.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 5
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 2.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                }
+              ],
+              "timeTracker": 0.486351,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 6
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 5.5,
+            "y": 4.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 19
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 20
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.25049743,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 21
+        }
+      }
+    ],
+    "uid": 7
+  }
+]

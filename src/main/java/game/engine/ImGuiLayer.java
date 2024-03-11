@@ -293,4 +293,9 @@ public class ImGuiLayer {
     public PropertiesWindow getPropertiesWindow() {
         return this.propertiesWindow;
     }
+
+    public GameViewWindow getGameViewWindow() {
+        return this.gameViewWindow;
+
+    }
 }
