@@ -34,8 +34,8 @@ public class Gizmo extends Component {
 
     protected GameObject activeGameObject = null;
 
-    private Vector2f xAxisOffset = new Vector2f();
-    private Vector2f yAxisOffset = new Vector2f();
+    private Vector2f xAxisOffset = new Vector2f(0.75f, -0.75f);
+    private Vector2f yAxisOffset = new Vector2f(-0.75f, 0.75f);
 
     private float gizmoWidth = 0.5f;
     private float gizmoHeight = ((48.0f / 16.0f) / 2);
@@ -50,15 +50,12 @@ public class Gizmo extends Component {
 
         this.xAxisObject = Prefabs.generateSpriteObject(arrowSprite, gizmoWidth, gizmoHeight);
         this.yAxisObject = Prefabs.generateSpriteObject(arrowSprite, gizmoWidth, gizmoHeight);
-
         this.xAxisObject.addComponent(new NonPickable());
         this.yAxisObject.addComponent(new NonPickable());
 
         this.xAxisSprite = this.xAxisObject.getComponent(SpriteRenderer.class);
         this.yAxisSprite = this.yAxisObject.getComponent(SpriteRenderer.class);
 
-        this.xAxisOffset = new Vector2f(0.75f, -0.75f);
-        this.yAxisOffset = new Vector2f(-0.75f, 0.75f);
 
         Window.getScene().addGameObject(this.xAxisObject);
         Window.getScene().addGameObject(this.yAxisObject);
@@ -81,12 +78,13 @@ public class Gizmo extends Component {
         if (using) {
             this.setInactive();
         }
+        this.xAxisObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 0, 0, 0));
+        this.yAxisObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 0, 0, 0));
     }
 
     @Override
     public void editorUpdate(float dt) {
-        if (!using)
-            return;
+        if (!using) return;
 
         this.activeGameObject = this.propertiesWindow.getActiveGameObject();
         if (this.activeGameObject != null) {
@@ -99,12 +97,10 @@ public class Gizmo extends Component {
         boolean xAxisHot = checkXHoverState();
         boolean yAxisHot = checkYHoverState();
 
-        if ((xAxisHot || xAxisActive) && MouseListener.isDragging()
-                && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+        if ((xAxisHot || xAxisActive) && MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
             xAxisActive = true;
             yAxisActive = false;
-        } else if ((yAxisHot || yAxisActive) && MouseListener.isDragging()
-                && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+        } else if ((yAxisHot || yAxisActive) && MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
             yAxisActive = true;
             xAxisActive = false;
         } else {
@@ -132,19 +128,6 @@ public class Gizmo extends Component {
     }
 
     private boolean checkXHoverState() {
-        // DebugDraw.addLine2D(
-        // new Vector2f(xAxisObject.transform.position.x + (gizmoHeight / 2),
-        // xAxisObject.transform.position.y),
-        // new Vector2f(xAxisObject.transform.position.x - (gizmoHeight / 2),
-        // xAxisObject.transform.position.y),
-        // new Vector3f(0, 1, 0), 1);
-        // DebugDraw.addLine2D(
-        // new Vector2f(xAxisObject.transform.position.x ,
-        // xAxisObject.transform.position.y+ (gizmoWidth / 2)),
-        // new Vector2f(xAxisObject.transform.position.x ,
-        // xAxisObject.transform.position.y- (gizmoWidth / 2)),
-        // new Vector3f(0, 1, 0), 1);
-
         Vector2f mousePos = MouseListener.getWorld();
         if (mousePos.x <= xAxisObject.transform.position.x + (gizmoHeight / 2) &&
                 mousePos.x >= xAxisObject.transform.position.x - (gizmoHeight / 2) &&
@@ -158,18 +141,6 @@ public class Gizmo extends Component {
     }
 
     private boolean checkYHoverState() {
-        // DebugDraw.addLine2D(
-        // new Vector2f(yAxisObject.transform.position.x + (gizmoWidth / 2),
-        // yAxisObject.transform.position.y),
-        // new Vector2f(yAxisObject.transform.position.x - (gizmoWidth / 2),
-        // yAxisObject.transform.position.y),
-        // new Vector3f(0, 0, 0), 1);
-        // DebugDraw.addLine2D(
-        // new Vector2f(yAxisObject.transform.position.x ,
-        // yAxisObject.transform.position.y+ (gizmoHeight / 2)),
-        // new Vector2f(yAxisObject.transform.position.x ,
-        // yAxisObject.transform.position.y- (gizmoHeight / 2)),
-        // new Vector3f(0, 0, 0), 1);
         Vector2f mousePos = MouseListener.getWorld();
         if (mousePos.x <= yAxisObject.transform.position.x + (gizmoWidth / 2) &&
                 mousePos.x >= yAxisObject.transform.position.x - (gizmoWidth / 2) &&

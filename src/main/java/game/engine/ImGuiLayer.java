@@ -225,7 +225,6 @@ public class ImGuiLayer {
         currentScene.imgui();
         // //ImGui.showDemoWindow();
         gameViewWindow.imgui();
-        propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
         // menuBar.imgui();
         sceneHeirarchyWindow.imgui();

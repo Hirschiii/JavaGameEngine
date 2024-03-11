@@ -108,11 +108,11 @@ public class Window implements Observer {
     }
 
     public static int getWidth() {
-        return get().width[0];
+        return 1920; //get().width[0];
     }
 
     public static int getHeight() {
-        return get().height[0];
+        return 1080; //get().height[0];
     }
 
     public static void setWidth(int newWidth) {
@@ -232,14 +232,21 @@ public class Window implements Observer {
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
         // make vars for x and y
-        this.framebuffer_before = new Framebuffer(2560, 1600);
-        this.framebuffer_ShaderApplied = new Framebuffer(2560, 1600);
-        this.pickingTexture = new PickingTexture(2560, 1660);
+        System.out.println("Height: " + height[0]);
+        System.out.println("Width:  " + width[0]);
+
+        // this.height[0] = 1080;
+        // this.width[0] = 1920;
+        // this.framebuffer_before = new Framebuffer(2560, 1600);
+        this.framebuffer_before = new Framebuffer(width[0], height[0]);
+        this.framebuffer_ShaderApplied = new Framebuffer(width[0], height[0]);
+        this.pickingTexture = new PickingTexture(width[0], height[0]);
 
         this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
         this.imguiLayer.initImGui();
 
-        glViewport(0, 0, 2560, 1600);
+        // glViewport(0, 0, 2560, 1600);
+        glViewport(0, 0, width[0], height[0]);
 
         Window.changeScene(new LevelEditorSceneInitializer());
 
@@ -267,7 +274,7 @@ public class Window implements Observer {
             // this.entityIdFramebuffer.bind();
             pickingTexture.enableWriting();
 
-            glViewport(0, 0, 2560, 1600);
+            glViewport(0, 0, 1920, 1080);
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -338,6 +345,7 @@ public class Window implements Observer {
 
             glfwSwapBuffers(glfwWindow);
             MouseListener.endFrame();
+            KeyListener.endFrame();
 
             endTime = (float) glfwGetTime();
             dt = endTime - beginTime;
@@ -373,7 +381,7 @@ public class Window implements Observer {
 
     public static Framebuffer getFramebuffer() {
         return get().framebuffer_before;
-        //return get().framebuffer_ShaderApplied;
+        // return get().framebuffer_ShaderApplied;
         // return get().entityIdFramebuffer;
     }
 

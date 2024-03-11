@@ -25,88 +25,89 @@ import imgui.ImGui;
 
 public class Scene {
 
-	private Renderer renderer = new Renderer();
-	private Camera camera;
+    private Renderer renderer = new Renderer();
+    private Camera camera;
 
-	private boolean isRunning;
+    private boolean isRunning;
 
-	protected List<GameObject> gameObjects;
+    protected List<GameObject> gameObjects;
 
-	private SceneInitializer sceneInitializer;
+    private SceneInitializer sceneInitializer;
 
-	public Scene(SceneInitializer sceneInitializer) {
-		this.sceneInitializer = sceneInitializer;
-		this.renderer = new Renderer();
-		this.gameObjects = new ArrayList<>();
-		this.isRunning = false;
-	}
+    public Scene(SceneInitializer sceneInitializer) {
+        this.sceneInitializer = sceneInitializer;
+        this.renderer = new Renderer();
+        this.gameObjects = new ArrayList<>();
+        this.isRunning = false;
+    }
 
-	public void init() {
-		this.camera = new Camera(new Vector2f(0, 0));
-		this.sceneInitializer.loadResources(this);
-		this.sceneInitializer.init(this);
-	}
+    public void init() {
+        this.camera = new Camera(new Vector2f(0, 0));
+        this.sceneInitializer.loadResources(this);
+        this.sceneInitializer.init(this);
+    }
 
-	public void start() {
-		for (int i=0; i < gameObjects.size(); i++) {
-			GameObject go = gameObjects.get(i);
-			go.start();
-			this.renderer.add(go);
-			// Add here to physics
-		}
-		isRunning = true;
-	}
+    public void start() {
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.start();
+            this.renderer.add(go);
+            // Add here to physics
+        }
+        isRunning = true;
+    }
 
-	public void addGameObject(GameObject go) {
-		if (!isRunning) {
-			gameObjects.add(go);
-		} else {
-			gameObjects.add(go);
-			go.start();
-			this.renderer.add(go);
-			//Add here to physics
-		}
+    public void addGameObject(GameObject go) {
+        if (!isRunning) {
+            gameObjects.add(go);
+        } else {
+            gameObjects.add(go);
+            go.start();
+            this.renderer.add(go);
+            // Add here to physics
+        }
 
-	}
+    }
 
-	public void editorUpdate(float dt) {
-		this.camera.adjustProjection();
-		for (int i=0; i < gameObjects.size(); i++) {
-			GameObject go = gameObjects.get(i);
-			go.editorUpdate(dt);
+    public void editorUpdate(float dt) {
+        this.camera.adjustProjection();
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.editorUpdate(dt);
 
-			if(go.isDead()) {
-				gameObjects.remove(i);
-				this.renderer.destroyGameObject(go);
-				// this.physics.destryGameObject(go);
-				i--;
-			}
-		}
-	}
+            if (go.isDead()) {
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                // this.physics.destryGameObject(go);
+                i--;
+            }
+        }
+    }
 
-	public void update(float dt) {
-		this.camera.adjustProjection();
-		// Update Physics...
-		for (int i=0; i < gameObjects.size(); i++) {
-			GameObject go = gameObjects.get(i);
-			go.update(dt);
+    public void update(float dt) {
+        this.camera.adjustProjection();
+        // Update Physics...
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.update(dt);
 
-			if(go.isDead()) {
-				gameObjects.remove(i);
-				this.renderer.destroyGameObject(go);
-				// this.physics.destryGameObject(go);
-				i--;
-			}
-		}
-	};
-	public void render() {
-		this.renderer.render();
+            if (go.isDead()) {
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                // this.physics.destryGameObject(go);
+                i--;
+            }
+        }
+    };
 
-	};
+    public void render() {
+        this.renderer.render();
 
-	public Camera camera() {
-		return this.camera;
-	}
+    };
+
+    public Camera camera() {
+        return this.camera;
+    }
 
     public <T extends Component> GameObject getGameObjectWith(Class<T> clazz) {
         for (GameObject go : gameObjects) {
@@ -129,91 +130,90 @@ public class Scene {
         return result.orElse(null);
     }
 
-	/**
-	 * Expose Fields (Vars) to Dear Im GUI
-	 * 
-	 */
-	public void imgui() {
-		this.sceneInitializer.imgui();
-	}
+    /**
+     * Expose Fields (Vars) to Dear Im GUI
+     *
+     */
+    public void imgui() {
+        this.sceneInitializer.imgui();
+    }
 
-	public GameObject createGameObject(String name) {
-		GameObject go = new GameObject(name);
-		go.addComponent(new Transform());
-		go.transform = go.getComponent(Transform.class);
-		return go;
-	}
+    public GameObject createGameObject(String name) {
+        GameObject go = new GameObject(name);
+        go.addComponent(new Transform());
+        go.transform = go.getComponent(Transform.class);
+        return go;
+    }
 
-	// public void save(String filepath) {
-	public void save() {
-		Gson gson = new GsonBuilder()
-				.setPrettyPrinting()
-				.registerTypeAdapter(Component.class, new ComponentDeserializer())
-				.registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
-				.create();
+    // public void save(String filepath) {
+    public void save() {
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Component.class, new ComponentDeserializer())
+                .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
+                .create();
 
-		try {
-			FileWriter writer = new FileWriter("level.json");
-			List<GameObject> objsToSerialize = new ArrayList<>();
-			for (GameObject obj : this.gameObjects) {
-				if(obj.doSerialization()) {
-					objsToSerialize.add(obj);
-				}
-			}
-			writer.write(gson.toJson(objsToSerialize));
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        try {
+            FileWriter writer = new FileWriter("level.json");
+            List<GameObject> objsToSerialize = new ArrayList<>();
+            for (GameObject obj : this.gameObjects) {
+                if (obj.doSerialization()) {
+                    objsToSerialize.add(obj);
+                }
+            }
+            writer.write(gson.toJson(objsToSerialize));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void load() {
-		Gson gson = new GsonBuilder()
-				.setPrettyPrinting()
-				.registerTypeAdapter(Component.class, new ComponentDeserializer())
-				.registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
-				.create();
-		String inFile = "";
+    public void load() {
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Component.class, new ComponentDeserializer())
+                .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
+                .create();
+        String inFile = "";
 
-		try {
-			inFile = new String(Files.readAllBytes(Paths.get("level.json")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            inFile = new String(Files.readAllBytes(Paths.get("level.json")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		if (!inFile.equals("")) {
-			int maxGoID = -1;
-			int maxComID = -1;
-			GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
-			for (int i = 0; i < objs.length; i++) {
-				addGameObject(objs[i]);
-				for (Component c : objs[i].getAllComponents()){
-					if(c.getUid() > maxComID) {
-						maxComID = c.getUid();
-					}
-				}
+        if (!inFile.equals("")) {
+            int maxGoID = -1;
+            int maxComID = -1;
+            GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
+            for (int i = 0; i < objs.length; i++) {
+                addGameObject(objs[i]);
+                for (Component c : objs[i].getAllComponents()) {
+                    if (c.getUid() > maxComID) {
+                        maxComID = c.getUid();
+                    }
+                }
 
-				if(objs[i].getUid() > maxGoID) {
-					maxGoID = objs[i].getUid();
-				}
-			}
+                if (objs[i].getUid() > maxGoID) {
+                    maxGoID = objs[i].getUid();
+                }
+            }
 
-			maxGoID++;
-			maxComID++;
+            maxGoID++;
+            maxComID++;
 
-			System.out.println(maxGoID);
-			System.out.println(maxComID);
+            // System.out.println(maxGoID);
+            // System.out.println(maxComID);
 
-			GameObject.init(maxGoID);
-			Component.init(maxComID);
-		}
-	}
+            GameObject.init(maxGoID);
+            Component.init(maxComID);
+        }
+    }
 
-	public void destroy() {
-		for (GameObject go : gameObjects) {
-			go.destroy();
-		}
-	}
-
+    public void destroy() {
+        for (GameObject go : gameObjects) {
+            go.destroy();
+        }
+    }
 
 }
