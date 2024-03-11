@@ -8,6 +8,7 @@ import game.components.AnimationState;
 import game.components.EditorCamera;
 import game.components.GizmoSystem;
 import game.components.GridLines;
+import game.components.KeyControls;
 import game.components.MouseControls;
 import game.components.Rigidbody;
 import game.components.ScaleGizmo;
@@ -49,6 +50,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         levelEditorStuff.setNoSerialize();
         levelEditorStuff.addComponent(new MouseControls());
+        levelEditorStuff.addComponent(new KeyControls());
         levelEditorStuff.addComponent(new GridLines());
         levelEditorStuff.addComponent(new EditorCamera(scene.camera()));
         levelEditorStuff.addComponent(new GizmoSystem(gizmos));

@@ -9,8 +9,8 @@
         "type": "game.engine.Transform",
         "properties": {
           "position": {
-            "x": 1.5,
-            "y": 4.5
+            "x": 1.4636879,
+            "y": 5.504263
           },
           "scale": {
             "x": 1.0,
@@ -199,7 +199,7 @@
         }
       }
     ],
-    "uid": 26
+    "uid": 0
   },
   {
     "isActiveGameObject": false,
@@ -401,7 +401,7 @@
         }
       }
     ],
-    "uid": 27
+    "uid": 1
   },
   {
     "isActiveGameObject": false,
@@ -603,7 +603,7 @@
         }
       }
     ],
-    "uid": 28
+    "uid": 2
   },
   {
     "isActiveGameObject": false,
@@ -805,7 +805,7 @@
         }
       }
     ],
-    "uid": 29
+    "uid": 3
   },
   {
     "isActiveGameObject": false,
@@ -1007,7 +1007,7 @@
         }
       }
     ],
-    "uid": 30
+    "uid": 4
   },
   {
     "isActiveGameObject": false,
@@ -1209,7 +1209,7 @@
         }
       }
     ],
-    "uid": 31
+    "uid": 5
   },
   {
     "isActiveGameObject": false,
@@ -1411,7 +1411,7 @@
         }
       }
     ],
-    "uid": 32
+    "uid": 6
   },
   {
     "isActiveGameObject": false,
@@ -1613,6 +1613,6 @@
         }
       }
     ],
-    "uid": 33
+    "uid": 7
   }
 ]

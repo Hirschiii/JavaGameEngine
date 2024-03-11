@@ -2,6 +2,9 @@ package game.editor;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import game.components.Component;
@@ -16,12 +19,14 @@ import game.scene.Scene;
 import imgui.ImGui;
 
 public class PropertiesWindow {
+    private List<GameObject> activeGameObjects;
     private GameObject activeGameObject = null;
     private PickingTexture pickingTexture;
 
     private float debounce = 0.2f;
 
     public PropertiesWindow(PickingTexture pickingTexture) {
+        this.activeGameObjects = new ArrayList<>();
         this.pickingTexture = pickingTexture;
     }
 
@@ -33,21 +38,21 @@ public class PropertiesWindow {
             int y = (int) MouseListener.getScreenY();
 
             int gameObjectId = pickingTexture.readPixel(x, y);
-            GameObject go = currentScene.getGameObject(gameObjectId);
-
-            if (go != null && go.getComponent(NonPickable.class) == null && !MouseListener.isDragging()) {
-                activeGameObject = go;
-            } else if (!MouseListener.isDragging()) {
-                activeGameObject = null;
+            GameObject pickedObj = currentScene.getGameObject(gameObjectId);
+            if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
+                setActiveGameObject(pickedObj);
+            } else if (pickedObj == null && !MouseListener.isDragging()) {
+                activeGameObjects = null;
             }
+
             this.debounce = 0.2f;
         }
 
     }
 
     public void imgui() {
-
-        if (activeGameObject != null) {
+        if (activeGameObjects.size() == 1 && activeGameObjects.get(0) != null) {
+            activeGameObject = activeGameObjects.get(0);
             ImGui.begin("Properties");
 
             if (ImGui.beginPopupContextWindow("ComponentAdder")) {
@@ -66,11 +71,31 @@ public class PropertiesWindow {
     }
 
     public void setActiveGameObject(GameObject go) {
-        this.activeGameObject = go;
+        if (go != null) {
+            clearSelected();
+            this.activeGameObjects.add(go);
+        }
     }
 
     public GameObject getActiveGameObject() {
-        return this.activeGameObject;
+        return this.activeGameObjects.size() == 1 ? this.activeGameObjects.get(0) : null;
+    }
+
+    public void setInactive() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setInactive'");
+    }
+
+    public List<GameObject> getActiveGameObjects() {
+        return this.activeGameObjects;
+    }
+
+    public void clearSelected() {
+        this.activeGameObjects.clear();
+    }
+
+    public void addActiveGameObjet(GameObject go) {
+        this.activeGameObjects.add(go);
     }
 
 }
