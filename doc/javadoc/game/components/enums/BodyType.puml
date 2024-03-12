@@ -1,0 +1,13 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    enum "<size:14>BodyType\n<size:10>game.components.enums" as game.components.enums.BodyType [[BodyType.html]] {
+        {static} +Static
+        {static} +Dynamic
+        {static} +Kinematic
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

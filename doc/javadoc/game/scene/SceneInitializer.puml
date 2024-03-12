@@ -1,0 +1,13 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    abstract class "<size:14>SceneInitializer\n<size:10>game.scene" as game.scene.SceneInitializer [[SceneInitializer.html]] {
+        {abstract} +init(Scene): void
+        {abstract} +loadResources(Scene): void
+        {abstract} +imgui(): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

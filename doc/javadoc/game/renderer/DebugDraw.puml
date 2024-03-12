@@ -10,6 +10,9 @@
         {static} +addLine2D(Vector2f, Vector2f): void
         {static} +addLine2D(Vector2f, Vector2f, Vector3f): void
         {static} +addLine2D(Vector2f, Vector2f, Vector3f, int): void
+        {static} +addBox2D(Vector2f, Vector2f, float): void
+        {static} +addBox2D(Vector2f, Vector2f, float, Vector3f): void
+        {static} +addBox2D(Vector2f, Vector2f, float, Vector3f, int): void
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

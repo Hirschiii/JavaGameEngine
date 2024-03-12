@@ -15,8 +15,8 @@ import game.engine.KeyListener;
  * PlayerController
  */
 public class PlayerController extends Component {
-    public float walkSpeed = 0.04f;
-    public float slowDownForc = 0.002f;
+    public float walkSpeed = 0.1f;
+    public float slowDownForc = 0.02f;
     public Vector2f terminalVelocity = new Vector2f(0.15f, 0.15f);
 
     private transient StateMachine stateMachine;
@@ -26,6 +26,8 @@ public class PlayerController extends Component {
     private transient boolean isDead = false;
     private transient float playerWidth = 1;
 
+    private String callTrigger = "IdleFront";
+
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
@@ -34,66 +36,58 @@ public class PlayerController extends Component {
 
     @Override
     public void update(float dt) {
+        this.acceleraton.zero();
+        callTrigger = "IdleFront";
+
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
-            this.acceleraton.y = 0;
             this.acceleraton.x = walkSpeed;
-            if (this.velocity.x < 0) {
-                // TODO create switch animation
-                this.stateMachine.trigger("SwitchDirection");
-                this.velocity.x += slowDownForc;
-            } else {
-                this.stateMachine.trigger("StartRunRight");
-            }
+            callTrigger = "SwitchDirection";
         } else if (KeyListener.isKeyPressed(GLFW_KEY_A)) {
-            this.acceleraton.y = 0;
             this.acceleraton.x = -walkSpeed;
-            if (this.velocity.x > 0) {
-                // TODO create switch animation
-                this.stateMachine.trigger("SwitchDirection");
-                this.velocity.x -= slowDownForc;
-            } else {
-                this.stateMachine.trigger("StartRunLeft");
-            }
+            callTrigger = "SwitchDirection";
         } else if (KeyListener.isKeyPressed(GLFW_KEY_W)) {
-            this.acceleraton.x = 0;
             this.acceleraton.y = walkSpeed;
-            if (this.velocity.y < 0) {
-                // TODO create switch animation
-                this.stateMachine.trigger("SwitchDirection");
-                this.velocity.y -= slowDownForc;
-            } else {
-                this.stateMachine.trigger("StartRunUp");
-            }
+            callTrigger = "SwitchDirection";
         } else if (KeyListener.isKeyPressed(GLFW_KEY_S)) {
-            this.acceleraton.x = 0;
             this.acceleraton.y = -walkSpeed;
-            if (this.velocity.y > 0) {
-                // TODO create switch animation
-                this.stateMachine.trigger("SwitchDirection");
-                this.velocity.y -= slowDownForc;
-            } else {
-                this.stateMachine.trigger("StartRunDown");
-            }
-        } else {
-            this.acceleraton.x = 0;
-            this.acceleraton.y = 0;
+            callTrigger = "SwitchDirection";
+        }
 
-            if (this.velocity.x > 0) {
-                this.velocity.x = Math.max(0, this.velocity.x - slowDownForc);
-            } else if (this.velocity.x < 0) {
-                this.velocity.x = Math.min(0, this.velocity.x + slowDownForc);
-            }
+        if(this.acceleraton.x > 0 && velocity.x > 0) {
+            callTrigger = "StartRunRight";
+        } else if(this.acceleraton.x < 0 && velocity.x < 0) {
+            callTrigger = "StartRunLeft";
+        } else
+        if(this.acceleraton.y > 0 && velocity.y > 0) {
+            callTrigger = "StartRunUp";
+        } else if(this.acceleraton.y < 0 && velocity.y < 0) {
+            callTrigger = "StartRunDown";
+        }
 
-            if (this.velocity.y > 0) {
-                this.velocity.y = Math.max(0, this.velocity.y - slowDownForc);
-            } else if (this.velocity.y < 0) {
-                this.velocity.y = Math.min(0, this.velocity.y + slowDownForc);
+        if (this.acceleraton.x == 0 || this.acceleraton.y == 0) {
+            if (this.acceleraton.x == 0) {
+                if (this.velocity.x > 0) {
+                    this.velocity.x = Math.max(0, this.velocity.x - slowDownForc);
+                } else if (this.velocity.x < 0) {
+                    this.velocity.x = Math.min(0, this.velocity.x + slowDownForc);
+                }
+            }
+            if (this.acceleraton.y == 0) {
+
+                if (this.velocity.y > 0) {
+                    this.velocity.y = Math.max(0, this.velocity.y - slowDownForc);
+                } else if (this.velocity.y < 0) {
+                    this.velocity.y = Math.min(0, this.velocity.y + slowDownForc);
+                }
             }
 
             if (this.velocity.x == 0 && this.velocity.y == 0) {
-                this.stateMachine.trigger("StopRun");
+                callTrigger = "StopRun";
             }
         }
+
+        System.out.println(callTrigger);
+        this.stateMachine.trigger(callTrigger);
 
         this.velocity.x += this.acceleraton.x * dt;
         this.velocity.y += this.acceleraton.y * dt;

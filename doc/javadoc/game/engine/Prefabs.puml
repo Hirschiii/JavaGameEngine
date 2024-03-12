@@ -5,7 +5,7 @@
 
     class "<size:14>Prefabs\n<size:10>game.engine" as game.engine.Prefabs [[Prefabs.html]] {
         {static} +generateSpriteObject(Sprite, float, float): GameObject
-        {static} +generateSpriteObject(Sprite, float, float, int): GameObject
+        {static} +generatePlayer(): GameObject
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

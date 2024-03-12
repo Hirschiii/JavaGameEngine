@@ -4,6 +4,7 @@
         class SpriteRenderer [[SpriteRenderer.html]] {
             +start(): void
             +update(float): void
+            +editorUpdate(float): void
             +imgui(): void
             +getColor(): Vector4f
             +getTexture(): Texture
@@ -15,10 +16,29 @@
             +setTexture(Texture): void
         }
 
+        class ScaleGizmo [[ScaleGizmo.html]] {
+            +ScaleGizmo(Sprite, PropertiesWindow)
+            +editorUpdate(float): void
+        }
+
         class MouseControls [[MouseControls.html]] {
             +pickupObject(GameObject): void
             +place(): void
+            +editorUpdate(float): void
+        }
+
+        class Gizmo [[Gizmo.html]] {
+            #activeGameObject: GameObject
+            #xAxisActive: boolean
+            #yAxisActive: boolean
+            +Gizmo(Sprite, PropertiesWindow)
+            +start(): void
             +update(float): void
+            +editorUpdate(float): void
+            +setActive(): void
+            +setInactive(): void
+            +setUsing(): void
+            +setNotUsing(): void
         }
 
         class Sprite [[Sprite.html]] {
@@ -35,10 +55,22 @@
 
         class TranslateGizmo [[TranslateGizmo.html]] {
             +TranslateGizmo(Sprite, PropertiesWindow)
-            +start(): void
+            +editorUpdate(float): void
+        }
+
+        class AnimationState [[AnimationState.html]] {
+            +title: String
+            +doesLoop: boolean
+            +addFrame(Sprite, float): void
+            +setLoop(boolean): void
             +update(float): void
-            +setActive(): void
-            +setInactive(): void
+            +refreshTextures(): void
+        }
+
+        class GizmoSystem [[GizmoSystem.html]] {
+            +GizmoSystem(Spritesheet)
+            +start(): void
+            +editorUpdate(float): void
         }
 
         class ComponentDeserializer [[ComponentDeserializer.html]] {
@@ -58,6 +90,12 @@
             {static} +setID_COUNTER(int): void
             +getUid(): int
             {static} +init(int): void
+            +destroy(): void
+            +editorUpdate(float): void
+        }
+
+        class KeyControls [[KeyControls.html]] {
+            +editorUpdate(float): void
         }
 
         class Spritesheet [[Spritesheet.html]] {
@@ -66,7 +104,28 @@
             +size(): int
         }
 
+        class StateMachine [[StateMachine.html]] {
+            +stateTransfers: HashMap<StateTrigger, String>
+            +refreshTexture(): void
+            +addState(String, String, String): void
+            +addState(AnimationState): void
+            +setDefaultState(String): void
+            +trigger(String): void
+            +start(): void
+            +update(float): void
+            +editorUpdate(float): void
+            +imgui(): void
+        }
+
         class GridLines [[GridLines.html]] {
+            +editorUpdate(float): void
+        }
+
+        class PlayerController [[PlayerController.html]] {
+            +walkSpeed: float
+            +slowDownForc: float
+            +terminalVelocity: Vector2f
+            +start(): void
             +update(float): void
         }
 
@@ -77,23 +136,33 @@
 
         class EditorCamera [[EditorCamera.html]] {
             +EditorCamera(Camera)
-            +update(float): void
+            +editorUpdate(float): void
         }
 
+        class NonPickable [[NonPickable.html]]
+
         class Rigidbody [[Rigidbody.html]] {
-            +velocity: Vector3f
-            +tmp: Vector4f
         }
 
         Component <|-- SpriteRenderer
         SpriteRenderer --> Sprite: sprite
+        Gizmo <|-- ScaleGizmo
         Component <|-- MouseControls
-        Component <|-- TranslateGizmo
+        Component <|-- Gizmo
+        Gizmo <|-- TranslateGizmo
+        Component <|-- AnimationState
+        AnimationState --> "*" Frame: animationFrames
+        AnimationState --> Sprite: currentSprite
+        Component <|-- GizmoSystem
         com.google.gson.JsonSerializer <|.. ComponentDeserializer
         com.google.gson.JsonDeserializer <|.. ComponentDeserializer
+        Component <|-- KeyControls
+        Component <|-- StateMachine
         Component <|-- GridLines
+        Component <|-- PlayerController
         Component <|-- FontRenderer
         Component <|-- EditorCamera
+        Component <|-- NonPickable
         Component <|-- Rigidbody
     }
 

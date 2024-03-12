@@ -6,7 +6,7 @@
     class "<size:14>MouseControls\n<size:10>game.components" as game.components.MouseControls [[MouseControls.html]] {
         +pickupObject(GameObject): void
         +place(): void
-        +update(float): void
+        +editorUpdate(float): void
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
