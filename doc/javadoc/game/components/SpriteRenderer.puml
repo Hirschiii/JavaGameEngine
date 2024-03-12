@@ -6,6 +6,7 @@
     class "<size:14>SpriteRenderer\n<size:10>game.components" as game.components.SpriteRenderer [[SpriteRenderer.html]] {
         +start(): void
         +update(float): void
+        +editorUpdate(float): void
         +imgui(): void
         +getColor(): Vector4f
         +getTexture(): Texture

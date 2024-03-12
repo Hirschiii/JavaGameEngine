@@ -4,6 +4,8 @@
     hide empty methods
 
     class "<size:14>Settings\n<size:10>game.util" as game.util.Settings [[Settings.html]] {
+        {static} +RELEASE_BUILD: boolean
+        {static} +tileSize: float
         {static} +GRID_WIDTH: float
         {static} +GRID_HEIGHT: float
         {static} +PROJECTION_HEIGHT: float

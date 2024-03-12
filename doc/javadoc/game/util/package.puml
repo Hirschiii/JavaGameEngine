@@ -5,10 +5,12 @@
             {static} +getShader(String): Shader
             {static} +getTexture(String): Texture
             {static} +addSpritesheet(String, Spritesheet): void
-            +getSpritesheet(String): Spritesheet
+            {static} +getSpritesheet(String): Spritesheet
         }
 
         class Settings [[Settings.html]] {
+            {static} +RELEASE_BUILD: boolean
+            {static} +tileSize: float
             {static} +GRID_WIDTH: float
             {static} +GRID_HEIGHT: float
             {static} +PROJECTION_HEIGHT: float

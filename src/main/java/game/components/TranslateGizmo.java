@@ -15,19 +15,19 @@ import game.engine.Window;
 
 public class TranslateGizmo extends Gizmo {
 
-	public TranslateGizmo(Sprite arrowSprite, PropertiesWindow propertiesWindow) {
-		super(arrowSprite, propertiesWindow);
-	}
+    public TranslateGizmo(Sprite arrowSprite, PropertiesWindow propertiesWindow) {
+        super(arrowSprite, propertiesWindow);
+    }
 
-	@Override
-	public void editorUpdate(float dt) {
-		if (activeGameObject != null) {
-			if (xAxisActive && !yAxisActive) {
-				activeGameObject.transform.position.x -= MouseListener.getWorldDX();
-			} else if (yAxisActive) {
-				activeGameObject.transform.position.y -= MouseListener.getWorldDY();
-			}
-		}
-		super.editorUpdate(dt);
-	}
+    @Override
+    public void editorUpdate(float dt) {
+        if (activeGameObject != null) {
+            if (xAxisActive && !yAxisActive) {
+                activeGameObject.transform.position.x -= MouseListener.getWorldDx();
+            } else if (yAxisActive) {
+                activeGameObject.transform.position.y -= MouseListener.getWorldDy();
+            }
+        }
+        super.editorUpdate(dt);
+    }
 }

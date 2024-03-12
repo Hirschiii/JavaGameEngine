@@ -1,0 +1,24 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>StateMachine\n<size:10>game.components" as game.components.StateMachine [[StateMachine.html]] {
+        +stateTransfers: HashMap<StateTrigger, String>
+        +refreshTexture(): void
+        +addState(String, String, String): void
+        +addState(AnimationState): void
+        +setDefaultState(String): void
+        +trigger(String): void
+        +start(): void
+        +update(float): void
+        +editorUpdate(float): void
+        +imgui(): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.StateMachine
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

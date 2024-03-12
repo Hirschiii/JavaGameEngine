@@ -14,17 +14,29 @@
             {static} +inputText(String, String): String
         }
 
+        class MenuBar [[MenuBar.html]] {
+            +imgui(): void
+        }
+
         class PropertiesWindow [[PropertiesWindow.html]] {
             +PropertiesWindow(PickingTexture)
-            +update(float, Scene): void
             +imgui(): void
-            +setActiveGameObject(int): void
+            +setActiveGameObject(GameObject): void
             +getActiveGameObject(): GameObject
+            +setInactive(): void
+            +getActiveGameObjects(): List<GameObject>
+            +clearSelected(): void
+            +addActiveGameObjet(GameObject): void
+            +getPickingTexture(): PickingTexture
         }
 
         class GameViewWindow [[GameViewWindow.html]] {
             +imgui(): void
             +getWantCaptureMouse(): boolean
+        }
+
+        class SceneHeirarchyWindow [[SceneHeirarchyWindow.html]] {
+            +imgui(): void
         }
 
     }

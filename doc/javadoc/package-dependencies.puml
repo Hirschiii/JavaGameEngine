@@ -15,21 +15,25 @@
     game.components --> game.renderer
     game.components --> game.editor
     game.components --> com.google.gson
+    game.components --> game.components.enums
     game.scene --> game.components
     game.scene --> game.engine
     game.scene --> game.renderer
     game.engine --> org.joml
+    game.engine --> game.observers
     game.engine --> game.renderer
     game.engine --> game.scene
+    game.engine --> game.observers.events
     game.engine --> game.components
     game.engine --> imgui.gl3
     game.engine --> imgui.glfw
     game.engine --> game.editor
     game.engine --> com.google.gson
+    game.observers --> game.engine
+    game.observers --> game.observers.events
     game.editor --> org.joml
     game.editor --> game.engine
     game.editor --> game.renderer
-    game.editor --> game.scene
     game.editor --> imgui
 
     ' Package links
@@ -43,7 +47,13 @@
     }
     class "game.editor" [[game/editor/package-summary.html]] {
     }
+    class "game.components.enums" [[game/components/enums/package-summary.html]] {
+    }
     class "game.scene" [[game/scene/package-summary.html]] {
+    }
+    class "game.observers" [[game/observers/package-summary.html]] {
+    }
+    class "game.observers.events" [[game/observers/events/package-summary.html]] {
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

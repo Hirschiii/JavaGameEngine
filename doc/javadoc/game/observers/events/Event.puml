@@ -1,0 +1,13 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Event\n<size:10>game.observers.events" as game.observers.events.Event [[Event.html]] {
+        +type: EventType
+        +Event(EventType)
+        +Event()
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"Alle Packages","u":"allpackages-index.html"},{"l":"game"},{"l":"game.components"},{"l":"game.editor"},{"l":"game.engine"},{"l":"game.renderer"},{"l":"game.scene"},{"l":"game.util"}];updateSearchResults();
+packageSearchIndex = [{"l":"Alle Packages","u":"allpackages-index.html"},{"l":"game"},{"l":"game.components"},{"l":"game.components.enums"},{"l":"game.editor"},{"l":"game.engine"},{"l":"game.observers"},{"l":"game.observers.events"},{"l":"game.renderer"},{"l":"game.scene"},{"l":"game.util"}];updateSearchResults();

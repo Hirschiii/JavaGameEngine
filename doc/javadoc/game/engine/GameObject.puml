@@ -6,7 +6,7 @@
     class "<size:14>GameObject\n<size:10>game.engine" as game.engine.GameObject [[GameObject.html]] {
         +name: String
         +transform: Transform
-        +GameObject(String, Transform, int)
+        +GameObject(String)
         {static} +init(int): void
         {static} +getID_COUNTER(): int
         {static} +setID_COUNTER(int): void
@@ -16,15 +16,12 @@
         +update(float): void
         +start(): void
         +imgui(): void
-        +zIndex(): int
         +getName(): String
         +setName(String): void
         +getComponents(): List<Component>
         +setComponents(List<Component>): void
         +getTransform(): Transform
         +setTransform(Transform): void
-        +getzIndex(): int
-        +setzIndex(int): void
         +getUid(): int
         +setUid(int): void
         +getAllComponents(): List<Component>
@@ -32,6 +29,10 @@
         +getIsActiveGameObject(): boolean
         +setNoSerialize(): void
         +doSerialization(): boolean
+        +isDead(): boolean
+        +destroy(): void
+        +editorUpdate(float): void
+        +copy(): GameObject
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

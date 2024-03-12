@@ -5,15 +5,12 @@
 
     class "<size:14>TranslateGizmo\n<size:10>game.components" as game.components.TranslateGizmo [[TranslateGizmo.html]] {
         +TranslateGizmo(Sprite, PropertiesWindow)
-        +start(): void
-        +update(float): void
-        +setActive(): void
-        +setInactive(): void
+        +editorUpdate(float): void
     }
 
-    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+    class "<size:14>Gizmo\n<size:10>game.components" as game.components.Gizmo [[Gizmo.html]]
 
-    game.components.Component <|-- game.components.TranslateGizmo
+    game.components.Gizmo <|-- game.components.TranslateGizmo
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
 @enduml

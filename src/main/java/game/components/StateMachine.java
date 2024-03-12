@@ -43,16 +43,16 @@ public class StateMachine extends Component {
 
     public HashMap<StateTrigger, String> stateTransfers = new HashMap<>();
     private List<AnimationState> states = new ArrayList<>();
-    private transient AnimationState currenState = null;
+    private transient AnimationState currentState = null;
     private String defaultStateTitle = "";
 
     public void refreshTexture() {
-        for (AnimationState state : states)  {
+        for (AnimationState state : states) {
             state.refreshTextures();
         }
     }
 
-    public void addStateTrigger(String from, String to, String onTrigger) {
+    public void addState(String from, String to, String onTrigger) {
         this.stateTransfers.put(new StateTrigger(from, onTrigger), to);
     }
 
@@ -62,10 +62,10 @@ public class StateMachine extends Component {
 
     public void setDefaultState(String animationTitle) {
         for (AnimationState state : states) {
-            if(state.title.equals(animationTitle)) {
+            if (state.title.equals(animationTitle)) {
                 defaultStateTitle = animationTitle;
-                if (currenState == null) {
-                    currenState = state;
+                if (currentState == null) {
+                    currentState = state;
                     return;
                 }
             }
@@ -76,33 +76,35 @@ public class StateMachine extends Component {
 
     public void trigger(String trigger) {
         for (StateTrigger state : stateTransfers.keySet()) {
-            if (state.state.equals(currenState.title) && state.trigger.equals(trigger)) {
+            if (state.state.equals(currentState.title) && state.trigger.equals(trigger)) {
                 if (stateTransfers.get(state) != null) {
-                    int newStateIndex = -1;
-                    int index = 0;
-                    for (AnimationState s : states) {
-                        if (s.title.equals(stateTransfers.get(state))) {
-                            newStateIndex = index;
-
-                        }
-                        index++;
-                    }
-
+                    int newStateIndex = stateIndexOf(stateTransfers.get(state));
                     if (newStateIndex > -1) {
-                        currenState = states.get(newStateIndex);
+                        currentState = states.get(newStateIndex);
                     }
                 }
                 return;
             }
         }
-        System.out.println("Unable to find State for Trigger: '" + trigger + "'");
+    }
+
+    private int stateIndexOf(String stateTitle) {
+        int index = 0;
+        for (AnimationState state : states) {
+            if(state.title.equals(stateTitle)) {
+                return index;
+            }
+            index++;
+        }
+
+        return -1;
     }
 
     @Override
     public void start() {
         for (AnimationState state : states) {
             if (state.title.equals(defaultStateTitle)) {
-                currenState = state;
+                currentState = state;
                 break;
             }
         }
@@ -110,11 +112,11 @@ public class StateMachine extends Component {
 
     @Override
     public void update(float dt) {
-        if (currenState != null) {
-            currenState.update(dt);
+        if (currentState != null) {
+            currentState.update(dt);
             SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
             if (sprite != null) {
-                sprite.setSprite(currenState.getCurrentSprite());
+                sprite.setSprite(currentState.getCurrentSprite());
             }
         }
     }

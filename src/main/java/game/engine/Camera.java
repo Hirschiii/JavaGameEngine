@@ -7,146 +7,146 @@ import org.joml.Vector3f;
 import game.util.Settings;
 
 public class Camera {
-	private Matrix4f projectMatrix, viewMatrix, inverseProjection, inverseView;
-	public Vector2f position;
-	public float zoom;
+    private Matrix4f projectMatrix, viewMatrix, inverseProjection, inverseView;
+    public Vector2f position;
+    public float zoom;
 
-	private float aspectRation = (float) Window.getWidth() / Window.getHeight();
-	private float projectionHeight = Settings.PROJECTION_HEIGHT;
-	private Vector2f projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
+    private float aspectRation = (float) Window.getWidth() / Window.getHeight();
+    private float projectionHeight = Settings.PROJECTION_HEIGHT;
+    private Vector2f projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
 
-	public Camera(Vector2f position) {
-		this.position = position;
+    public Camera(Vector2f position) {
+        this.position = position;
 
-		this.projectMatrix = new Matrix4f();
-		this.viewMatrix = new Matrix4f();
-		this.inverseProjection = new Matrix4f();
-		this.inverseView = new Matrix4f();
+        this.projectMatrix = new Matrix4f();
+        this.viewMatrix = new Matrix4f();
+        this.inverseProjection = new Matrix4f();
+        this.inverseView = new Matrix4f();
 
-		this.zoom = 1.0f;
+        this.zoom = 1.0f;
 
-		adjustProjection();
-	}
+        adjustProjection();
+    }
 
-	public void adjustProjection() {
-		aspectRation = (float) Window.getWidth() / Window.getHeight();
-		projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
+    public void adjustProjection() {
+        aspectRation = (float) Window.getWidth() / Window.getHeight();
+        projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
 
-		projectMatrix.identity();
+        projectMatrix.identity();
 
-		// Left, Right, Bottom, Top, Near Clipping, Far Clipping
-		// projectMatrix.ortho(0.0f, projectionSize.x * zoom,
-		projectMatrix.ortho(0.0f, projectionSize.x * zoom,
-				0.0f, projectionSize.y * zoom, 0.0f, 100.0f);
-		projectMatrix.invert(inverseProjection);
-	}
+        // Left, Right, Bottom, Top, Near Clipping, Far Clipping
+        // projectMatrix.ortho(0.0f, projectionSize.x * zoom,
+        projectMatrix.ortho(0.0f, projectionSize.x * zoom,
+                0.0f, projectionSize.y * zoom, 0.0f, 100.0f);
+        projectMatrix.invert(inverseProjection);
+    }
 
-	public Matrix4f getViewMatrix() {
-		Vector3f cameraFront = new Vector3f(0.0f, 0.0f, -1.0f);
+    public Matrix4f getViewMatrix() {
+        Vector3f cameraFront = new Vector3f(0.0f, 0.0f, -1.0f);
 
-		Vector3f cameraUp = new Vector3f(0.0f, 1.0f, 0.0f);
+        Vector3f cameraUp = new Vector3f(0.0f, 1.0f, 0.0f);
 
-		this.viewMatrix.identity();
-		viewMatrix.lookAt(new Vector3f(position.x, position.y, 20.0f),
-				cameraFront.add(position.x, position.y, 0.0f),
-				cameraUp);
+        this.viewMatrix.identity();
+        viewMatrix.lookAt(new Vector3f(position.x, position.y, 20.0f),
+                cameraFront.add(position.x, position.y, 0.0f),
+                cameraUp);
 
-		this.viewMatrix.invert(inverseView);
+        this.viewMatrix.invert(inverseView);
 
-		return this.viewMatrix;
-	}
+        return this.viewMatrix;
+    }
 
-	public Matrix4f getProjectionMatrix() {
-		return this.projectMatrix;
-	}
+    public Matrix4f getProjectionMatrix() {
+        return this.projectMatrix;
+    }
 
-	public Matrix4f getProjectMatrix() {
-		return projectMatrix;
-	}
+    public Matrix4f getProjectMatrix() {
+        return projectMatrix;
+    }
 
-	public void setProjectMatrix(Matrix4f projectMatrix) {
-		this.projectMatrix = projectMatrix;
-	}
+    public void setProjectMatrix(Matrix4f projectMatrix) {
+        this.projectMatrix = projectMatrix;
+    }
 
-	public void setViewMatrix(Matrix4f viewMatrix) {
-		this.viewMatrix = viewMatrix;
-	}
+    public void setViewMatrix(Matrix4f viewMatrix) {
+        this.viewMatrix = viewMatrix;
+    }
 
-	public Matrix4f getInverseProjection() {
-		return inverseProjection;
-	}
+    public Matrix4f getInverseProjection() {
+        return inverseProjection;
+    }
 
-	public void setInverseProjection(Matrix4f inverseProjection) {
-		this.inverseProjection = inverseProjection;
-	}
+    public void setInverseProjection(Matrix4f inverseProjection) {
+        this.inverseProjection = inverseProjection;
+    }
 
-	public Matrix4f getInverseView() {
-		return inverseView;
-	}
+    public Matrix4f getInverseView() {
+        return inverseView;
+    }
 
-	public void setInverseView(Matrix4f inverseView) {
-		this.inverseView = inverseView;
-	}
+    public void setInverseView(Matrix4f inverseView) {
+        this.inverseView = inverseView;
+    }
 
-	public Vector2f getPosition() {
-		return position;
-	}
+    public Vector2f getPosition() {
+        return position;
+    }
 
-	public void setPosition(Vector2f position) {
-		this.position = position;
-	}
+    public void setPosition(Vector2f position) {
+        this.position = position;
+    }
 
-	// public float getProjectionWidth() {
-	// return projectionWidth;
-	// }
+    // public float getProjectionWidth() {
+    // return projectionWidth;
+    // }
 
-	// public void setProjectionWidth(float projectionWidth) {
-	// this.projectionWidth = projectionWidth;
-	// }
+    // public void setProjectionWidth(float projectionWidth) {
+    // this.projectionWidth = projectionWidth;
+    // }
 
-	public float getProjectionHeight() {
-		return projectionHeight;
-	}
+    public float getProjectionHeight() {
+        return projectionHeight;
+    }
 
-	public void setProjectionHeight(float projectionHeight) {
-		this.projectionHeight = projectionHeight;
-	}
+    public void setProjectionHeight(float projectionHeight) {
+        this.projectionHeight = projectionHeight;
+    }
 
-	// public Vector2f getProjectionSize() {
-	// return projectionSize;
-	// }
-	//
-	// public void setProjectionSize(Vector2f projectionSize) {
-	// this.projectionSize = projectionSize;
-	// }
+    // public Vector2f getProjectionSize() {
+    // return projectionSize;
+    // }
+    //
+    // public void setProjectionSize(Vector2f projectionSize) {
+    // this.projectionSize = projectionSize;
+    // }
 
-	public float getZoom() {
-		return zoom;
-	}
+    public float getZoom() {
+        return zoom;
+    }
 
-	public void setZoom(float zoom) {
-		this.zoom = zoom;
-	}
+    public void setZoom(float zoom) {
+        this.zoom = zoom;
+    }
 
-	public void addZoom(float zoom) {
-		this.zoom += zoom;
-	}
+    public void addZoom(float zoom) {
+        this.zoom += zoom;
+    }
 
-	public float getAspectRation() {
-		aspectRation = (float) Window.getWidth() / Window.getHeight();
-		return aspectRation;
-	}
+    public float getAspectRation() {
+        aspectRation = (float) Window.getWidth() / Window.getHeight();
+        return aspectRation;
+    }
 
-	public void setAspectRation(float aspectRation) {
-		this.aspectRation = aspectRation;
-	}
+    public void setAspectRation(float aspectRation) {
+        this.aspectRation = aspectRation;
+    }
 
-	public Vector2f getProjectionSize() {
-		return projectionSize;
-	}
+    public Vector2f getProjectionSize() {
+        return projectionSize;
+    }
 
-	public void setProjectionSize(Vector2f projectionSize) {
-		this.projectionSize = projectionSize;
-	}
+    public void setProjectionSize(Vector2f projectionSize) {
+        this.projectionSize = projectionSize;
+    }
 
 }

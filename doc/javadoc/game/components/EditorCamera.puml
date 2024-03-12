@@ -5,7 +5,7 @@
 
     class "<size:14>EditorCamera\n<size:10>game.components" as game.components.EditorCamera [[EditorCamera.html]] {
         +EditorCamera(Camera)
-        +update(float): void
+        +editorUpdate(float): void
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]

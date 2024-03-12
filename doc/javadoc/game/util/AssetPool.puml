@@ -7,7 +7,7 @@
         {static} +getShader(String): Shader
         {static} +getTexture(String): Texture
         {static} +addSpritesheet(String, Spritesheet): void
-        +getSpritesheet(String): Spritesheet
+        {static} +getSpritesheet(String): Spritesheet
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

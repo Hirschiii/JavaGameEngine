@@ -5,10 +5,14 @@
 
     class "<size:14>PropertiesWindow\n<size:10>game.editor" as game.editor.PropertiesWindow [[PropertiesWindow.html]] {
         +PropertiesWindow(PickingTexture)
-        +update(float, Scene): void
         +imgui(): void
-        +setActiveGameObject(int): void
+        +setActiveGameObject(GameObject): void
         +getActiveGameObject(): GameObject
+        +setInactive(): void
+        +getActiveGameObjects(): List<GameObject>
+        +clearSelected(): void
+        +addActiveGameObjet(GameObject): void
+        +getPickingTexture(): PickingTexture
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
