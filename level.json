@@ -9,7 +9,7 @@
         "type": "game.engine.Transform",
         "properties": {
           "position": {
-            "x": 6.5,
+            "x": 3.5,
             "y": 6.5
           },
           "scale": {
@@ -18,7 +18,7 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 167
+          "uid": 263
         }
       },
       {
@@ -57,7 +57,7 @@
               }
             ]
           },
-          "uid": 168
+          "uid": 264
         }
       },
       {
@@ -1213,22 +1213,22 @@
             }
           ],
           "defaultStateTitle": "IdleFront",
-          "uid": 169
+          "uid": 265
         }
       },
       {
         "type": "game.components.PlayerController",
         "properties": {
-          "walkSpeed": 0.1,
-          "slowDownForc": 0.02,
+          "walkSpeed": 0.05,
+          "slowDownForc": 0.002,
           "terminalVelocity": {
-            "x": 0.15,
-            "y": 0.15
+            "x": 0.07,
+            "y": 0.07
           },
-          "uid": 170
+          "uid": 266
         }
       }
     ],
-    "uid": 26
+    "uid": 8
   }
 ]
