@@ -4,6 +4,7 @@ import org.joml.Vector2f;
 
 import game.components.AnimationState;
 import game.components.PlayerController;
+import game.components.Rigidbody;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
@@ -171,7 +172,17 @@ public class Prefabs {
         player.addComponent(stateMachine);
 
         player.addComponent(new PlayerController());
+        player.addComponent(new Rigidbody());
+        player.transform.zIndex = 2;
 
         return player;
+    }
+
+    public static GameObject generateStreet() {
+        Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
+        GameObject street = generateSpriteObject(streetSprites.getSprite(0), 1, 1);
+        street.addComponent(new Rigidbody());
+
+        return street;
     }
 }
