@@ -15,9 +15,9 @@ import game.engine.KeyListener;
  * PlayerController
  */
 public class PlayerController extends Component {
-    public float walkSpeed = 0.1f;
-    public float slowDownForc = 0.02f;
-    public Vector2f terminalVelocity = new Vector2f(0.15f, 0.15f);
+    public float walkSpeed = 0.05f;
+    public float slowDownForc = 0.002f;
+    public Vector2f terminalVelocity = new Vector2f(0.07f, 0.07f);
 
     private transient StateMachine stateMachine;
 
