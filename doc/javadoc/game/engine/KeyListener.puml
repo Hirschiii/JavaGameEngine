@@ -7,6 +7,8 @@
         {static} +get(): KeyListener
         {static} +keyCallback(long, int, int, int, int): void
         {static} +isKeyPressed(int): boolean
+        {static} +endFrame(): void
+        {static} +keyBeginPress(int): boolean
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

@@ -1,0 +1,16 @@
+@startuml
+    namespace game.observers {
+
+        class EventSystem [[EventSystem.html]] {
+            {static} +addObserver(Observer): void
+            {static} +notify(GameObject, Event): void
+        }
+
+        interface Observer [[Observer.html]] {
+            {abstract} +onNotify(GameObject, Event): void
+        }
+
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

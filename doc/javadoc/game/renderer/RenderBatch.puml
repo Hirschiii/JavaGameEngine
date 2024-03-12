@@ -4,7 +4,7 @@
     hide empty methods
 
     class "<size:14>RenderBatch\n<size:10>game.renderer" as game.renderer.RenderBatch [[RenderBatch.html]] {
-        +RenderBatch(int, int)
+        +RenderBatch(int, int, Renderer)
         +start(): void
         +addSprite(SpriteRenderer): void
         +render(): void
@@ -13,6 +13,7 @@
         +hasTexture(Texture): boolean
         +zIndex(): int
         +compareTo(RenderBatch): int
+        +destroyIfExists(GameObject): boolean
     }
 
     interface "<size:14>Comparable\n<size:10>java.lang" as java.lang.Comparable<RenderBatch> {

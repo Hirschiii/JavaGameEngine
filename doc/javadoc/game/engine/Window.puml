@@ -9,7 +9,7 @@
         +b: float
         +a: float
         {static} +get(): Window
-        {static} +changeScene(int): void
+        {static} +changeScene(SceneInitializer): void
         {static} +getWidth(): int
         {static} +getHeight(): int
         {static} +setWidth(int): void
@@ -30,7 +30,15 @@
         {static} +getFramebuffer(): Framebuffer
         {static} +getCurrenScene(): Scene
         {static} +getTargetAspectRatio(): float
+        {static} +getCurrentTime(): float
+        +onNotify(GameObject, Event): void
     }
+
+    interface "<size:14>Observer\n<size:10>game.observers" as game.observers.Observer [[../observers/Observer.html]] {
+        {abstract} +onNotify(GameObject, Event): void
+    }
+
+    game.observers.Observer <|.. game.engine.Window
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
 @enduml

@@ -38,9 +38,13 @@
         {static} +getScreenX(): float
         {static} +getScreenY(): float
         {static} +getScreen(): Vector2f
+        {static} +getWorldDx(): float
+        {static} +getWorldDy(): float
         {static} +getWorldX(): float
         {static} +getWorldY(): float
         {static} +getWorld(): Vector2f
+        {static} +screenToWorld(Vector2f): Vector2f
+        {static} +worldToScreen(Vector2f): Vector2f
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

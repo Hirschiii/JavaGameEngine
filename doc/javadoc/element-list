@@ -1,7 +1,10 @@
 game
 game.components
+game.components.enums
 game.editor
 game.engine
+game.observers
+game.observers.events
 game.renderer
 game.scene
 game.util

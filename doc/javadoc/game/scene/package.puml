@@ -1,41 +1,40 @@
 @startuml
     namespace game.scene {
 
-        class LevelEditorScene [[LevelEditorScene.html]] {
-            +init(): void
-            +update(float): void
-            +render(): void
+        class LevelEditorSceneInitializer [[LevelEditorSceneInitializer.html]] {
+            +init(Scene): void
+            +loadResources(Scene): void
             +imgui(): void
             +ImGuiWordSet(): void
         }
 
-        class LevelScene [[LevelScene.html]] {
-            +update(float): void
-            +render(): void
-            +init(): void
-        }
-
-        abstract class Scene [[Scene.html]] {
-            #renderer: Renderer
-            #camera: Camera
-            #loadedLevel: boolean
+        class Scene [[Scene.html]] {
             #gameObjects: List<GameObject>
+            +Scene(SceneInitializer)
             +init(): void
             +start(): void
             +addGameObject(GameObject): void
-            {abstract} +update(float): void
-            {abstract} +render(): void
+            +editorUpdate(float): void
+            +update(float): void
+            +render(): void
             +camera(): Camera
             +getGameObjectWith(Class<T extends Component>): GameObject
             +getGameObjects(): List<GameObject>
             +getGameObject(int): GameObject
             +imgui(): void
-            +saveExit(): void
+            +createGameObject(String): GameObject
+            +save(): void
             +load(): void
+            +destroy(): void
         }
 
-        Scene <|-- LevelEditorScene
-        Scene <|-- LevelScene
+        abstract class SceneInitializer [[SceneInitializer.html]] {
+            {abstract} +init(Scene): void
+            {abstract} +loadResources(Scene): void
+            {abstract} +imgui(): void
+        }
+
+        SceneInitializer <|-- LevelEditorSceneInitializer
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

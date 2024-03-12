@@ -36,9 +36,13 @@
             {static} +getScreenX(): float
             {static} +getScreenY(): float
             {static} +getScreen(): Vector2f
+            {static} +getWorldDx(): float
+            {static} +getWorldDy(): float
             {static} +getWorldX(): float
             {static} +getWorldY(): float
             {static} +getWorld(): Vector2f
+            {static} +screenToWorld(Vector2f): Vector2f
+            {static} +worldToScreen(Vector2f): Vector2f
         }
 
         class Window [[Window.html]] {
@@ -47,7 +51,7 @@
             +b: float
             +a: float
             {static} +get(): Window
-            {static} +changeScene(int): void
+            {static} +changeScene(SceneInitializer): void
             {static} +getWidth(): int
             {static} +getHeight(): int
             {static} +setWidth(int): void
@@ -67,6 +71,8 @@
             {static} +getFramebuffer(): Framebuffer
             {static} +getCurrenScene(): Scene
             {static} +getTargetAspectRatio(): float
+            {static} +getCurrentTime(): float
+            +onNotify(GameObject, Event): void
         }
 
         class Transform [[Transform.html]] {
@@ -81,17 +87,23 @@
             +copy(): Transform
             +imgui(): void
             +copy(Transform): void
+            +getPosition(): Vector2f
+            +getScale(): Vector2f
+            +getRotation(): float
+            +getzIndex(): int
         }
 
         class KeyListener [[KeyListener.html]] {
             {static} +get(): KeyListener
             {static} +keyCallback(long, int, int, int, int): void
             {static} +isKeyPressed(int): boolean
+            {static} +endFrame(): void
+            {static} +keyBeginPress(int): boolean
         }
 
         class Prefabs [[Prefabs.html]] {
             {static} +generateSpriteObject(Sprite, float, float): GameObject
-            {static} +generateSpriteObject(Sprite, float, float, int): GameObject
+            {static} +generatePlayer(): GameObject
         }
 
         class ImGuiLayer [[ImGuiLayer.html]] {
@@ -99,11 +111,12 @@
             +initImGui(): void
             +update(float, Scene): void
             +getPropertiesWindow(): PropertiesWindow
+            +getGameViewWindow(): GameViewWindow
         }
 
         class GameObject [[GameObject.html]] {
             +name: String
-            +GameObject(String, Transform, int)
+            +GameObject(String)
             {static} +init(int): void
             {static} +getID_COUNTER(): int
             {static} +setID_COUNTER(int): void
@@ -113,13 +126,10 @@
             +update(float): void
             +start(): void
             +imgui(): void
-            +zIndex(): int
             +getName(): String
             +setName(String): void
             +getComponents(): List<Component>
             +setComponents(List<Component>): void
-            +getzIndex(): int
-            +setzIndex(int): void
             +getUid(): int
             +setUid(int): void
             +getAllComponents(): List<Component>
@@ -127,6 +137,10 @@
             +getIsActiveGameObject(): boolean
             +setNoSerialize(): void
             +doSerialization(): boolean
+            +isDead(): boolean
+            +destroy(): void
+            +editorUpdate(float): void
+            +copy(): GameObject
         }
 
         class Camera [[Camera.html]] {
@@ -160,10 +174,17 @@
             +deserialize(JsonElement, Type, JsonDeserializationContext): GameObject
         }
 
+        game.observers.Observer <|.. Window
         Window --> ImGuiLayer: imguiLayer
         game.components.Component <|-- Transform
         GameObject --> Transform: transform
         com.google.gson.JsonDeserializer <|.. GameObjectDeserializer
+    }
+
+    namespace game.observers {
+        interface Observer [[../observers/Observer.html]] {
+            {abstract} +onNotify(GameObject, Event): void
+        }
     }
 
     namespace game.components {

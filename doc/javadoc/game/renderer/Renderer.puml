@@ -8,6 +8,7 @@
         {static} +bindShader(Shader): void
         {static} +getBoundShader(): Shader
         +render(): void
+        +destroyGameObject(GameObject): void
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

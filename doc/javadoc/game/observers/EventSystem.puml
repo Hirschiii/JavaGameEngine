@@ -1,0 +1,12 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>EventSystem\n<size:10>game.observers" as game.observers.EventSystem [[EventSystem.html]] {
+        {static} +addObserver(Observer): void
+        {static} +notify(GameObject, Event): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

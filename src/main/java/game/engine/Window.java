@@ -147,7 +147,7 @@ public class Window implements Observer {
     private long glfwWindow;
 
     private static Scene currenScene;
-    private boolean runntimePlaying = false;
+    private boolean runntimePlaying = Settings.RELEASE_BUILD;
 
     public float r, g, b, a;
 
@@ -381,8 +381,8 @@ public class Window implements Observer {
 
     public static Framebuffer getFramebuffer() {
         return get().framebuffer_before;
-        // return get().framebuffer_ShaderApplied;
         // return get().entityIdFramebuffer;
+        // return get().framebuffer_ShaderApplied;
     }
 
     public static Scene getCurrenScene() {

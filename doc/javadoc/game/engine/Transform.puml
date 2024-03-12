@@ -15,6 +15,10 @@
         +copy(): Transform
         +imgui(): void
         +copy(Transform): void
+        +getPosition(): Vector2f
+        +getScale(): Vector2f
+        +getRotation(): float
+        +getzIndex(): int
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[../components/Component.html]]

@@ -8,6 +8,7 @@
         +initImGui(): void
         +update(float, Scene): void
         +getPropertiesWindow(): PropertiesWindow
+        +getGameViewWindow(): GameViewWindow
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

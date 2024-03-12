@@ -3,23 +3,24 @@
     hide empty fields
     hide empty methods
 
-    abstract class "<size:14>Scene\n<size:10>game.scene" as game.scene.Scene [[Scene.html]] {
-        #renderer: Renderer
-        #camera: Camera
-        #loadedLevel: boolean
+    class "<size:14>Scene\n<size:10>game.scene" as game.scene.Scene [[Scene.html]] {
         #gameObjects: List<GameObject>
+        +Scene(SceneInitializer)
         +init(): void
         +start(): void
         +addGameObject(GameObject): void
-        {abstract} +update(float): void
-        {abstract} +render(): void
+        +editorUpdate(float): void
+        +update(float): void
+        +render(): void
         +camera(): Camera
         +getGameObjectWith(Class<T extends Component>): GameObject
         +getGameObjects(): List<GameObject>
         +getGameObject(int): GameObject
         +imgui(): void
-        +saveExit(): void
+        +createGameObject(String): GameObject
+        +save(): void
         +load(): void
+        +destroy(): void
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

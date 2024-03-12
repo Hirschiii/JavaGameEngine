@@ -4,8 +4,6 @@
     hide empty methods
 
     class "<size:14>Rigidbody\n<size:10>game.components" as game.components.Rigidbody [[Rigidbody.html]] {
-        +velocity: Vector3f
-        +tmp: Vector4f
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]

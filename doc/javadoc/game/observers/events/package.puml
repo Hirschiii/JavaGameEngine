@@ -1,0 +1,21 @@
+@startuml
+    namespace game.observers.events {
+
+        class Event [[Event.html]] {
+            +Event(EventType)
+            +Event()
+        }
+
+        enum EventType [[EventType.html]] {
+            {static} +GameEngineStartPlay
+            {static} +GameEngineStopPlay
+            {static} +SaveLevel
+            {static} +LoadLevel
+            {static} +UserEvent
+        }
+
+        Event --> EventType: type
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

@@ -4,6 +4,8 @@
     hide empty methods
 
     class "<size:14>Framebuffer\n<size:10>game.renderer" as game.renderer.Framebuffer [[Framebuffer.html]] {
+        +width: int
+        +height: int
         +Framebuffer(int, int)
         +readPixel(int, int): float[]
         +bind(): void

@@ -54,6 +54,8 @@
         }
 
         class Framebuffer [[Framebuffer.html]] {
+            +width: int
+            +height: int
             +Framebuffer(int, int)
             +readPixel(int, int): float[]
             +bind(): void
@@ -69,6 +71,9 @@
             {static} +addLine2D(Vector2f, Vector2f): void
             {static} +addLine2D(Vector2f, Vector2f, Vector3f): void
             {static} +addLine2D(Vector2f, Vector2f, Vector3f, int): void
+            {static} +addBox2D(Vector2f, Vector2f, float): void
+            {static} +addBox2D(Vector2f, Vector2f, float, Vector3f): void
+            {static} +addBox2D(Vector2f, Vector2f, float, Vector3f, int): void
         }
 
         class Renderer [[Renderer.html]] {
@@ -76,10 +81,11 @@
             {static} +bindShader(Shader): void
             {static} +getBoundShader(): Shader
             +render(): void
+            +destroyGameObject(GameObject): void
         }
 
         class RenderBatch [[RenderBatch.html]] {
-            +RenderBatch(int, int)
+            +RenderBatch(int, int, Renderer)
             +start(): void
             +addSprite(SpriteRenderer): void
             +render(): void
@@ -88,6 +94,7 @@
             +hasTexture(Texture): boolean
             +zIndex(): int
             +compareTo(RenderBatch): int
+            +destroyIfExists(GameObject): boolean
         }
 
         Framebuffer --> Texture: texture
