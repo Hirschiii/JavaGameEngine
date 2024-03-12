@@ -26,8 +26,6 @@ public class PlayerController extends Component {
     private transient boolean isDead = false;
     private transient float playerWidth = 1;
 
-    private String callTrigger = "IdleFront";
-
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
@@ -37,31 +35,30 @@ public class PlayerController extends Component {
     @Override
     public void update(float dt) {
         this.acceleraton.zero();
-        callTrigger = "IdleFront";
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
             this.acceleraton.x = walkSpeed;
-            callTrigger = "SwitchDirection";
+            this.stateMachine.trigger("SwitchDirection");
         } else if (KeyListener.isKeyPressed(GLFW_KEY_A)) {
             this.acceleraton.x = -walkSpeed;
-            callTrigger = "SwitchDirection";
+            this.stateMachine.trigger("SwitchDirection");
         } else if (KeyListener.isKeyPressed(GLFW_KEY_W)) {
             this.acceleraton.y = walkSpeed;
-            callTrigger = "SwitchDirection";
+            this.stateMachine.trigger("SwitchDirection");
         } else if (KeyListener.isKeyPressed(GLFW_KEY_S)) {
             this.acceleraton.y = -walkSpeed;
-            callTrigger = "SwitchDirection";
+            this.stateMachine.trigger("SwitchDirection");
         }
 
         if(this.acceleraton.x > 0 && velocity.x > 0) {
-            callTrigger = "StartRunRight";
+            this.stateMachine.trigger("StartRunRight");
         } else if(this.acceleraton.x < 0 && velocity.x < 0) {
-            callTrigger = "StartRunLeft";
+            this.stateMachine.trigger("StartRunLeft");
         } else
         if(this.acceleraton.y > 0 && velocity.y > 0) {
-            callTrigger = "StartRunUp";
+            this.stateMachine.trigger("StartRunUp");
         } else if(this.acceleraton.y < 0 && velocity.y < 0) {
-            callTrigger = "StartRunDown";
+            this.stateMachine.trigger("StartRunDown");
         }
 
         if (this.acceleraton.x == 0 || this.acceleraton.y == 0) {
@@ -82,12 +79,9 @@ public class PlayerController extends Component {
             }
 
             if (this.velocity.x == 0 && this.velocity.y == 0) {
-                callTrigger = "StopRun";
+                this.stateMachine.trigger("StopRun");
             }
         }
-
-        System.out.println(callTrigger);
-        this.stateMachine.trigger(callTrigger);
 
         this.velocity.x += this.acceleraton.x * dt;
         this.velocity.y += this.acceleraton.y * dt;

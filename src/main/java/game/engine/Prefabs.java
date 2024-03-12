@@ -49,6 +49,30 @@ public class Prefabs {
 
         idleBack.setLoop(true);
 
+        AnimationState idleSideLeft = new AnimationState();
+
+        idleSideLeft.title = "IdleSideLeft";
+
+        int idleSideLeftOffset = 25;
+        idleSideLeft.addFrame(playerSprites.getSprite(idleSideLeftOffset), defaultFrameTime);
+        idleSideLeft.addFrame(playerSprites.getSprite(idleSideLeftOffset + 1), defaultFrameTime);
+        idleSideLeft.addFrame(playerSprites.getSprite(idleSideLeftOffset + 2), defaultFrameTime);
+        idleSideLeft.addFrame(playerSprites.getSprite(idleSideLeftOffset + 3), defaultFrameTime);
+
+        idleSideLeft.setLoop(true);
+
+        AnimationState idleSideRight = new AnimationState();
+
+        idleSideRight.title = "IdleSideRight";
+
+        int idleSideRightOffset = 17;
+        idleSideRight.addFrame(playerSprites.getSprite(idleSideRightOffset), defaultFrameTime);
+        idleSideRight.addFrame(playerSprites.getSprite(idleSideRightOffset + 1), defaultFrameTime);
+        idleSideRight.addFrame(playerSprites.getSprite(idleSideRightOffset + 2), defaultFrameTime);
+        idleSideRight.addFrame(playerSprites.getSprite(idleSideRightOffset + 3), defaultFrameTime);
+
+        idleSideRight.setLoop(true);
+
         AnimationState runDown = new AnimationState();
         runDown.title = "RunDown";
 
@@ -98,6 +122,8 @@ public class Prefabs {
 
         stateMachine.addState(idleFront);
         stateMachine.addState(idleBack);
+        stateMachine.addState(idleSideLeft);
+        stateMachine.addState(idleSideRight);
         stateMachine.addState(switchDirection);
         stateMachine.addState(runDown);
         stateMachine.addState(runUp);
@@ -123,9 +149,19 @@ public class Prefabs {
         stateMachine.addState(idleFront.title, runUp.title, "StartRunUp");
         stateMachine.addState(idleFront.title, runDown.title, "StartRunDown");
 
-        stateMachine.addState(runRight.title, idleFront.title, "StopRun");
+        stateMachine.addState(idleSideRight.title, runRight.title, "StartRunRight");
+        stateMachine.addState(idleSideRight.title, runLeft.title, "StartRunLeft");
+        stateMachine.addState(idleSideRight.title, runUp.title, "StartRunUp");
+        stateMachine.addState(idleSideRight.title, runDown.title, "StartRunDown");
+
+        stateMachine.addState(idleSideLeft.title, runRight.title, "StartRunRight");
+        stateMachine.addState(idleSideLeft.title, runLeft.title, "StartRunLeft");
+        stateMachine.addState(idleSideLeft.title, runUp.title, "StartRunUp");
+        stateMachine.addState(idleSideLeft.title, runDown.title, "StartRunDown");
+
+        stateMachine.addState(runRight.title, idleSideRight.title, "StopRun");
         stateMachine.addState(runRight.title, switchDirection.title, "SwitchDirection");
-        stateMachine.addState(runLeft.title, idleFront.title, "StopRun");
+        stateMachine.addState(runLeft.title, idleSideLeft.title, "StopRun");
         stateMachine.addState(runLeft.title, switchDirection.title, "SwitchDirection");
         stateMachine.addState(runDown.title, idleFront.title, "StopRun");
         stateMachine.addState(runDown.title, switchDirection.title, "SwitchDirection");
