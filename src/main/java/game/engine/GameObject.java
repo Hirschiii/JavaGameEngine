@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 
 import game.components.Component;
 import game.components.ComponentDeserializer;
+import game.components.Rigidbody;
 import game.components.SpriteRenderer;
 import game.util.AssetPool;
 import imgui.ImGui;

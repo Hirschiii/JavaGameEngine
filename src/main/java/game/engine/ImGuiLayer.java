@@ -38,6 +38,7 @@ import game.editor.MenuBar;
 import game.editor.PropertiesWindow;
 import game.editor.SceneHeirarchyWindow;
 import game.scene.Scene;
+import game.util.Settings;
 import game.renderer.*;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
@@ -90,7 +91,7 @@ public class ImGuiLayer {
         // Initialize ImGuiIO config
         final ImGuiIO io = ImGui.getIO();
 
-        io.setIniFilename("imgui.ini"); // We don't want to save .ini file
+        io.setIniFilename(Settings.IMGUI_CONFIG_FILE_PATH); // We don't want to save .ini file
         io.addConfigFlags(ImGuiConfigFlags.DockingEnable);
         // io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
         io.setBackendPlatformName("imgui_java_impl_glfw");

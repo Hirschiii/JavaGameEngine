@@ -21,6 +21,7 @@ import game.engine.GameObject;
 import game.engine.GameObjectDeserializer;
 import game.engine.Transform;
 import game.renderer.Renderer;
+import game.util.Settings;
 import imgui.ImGui;
 
 public class Scene {
@@ -155,7 +156,7 @@ public class Scene {
                 .create();
 
         try {
-            FileWriter writer = new FileWriter("level.json");
+            FileWriter writer = new FileWriter(Settings.LEVEL_JSON_PATH);
             List<GameObject> objsToSerialize = new ArrayList<>();
             for (GameObject obj : this.gameObjects) {
                 if (obj.doSerialization()) {
@@ -179,7 +180,7 @@ public class Scene {
         String inFile = "";
 
         try {
-            inFile = new String(Files.readAllBytes(Paths.get("level.json")));
+            inFile = new String(Files.readAllBytes(Paths.get(Settings.LEVEL_JSON_PATH)));
         } catch (IOException e) {
             e.printStackTrace();
         }
