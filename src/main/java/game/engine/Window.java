@@ -50,6 +50,7 @@ import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 import static org.lwjgl.opengl.GL30.glBlitFramebuffer;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import static game.util.Settings.*;
@@ -277,6 +278,10 @@ public class Window implements Observer {
             // this.entityIdFramebuffer.bind();
             pickingTexture.enableWriting();
 
+            glViewport(0, 0, 1920, 1080);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
             Renderer.bindShader(pickingShader);
             currenScene.render();
             // this.entityIdFramebuffer.unbind();
@@ -288,11 +293,9 @@ public class Window implements Observer {
             DebugDraw.beginFrame();
 
             this.framebuffer_before.bind();
+
             Vector4f clearColor = currenScene.camera().clearColor;
             glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
-            glClear(GL_COLOR_BUFFER_BIT);
-
-            glClearColor(1, 1, 1, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (dt >= 0) {
