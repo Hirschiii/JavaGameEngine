@@ -17,7 +17,7 @@ public class GameCamera extends Component {
     private transient float playerBuffer = 0.25f;
     public transient CameraModi camMode;
 
-    private Vector4f skyColor = new Vector4f(92.0f / 255.0f, 148.0f / 255.0f, 252.0f / 255.0f, 1.0f);
+    private Vector4f skyColor = new Vector4f(104.0f / 255.0f, 159.0f / 255.0f, 56.0f / 255.0f, 1.0f);
     private Vector4f undergroundColor = new Vector4f(0, 0, 0, 1);
 
     public GameCamera(Camera gameCamera) {
