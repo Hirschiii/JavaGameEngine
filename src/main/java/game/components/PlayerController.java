@@ -34,14 +34,15 @@ public class PlayerController extends Component {
 
     private transient Vector2f acceleraton = new Vector2f();
     private transient Vector2f velocity = new Vector2f();
-    private transient boolean isDead = false;
-    private transient float playerWidth = 1;
     private List<GameObject> interactiveGOs = new ArrayList<>();
 
     private GameObject interactiveGO = null;
 
     private boolean collided = false;
-    private boolean interact = false;
+
+    private float debounceTime = 0.2f;
+    private float debounce = debounceTime;
+
 
     @Override
     public void start() {
@@ -50,6 +51,7 @@ public class PlayerController extends Component {
 
     @Override
     public void update(float dt) {
+        debounce -= dt;
         this.collided = false;
         this.acceleraton.zero();
 
@@ -59,7 +61,8 @@ public class PlayerController extends Component {
             }
         }
 
-        if (KeyListener.isKeyPressed(GLFW_KEY_TAB)) {
+        if (KeyListener.isKeyPressed(GLFW_KEY_TAB) && debounce < 0) {
+            debounce = debounceTime;
             if (interactiveGO != null && interactiveGOs.size() > 1) {
                 setInteraktiveGO();
             }
@@ -126,8 +129,12 @@ public class PlayerController extends Component {
         }
 
         interactiveGOs = getNearGOS(2);
-        for (int i = 0; i > interactiveGOs.size(); i++) {
+        for (int i = 0; i < interactiveGOs.size(); i++) {
             GameObject go = interactiveGOs.get(i);
+            if (go.getComponent(Interaktive.class) == null) {
+                interactiveGOs.remove(i);
+                i--;
+            }
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);
                 collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);
@@ -136,14 +143,11 @@ public class PlayerController extends Component {
                     break;
                 }
             }
-            if (go.getComponent(Interaktive.class) != null) {
-                go.getComponent(Interaktive.class).setInteractive(true);
-            } else {
-                interactiveGOs.remove(i);
-                i--;
-            }
         }
 
+        if (interactiveGO == null && interactiveGOs.size() > 0) {
+            setInteraktiveGO();
+        }
         if (collided) {
             this.gameObject.transform.position.sub(this.velocity);
             this.acceleraton.zero();
@@ -153,7 +157,21 @@ public class PlayerController extends Component {
     }
 
     private void setInteraktiveGO() {
-        // If null select the first, else select the next
+        if (this.interactiveGO == null) {
+            this.interactiveGO = interactiveGOs.getFirst();
+        } else {
+            if (interactiveGOs.contains(interactiveGO)) {
+                int index = interactiveGOs.indexOf(interactiveGO) + 1;
+                if (index >= interactiveGOs.size()) {
+                    interactiveGO = interactiveGOs.getFirst();
+                } else {
+                    interactiveGO = interactiveGOs.get(index);
+                }
+            } else {
+            interactiveGO = interactiveGOs.getFirst();
+            }
+        }
+        System.out.println(interactiveGO.name);
     }
 
     private List<GameObject> getNearGOS(int range) {
