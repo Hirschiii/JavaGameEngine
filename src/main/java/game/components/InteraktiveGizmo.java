@@ -11,6 +11,7 @@ import game.engine.Window;
  * InteraktiveGizmo
  */
 public class InteraktiveGizmo extends Component {
+    private boolean active = false;
     private GameObject gizmo;
     private SpriteRenderer gizmoSprite;
     private Vector2f offset = new Vector2f(0.5f, 0.5f);
@@ -25,19 +26,23 @@ public class InteraktiveGizmo extends Component {
     @Override
     public void update(float dt) {
         if (gameObject.getComponent(Interaktive.class) != null) {
-            if (gameObject.getComponent(Interaktive.class).getInteractive()) {
+            if (gameObject.getComponent(Interaktive.class).getInteractive() && !active) {
+                System.out.println("SetActive");
                 setActive();
-            } else {
+            } else if (!gameObject.getComponent(Interaktive.class).getInteractive() && active){
+                System.out.println("SetInakice");
                 setInactive();
             }
         }
     }
 
     private void setInactive() {
+        this.active = false;
         this.gizmoSprite.setColor(new Vector4f(0f, 0f, 0f, 0f));
     }
 
     private void setActive() {
+        this.active = true;
         this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 0, 1, 1));
         this.gizmoSprite.setColor(new Vector4f(1f, 1f, 1f, 1f));
         this.gizmo.transform.position = new Vector2f(
