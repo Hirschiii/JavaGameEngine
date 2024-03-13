@@ -112,8 +112,6 @@ public class MouseControls extends Component {
             Vector2f boxSelectEndWorld = MouseListener.screenToWorld(boxSelectEnd);
             Vector2f halfSize =
                     (new Vector2f(boxSelectEndWorld).sub(boxSelectStartWorld)).mul(0.5f);
-            DebugDraw.addLine2D(new Vector2f(1, 1), boxSelectEndWorld);
-            DebugDraw.addLine2D(new Vector2f(1, 1), new Vector2f(10, 10));
             DebugDraw.addBox2D(
                     (new Vector2f(boxSelectStartWorld)).add(halfSize),
                     new Vector2f(halfSize).mul(2.0f),

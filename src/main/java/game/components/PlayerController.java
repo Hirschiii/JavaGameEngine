@@ -36,6 +36,8 @@ public class PlayerController extends Component {
     private transient float playerWidth = 1;
     private List<GameObject> interactiveGOs = new ArrayList<>();
 
+    private GameObject interactiveGO = null;
+
     private boolean collided = false;
     private boolean interact = false;
 
@@ -47,11 +49,10 @@ public class PlayerController extends Component {
     @Override
     public void update(float dt) {
         this.collided = false;
-        this.interact = false;
         this.acceleraton.zero();
 
         if (KeyListener.isKeyPressed(GLFW_KEY_E)) {
-            this.interact = true;
+            interactiveGO.getComponent(Interaktive.class).interact(this.gameObject);
         }
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
@@ -110,12 +111,6 @@ public class PlayerController extends Component {
 
         interactiveGOs = getNearGOS(2);
         for (GameObject go : interactiveGOs) {
-            if (go.getComponent(Interaktive.class) != null) {
-                go.getComponent(Interaktive.class).setCanInterakt(true);
-                if (interact) {
-                    go.getComponent(Interaktive.class).interact(this.gameObject);
-                }
-            }
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);
                 collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);
@@ -132,6 +127,10 @@ public class PlayerController extends Component {
             this.velocity.zero();
             this.stateMachine.trigger("StopRun");
         }
+    }
+
+    private void setInteraktiveGO() {
+        // If null select the first, else select the next
     }
 
     private List<GameObject> getNearGOS(int range) {

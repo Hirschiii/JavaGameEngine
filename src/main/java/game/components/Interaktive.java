@@ -1,30 +1,27 @@
 package game.components;
 
+import org.joml.Vector3f;
+
 import game.engine.GameObject;
+import game.renderer.DebugDraw;
 
 /**
  * Interaktive
  */
 public abstract class Interaktive extends Component {
-    public boolean canInterakt = false;
+    private boolean interactive = false;
 
-    public void interact(GameObject go) {
-        if (canInterakt) {
-            interaction(go);
-            canInterakt = false;
+    public abstract void interact(GameObject go);
+
+    public void setInteractive(boolean interactive) {
+        this.interactive = interactive;
+    }
+
+    @Override
+    public void update(float dt) {
+        if(interactive) {
+            DebugDraw.addBox2D(gameObject.transform.position, gameObject.transform.scale, gameObject.transform.rotation, new Vector3f(1, 0, 0));
         }
     }
-    public abstract void interaction(GameObject go);
-
-    public boolean isCanInterakt() {
-        return canInterakt;
-    }
-
-
-    public void setCanInterakt(boolean canInterakt) {
-        this.canInterakt = canInterakt;
-    };
-
-
 
 }

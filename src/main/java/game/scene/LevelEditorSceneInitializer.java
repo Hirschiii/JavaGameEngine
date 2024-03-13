@@ -43,7 +43,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     public void init(Scene scene) {
         sprites = AssetPool
                 // .getSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png");
-                .getSpritesheet("assets/Character/Sheet/Sheet.png");
+                .getSpritesheet("assets/spriteSheets/all.png");
         Spritesheet gizmos = AssetPool.getSpritesheet("assets/utils/gizmos.png");
 
         levelEditorStuff = scene.createGameObject("LevelEditor");
@@ -67,6 +67,10 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 new Spritesheet(
                         AssetPool.getTexture("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png"),
                         16, 16, 81, 0));
+        AssetPool.addSpritesheet("assets/spriteSheets/all.png",
+                new Spritesheet(
+                        AssetPool.getTexture("assets/spriteSheets/all.png"),
+                        32, 32, 72, 0));
 
         AssetPool.addSpritesheet("assets/spriteSheets/CharacterAnimation.png",
                 new Spritesheet(

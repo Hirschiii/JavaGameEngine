@@ -12,7 +12,7 @@ import game.engine.GameObject;
 public class change_color extends Interaktive {
 
     @Override
-    public void interaction(GameObject go) {
+    public void interact(GameObject go) {
         if (gameObject.getComponent(SpriteRenderer.class) != null) {
 
             gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 1, 1, 1));

@@ -13,7 +13,7 @@ import game.engine.GameObject;
 public class grow_in_size extends Interaktive {
 
     @Override
-    public void interaction(GameObject go) {
+    public void interact(GameObject go) {
         if (gameObject.getComponent(SpriteRenderer.class) != null) {
 
             gameObject.transform.scale = new Vector2f(1.4f, 1.4f);
