@@ -1,9 +1,13 @@
 package game.engine;
 
 import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 import game.components.AnimationState;
 import game.components.Component;
+import game.components.Interaktive;
+import game.components.Inventar;
+import game.components.Item;
 import game.components.PlayerController;
 import game.components.Rigidbody;
 import game.components.Sprite;
@@ -175,6 +179,7 @@ public class Prefabs {
         player.addComponent(stateMachine);
 
         player.addComponent(new PlayerController());
+        player.addComponent(new Inventar());
         player.addComponent(new Rigidbody(new Vector2f(0f, -0.34f), new Vector2f(0.7f, 0.3f)));
         player.transform.zIndex = 2;
 
@@ -189,11 +194,25 @@ public class Prefabs {
         return street;
     }
 
-    public static GameObject generateColorChangingStreet() {
-        Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
-        GameObject street = generateSpriteObject(streetSprites.getSprite(0), 1, 1);
+    public static GameObject generateColorChangingStreet(Sprite sprite) {
+        GameObject street = generateSpriteObject(sprite, 1, 1);
         street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
         street.addComponent(new grow_in_size());
+        return street;
+    }
+
+    public static GameObject generateCustemInteractive(Sprite sprite) {
+        GameObject street = generateSpriteObject(sprite, 1, 1);
+        street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
+
+        street.addComponent(new Inventar());
+        Item item_one = new Item();
+        Item item_two = new Item();
+
+        street.getComponent(Inventar.class).addItem(item_one);
+        street.getComponent(Inventar.class).addItem(item_two);
+
+
         return street;
     }
 }

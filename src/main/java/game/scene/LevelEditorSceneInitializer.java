@@ -200,7 +200,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.pushID(uid++);
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                         texCoords[2].y)) {
-                    GameObject object = Prefabs.generateColorChangingStreet();
+                    GameObject object = Prefabs.generateCustemInteractive(sprite);
                     // Attach to mouse Cursor to drop
                     levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                 }
