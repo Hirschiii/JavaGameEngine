@@ -11,6 +11,7 @@ import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.components.StateMachine;
 import game.components.interactives.change_color;
+import game.components.interactives.grow_in_size;
 import game.util.AssetPool;
 
 public class Prefabs {
@@ -192,7 +193,7 @@ public class Prefabs {
         Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
         GameObject street = generateSpriteObject(streetSprites.getSprite(0), 1, 1);
         street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
-        street.addComponent(new change_color());
+        street.addComponent(new grow_in_size());
         return street;
     }
 }

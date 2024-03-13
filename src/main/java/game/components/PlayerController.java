@@ -9,6 +9,7 @@ import org.joml.Vector4f;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_A;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_E;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
 
@@ -36,6 +37,7 @@ public class PlayerController extends Component {
     private List<GameObject> interactiveGOs = new ArrayList<>();
 
     private boolean collided = false;
+    private boolean interact = false;
 
     @Override
     public void start() {
@@ -45,7 +47,12 @@ public class PlayerController extends Component {
     @Override
     public void update(float dt) {
         this.collided = false;
+        this.interact = false;
         this.acceleraton.zero();
+
+        if (KeyListener.isKeyPressed(GLFW_KEY_E)) {
+            this.interact = true;
+        }
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
             this.acceleraton.x = walkSpeed;
@@ -103,9 +110,11 @@ public class PlayerController extends Component {
 
         interactiveGOs = getNearGOS(2);
         for (GameObject go : interactiveGOs) {
-            if (go.getComponent(Interaktive.class) != null){
+            if (go.getComponent(Interaktive.class) != null) {
                 go.getComponent(Interaktive.class).setCanInterakt(true);
-                go.getComponent(Interaktive.class).interact(this.gameObject);;
+                if (interact) {
+                    go.getComponent(Interaktive.class).interact(this.gameObject);
+                }
             }
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);

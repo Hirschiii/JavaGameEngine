@@ -87,7 +87,7 @@
         }
       }
     ],
-    "uid": 0
+    "uid": 102
   },
   {
     "isActiveGameObject": false,
@@ -177,7 +177,7 @@
         }
       }
     ],
-    "uid": 1
+    "uid": 103
   },
   {
     "isActiveGameObject": false,
@@ -267,7 +267,7 @@
         }
       }
     ],
-    "uid": 2
+    "uid": 104
   },
   {
     "isActiveGameObject": false,
@@ -357,7 +357,7 @@
         }
       }
     ],
-    "uid": 3
+    "uid": 105
   },
   {
     "isActiveGameObject": false,
@@ -447,7 +447,7 @@
         }
       }
     ],
-    "uid": 4
+    "uid": 106
   },
   {
     "isActiveGameObject": false,
@@ -537,7 +537,7 @@
         }
       }
     ],
-    "uid": 5
+    "uid": 107
   },
   {
     "isActiveGameObject": false,
@@ -627,7 +627,7 @@
         }
       }
     ],
-    "uid": 6
+    "uid": 108
   },
   {
     "isActiveGameObject": false,
@@ -717,7 +717,7 @@
         }
       }
     ],
-    "uid": 7
+    "uid": 109
   },
   {
     "isActiveGameObject": false,
@@ -807,7 +807,7 @@
         }
       }
     ],
-    "uid": 8
+    "uid": 110
   },
   {
     "isActiveGameObject": false,
@@ -897,7 +897,7 @@
         }
       }
     ],
-    "uid": 9
+    "uid": 111
   },
   {
     "isActiveGameObject": false,
@@ -987,7 +987,7 @@
         }
       }
     ],
-    "uid": 10
+    "uid": 112
   },
   {
     "isActiveGameObject": false,
@@ -1077,7 +1077,7 @@
         }
       }
     ],
-    "uid": 11
+    "uid": 113
   },
   {
     "isActiveGameObject": false,
@@ -1167,7 +1167,7 @@
         }
       }
     ],
-    "uid": 12
+    "uid": 114
   },
   {
     "isActiveGameObject": false,
@@ -1257,7 +1257,7 @@
         }
       }
     ],
-    "uid": 13
+    "uid": 115
   },
   {
     "isActiveGameObject": false,
@@ -1347,7 +1347,7 @@
         }
       }
     ],
-    "uid": 14
+    "uid": 116
   },
   {
     "isActiveGameObject": false,
@@ -1437,7 +1437,7 @@
         }
       }
     ],
-    "uid": 15
+    "uid": 117
   },
   {
     "isActiveGameObject": false,
@@ -1527,7 +1527,7 @@
         }
       }
     ],
-    "uid": 16
+    "uid": 118
   },
   {
     "isActiveGameObject": false,
@@ -1617,7 +1617,7 @@
         }
       }
     ],
-    "uid": 17
+    "uid": 119
   },
   {
     "isActiveGameObject": false,
@@ -1707,7 +1707,7 @@
         }
       }
     ],
-    "uid": 18
+    "uid": 120
   },
   {
     "isActiveGameObject": false,
@@ -1797,7 +1797,7 @@
         }
       }
     ],
-    "uid": 19
+    "uid": 121
   },
   {
     "isActiveGameObject": false,
@@ -1887,7 +1887,7 @@
         }
       }
     ],
-    "uid": 20
+    "uid": 122
   },
   {
     "isActiveGameObject": false,
@@ -1977,7 +1977,7 @@
         }
       }
     ],
-    "uid": 21
+    "uid": 123
   },
   {
     "isActiveGameObject": false,
@@ -2067,7 +2067,7 @@
         }
       }
     ],
-    "uid": 22
+    "uid": 124
   },
   {
     "isActiveGameObject": false,
@@ -2157,7 +2157,7 @@
         }
       }
     ],
-    "uid": 23
+    "uid": 125
   },
   {
     "isActiveGameObject": false,
@@ -2247,7 +2247,7 @@
         }
       }
     ],
-    "uid": 24
+    "uid": 126
   },
   {
     "isActiveGameObject": false,
@@ -2337,7 +2337,7 @@
         }
       }
     ],
-    "uid": 25
+    "uid": 127
   },
   {
     "isActiveGameObject": false,
@@ -2427,7 +2427,7 @@
         }
       }
     ],
-    "uid": 26
+    "uid": 128
   },
   {
     "isActiveGameObject": false,
@@ -2517,7 +2517,7 @@
         }
       }
     ],
-    "uid": 27
+    "uid": 129
   },
   {
     "isActiveGameObject": false,
@@ -2607,7 +2607,7 @@
         }
       }
     ],
-    "uid": 28
+    "uid": 130
   },
   {
     "isActiveGameObject": false,
@@ -2697,7 +2697,7 @@
         }
       }
     ],
-    "uid": 29
+    "uid": 131
   },
   {
     "isActiveGameObject": false,
@@ -2787,7 +2787,7 @@
         }
       }
     ],
-    "uid": 30
+    "uid": 132
   },
   {
     "isActiveGameObject": false,
@@ -2877,7 +2877,7 @@
         }
       }
     ],
-    "uid": 31
+    "uid": 133
   },
   {
     "isActiveGameObject": false,
@@ -2967,7 +2967,7 @@
         }
       }
     ],
-    "uid": 32
+    "uid": 134
   },
   {
     "isActiveGameObject": false,
@@ -3057,7 +3057,7 @@
         }
       }
     ],
-    "uid": 33
+    "uid": 135
   },
   {
     "isActiveGameObject": false,
@@ -3147,7 +3147,7 @@
         }
       }
     ],
-    "uid": 34
+    "uid": 136
   },
   {
     "isActiveGameObject": false,
@@ -3237,7 +3237,7 @@
         }
       }
     ],
-    "uid": 35
+    "uid": 137
   },
   {
     "isActiveGameObject": false,
@@ -3327,7 +3327,7 @@
         }
       }
     ],
-    "uid": 36
+    "uid": 138
   },
   {
     "isActiveGameObject": false,
@@ -3417,7 +3417,7 @@
         }
       }
     ],
-    "uid": 37
+    "uid": 139
   },
   {
     "isActiveGameObject": false,
@@ -3507,7 +3507,7 @@
         }
       }
     ],
-    "uid": 38
+    "uid": 140
   },
   {
     "isActiveGameObject": false,
@@ -3597,7 +3597,7 @@
         }
       }
     ],
-    "uid": 39
+    "uid": 141
   },
   {
     "isActiveGameObject": false,
@@ -3687,7 +3687,7 @@
         }
       }
     ],
-    "uid": 40
+    "uid": 142
   },
   {
     "isActiveGameObject": false,
@@ -3777,7 +3777,7 @@
         }
       }
     ],
-    "uid": 41
+    "uid": 143
   },
   {
     "isActiveGameObject": false,
@@ -3867,7 +3867,7 @@
         }
       }
     ],
-    "uid": 42
+    "uid": 144
   },
   {
     "isActiveGameObject": false,
@@ -5097,6 +5097,7 @@
           },
           "interactiveGOs": [],
           "collided": false,
+          "interact": false,
           "uid": 264
         }
       },
@@ -5127,7 +5128,7 @@
         }
       }
     ],
-    "uid": 43
+    "uid": 145
   },
   {
     "isActiveGameObject": false,
@@ -5224,6 +5225,103 @@
         }
       }
     ],
-    "uid": 52
+    "uid": 146
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 2.5,
+            "y": 6.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 359
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/all.png",
+              "width": 64,
+              "height": 64
+            },
+            "texCoords": [
+              {
+                "x": 0.5,
+                "y": 1.0
+              },
+              {
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 360
+        }
+      },
+      {
+        "type": "game.components.Rigidbody",
+        "properties": {
+          "localCenter": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "globalCenter": {
+            "x": 2.5,
+            "y": 6.5
+          },
+          "dimension": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "boxStart": {
+            "x": 2.0,
+            "y": 6.0
+          },
+          "boxEnd": {
+            "x": 3.0,
+            "y": 7.0
+          },
+          "uid": 361
+        }
+      },
+      {
+        "type": "game.components.interactives.grow_in_size",
+        "properties": {
+          "canInterakt": false,
+          "uid": 362
+        }
+      }
+    ],
+    "uid": 147
   }
 ]
