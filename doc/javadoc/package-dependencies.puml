@@ -15,7 +15,8 @@
     game.components --> game.renderer
     game.components --> game.editor
     game.components --> com.google.gson
-    game.components --> game.components.enums
+    game.components.interactives --> game.components
+    game.components.interactives --> game.engine
     game.scene --> game.components
     game.scene --> game.engine
     game.scene --> game.renderer
@@ -47,7 +48,7 @@
     }
     class "game.editor" [[game/editor/package-summary.html]] {
     }
-    class "game.components.enums" [[game/components/enums/package-summary.html]] {
+    class "game.components.interactives" [[game/components/interactives/package-summary.html]] {
     }
     class "game.scene" [[game/scene/package-summary.html]] {
     }

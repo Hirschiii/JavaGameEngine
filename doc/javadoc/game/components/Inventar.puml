@@ -1,0 +1,17 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Inventar\n<size:10>game.components" as game.components.Inventar [[Inventar.html]] {
+        +addItem(Item): void
+        +removeItem(Item): void
+        +doesHasItem(Item): boolean
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.Inventar
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

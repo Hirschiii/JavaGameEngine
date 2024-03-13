@@ -3,6 +3,7 @@ package game.engine;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 import game.util.Settings;
 
@@ -14,6 +15,7 @@ public class Camera {
     private float aspectRation = (float) Window.getWidth() / Window.getHeight();
     private float projectionHeight = Settings.PROJECTION_HEIGHT;
     private Vector2f projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
+    public Vector4f clearColor = new Vector4f(1, 1, 1, 1);
 
     public Camera(Vector2f position) {
         this.position = position;

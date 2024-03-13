@@ -33,6 +33,7 @@ public class Prefabs {
     public static GameObject generatePlayer() {
         Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
         GameObject player = generateSpriteObject(playerSprites.getSprite(0), 1, 1);
+        player.name = "Player";
         AnimationState idleFront = new AnimationState();
 
         idleFront.title = "IdleFront";

@@ -96,6 +96,7 @@
 
         class KeyControls [[KeyControls.html]] {
             +editorUpdate(float): void
+            {static} +rotateGOs90Deg(List<GameObject>): void
         }
 
         class Spritesheet [[Spritesheet.html]] {
@@ -129,6 +130,12 @@
             +update(float): void
         }
 
+        abstract class Interaktive [[Interaktive.html]] {
+            {abstract} +interact(GameObject): void
+            +setInteractive(boolean): void
+            +update(float): void
+        }
+
         class FontRenderer [[FontRenderer.html]] {
             +start(): void
             +update(float): void
@@ -139,9 +146,26 @@
             +editorUpdate(float): void
         }
 
+        class Inventar [[Inventar.html]] {
+            +addItem(Item): void
+            +removeItem(Item): void
+            +doesHasItem(Item): boolean
+        }
+
+        class Item [[Item.html]] {
+            {static} +uid_counter: int
+            +uid: int
+        }
+
         class NonPickable [[NonPickable.html]]
 
         class Rigidbody [[Rigidbody.html]] {
+            +globalCenter: Vector2f
+            +dimension: Vector2f
+            +Rigidbody(Vector2f, Vector2f)
+            +collisionBox(GameObject): boolean
+            +update(float): void
+            +editorUpdate(float): void
         }
 
         Component <|-- SpriteRenderer
@@ -160,8 +184,10 @@
         Component <|-- StateMachine
         Component <|-- GridLines
         Component <|-- PlayerController
+        Component <|-- Interaktive
         Component <|-- FontRenderer
         Component <|-- EditorCamera
+        Component <|-- Inventar
         Component <|-- NonPickable
         Component <|-- Rigidbody
     }

@@ -1,0 +1,17 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>change_color\n<size:10>game.components.interactives" as game.components.interactives.change_color [[change_color.html]] {
+        +interact(GameObject): void
+    }
+
+    abstract class "<size:14>Interaktive\n<size:10>game.components" as game.components.Interaktive [[../Interaktive.html]] {
+        {abstract} +interact(GameObject): void
+    }
+
+    game.components.Interaktive <|-- game.components.interactives.change_color
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

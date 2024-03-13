@@ -1,0 +1,9 @@
+@startuml
+    namespace game.physics {
+
+        class Physics [[Physics.html]]
+
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

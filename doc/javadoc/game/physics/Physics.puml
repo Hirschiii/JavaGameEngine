@@ -1,0 +1,9 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Physics\n<size:10>game.physics" as game.physics.Physics [[Physics.html]]
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

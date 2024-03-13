@@ -50,6 +50,9 @@ import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 import static org.lwjgl.opengl.GL30.glBlitFramebuffer;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+import org.joml.Vector2f;
+import org.joml.Vector4f;
+
 import static game.util.Settings.*;
 
 import org.lwjgl.Version;
@@ -65,6 +68,7 @@ import game.renderer.Framebuffer;
 import game.renderer.PickingTexture;
 import game.renderer.Shader;
 import game.scene.LevelEditorSceneInitializer;
+import game.scene.LevelSceneInitializer;
 import game.scene.Scene;
 import game.scene.SceneInitializer;
 import game.util.*;
@@ -290,7 +294,8 @@ public class Window implements Observer {
 
             this.framebuffer_before.bind();
 
-            glClearColor(1, 1, 1, 1);
+            Vector4f clearColor = currenScene.camera().clearColor;
+            glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (dt >= 0) {
@@ -404,7 +409,7 @@ public class Window implements Observer {
             case GameEngineStartPlay:
                 this.runntimePlaying = true;
                 currenScene.save();
-                Window.changeScene(new LevelEditorSceneInitializer());
+                Window.changeScene(new LevelSceneInitializer());
                 break;
             case GameEngineStopPlay:
                 this.runntimePlaying = false;

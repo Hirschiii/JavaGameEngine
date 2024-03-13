@@ -1,0 +1,12 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Item\n<size:10>game.components" as game.components.Item [[Item.html]] {
+        {static} +uid_counter: int
+        +uid: int
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml
