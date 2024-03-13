@@ -7165,6 +7165,7 @@
       {
         "type": "game.components.InteraktiveGizmo",
         "properties": {
+          "active": false,
           "gizmo": {
             "isActiveGameObject": false,
             "doSerialization": true,
@@ -7372,6 +7373,7 @@
       {
         "type": "game.components.InteraktiveGizmo",
         "properties": {
+          "active": false,
           "gizmo": {
             "isActiveGameObject": false,
             "doSerialization": true,
@@ -7579,6 +7581,7 @@
       {
         "type": "game.components.InteraktiveGizmo",
         "properties": {
+          "active": false,
           "gizmo": {
             "isActiveGameObject": false,
             "doSerialization": true,
@@ -7786,6 +7789,7 @@
       {
         "type": "game.components.InteraktiveGizmo",
         "properties": {
+          "active": false,
           "gizmo": {
             "isActiveGameObject": false,
             "doSerialization": true,

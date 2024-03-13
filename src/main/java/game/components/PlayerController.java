@@ -43,7 +43,6 @@ public class PlayerController extends Component {
     private float debounceTime = 0.2f;
     private float debounce = debounceTime;
 
-
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
@@ -122,11 +121,7 @@ public class PlayerController extends Component {
 
         this.gameObject.transform.position.add(this.velocity);
 
-        for (GameObject go : interactiveGOs) {
-            if (go.getComponent(Interaktive.class) != null) {
-                go.getComponent(Interaktive.class).setInteractive(false);
-            }
-        }
+        List<GameObject> oldIntGos = interactiveGOs;
 
         interactiveGOs = getNearGOS(2);
         for (int i = 0; i < interactiveGOs.size(); i++) {
@@ -145,6 +140,16 @@ public class PlayerController extends Component {
             }
         }
 
+        for (GameObject go : oldIntGos) {
+            if (!interactiveGOs.contains(go)) {
+                if (interactiveGO.getComponent(Interaktive.class) != null) {
+                    System.out.println("Left The Chat");
+                    interactiveGO.getComponent(Interaktive.class).setInteractive(false);
+                    interactiveGO = null;
+                }
+            }
+        }
+
         if (interactiveGO == null && interactiveGOs.size() > 0) {
             setInteraktiveGO();
         }
@@ -157,9 +162,14 @@ public class PlayerController extends Component {
     }
 
     private void setInteraktiveGO() {
+        System.out.println("Set interakt");
         if (this.interactiveGO == null) {
             this.interactiveGO = interactiveGOs.getFirst();
         } else {
+            if (interactiveGO.getComponent(Interaktive.class) != null) {
+                System.out.println("Befor setting new set false");
+                interactiveGO.getComponent(Interaktive.class).setInteractive(false);
+            }
             if (interactiveGOs.contains(interactiveGO)) {
                 int index = interactiveGOs.indexOf(interactiveGO) + 1;
                 if (index >= interactiveGOs.size()) {
@@ -168,8 +178,12 @@ public class PlayerController extends Component {
                     interactiveGO = interactiveGOs.get(index);
                 }
             } else {
-            interactiveGO = interactiveGOs.getFirst();
+                interactiveGO = interactiveGOs.getFirst();
             }
+        }
+        if (interactiveGO.getComponent(Interaktive.class) != null) {
+                System.out.println("afet setting new set true");
+            interactiveGO.getComponent(Interaktive.class).setInteractive(true);
         }
         System.out.println(interactiveGO.name);
     }
