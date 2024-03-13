@@ -23,7 +23,7 @@ import net.sourceforge.plantuml.sequencediagram.Newpage;
  * PlayerController
  */
 public class PlayerController extends Component {
-    public float walkSpeed = 0.05f;
+    public float walkSpeed = 0.14f;
     public float slowDownForc = 0.002f;
     public Vector2f terminalVelocity = new Vector2f(0.07f, 0.07f);
 
@@ -103,6 +103,10 @@ public class PlayerController extends Component {
 
         interactiveGOs = getNearGOS(2);
         for (GameObject go : interactiveGOs) {
+            if (go.getComponent(Interaktive.class) != null){
+                go.getComponent(Interaktive.class).setCanInterakt(true);
+                go.getComponent(Interaktive.class).interact(this.gameObject);;
+            }
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);
                 collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);

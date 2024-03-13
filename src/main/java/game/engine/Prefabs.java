@@ -3,12 +3,14 @@ package game.engine;
 import org.joml.Vector2f;
 
 import game.components.AnimationState;
+import game.components.Component;
 import game.components.PlayerController;
 import game.components.Rigidbody;
 import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.components.StateMachine;
+import game.components.interactives.change_color;
 import game.util.AssetPool;
 
 public class Prefabs {
@@ -183,6 +185,14 @@ public class Prefabs {
         GameObject street = generateSpriteObject(streetSprites.getSprite(0), 1, 1);
         street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
 
+        return street;
+    }
+
+    public static GameObject generateColorChangingStreet() {
+        Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
+        GameObject street = generateSpriteObject(streetSprites.getSprite(0), 1, 1);
+        street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
+        street.addComponent(new change_color());
         return street;
     }
 }

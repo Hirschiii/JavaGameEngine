@@ -3888,7 +3888,7 @@
           },
           "rotation": 0.0,
           "zIndex": 2,
-          "uid": 161
+          "uid": 261
         }
       },
       {
@@ -3927,7 +3927,7 @@
               }
             ]
           },
-          "uid": 162
+          "uid": 262
         }
       },
       {
@@ -5083,13 +5083,13 @@
             }
           ],
           "defaultStateTitle": "IdleFront",
-          "uid": 163
+          "uid": 263
         }
       },
       {
         "type": "game.components.PlayerController",
         "properties": {
-          "walkSpeed": 0.05,
+          "walkSpeed": 0.14,
           "slowDownForc": 0.002,
           "terminalVelocity": {
             "x": 0.07,
@@ -5097,7 +5097,7 @@
           },
           "interactiveGOs": [],
           "collided": false,
-          "uid": 164
+          "uid": 264
         }
       },
       {
@@ -5123,10 +5123,107 @@
             "x": 9.85,
             "y": 6.31
           },
-          "uid": 165
+          "uid": 265
         }
       }
     ],
-    "uid": 51
+    "uid": 43
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 4.5,
+            "y": 6.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 310
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/all.png",
+              "width": 64,
+              "height": 64
+            },
+            "texCoords": [
+              {
+                "x": 0.5,
+                "y": 1.0
+              },
+              {
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
+                "y": 0.5
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 311
+        }
+      },
+      {
+        "type": "game.components.Rigidbody",
+        "properties": {
+          "localCenter": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "globalCenter": {
+            "x": 4.5,
+            "y": 6.5
+          },
+          "dimension": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "boxStart": {
+            "x": 4.0,
+            "y": 6.0
+          },
+          "boxEnd": {
+            "x": 5.0,
+            "y": 7.0
+          },
+          "uid": 312
+        }
+      },
+      {
+        "type": "game.components.interactives.change_color",
+        "properties": {
+          "canInterakt": false,
+          "uid": 313
+        }
+      }
+    ],
+    "uid": 52
   }
 ]
