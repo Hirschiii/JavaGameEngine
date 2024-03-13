@@ -5,9 +5,13 @@
     "joml"
   ],
   "platform": [
+    "linux",
     "linux-arm64",
+    "macos",
     "macos-arm64",
-    "windows-x86"
+    "windows",
+    "windows-x86",
+    "windows-arm64"
   ],
   "descriptions": true,
   "compact": false,
@@ -19,7 +23,6 @@
   "language": "groovy",
   "contents": [
     "lwjgl",
-    "lwjgl-assimp",
     "lwjgl-glfw",
     "lwjgl-harfbuzz",
     "lwjgl-nfd",
