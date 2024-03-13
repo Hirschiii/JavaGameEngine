@@ -115,6 +115,9 @@ public class PlayerController extends Component {
 
         if (collided) {
             this.gameObject.transform.position.sub(this.velocity);
+            this.acceleraton.zero();
+            this.velocity.zero();
+            this.stateMachine.trigger("StopRun");
         }
     }
 
