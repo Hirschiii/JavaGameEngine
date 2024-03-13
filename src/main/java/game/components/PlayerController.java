@@ -16,6 +16,7 @@ import game.engine.GameObject;
 import game.engine.KeyListener;
 import game.engine.Window;
 import game.renderer.DebugDraw;
+import game.util.Settings;
 import net.sourceforge.plantuml.sequencediagram.Newpage;
 
 /**
@@ -34,6 +35,8 @@ public class PlayerController extends Component {
     private transient float playerWidth = 1;
     private List<GameObject> interactiveGOs = new ArrayList<>();
 
+    private boolean collided = false;
+
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
@@ -41,8 +44,8 @@ public class PlayerController extends Component {
 
     @Override
     public void update(float dt) {
+        this.collided = false;
         this.acceleraton.zero();
-        interactiveGOs = getNearGOS(2);
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
             this.acceleraton.x = walkSpeed;
@@ -97,6 +100,22 @@ public class PlayerController extends Component {
         this.velocity.y = Math.max(Math.min(this.velocity.y, this.terminalVelocity.y), -this.terminalVelocity.y);
 
         this.gameObject.transform.position.add(this.velocity);
+
+        interactiveGOs = getNearGOS(2);
+        for (GameObject go : interactiveGOs) {
+            if (go.getComponent(Rigidbody.class) != null) {
+                this.gameObject.getComponent(Rigidbody.class).update(dt);
+                collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);
+                if (collided) {
+                    go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 0, 0, 1));
+                    break;
+                }
+            }
+        }
+
+        if (collided) {
+            this.gameObject.transform.position.sub(this.velocity);
+        }
     }
 
     private List<GameObject> getNearGOS(int range) {
@@ -108,11 +127,16 @@ public class PlayerController extends Component {
                         (go.transform.position.y - this.gameObject.transform.position.y) < range &&
                         (this.gameObject.transform.position.y - go.transform.position.y) < range) {
                     if (go.getComponent(SpriteRenderer.class) != null) {
-                        go.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 1, 0, 1));
+                        nearGos.add(go);
+                        if (Settings.DEBUG_DRAW >= 2) {
+                            go.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 1, 0, 1));
+                        }
                     }
                 } else {
-                    if (go.getComponent(SpriteRenderer.class) != null) {
-                        go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+                    if (Settings.DEBUG_DRAW >= 2) {
+                        if (go.getComponent(SpriteRenderer.class) != null) {
+                            go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+                        }
                     }
                 }
             }

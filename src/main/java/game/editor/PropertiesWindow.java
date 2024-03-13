@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import game.components.Component;
@@ -41,7 +42,7 @@ public class PropertiesWindow {
             if (ImGui.beginPopupContextWindow("ComponentAdder")) {
                 if (activeGameObject.getComponent(Rigidbody.class) == null) {
                     if (ImGui.menuItem("Add Rigidbody")) {
-                        activeGameObject.addComponent(new Rigidbody());
+                        activeGameObject.addComponent(new Rigidbody(new Vector2f(0f, 0f), new Vector2f(1f, 1f)));
                     }
                 }
                 ImGui.endPopup();

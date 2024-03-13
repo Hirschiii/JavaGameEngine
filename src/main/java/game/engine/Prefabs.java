@@ -172,7 +172,7 @@ public class Prefabs {
         player.addComponent(stateMachine);
 
         player.addComponent(new PlayerController());
-        player.addComponent(new Rigidbody());
+        player.addComponent(new Rigidbody(new Vector2f(0f, 0f), new Vector2f(0.9f, 0.9f)));
         player.transform.zIndex = 2;
 
         return player;
@@ -181,7 +181,7 @@ public class Prefabs {
     public static GameObject generateStreet() {
         Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
         GameObject street = generateSpriteObject(streetSprites.getSprite(0), 1, 1);
-        street.addComponent(new Rigidbody());
+        street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
 
         return street;
     }

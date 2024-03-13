@@ -8,4 +8,6 @@ public class Settings {
     public static final float GRID_WIDTH = 1f * tileSize;
     public static final float GRID_HEIGHT = 1f * tileSize;
     public static final float PROJECTION_HEIGHT = 12 * tileSize;
+    // 0: nothing 1: in Editor 2: in editor play 3: in Final Game
+    public static final int DEBUG_DRAW = 2;
 }

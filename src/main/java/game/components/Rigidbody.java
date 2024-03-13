@@ -6,17 +6,33 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import game.engine.GameObject;
 import game.renderer.DebugDraw;
 
 public class Rigidbody extends Component {
-    private transient Vector2f localCenter = new Vector2f(0f, 0f);
-    private Vector2f globalCenter;
-    private transient Vector2f dimension = new Vector2f(1f, 1);
+    private  Vector2f localCenter;
+    public Vector2f globalCenter;
+    public  Vector2f dimension;
     private Vector2f boxStart, boxEnd;
 
-    public boolean collisionBox(Vector2f colStart, Vector2f colEnd) {
+    public Rigidbody(Vector2f center, Vector2f dimension) {
+        this.localCenter = center;
+        this.dimension = dimension;
+    }
 
-        return true;
+    public boolean collisionBox(GameObject go) {
+        if (go.getComponent(Rigidbody.class) != null) {
+            Vector2f go_gCenter = go.getComponent(Rigidbody.class).globalCenter;
+            Vector2f go_dimension = go.getComponent(Rigidbody.class).dimension;
+            boolean x_overlap = (go_gCenter.x - (go_dimension.x / 2) < this.globalCenter.x + (this.dimension.x / 2) &&
+                    go_gCenter.x + (go_dimension.x / 2) > this.globalCenter.x - (this.dimension.x / 2));
+
+            boolean y_overlap = (go_gCenter.y - (go_dimension.y / 2) < this.globalCenter.y + (this.dimension.y / 2) &&
+                    go_gCenter.y + (go_dimension.y / 2) > this.globalCenter.y - (this.dimension.y / 2));
+            return x_overlap && y_overlap;
+        } else {
+            return false;
+        }
     }
 
     @Override
