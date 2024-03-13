@@ -1,15 +1,22 @@
 package game.components;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_A;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
 
+import game.engine.GameObject;
 import game.engine.KeyListener;
+import game.engine.Window;
+import game.renderer.DebugDraw;
+import net.sourceforge.plantuml.sequencediagram.Newpage;
 
 /**
  * PlayerController
@@ -25,16 +32,17 @@ public class PlayerController extends Component {
     private transient Vector2f velocity = new Vector2f();
     private transient boolean isDead = false;
     private transient float playerWidth = 1;
+    private List<GameObject> interactiveGOs = new ArrayList<>();
 
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
-
     }
 
     @Override
     public void update(float dt) {
         this.acceleraton.zero();
+        interactiveGOs = getNearGOS(2);
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
             this.acceleraton.x = walkSpeed;
@@ -50,14 +58,13 @@ public class PlayerController extends Component {
             this.stateMachine.trigger("SwitchDirection");
         }
 
-        if(this.acceleraton.x > 0 && velocity.x > 0) {
+        if (this.acceleraton.x > 0 && velocity.x > 0) {
             this.stateMachine.trigger("StartRunRight");
-        } else if(this.acceleraton.x < 0 && velocity.x < 0) {
+        } else if (this.acceleraton.x < 0 && velocity.x < 0) {
             this.stateMachine.trigger("StartRunLeft");
-        } else
-        if(this.acceleraton.y > 0 && velocity.y > 0) {
+        } else if (this.acceleraton.y > 0 && velocity.y > 0) {
             this.stateMachine.trigger("StartRunUp");
-        } else if(this.acceleraton.y < 0 && velocity.y < 0) {
+        } else if (this.acceleraton.y < 0 && velocity.y < 0) {
             this.stateMachine.trigger("StartRunDown");
         }
 
@@ -90,6 +97,27 @@ public class PlayerController extends Component {
         this.velocity.y = Math.max(Math.min(this.velocity.y, this.terminalVelocity.y), -this.terminalVelocity.y);
 
         this.gameObject.transform.position.add(this.velocity);
+    }
+
+    private List<GameObject> getNearGOS(int range) {
+        List<GameObject> nearGos = new ArrayList<>();
+        for (GameObject go : Window.getScene().getGameObjects()) {
+            if (go.getUid() != this.gameObject.getUid()) {
+                if ((go.transform.position.x - this.gameObject.transform.position.x) < range &&
+                        (this.gameObject.transform.position.x - go.transform.position.x) < range &&
+                        (go.transform.position.y - this.gameObject.transform.position.y) < range &&
+                        (this.gameObject.transform.position.y - go.transform.position.y) < range) {
+                    if (go.getComponent(SpriteRenderer.class) != null) {
+                        go.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 1, 0, 1));
+                    }
+                } else {
+                    if (go.getComponent(SpriteRenderer.class) != null) {
+                        go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+                    }
+                }
+            }
+        }
+        return nearGos;
     }
 
 }

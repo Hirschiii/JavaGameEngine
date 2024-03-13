@@ -1,5 +1,5 @@
 {
-  "workspace": "./src/java",
+  "workspace": "./src/main/java",
   "java": {
     "completion": {
       "favoriteStaticMembers": [
