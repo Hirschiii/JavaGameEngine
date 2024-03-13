@@ -104,6 +104,9 @@
         class Prefabs [[Prefabs.html]] {
             {static} +generateSpriteObject(Sprite, float, float): GameObject
             {static} +generatePlayer(): GameObject
+            {static} +generateStreet(): GameObject
+            {static} +generateColorChangingStreet(Sprite): GameObject
+            {static} +generateCustemInteractive(Sprite): GameObject
         }
 
         class ImGuiLayer [[ImGuiLayer.html]] {

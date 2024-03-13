@@ -1,10 +1,12 @@
 game
 game.components
 game.components.enums
+game.components.interactives
 game.editor
 game.engine
 game.observers
 game.observers.events
+game.physics
 game.renderer
 game.scene
 game.util

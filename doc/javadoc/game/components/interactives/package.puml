@@ -1,0 +1,23 @@
+@startuml
+    namespace game.components.interactives {
+
+        class grow_in_size [[grow_in_size.html]] {
+            +interact(GameObject): void
+        }
+
+        class change_color [[change_color.html]] {
+            +interact(GameObject): void
+        }
+
+        game.components.Interaktive <|-- grow_in_size
+        game.components.Interaktive <|-- change_color
+    }
+
+    namespace game.components {
+        abstract class Interaktive [[../Interaktive.html]] {
+            {abstract} +interact(GameObject): void
+        }
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

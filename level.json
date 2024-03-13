@@ -61,7 +61,7 @@
         }
       }
     ],
-    "uid": 24
+    "uid": 0
   },
   {
     "isActiveGameObject": false,
@@ -125,7 +125,7 @@
         }
       }
     ],
-    "uid": 27
+    "uid": 1
   },
   {
     "isActiveGameObject": false,
@@ -189,7 +189,7 @@
         }
       }
     ],
-    "uid": 30
+    "uid": 2
   },
   {
     "isActiveGameObject": false,
@@ -253,7 +253,7 @@
         }
       }
     ],
-    "uid": 33
+    "uid": 3
   },
   {
     "isActiveGameObject": false,
@@ -317,7 +317,7 @@
         }
       }
     ],
-    "uid": 36
+    "uid": 4
   },
   {
     "isActiveGameObject": false,
@@ -381,7 +381,7 @@
         }
       }
     ],
-    "uid": 39
+    "uid": 5
   },
   {
     "isActiveGameObject": false,
@@ -445,7 +445,7 @@
         }
       }
     ],
-    "uid": 46
+    "uid": 6
   },
   {
     "isActiveGameObject": false,
@@ -509,7 +509,7 @@
         }
       }
     ],
-    "uid": 49
+    "uid": 7
   },
   {
     "isActiveGameObject": false,
@@ -573,7 +573,7 @@
         }
       }
     ],
-    "uid": 55
+    "uid": 8
   },
   {
     "isActiveGameObject": false,
@@ -637,7 +637,7 @@
         }
       }
     ],
-    "uid": 58
+    "uid": 9
   },
   {
     "isActiveGameObject": false,
@@ -701,7 +701,7 @@
         }
       }
     ],
-    "uid": 61
+    "uid": 10
   },
   {
     "isActiveGameObject": false,
@@ -765,7 +765,7 @@
         }
       }
     ],
-    "uid": 64
+    "uid": 11
   },
   {
     "isActiveGameObject": false,
@@ -829,7 +829,7 @@
         }
       }
     ],
-    "uid": 67
+    "uid": 12
   },
   {
     "isActiveGameObject": false,
@@ -893,7 +893,7 @@
         }
       }
     ],
-    "uid": 70
+    "uid": 13
   },
   {
     "isActiveGameObject": false,
@@ -957,7 +957,7 @@
         }
       }
     ],
-    "uid": 73
+    "uid": 14
   },
   {
     "isActiveGameObject": false,
@@ -1021,7 +1021,7 @@
         }
       }
     ],
-    "uid": 76
+    "uid": 15
   },
   {
     "isActiveGameObject": false,
@@ -1085,7 +1085,7 @@
         }
       }
     ],
-    "uid": 79
+    "uid": 16
   },
   {
     "isActiveGameObject": false,
@@ -1149,7 +1149,7 @@
         }
       }
     ],
-    "uid": 82
+    "uid": 17
   },
   {
     "isActiveGameObject": false,
@@ -1213,7 +1213,7 @@
         }
       }
     ],
-    "uid": 85
+    "uid": 18
   },
   {
     "isActiveGameObject": false,
@@ -1277,7 +1277,7 @@
         }
       }
     ],
-    "uid": 88
+    "uid": 19
   },
   {
     "isActiveGameObject": false,
@@ -1341,7 +1341,7 @@
         }
       }
     ],
-    "uid": 91
+    "uid": 20
   },
   {
     "isActiveGameObject": false,
@@ -1405,7 +1405,7 @@
         }
       }
     ],
-    "uid": 94
+    "uid": 21
   },
   {
     "isActiveGameObject": false,
@@ -1469,7 +1469,7 @@
         }
       }
     ],
-    "uid": 97
+    "uid": 22
   },
   {
     "isActiveGameObject": false,
@@ -1533,7 +1533,7 @@
         }
       }
     ],
-    "uid": 100
+    "uid": 23
   },
   {
     "isActiveGameObject": false,
@@ -1597,7 +1597,7 @@
         }
       }
     ],
-    "uid": 103
+    "uid": 24
   },
   {
     "isActiveGameObject": false,
@@ -1661,7 +1661,7 @@
         }
       }
     ],
-    "uid": 105
+    "uid": 25
   },
   {
     "isActiveGameObject": false,
@@ -1725,7 +1725,7 @@
         }
       }
     ],
-    "uid": 108
+    "uid": 26
   },
   {
     "isActiveGameObject": false,
@@ -1789,7 +1789,7 @@
         }
       }
     ],
-    "uid": 110
+    "uid": 27
   },
   {
     "isActiveGameObject": false,
@@ -1853,7 +1853,7 @@
         }
       }
     ],
-    "uid": 112
+    "uid": 28
   },
   {
     "isActiveGameObject": false,
@@ -1917,7 +1917,7 @@
         }
       }
     ],
-    "uid": 114
+    "uid": 29
   },
   {
     "isActiveGameObject": false,
@@ -1981,7 +1981,7 @@
         }
       }
     ],
-    "uid": 116
+    "uid": 30
   },
   {
     "isActiveGameObject": false,
@@ -2045,7 +2045,7 @@
         }
       }
     ],
-    "uid": 118
+    "uid": 31
   },
   {
     "isActiveGameObject": false,
@@ -2109,7 +2109,7 @@
         }
       }
     ],
-    "uid": 120
+    "uid": 32
   },
   {
     "isActiveGameObject": false,
@@ -2173,7 +2173,7 @@
         }
       }
     ],
-    "uid": 122
+    "uid": 33
   },
   {
     "isActiveGameObject": false,
@@ -2237,7 +2237,7 @@
         }
       }
     ],
-    "uid": 124
+    "uid": 34
   },
   {
     "isActiveGameObject": false,
@@ -2301,7 +2301,7 @@
         }
       }
     ],
-    "uid": 126
+    "uid": 35
   },
   {
     "isActiveGameObject": false,
@@ -2365,7 +2365,7 @@
         }
       }
     ],
-    "uid": 128
+    "uid": 36
   },
   {
     "isActiveGameObject": false,
@@ -2429,7 +2429,7 @@
         }
       }
     ],
-    "uid": 130
+    "uid": 37
   },
   {
     "isActiveGameObject": false,
@@ -2493,7 +2493,7 @@
         }
       }
     ],
-    "uid": 133
+    "uid": 38
   },
   {
     "isActiveGameObject": false,
@@ -2557,7 +2557,7 @@
         }
       }
     ],
-    "uid": 136
+    "uid": 39
   },
   {
     "isActiveGameObject": false,
@@ -2621,7 +2621,7 @@
         }
       }
     ],
-    "uid": 139
+    "uid": 40
   },
   {
     "isActiveGameObject": false,
@@ -2685,7 +2685,7 @@
         }
       }
     ],
-    "uid": 142
+    "uid": 41
   },
   {
     "isActiveGameObject": false,
@@ -2749,7 +2749,7 @@
         }
       }
     ],
-    "uid": 144
+    "uid": 42
   },
   {
     "isActiveGameObject": false,
@@ -2813,7 +2813,7 @@
         }
       }
     ],
-    "uid": 146
+    "uid": 43
   },
   {
     "isActiveGameObject": false,
@@ -2877,7 +2877,7 @@
         }
       }
     ],
-    "uid": 149
+    "uid": 44
   },
   {
     "isActiveGameObject": false,
@@ -2941,7 +2941,7 @@
         }
       }
     ],
-    "uid": 154
+    "uid": 45
   },
   {
     "isActiveGameObject": false,
@@ -3005,7 +3005,7 @@
         }
       }
     ],
-    "uid": 156
+    "uid": 46
   },
   {
     "isActiveGameObject": false,
@@ -3069,7 +3069,7 @@
         }
       }
     ],
-    "uid": 158
+    "uid": 47
   },
   {
     "isActiveGameObject": false,
@@ -3133,7 +3133,7 @@
         }
       }
     ],
-    "uid": 160
+    "uid": 48
   },
   {
     "isActiveGameObject": false,
@@ -3197,7 +3197,7 @@
         }
       }
     ],
-    "uid": 162
+    "uid": 49
   },
   {
     "isActiveGameObject": false,
@@ -3261,7 +3261,7 @@
         }
       }
     ],
-    "uid": 164
+    "uid": 50
   },
   {
     "isActiveGameObject": false,
@@ -3325,7 +3325,7 @@
         }
       }
     ],
-    "uid": 166
+    "uid": 51
   },
   {
     "isActiveGameObject": false,
@@ -3389,7 +3389,7 @@
         }
       }
     ],
-    "uid": 168
+    "uid": 52
   },
   {
     "isActiveGameObject": false,
@@ -3453,7 +3453,7 @@
         }
       }
     ],
-    "uid": 170
+    "uid": 53
   },
   {
     "isActiveGameObject": false,
@@ -3517,7 +3517,7 @@
         }
       }
     ],
-    "uid": 173
+    "uid": 54
   },
   {
     "isActiveGameObject": false,
@@ -3581,7 +3581,7 @@
         }
       }
     ],
-    "uid": 176
+    "uid": 55
   },
   {
     "isActiveGameObject": false,
@@ -3645,7 +3645,7 @@
         }
       }
     ],
-    "uid": 179
+    "uid": 56
   },
   {
     "isActiveGameObject": false,
@@ -3709,7 +3709,7 @@
         }
       }
     ],
-    "uid": 182
+    "uid": 57
   },
   {
     "isActiveGameObject": false,
@@ -3773,7 +3773,7 @@
         }
       }
     ],
-    "uid": 184
+    "uid": 58
   },
   {
     "isActiveGameObject": false,
@@ -3837,7 +3837,7 @@
         }
       }
     ],
-    "uid": 186
+    "uid": 59
   },
   {
     "isActiveGameObject": false,
@@ -3901,7 +3901,7 @@
         }
       }
     ],
-    "uid": 188
+    "uid": 60
   },
   {
     "isActiveGameObject": false,
@@ -3965,7 +3965,7 @@
         }
       }
     ],
-    "uid": 190
+    "uid": 61
   },
   {
     "isActiveGameObject": false,
@@ -4029,7 +4029,7 @@
         }
       }
     ],
-    "uid": 192
+    "uid": 62
   },
   {
     "isActiveGameObject": false,
@@ -4093,7 +4093,7 @@
         }
       }
     ],
-    "uid": 194
+    "uid": 63
   },
   {
     "isActiveGameObject": false,
@@ -4157,7 +4157,7 @@
         }
       }
     ],
-    "uid": 307
+    "uid": 64
   },
   {
     "isActiveGameObject": false,
@@ -4221,7 +4221,7 @@
         }
       }
     ],
-    "uid": 309
+    "uid": 65
   },
   {
     "isActiveGameObject": false,
@@ -4285,7 +4285,7 @@
         }
       }
     ],
-    "uid": 311
+    "uid": 66
   },
   {
     "isActiveGameObject": false,
@@ -4349,7 +4349,7 @@
         }
       }
     ],
-    "uid": 313
+    "uid": 67
   },
   {
     "isActiveGameObject": false,
@@ -4413,7 +4413,7 @@
         }
       }
     ],
-    "uid": 315
+    "uid": 68
   },
   {
     "isActiveGameObject": false,
@@ -4477,7 +4477,7 @@
         }
       }
     ],
-    "uid": 317
+    "uid": 69
   },
   {
     "isActiveGameObject": false,
@@ -4541,7 +4541,7 @@
         }
       }
     ],
-    "uid": 319
+    "uid": 70
   },
   {
     "isActiveGameObject": false,
@@ -4605,7 +4605,7 @@
         }
       }
     ],
-    "uid": 321
+    "uid": 71
   },
   {
     "isActiveGameObject": false,
@@ -4669,7 +4669,7 @@
         }
       }
     ],
-    "uid": 323
+    "uid": 72
   },
   {
     "isActiveGameObject": false,
@@ -4733,7 +4733,7 @@
         }
       }
     ],
-    "uid": 325
+    "uid": 73
   },
   {
     "isActiveGameObject": false,
@@ -4797,7 +4797,7 @@
         }
       }
     ],
-    "uid": 331
+    "uid": 74
   },
   {
     "isActiveGameObject": false,
@@ -4861,7 +4861,7 @@
         }
       }
     ],
-    "uid": 333
+    "uid": 75
   },
   {
     "isActiveGameObject": false,
@@ -4925,7 +4925,7 @@
         }
       }
     ],
-    "uid": 335
+    "uid": 76
   },
   {
     "isActiveGameObject": false,
@@ -4989,7 +4989,7 @@
         }
       }
     ],
-    "uid": 337
+    "uid": 77
   },
   {
     "isActiveGameObject": false,
@@ -5053,7 +5053,7 @@
         }
       }
     ],
-    "uid": 339
+    "uid": 78
   },
   {
     "isActiveGameObject": false,
@@ -5117,7 +5117,7 @@
         }
       }
     ],
-    "uid": 341
+    "uid": 79
   },
   {
     "isActiveGameObject": false,
@@ -5181,7 +5181,7 @@
         }
       }
     ],
-    "uid": 343
+    "uid": 80
   },
   {
     "isActiveGameObject": false,
@@ -5245,7 +5245,7 @@
         }
       }
     ],
-    "uid": 345
+    "uid": 81
   },
   {
     "isActiveGameObject": false,
@@ -5309,7 +5309,7 @@
         }
       }
     ],
-    "uid": 347
+    "uid": 82
   },
   {
     "isActiveGameObject": false,
@@ -5373,7 +5373,7 @@
         }
       }
     ],
-    "uid": 349
+    "uid": 83
   },
   {
     "isActiveGameObject": false,
@@ -5437,7 +5437,7 @@
         }
       }
     ],
-    "uid": 351
+    "uid": 84
   },
   {
     "isActiveGameObject": false,
@@ -5501,7 +5501,7 @@
         }
       }
     ],
-    "uid": 353
+    "uid": 85
   },
   {
     "isActiveGameObject": false,
@@ -5565,7 +5565,7 @@
         }
       }
     ],
-    "uid": 355
+    "uid": 86
   },
   {
     "isActiveGameObject": false,
@@ -5629,7 +5629,7 @@
         }
       }
     ],
-    "uid": 357
+    "uid": 87
   },
   {
     "isActiveGameObject": false,
@@ -5693,7 +5693,7 @@
         }
       }
     ],
-    "uid": 359
+    "uid": 88
   },
   {
     "isActiveGameObject": false,
@@ -5757,7 +5757,7 @@
         }
       }
     ],
-    "uid": 361
+    "uid": 89
   },
   {
     "isActiveGameObject": false,
@@ -5821,7 +5821,7 @@
         }
       }
     ],
-    "uid": 376
+    "uid": 90
   },
   {
     "isActiveGameObject": false,
@@ -5885,7 +5885,7 @@
         }
       }
     ],
-    "uid": 378
+    "uid": 91
   },
   {
     "isActiveGameObject": false,
@@ -5949,7 +5949,7 @@
         }
       }
     ],
-    "uid": 380
+    "uid": 92
   },
   {
     "isActiveGameObject": false,
@@ -6013,7 +6013,7 @@
         }
       }
     ],
-    "uid": 382
+    "uid": 93
   },
   {
     "isActiveGameObject": false,
@@ -6077,7 +6077,7 @@
         }
       }
     ],
-    "uid": 384
+    "uid": 94
   },
   {
     "isActiveGameObject": false,
@@ -6141,7 +6141,7 @@
         }
       }
     ],
-    "uid": 386
+    "uid": 95
   },
   {
     "isActiveGameObject": false,
@@ -6205,7 +6205,7 @@
         }
       }
     ],
-    "uid": 388
+    "uid": 96
   },
   {
     "isActiveGameObject": false,
@@ -6269,7 +6269,7 @@
         }
       }
     ],
-    "uid": 390
+    "uid": 97
   },
   {
     "isActiveGameObject": false,
@@ -6333,7 +6333,7 @@
         }
       }
     ],
-    "uid": 392
+    "uid": 98
   },
   {
     "isActiveGameObject": false,
@@ -6397,7 +6397,7 @@
         }
       }
     ],
-    "uid": 394
+    "uid": 99
   },
   {
     "isActiveGameObject": false,
@@ -6461,7 +6461,7 @@
         }
       }
     ],
-    "uid": 396
+    "uid": 100
   },
   {
     "isActiveGameObject": false,
@@ -6525,7 +6525,7 @@
         }
       }
     ],
-    "uid": 398
+    "uid": 101
   },
   {
     "isActiveGameObject": false,
@@ -6589,7 +6589,7 @@
         }
       }
     ],
-    "uid": 413
+    "uid": 102
   },
   {
     "isActiveGameObject": false,
@@ -6653,7 +6653,7 @@
         }
       }
     ],
-    "uid": 416
+    "uid": 103
   },
   {
     "isActiveGameObject": false,
@@ -6717,7 +6717,7 @@
         }
       }
     ],
-    "uid": 419
+    "uid": 104
   },
   {
     "isActiveGameObject": false,
@@ -6781,7 +6781,7 @@
         }
       }
     ],
-    "uid": 422
+    "uid": 105
   },
   {
     "isActiveGameObject": false,
@@ -6845,7 +6845,7 @@
         }
       }
     ],
-    "uid": 424
+    "uid": 106
   },
   {
     "isActiveGameObject": false,
@@ -6909,7 +6909,7 @@
         }
       }
     ],
-    "uid": 426
+    "uid": 107
   },
   {
     "isActiveGameObject": false,
@@ -6973,7 +6973,7 @@
         }
       }
     ],
-    "uid": 428
+    "uid": 108
   },
   {
     "isActiveGameObject": false,
@@ -7037,7 +7037,7 @@
         }
       }
     ],
-    "uid": 430
+    "uid": 109
   },
   {
     "isActiveGameObject": false,
@@ -7101,7 +7101,7 @@
         }
       }
     ],
-    "uid": 432
+    "uid": 110
   },
   {
     "isActiveGameObject": false,
@@ -7165,7 +7165,7 @@
         }
       }
     ],
-    "uid": 434
+    "uid": 111
   },
   {
     "isActiveGameObject": false,
@@ -7229,7 +7229,7 @@
         }
       }
     ],
-    "uid": 436
+    "uid": 112
   },
   {
     "isActiveGameObject": false,
@@ -7293,7 +7293,7 @@
         }
       }
     ],
-    "uid": 438
+    "uid": 113
   },
   {
     "isActiveGameObject": false,
@@ -7357,7 +7357,7 @@
         }
       }
     ],
-    "uid": 440
+    "uid": 114
   },
   {
     "isActiveGameObject": false,
@@ -7421,7 +7421,7 @@
         }
       }
     ],
-    "uid": 442
+    "uid": 115
   },
   {
     "isActiveGameObject": false,
@@ -7485,7 +7485,7 @@
         }
       }
     ],
-    "uid": 444
+    "uid": 116
   },
   {
     "isActiveGameObject": false,
@@ -7549,7 +7549,7 @@
         }
       }
     ],
-    "uid": 446
+    "uid": 117
   },
   {
     "isActiveGameObject": false,
@@ -7613,7 +7613,7 @@
         }
       }
     ],
-    "uid": 448
+    "uid": 118
   },
   {
     "isActiveGameObject": false,
@@ -7677,7 +7677,7 @@
         }
       }
     ],
-    "uid": 450
+    "uid": 119
   },
   {
     "isActiveGameObject": false,
@@ -7741,7 +7741,7 @@
         }
       }
     ],
-    "uid": 452
+    "uid": 120
   },
   {
     "isActiveGameObject": false,
@@ -7805,7 +7805,7 @@
         }
       }
     ],
-    "uid": 454
+    "uid": 121
   },
   {
     "isActiveGameObject": false,
@@ -7869,7 +7869,7 @@
         }
       }
     ],
-    "uid": 458
+    "uid": 122
   },
   {
     "isActiveGameObject": false,
@@ -7933,7 +7933,7 @@
         }
       }
     ],
-    "uid": 460
+    "uid": 123
   },
   {
     "isActiveGameObject": false,
@@ -7997,7 +7997,7 @@
         }
       }
     ],
-    "uid": 462
+    "uid": 124
   },
   {
     "isActiveGameObject": false,
@@ -8061,7 +8061,7 @@
         }
       }
     ],
-    "uid": 464
+    "uid": 125
   },
   {
     "isActiveGameObject": false,
@@ -8125,7 +8125,7 @@
         }
       }
     ],
-    "uid": 466
+    "uid": 126
   },
   {
     "isActiveGameObject": false,
@@ -8189,7 +8189,7 @@
         }
       }
     ],
-    "uid": 469
+    "uid": 127
   },
   {
     "isActiveGameObject": false,
@@ -8253,7 +8253,7 @@
         }
       }
     ],
-    "uid": 471
+    "uid": 128
   },
   {
     "isActiveGameObject": false,
@@ -8317,7 +8317,7 @@
         }
       }
     ],
-    "uid": 475
+    "uid": 129
   },
   {
     "isActiveGameObject": false,
@@ -8381,7 +8381,7 @@
         }
       }
     ],
-    "uid": 478
+    "uid": 130
   },
   {
     "isActiveGameObject": false,
@@ -8445,7 +8445,7 @@
         }
       }
     ],
-    "uid": 480
+    "uid": 131
   },
   {
     "isActiveGameObject": false,
@@ -8509,7 +8509,7 @@
         }
       }
     ],
-    "uid": 482
+    "uid": 132
   },
   {
     "isActiveGameObject": false,
@@ -8573,7 +8573,7 @@
         }
       }
     ],
-    "uid": 484
+    "uid": 133
   },
   {
     "isActiveGameObject": false,
@@ -8637,7 +8637,7 @@
         }
       }
     ],
-    "uid": 487
+    "uid": 134
   },
   {
     "isActiveGameObject": false,
@@ -8701,7 +8701,7 @@
         }
       }
     ],
-    "uid": 490
+    "uid": 135
   },
   {
     "isActiveGameObject": false,
@@ -8765,7 +8765,7 @@
         }
       }
     ],
-    "uid": 493
+    "uid": 136
   },
   {
     "isActiveGameObject": false,
@@ -8829,7 +8829,7 @@
         }
       }
     ],
-    "uid": 496
+    "uid": 137
   },
   {
     "isActiveGameObject": false,
@@ -8893,7 +8893,7 @@
         }
       }
     ],
-    "uid": 498
+    "uid": 138
   },
   {
     "isActiveGameObject": false,
@@ -8957,7 +8957,7 @@
         }
       }
     ],
-    "uid": 500
+    "uid": 139
   },
   {
     "isActiveGameObject": false,
@@ -9021,7 +9021,7 @@
         }
       }
     ],
-    "uid": 502
+    "uid": 140
   },
   {
     "isActiveGameObject": false,
@@ -9085,7 +9085,7 @@
         }
       }
     ],
-    "uid": 504
+    "uid": 141
   },
   {
     "isActiveGameObject": false,
@@ -9149,7 +9149,7 @@
         }
       }
     ],
-    "uid": 506
+    "uid": 142
   },
   {
     "isActiveGameObject": false,
@@ -9213,7 +9213,7 @@
         }
       }
     ],
-    "uid": 508
+    "uid": 143
   },
   {
     "isActiveGameObject": false,
@@ -9277,7 +9277,7 @@
         }
       }
     ],
-    "uid": 510
+    "uid": 144
   },
   {
     "isActiveGameObject": false,
@@ -9341,7 +9341,7 @@
         }
       }
     ],
-    "uid": 512
+    "uid": 145
   },
   {
     "isActiveGameObject": false,
@@ -9405,7 +9405,7 @@
         }
       }
     ],
-    "uid": 514
+    "uid": 146
   },
   {
     "isActiveGameObject": false,
@@ -9469,7 +9469,7 @@
         }
       }
     ],
-    "uid": 516
+    "uid": 147
   },
   {
     "isActiveGameObject": false,
@@ -9533,7 +9533,7 @@
         }
       }
     ],
-    "uid": 518
+    "uid": 148
   },
   {
     "isActiveGameObject": false,
@@ -9597,7 +9597,7 @@
         }
       }
     ],
-    "uid": 520
+    "uid": 149
   },
   {
     "isActiveGameObject": false,
@@ -9661,7 +9661,7 @@
         }
       }
     ],
-    "uid": 522
+    "uid": 150
   },
   {
     "isActiveGameObject": false,
@@ -9725,7 +9725,7 @@
         }
       }
     ],
-    "uid": 532
+    "uid": 151
   },
   {
     "isActiveGameObject": false,
@@ -9789,7 +9789,7 @@
         }
       }
     ],
-    "uid": 534
+    "uid": 152
   },
   {
     "isActiveGameObject": false,
@@ -9853,7 +9853,7 @@
         }
       }
     ],
-    "uid": 536
+    "uid": 153
   },
   {
     "isActiveGameObject": false,
@@ -9917,7 +9917,7 @@
         }
       }
     ],
-    "uid": 538
+    "uid": 154
   },
   {
     "isActiveGameObject": false,
@@ -9981,7 +9981,7 @@
         }
       }
     ],
-    "uid": 540
+    "uid": 155
   },
   {
     "isActiveGameObject": false,
@@ -10045,7 +10045,7 @@
         }
       }
     ],
-    "uid": 543
+    "uid": 156
   },
   {
     "isActiveGameObject": false,
@@ -10109,7 +10109,7 @@
         }
       }
     ],
-    "uid": 545
+    "uid": 157
   },
   {
     "isActiveGameObject": false,
@@ -10173,7 +10173,7 @@
         }
       }
     ],
-    "uid": 547
+    "uid": 158
   },
   {
     "isActiveGameObject": false,
@@ -10237,7 +10237,7 @@
         }
       }
     ],
-    "uid": 549
+    "uid": 159
   },
   {
     "isActiveGameObject": false,
@@ -10301,7 +10301,7 @@
         }
       }
     ],
-    "uid": 552
+    "uid": 160
   },
   {
     "isActiveGameObject": false,
@@ -10365,7 +10365,7 @@
         }
       }
     ],
-    "uid": 555
+    "uid": 161
   },
   {
     "isActiveGameObject": false,
@@ -10429,7 +10429,7 @@
         }
       }
     ],
-    "uid": 558
+    "uid": 162
   },
   {
     "isActiveGameObject": false,
@@ -10493,7 +10493,7 @@
         }
       }
     ],
-    "uid": 561
+    "uid": 163
   },
   {
     "isActiveGameObject": false,
@@ -10557,7 +10557,7 @@
         }
       }
     ],
-    "uid": 563
+    "uid": 164
   },
   {
     "isActiveGameObject": false,
@@ -10621,7 +10621,7 @@
         }
       }
     ],
-    "uid": 565
+    "uid": 165
   },
   {
     "isActiveGameObject": false,
@@ -10685,7 +10685,7 @@
         }
       }
     ],
-    "uid": 567
+    "uid": 166
   },
   {
     "isActiveGameObject": false,
@@ -10749,7 +10749,7 @@
         }
       }
     ],
-    "uid": 571
+    "uid": 167
   },
   {
     "isActiveGameObject": false,
@@ -10813,7 +10813,7 @@
         }
       }
     ],
-    "uid": 574
+    "uid": 168
   },
   {
     "isActiveGameObject": false,
@@ -10877,7 +10877,7 @@
         }
       }
     ],
-    "uid": 577
+    "uid": 169
   },
   {
     "isActiveGameObject": false,
@@ -10941,7 +10941,7 @@
         }
       }
     ],
-    "uid": 580
+    "uid": 170
   },
   {
     "isActiveGameObject": false,
@@ -11005,7 +11005,7 @@
         }
       }
     ],
-    "uid": 582
+    "uid": 171
   },
   {
     "isActiveGameObject": false,
@@ -11069,7 +11069,7 @@
         }
       }
     ],
-    "uid": 584
+    "uid": 172
   },
   {
     "isActiveGameObject": false,
@@ -11133,7 +11133,7 @@
         }
       }
     ],
-    "uid": 586
+    "uid": 173
   },
   {
     "isActiveGameObject": false,
@@ -11197,7 +11197,7 @@
         }
       }
     ],
-    "uid": 591
+    "uid": 174
   },
   {
     "isActiveGameObject": false,
@@ -11261,7 +11261,7 @@
         }
       }
     ],
-    "uid": 593
+    "uid": 175
   },
   {
     "isActiveGameObject": false,
@@ -11325,7 +11325,7 @@
         }
       }
     ],
-    "uid": 596
+    "uid": 176
   },
   {
     "isActiveGameObject": false,
@@ -11389,7 +11389,7 @@
         }
       }
     ],
-    "uid": 598
+    "uid": 177
   },
   {
     "isActiveGameObject": false,
@@ -11453,7 +11453,7 @@
         }
       }
     ],
-    "uid": 600
+    "uid": 178
   },
   {
     "isActiveGameObject": false,
@@ -11517,7 +11517,7 @@
         }
       }
     ],
-    "uid": 602
+    "uid": 179
   },
   {
     "isActiveGameObject": false,
@@ -11581,7 +11581,7 @@
         }
       }
     ],
-    "uid": 604
+    "uid": 180
   },
   {
     "isActiveGameObject": false,
@@ -11645,7 +11645,7 @@
         }
       }
     ],
-    "uid": 606
+    "uid": 181
   },
   {
     "isActiveGameObject": false,
@@ -11709,7 +11709,7 @@
         }
       }
     ],
-    "uid": 608
+    "uid": 182
   },
   {
     "isActiveGameObject": false,
@@ -11773,7 +11773,7 @@
         }
       }
     ],
-    "uid": 610
+    "uid": 183
   },
   {
     "isActiveGameObject": false,
@@ -11837,7 +11837,7 @@
         }
       }
     ],
-    "uid": 612
+    "uid": 184
   },
   {
     "isActiveGameObject": false,
@@ -11901,7 +11901,7 @@
         }
       }
     ],
-    "uid": 614
+    "uid": 185
   },
   {
     "isActiveGameObject": false,
@@ -11965,7 +11965,7 @@
         }
       }
     ],
-    "uid": 616
+    "uid": 186
   },
   {
     "isActiveGameObject": false,
@@ -12029,7 +12029,7 @@
         }
       }
     ],
-    "uid": 618
+    "uid": 187
   },
   {
     "isActiveGameObject": false,
@@ -12093,7 +12093,7 @@
         }
       }
     ],
-    "uid": 620
+    "uid": 188
   },
   {
     "isActiveGameObject": false,
@@ -12157,7 +12157,7 @@
         }
       }
     ],
-    "uid": 622
+    "uid": 189
   },
   {
     "isActiveGameObject": false,
@@ -12221,7 +12221,7 @@
         }
       }
     ],
-    "uid": 624
+    "uid": 190
   },
   {
     "isActiveGameObject": false,
@@ -12285,7 +12285,7 @@
         }
       }
     ],
-    "uid": 626
+    "uid": 191
   },
   {
     "isActiveGameObject": false,
@@ -12349,7 +12349,7 @@
         }
       }
     ],
-    "uid": 630
+    "uid": 192
   },
   {
     "isActiveGameObject": false,
@@ -12413,7 +12413,7 @@
         }
       }
     ],
-    "uid": 633
+    "uid": 193
   },
   {
     "isActiveGameObject": false,
@@ -12477,7 +12477,7 @@
         }
       }
     ],
-    "uid": 636
+    "uid": 194
   },
   {
     "isActiveGameObject": false,
@@ -12541,6 +12541,1274 @@
         }
       }
     ],
-    "uid": 638
+    "uid": 195
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Player",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 7.5,
+            "y": 6.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 2,
+          "uid": 358
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/CharacterAnimation.png",
+              "width": 256,
+              "height": 128
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 359
+        }
+      },
+      {
+        "type": "game.components.StateMachine",
+        "properties": {
+          "stateTransfers": [
+            [
+              {
+                "state": "RunDown",
+                "trigger": "SwitchDirection"
+              },
+              "Switch Direction"
+            ],
+            [
+              {
+                "state": "IdleSideRight",
+                "trigger": "StartRunRight"
+              },
+              "RunRight"
+            ],
+            [
+              {
+                "state": "Switch Direction",
+                "trigger": "StartRunLeft"
+              },
+              "RunLeft"
+            ],
+            [
+              {
+                "state": "IdleSideLeft",
+                "trigger": "StartRunLeft"
+              },
+              "RunLeft"
+            ],
+            [
+              {
+                "state": "IdleBack",
+                "trigger": "StartRunLeft"
+              },
+              "RunLeft"
+            ],
+            [
+              {
+                "state": "IdleBack",
+                "trigger": "StartRunDown"
+              },
+              "RunDown"
+            ],
+            [
+              {
+                "state": "IdleSideRight",
+                "trigger": "StartRunUp"
+              },
+              "RunUp"
+            ],
+            [
+              {
+                "state": "RunLeft",
+                "trigger": "StopRun"
+              },
+              "IdleSideLeft"
+            ],
+            [
+              {
+                "state": "IdleFront",
+                "trigger": "StartRunLeft"
+              },
+              "RunLeft"
+            ],
+            [
+              {
+                "state": "IdleSideLeft",
+                "trigger": "StartRunDown"
+              },
+              "RunDown"
+            ],
+            [
+              {
+                "state": "RunUp",
+                "trigger": "SwitchDirection"
+              },
+              "Switch Direction"
+            ],
+            [
+              {
+                "state": "IdleBack",
+                "trigger": "StartRunRight"
+              },
+              "RunRight"
+            ],
+            [
+              {
+                "state": "IdleFront",
+                "trigger": "StartRunDown"
+              },
+              "RunDown"
+            ],
+            [
+              {
+                "state": "Switch Direction",
+                "trigger": "StartRunRight"
+              },
+              "RunRight"
+            ],
+            [
+              {
+                "state": "RunRight",
+                "trigger": "StopRun"
+              },
+              "IdleSideRight"
+            ],
+            [
+              {
+                "state": "Switch Direction",
+                "trigger": "StartRunDown"
+              },
+              "RunDown"
+            ],
+            [
+              {
+                "state": "IdleSideLeft",
+                "trigger": "StartRunRight"
+              },
+              "RunRight"
+            ],
+            [
+              {
+                "state": "Switch Direction",
+                "trigger": "StopRun"
+              },
+              "IdleFront"
+            ],
+            [
+              {
+                "state": "RunDown",
+                "trigger": "StopRun"
+              },
+              "IdleFront"
+            ],
+            [
+              {
+                "state": "IdleFront",
+                "trigger": "StartRunRight"
+              },
+              "RunRight"
+            ],
+            [
+              {
+                "state": "IdleSideRight",
+                "trigger": "StartRunLeft"
+              },
+              "RunLeft"
+            ],
+            [
+              {
+                "state": "IdleSideLeft",
+                "trigger": "StartRunUp"
+              },
+              "RunUp"
+            ],
+            [
+              {
+                "state": "RunLeft",
+                "trigger": "SwitchDirection"
+              },
+              "Switch Direction"
+            ],
+            [
+              {
+                "state": "Switch Direction",
+                "trigger": "StartRunUp"
+              },
+              "RunUp"
+            ],
+            [
+              {
+                "state": "RunUp",
+                "trigger": "StopRun"
+              },
+              "IdleBack"
+            ],
+            [
+              {
+                "state": "RunRight",
+                "trigger": "SwitchDirection"
+              },
+              "Switch Direction"
+            ],
+            [
+              {
+                "state": "IdleFront",
+                "trigger": "StartRunUp"
+              },
+              "RunUp"
+            ],
+            [
+              {
+                "state": "IdleBack",
+                "trigger": "StartRunUp"
+              },
+              "RunUp"
+            ],
+            [
+              {
+                "state": "IdleSideRight",
+                "trigger": "StartRunDown"
+              },
+              "RunDown"
+            ]
+          ],
+          "states": [
+            {
+              "title": "IdleFront",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "IdleBack",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "IdleSideLeft",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.25
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.25
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.25
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.25
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "IdleSideRight",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "Switch Direction",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.1
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": false,
+              "uid": -1
+            },
+            {
+              "title": "RunDown",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.75,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.875,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.875,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 1.0,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 1.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.875,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.875,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "RunUp",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.75,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.875,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.875,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 1.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 1.0,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.875,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.875,
+                        "y": 0.75
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "RunLeft",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.25
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.75,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.0
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.25
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            },
+            {
+              "title": "RunRight",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.625,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 32.0,
+                    "texture": {
+                      "filepath": "assets/spriteSheets/CharacterAnimation.png",
+                      "width": 256,
+                      "height": 128
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.75,
+                        "y": 0.5
+                      },
+                      {
+                        "x": 0.75,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.25
+                      },
+                      {
+                        "x": 0.625,
+                        "y": 0.5
+                      }
+                    ]
+                  },
+                  "frameTime": 0.35
+                }
+              ],
+              "timeTracker": 0.0,
+              "doesLoop": true,
+              "uid": -1
+            }
+          ],
+          "defaultStateTitle": "IdleFront",
+          "uid": 360
+        }
+      },
+      {
+        "type": "game.components.PlayerController",
+        "properties": {
+          "walkSpeed": 0.14,
+          "slowDownForc": 0.002,
+          "terminalVelocity": {
+            "x": 0.07,
+            "y": 0.07
+          },
+          "interactiveGOs": [],
+          "collided": false,
+          "interact": false,
+          "uid": 361
+        }
+      },
+      {
+        "type": "game.components.Inventar",
+        "properties": {
+          "items": [],
+          "uid": 362
+        }
+      },
+      {
+        "type": "game.components.Rigidbody",
+        "properties": {
+          "localCenter": {
+            "x": 0.0,
+            "y": -0.34
+          },
+          "globalCenter": {
+            "x": 7.5,
+            "y": 6.16
+          },
+          "dimension": {
+            "x": 0.7,
+            "y": 0.3
+          },
+          "boxStart": {
+            "x": 7.15,
+            "y": 6.0099998
+          },
+          "boxEnd": {
+            "x": 7.85,
+            "y": 6.31
+          },
+          "uid": 363
+        }
+      }
+    ],
+    "uid": 196
   }
 ]

@@ -5,6 +5,7 @@
 
     class "<size:14>KeyControls\n<size:10>game.components" as game.components.KeyControls [[KeyControls.html]] {
         +editorUpdate(float): void
+        {static} +rotateGOs90Deg(List<GameObject>): void
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]

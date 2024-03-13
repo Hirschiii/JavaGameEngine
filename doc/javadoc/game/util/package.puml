@@ -9,11 +9,15 @@
         }
 
         class Settings [[Settings.html]] {
+            {static} +HOME_PATH: String
             {static} +RELEASE_BUILD: boolean
             {static} +tileSize: float
             {static} +GRID_WIDTH: float
             {static} +GRID_HEIGHT: float
             {static} +PROJECTION_HEIGHT: float
+            {static} +DEBUG_DRAW: int
+            {static} +LEVEL_JSON_PATH: String
+            {static} +IMGUI_CONFIG_FILE_PATH: String
         }
 
     }

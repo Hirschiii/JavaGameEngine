@@ -4,6 +4,12 @@
     hide empty methods
 
     class "<size:14>Rigidbody\n<size:10>game.components" as game.components.Rigidbody [[Rigidbody.html]] {
+        +globalCenter: Vector2f
+        +dimension: Vector2f
+        +Rigidbody(Vector2f, Vector2f)
+        +collisionBox(GameObject): boolean
+        +update(float): void
+        +editorUpdate(float): void
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
