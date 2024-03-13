@@ -10,4 +10,7 @@ public class Settings {
     public static final float PROJECTION_HEIGHT = 12 * tileSize;
     // 0: nothing 1: in Editor 2: in editor play 3: in Final Game
     public static final int DEBUG_DRAW = 2;
+    public static final String HOME_PATH = "/Users/niklas/projects/school/liferfix_game_projekt_2024_2_hj/";
+    public static final String LEVEL_JSON_PATH = HOME_PATH + "level.json";
+
 }
