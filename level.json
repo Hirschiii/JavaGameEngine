@@ -3888,7 +3888,7 @@
           },
           "rotation": 0.0,
           "zIndex": 2,
-          "uid": 136
+          "uid": 161
         }
       },
       {
@@ -3927,7 +3927,7 @@
               }
             ]
           },
-          "uid": 137
+          "uid": 162
         }
       },
       {
@@ -5083,7 +5083,7 @@
             }
           ],
           "defaultStateTitle": "IdleFront",
-          "uid": 138
+          "uid": 163
         }
       },
       {
@@ -5097,7 +5097,7 @@
           },
           "interactiveGOs": [],
           "collided": false,
-          "uid": 139
+          "uid": 164
         }
       },
       {
@@ -5105,28 +5105,28 @@
         "properties": {
           "localCenter": {
             "x": 0.0,
-            "y": -0.1
+            "y": -0.34
           },
           "globalCenter": {
             "x": 9.5,
-            "y": 6.4
+            "y": 6.16
           },
           "dimension": {
             "x": 0.7,
-            "y": 0.8
+            "y": 0.3
           },
           "boxStart": {
             "x": 9.15,
-            "y": 6.0
+            "y": 6.0099998
           },
           "boxEnd": {
             "x": 9.85,
-            "y": 6.8
+            "y": 6.31
           },
-          "uid": 140
+          "uid": 165
         }
       }
     ],
-    "uid": 43
+    "uid": 51
   }
 ]

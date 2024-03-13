@@ -172,7 +172,7 @@ public class Prefabs {
         player.addComponent(stateMachine);
 
         player.addComponent(new PlayerController());
-        player.addComponent(new Rigidbody(new Vector2f(0f, -0.1f), new Vector2f(0.7f, 0.8f)));
+        player.addComponent(new Rigidbody(new Vector2f(0f, -0.34f), new Vector2f(0.7f, 0.3f)));
         player.transform.zIndex = 2;
 
         return player;
