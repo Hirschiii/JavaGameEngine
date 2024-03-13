@@ -17,6 +17,10 @@ public abstract class Interaktive extends Component {
         this.interactive = interactive;
     }
 
+    public boolean getInteractive() {
+        return this.interactive;
+    }
+
     @Override
     public void update(float dt) {
         if(interactive) {
