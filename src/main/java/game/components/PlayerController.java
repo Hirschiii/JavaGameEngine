@@ -11,6 +11,8 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_A;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_E;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_T;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_TAB;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
 
 import game.engine.GameObject;
@@ -52,7 +54,15 @@ public class PlayerController extends Component {
         this.acceleraton.zero();
 
         if (KeyListener.isKeyPressed(GLFW_KEY_E)) {
-            interactiveGO.getComponent(Interaktive.class).interact(this.gameObject);
+            if (interactiveGO != null) {
+                interactiveGO.getComponent(Interaktive.class).interact(this.gameObject);
+            }
+        }
+
+        if (KeyListener.isKeyPressed(GLFW_KEY_TAB)) {
+            if (interactiveGO != null && interactiveGOs.size() > 1) {
+                setInteraktiveGO();
+            }
         }
 
         if (KeyListener.isKeyPressed(GLFW_KEY_D)) {
@@ -109,8 +119,15 @@ public class PlayerController extends Component {
 
         this.gameObject.transform.position.add(this.velocity);
 
-        interactiveGOs = getNearGOS(2);
         for (GameObject go : interactiveGOs) {
+            if (go.getComponent(Interaktive.class) != null) {
+                go.getComponent(Interaktive.class).setInteractive(false);
+            }
+        }
+
+        interactiveGOs = getNearGOS(2);
+        for (int i = 0; i > interactiveGOs.size(); i++) {
+            GameObject go = interactiveGOs.get(i);
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);
                 collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);
@@ -118,6 +135,12 @@ public class PlayerController extends Component {
                     go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 0, 0, 1));
                     break;
                 }
+            }
+            if (go.getComponent(Interaktive.class) != null) {
+                go.getComponent(Interaktive.class).setInteractive(true);
+            } else {
+                interactiveGOs.remove(i);
+                i--;
             }
         }
 
