@@ -3,8 +3,6 @@ package game.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.plantuml.jsondiagram.Arrow;
-
 /**
  * Inventar
  */

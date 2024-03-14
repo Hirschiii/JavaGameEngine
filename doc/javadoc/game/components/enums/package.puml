@@ -7,6 +7,11 @@
             {static} +Kinematic
         }
 
+        enum CameraModi [[CameraModi.html]] {
+            {static} +FOLLOWING
+            {static} +STATIC
+        }
+
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

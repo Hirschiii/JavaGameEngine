@@ -149,6 +149,7 @@
         class Camera [[Camera.html]] {
             +position: Vector2f
             +zoom: float
+            +clearColor: Vector4f
             +Camera(Vector2f)
             +adjustProjection(): void
             +getViewMatrix(): Matrix4f

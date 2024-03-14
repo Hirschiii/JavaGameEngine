@@ -1,25 +1,15 @@
 package game.editor;
 
-import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
-import game.components.Component;
-import game.components.Gizmo;
-import game.components.NonPickable;
 import game.components.Rigidbody;
-import game.components.TranslateGizmo;
+import game.components.SpriteRenderer;
 import game.engine.GameObject;
-import game.engine.MouseListener;
 import game.renderer.PickingTexture;
-import game.scene.Scene;
-import game.components.*;
 import imgui.ImGui;
 
 public class PropertiesWindow {

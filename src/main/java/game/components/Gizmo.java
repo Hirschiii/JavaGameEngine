@@ -1,21 +1,15 @@
 package game.components;
 
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_BACKSPACE;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_CONTROL;
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 import game.editor.PropertiesWindow;
 import game.engine.GameObject;
-import game.engine.KeyListener;
 import game.engine.MouseListener;
 import game.engine.Prefabs;
 import game.engine.Window;
-import game.renderer.DebugDraw;
 
 public class Gizmo extends Component {
     private boolean using = false;

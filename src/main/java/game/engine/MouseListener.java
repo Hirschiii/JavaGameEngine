@@ -6,7 +6,6 @@ import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 import game.util.*;
 
 import java.util.Arrays;
-import java.util.Vector;
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;

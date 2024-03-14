@@ -16,9 +16,20 @@
             +setTexture(Texture): void
         }
 
+        class GameCamera [[GameCamera.html]] {
+            +GameCamera(Camera)
+            +start(): void
+            +update(float): void
+        }
+
         class ScaleGizmo [[ScaleGizmo.html]] {
             +ScaleGizmo(Sprite, PropertiesWindow)
             +editorUpdate(float): void
+        }
+
+        class InteraktiveGizmo [[InteraktiveGizmo.html]] {
+            +InteraktiveGizmo(Sprite)
+            +update(float): void
         }
 
         class MouseControls [[MouseControls.html]] {
@@ -133,6 +144,7 @@
         abstract class Interaktive [[Interaktive.html]] {
             {abstract} +interact(GameObject): void
             +setInteractive(boolean): void
+            +getInteractive(): boolean
             +update(float): void
         }
 
@@ -170,7 +182,10 @@
 
         Component <|-- SpriteRenderer
         SpriteRenderer --> Sprite: sprite
+        Component <|-- GameCamera
+        GameCamera --> game.components.enums.CameraModi: camMode
         Gizmo <|-- ScaleGizmo
+        Component <|-- InteraktiveGizmo
         Component <|-- MouseControls
         Component <|-- Gizmo
         Gizmo <|-- TranslateGizmo

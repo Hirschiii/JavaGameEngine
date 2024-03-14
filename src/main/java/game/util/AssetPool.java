@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.print.attribute.TextSyntax;
-
 import game.components.Spritesheet;
 import game.renderer.Shader;
 import game.renderer.Texture;

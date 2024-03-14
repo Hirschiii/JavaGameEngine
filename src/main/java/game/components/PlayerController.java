@@ -1,26 +1,22 @@
 package game.components;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
-
-import org.joml.Vector2f;
-import org.joml.Vector4f;
-
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_A;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_E;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_S;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_T;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_TAB;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_W;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 import game.engine.GameObject;
 import game.engine.KeyListener;
 import game.engine.Window;
-import game.renderer.DebugDraw;
 import game.util.Settings;
-import net.sourceforge.plantuml.sequencediagram.Newpage;
 
 /**
  * PlayerController

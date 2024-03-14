@@ -1,6 +1,12 @@
 @startuml
     namespace game.scene {
 
+        class LevelSceneInitializer [[LevelSceneInitializer.html]] {
+            +init(Scene): void
+            +loadResources(Scene): void
+            +imgui(): void
+        }
+
         class LevelEditorSceneInitializer [[LevelEditorSceneInitializer.html]] {
             +init(Scene): void
             +loadResources(Scene): void
@@ -34,6 +40,7 @@
             {abstract} +imgui(): void
         }
 
+        SceneInitializer <|-- LevelSceneInitializer
         SceneInitializer <|-- LevelEditorSceneInitializer
     }
 

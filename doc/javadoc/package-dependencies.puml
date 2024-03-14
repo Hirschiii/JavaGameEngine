@@ -13,6 +13,7 @@
     game.components --> org.joml
     game.components --> game.engine
     game.components --> game.renderer
+    game.components --> game.components.enums
     game.components --> game.editor
     game.components --> com.google.gson
     game.components.interactives --> game.components
@@ -45,6 +46,8 @@
     class "game.components" [[game/components/package-summary.html]] {
     }
     class "game.util" [[game/util/package-summary.html]] {
+    }
+    class "game.components.enums" [[game/components/enums/package-summary.html]] {
     }
     class "game.editor" [[game/editor/package-summary.html]] {
     }

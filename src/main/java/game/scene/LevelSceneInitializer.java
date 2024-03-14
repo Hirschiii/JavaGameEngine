@@ -1,35 +1,11 @@
 package game.scene;
 
-import org.joml.Vector2f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-
-import game.components.AnimationState;
-import game.components.EditorCamera;
 import game.components.GameCamera;
-import game.components.GizmoSystem;
-import game.components.GridLines;
-import game.components.KeyControls;
-import game.components.MouseControls;
-import game.components.Rigidbody;
-import game.components.ScaleGizmo;
-import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.components.StateMachine;
-import game.components.TranslateGizmo;
-import game.editor.JImGui;
-import game.engine.Camera;
 import game.engine.GameObject;
-import game.engine.MouseListener;
-import game.engine.Prefabs;
-import game.engine.Transform;
-import game.engine.Window;
-import game.renderer.DebugDraw;
 import game.util.AssetPool;
-import game.util.Settings;
-import imgui.ImGui;
-import imgui.ImVec2;
 
 public class LevelSceneInitializer extends SceneInitializer {
     public LevelSceneInitializer() {

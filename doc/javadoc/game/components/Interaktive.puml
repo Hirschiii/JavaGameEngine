@@ -6,6 +6,7 @@
     abstract class "<size:14>Interaktive\n<size:10>game.components" as game.components.Interaktive [[Interaktive.html]] {
         {abstract} +interact(GameObject): void
         +setInteractive(boolean): void
+        +getInteractive(): boolean
         +update(float): void
     }
 

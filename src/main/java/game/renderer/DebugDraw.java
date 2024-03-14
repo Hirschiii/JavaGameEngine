@@ -1,9 +1,7 @@
 package game.renderer;
 
 import static org.lwjgl.opengl.GL11.GL_FLOAT;
-import static org.lwjgl.opengl.GL11.GL_LINE;
 import static org.lwjgl.opengl.GL11.GL_LINES;
-import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glDrawArrays;
 import static org.lwjgl.opengl.GL11.glLineWidth;
 import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
@@ -24,11 +22,9 @@ import java.util.List;
 
 import org.joml.Vector2f;
 import org.joml.Vector3f;
-import org.lwjgl.opengl.*;
 
 import game.engine.Window;
 import game.util.AssetPool;
-import net.sourceforge.plantuml.graphic.Line;
 
 public class DebugDraw {
     private static int MAX_LINES = 5000;

@@ -1,17 +1,7 @@
 package game.components;
 
-import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
-
-import javax.swing.text.html.BlockView;
-
-import org.joml.Vector2f;
-import org.joml.Vector4f;
-
 import game.editor.PropertiesWindow;
-import game.engine.GameObject;
 import game.engine.MouseListener;
-import game.engine.Prefabs;
-import game.engine.Window;
 
 public class TranslateGizmo extends Gizmo {
 
