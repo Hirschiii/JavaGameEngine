@@ -58,7 +58,8 @@ public class PlayerController extends Component {
         this.collided = false;
         this.acceleraton.zero();
 
-        if (KeyListener.isKeyPressed(GLFW_KEY_E)) {
+        if (KeyListener.isKeyPressed(GLFW_KEY_E) && debounce < 0) {
+            debounce = debounceTime;
             if (interactiveGO != null) {
                 interactiveGO.getComponent(Interaktive.class).interact(this.gameObject);
             }
@@ -150,7 +151,6 @@ public class PlayerController extends Component {
         if (interactiveGO == null && interactiveGOs.size() > 0) {
             setInteraktiveGO();
         } else if (!interactiveGOs.contains(interactiveGO) || interactiveGOs.size() <= 0) {
-            System.out.println("No in list");
             interactiveGO = null;
             interactiveGOGizmo.setInactive();
         }
@@ -163,12 +163,10 @@ public class PlayerController extends Component {
     }
 
     private void setInteraktiveGO() {
-        System.out.println("Set interakt");
         if (this.interactiveGO == null) {
             this.interactiveGO = interactiveGOs.getFirst();
         } else {
             if (interactiveGO.getComponent(Interaktive.class) != null) {
-                System.out.println("Befor setting new set false");
                 interactiveGO.getComponent(Interaktive.class).setInteractive(false);
             }
             if (interactiveGOs.contains(interactiveGO)) {
@@ -183,11 +181,9 @@ public class PlayerController extends Component {
             }
         }
         if (interactiveGO.getComponent(Interaktive.class) != null) {
-            System.out.println("afet setting new set true");
             interactiveGO.getComponent(Interaktive.class).setInteractive(true);
             interactiveGOGizmo.setActive(interactiveGO);
         }
-        System.out.println(interactiveGO.name);
     }
 
     private List<GameObject> getNearGOS(int range) {

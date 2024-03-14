@@ -18,7 +18,13 @@ public class InteraktiveGizmo extends Component {
     private Vector2f offset = new Vector2f(0.3f, 0.5f);
 
     public InteraktiveGizmo() {
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Start Inter Gizmo");
         setInactive();
+        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
     }
 
     @Override
@@ -30,11 +36,8 @@ public class InteraktiveGizmo extends Component {
     }
 
     public void setInactive() {
-        if (this.activeGO != null) {
-            this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
-        } else {
-            this.activeGO = null;
-        }
+        this.activeGO = null;
+        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
         this.active = false;
     }
 

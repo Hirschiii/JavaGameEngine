@@ -8,6 +8,7 @@ import org.joml.Vector4f;
 
 import game.components.Rigidbody;
 import game.components.SpriteRenderer;
+import game.components.interactives.Pipe;
 import game.engine.GameObject;
 import game.renderer.PickingTexture;
 import imgui.ImGui;
@@ -33,6 +34,11 @@ public class PropertiesWindow {
                 if (activeGameObject.getComponent(Rigidbody.class) == null) {
                     if (ImGui.menuItem("Add Rigidbody")) {
                         activeGameObject.addComponent(new Rigidbody(new Vector2f(0f, 0f), new Vector2f(1f, 1f)));
+                    }
+                }
+                if (activeGameObject.getComponent(Pipe.class) == null) {
+                    if (ImGui.menuItem("Add Pipe")) {
+                        activeGameObject.addComponent(new Pipe());
                     }
                 }
                 ImGui.endPopup();
@@ -64,11 +70,11 @@ public class PropertiesWindow {
     }
 
     public void clearSelected() {
-        if(activeGameObjectsOgColor.size() > 0) {
+        if (activeGameObjectsOgColor.size() > 0) {
             int i = 0;
             for (GameObject go : activeGameObjects) {
                 SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
-                if(spr != null) {
+                if (spr != null) {
                     spr.setColor(activeGameObjectsOgColor.get(i));
                 }
                 i++;
@@ -80,7 +86,7 @@ public class PropertiesWindow {
 
     public void addActiveGameObjet(GameObject go) {
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
-        if(spr != null) {
+        if (spr != null) {
             this.activeGameObjectsOgColor.add(new Vector4f(spr.getColor()));
             spr.setColor(new Vector4f(0.9f, 0.5f, 0.8f, 0.8f));
         } else {

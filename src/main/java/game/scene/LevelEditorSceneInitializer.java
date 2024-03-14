@@ -149,6 +149,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 int uid = 0;
                 Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
                 Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
+                int[] fullRigid_all = new int[2];
+                fullRigid_all[0] = 56;
+                fullRigid_all[1] = 55;
 
                 Sprite sprite = playerSprites.getSprite(0);
                 float spriteWidth = sprite.getWidth() * 2;
@@ -167,6 +170,42 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.popID();
                 ImGui.sameLine();
 
+                for (int i : fullRigid_all) {
+                    sprite = streetSprites.getSprite(i);
+                    spriteWidth = sprite.getWidth() * 2;
+                    spriteHeight = sprite.getHeight() * 2;
+
+                    id = sprite.getTexId();
+                    texCoords = sprite.getTexCoords();
+
+                    ImGui.pushID(uid++);
+                    if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                            texCoords[2].y)) {
+                        GameObject object = Prefabs.generateFullRigid(sprite);
+                        // Attach to mouse Cursor to drop
+                        levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                    }
+                    ImGui.popID();
+                    ImGui.sameLine();
+                }
+
+                sprite = streetSprites.getSprite(66);
+                spriteWidth = sprite.getWidth() * 2;
+                spriteHeight = sprite.getHeight() * 2;
+
+                id = sprite.getTexId();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                        texCoords[2].y)) {
+                    GameObject object = Prefabs.generateAbsolut(sprite);
+                    // Attach to mouse Cursor to drop
+                    levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
                 sprite = streetSprites.getSprite(0);
                 spriteWidth = sprite.getWidth() * 2;
                 spriteHeight = sprite.getHeight() * 2;
@@ -177,7 +216,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.pushID(uid++);
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                         texCoords[2].y)) {
-                    GameObject object = Prefabs.generateStreet();
+                    GameObject object = Prefabs.generateFullRigid(sprite);
                     // Attach to mouse Cursor to drop
                     levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                 }
@@ -190,16 +229,6 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                 id = sprite.getTexId();
                 texCoords = sprite.getTexCoords();
-
-                ImGui.pushID(uid++);
-                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                        texCoords[2].y)) {
-                    GameObject object = Prefabs.generateCustemInteractive(sprite);
-                    // Attach to mouse Cursor to drop
-                    levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-                }
-                ImGui.popID();
-                ImGui.sameLine();
 
                 ImGui.sameLine();
                 ImGui.endTabItem();
