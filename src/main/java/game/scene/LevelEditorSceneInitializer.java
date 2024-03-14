@@ -105,109 +105,97 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         ImGui.begin("Objects");
         if (ImGui.beginTabBar("WindowTabBar")) {
-            if (ImGui.beginTabItem("Blocks")) {
+            imguiBlock();
+            imguiPrefabs();
+            ImGui.endTabBar();
+        }
 
-                ImVec2 windowPos = new ImVec2();
-                ImGui.getWindowPos(windowPos);
-                ImVec2 windowSize = new ImVec2();
-                ImGui.getWindowSize(windowSize);
-                ImVec2 itemSpacing = new ImVec2();
-                ImGui.getStyle().getItemSpacing(itemSpacing);
+        ImGui.end();
+    }
 
-                float windowX2 = windowPos.x + windowSize.x;
-                float windowY2 = windowPos.y + windowSize.y;
+    public void ImGuiWordSet() {
+        ImGui.begin("Set World");
+        JImGui.drawVec2Control("CamPos", Window.getScene().camera().getPosition());
+        JImGui.drawVec2Control("Window Size:", new Vector2f(Window.getWidth(), Window.getHeight()));
+        Vector2f zoom = new Vector2f(Window.getScene().camera().getZoom(), 0);
+        JImGui.drawVec2Control("Zoom", zoom);
+        ImGui.end();
 
-                for (int i = 0; i < sprites.size(); i++) {
-                    Sprite sprite = sprites.getSprite(i);
-                    float spriteWidth = sprite.getWidth() * 2;
-                    float spriteHeight = sprite.getHeight() * 2;
+    }
 
-                    int id = sprite.getTexId();
-                    Vector2f[] texCoords = sprite.getTexCoords();
+    public void imguiBlock() {
 
-                    ImGui.pushID(i);
-                    if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                            texCoords[2].y)) {
-                        GameObject object = Prefabs.generateSpriteObject(sprite, Settings.GRID_WIDTH,
-                                Settings.GRID_HEIGHT);
-                        // Attach to mouse Cursor to drop
-                        levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-                    }
-                    ImGui.popID();
+        if (ImGui.beginTabItem("Blocks")) {
 
-                    ImVec2 lastButtonPos = new ImVec2();
-                    ImGui.getItemRectMax(lastButtonPos);
+            ImVec2 windowPos = new ImVec2();
+            ImGui.getWindowPos(windowPos);
+            ImVec2 windowSize = new ImVec2();
+            ImGui.getWindowSize(windowSize);
+            ImVec2 itemSpacing = new ImVec2();
+            ImGui.getStyle().getItemSpacing(itemSpacing);
 
-                    float lastButtonX2 = lastButtonPos.x;
-                    float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
-                    if (i + 1 < sprites.size() && nextButtonX2 < windowX2) {
-                        ImGui.sameLine();
-                    }
-                }
-                ImGui.endTabItem();
-            }
-            if (ImGui.beginTabItem("PreFabs")) {
-                int uid = 0;
-                Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
-                Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
-                int[] fullRigid_all = new int[2];
-                fullRigid_all[0] = 56;
-                fullRigid_all[1] = 55;
+            float windowX2 = windowPos.x + windowSize.x;
+            float windowY2 = windowPos.y + windowSize.y;
 
-                Sprite sprite = playerSprites.getSprite(0);
+            for (int i = 0; i < sprites.size(); i++) {
+                Sprite sprite = sprites.getSprite(i);
                 float spriteWidth = sprite.getWidth() * 2;
                 float spriteHeight = sprite.getHeight() * 2;
 
                 int id = sprite.getTexId();
                 Vector2f[] texCoords = sprite.getTexCoords();
 
-                ImGui.pushID(uid++);
+                ImGui.pushID(i);
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                         texCoords[2].y)) {
-                    GameObject object = Prefabs.generatePlayer();
+                    GameObject object = Prefabs.generateSpriteObject(sprite, Settings.GRID_WIDTH,
+                            Settings.GRID_HEIGHT);
                     // Attach to mouse Cursor to drop
                     levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                 }
                 ImGui.popID();
-                ImGui.sameLine();
 
-                for (int i : fullRigid_all) {
-                    sprite = streetSprites.getSprite(i);
-                    spriteWidth = sprite.getWidth() * 2;
-                    spriteHeight = sprite.getHeight() * 2;
+                ImVec2 lastButtonPos = new ImVec2();
+                ImGui.getItemRectMax(lastButtonPos);
 
-                    id = sprite.getTexId();
-                    texCoords = sprite.getTexCoords();
-
-                    ImGui.pushID(uid++);
-                    if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                            texCoords[2].y)) {
-                        GameObject object = Prefabs.generateFullRigid(sprite);
-                        // Attach to mouse Cursor to drop
-                        levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-                    }
-                    ImGui.popID();
+                float lastButtonX2 = lastButtonPos.x;
+                float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+                if (i + 1 < sprites.size() && nextButtonX2 < windowX2) {
                     ImGui.sameLine();
                 }
+            }
+            ImGui.endTabItem();
+        }
+    }
 
-                sprite = streetSprites.getSprite(66);
-                spriteWidth = sprite.getWidth() * 2;
-                spriteHeight = sprite.getHeight() * 2;
+    public void imguiPrefabs() {
+        if (ImGui.beginTabItem("PreFabs")) {
+            int uid = 0;
+            Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
+            Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
+            int[] fullRigid_all = new int[2];
+            fullRigid_all[0] = 56;
+            fullRigid_all[1] = 55;
 
-                id = sprite.getTexId();
-                texCoords = sprite.getTexCoords();
+            Sprite sprite = playerSprites.getSprite(0);
+            float spriteWidth = sprite.getWidth() * 2;
+            float spriteHeight = sprite.getHeight() * 2;
 
-                ImGui.pushID(uid++);
-                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                        texCoords[2].y)) {
-                    GameObject object = Prefabs.generateAbsolut(sprite);
-                    // Attach to mouse Cursor to drop
-                    levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-                }
-                ImGui.popID();
-                ImGui.sameLine();
+            int id = sprite.getTexId();
+            Vector2f[] texCoords = sprite.getTexCoords();
 
-                sprite = streetSprites.getSprite(0);
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generatePlayer();
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            for (int i : fullRigid_all) {
+                sprite = streetSprites.getSprite(i);
                 spriteWidth = sprite.getWidth() * 2;
                 spriteHeight = sprite.getHeight() * 2;
 
@@ -223,31 +211,52 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 }
                 ImGui.popID();
                 ImGui.sameLine();
-
-                sprite = streetSprites.getSprite(1);
-                spriteWidth = sprite.getWidth() * 2;
-                spriteHeight = sprite.getHeight() * 2;
-
-                id = sprite.getTexId();
-                texCoords = sprite.getTexCoords();
-
-                ImGui.sameLine();
-                ImGui.endTabItem();
             }
-            ImGui.endTabBar();
+
+            sprite = streetSprites.getSprite(66);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generateAbsolut(sprite);
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            sprite = streetSprites.getSprite(0);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generateFullRigid(sprite);
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            sprite = streetSprites.getSprite(1);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.sameLine();
+            ImGui.endTabItem();
         }
-
-        ImGui.end();
-    }
-
-    public void ImGuiWordSet() {
-        ImGui.begin("Set World");
-        JImGui.drawVec2Control("CamPos", Window.getScene().camera().getPosition());
-        JImGui.drawVec2Control("Window Size:", new Vector2f(Window.getWidth(), Window.getHeight()));
-        Vector2f zoom = new Vector2f(Window.getScene().camera().getZoom(), 0);
-        JImGui.drawVec2Control("Zoom", zoom);
-        ImGui.end();
-
     }
 
 }

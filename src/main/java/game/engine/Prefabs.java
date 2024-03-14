@@ -199,4 +199,18 @@ public class Prefabs {
         return street;
     }
 
+    public static GameObject generateChest(Sprite sprite) {
+        GameObject street = generateSpriteObject(sprite, 1, 1);
+       street.addComponent(new PositionAbsolut());
+
+        return street;
+    }
+
+    public static GameObject generateDoor(Sprite sprite) {
+        GameObject street = generateSpriteObject(sprite, 1, 1);
+       street.addComponent(new PositionAbsolut());
+
+        return street;
+    }
+
 }
