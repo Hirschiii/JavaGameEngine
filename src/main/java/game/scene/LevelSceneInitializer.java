@@ -23,7 +23,7 @@ public class LevelSceneInitializer extends SceneInitializer {
         cameraObject.addComponent(new GameCamera(scene.camera()));
         cameraObject.start();
 
-        GameObject interactiveGizmo = Prefabs.generateSpriteObject(sprites.getSprite(70), 1f, 1f);
+        GameObject interactiveGizmo = Prefabs.generateSpriteObject(sprites.getSprite(69), 0.6f, 0.6f);
         interactiveGizmo.name = "InteraktiveGizmo";
         interactiveGizmo.transform.zIndex = 100;
         interactiveGizmo.addComponent(new InteraktiveGizmo());

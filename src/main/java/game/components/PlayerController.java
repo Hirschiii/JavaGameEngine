@@ -125,50 +125,34 @@ public class PlayerController extends Component {
 
         this.gameObject.transform.position.add(this.velocity);
 
-        List<GameObject> oldIntGos = interactiveGOs;
+        for (GameObject go : interactiveGOs) {
+            go.getComponent(Interaktive.class).setInteractive(false);
+        }
 
-        interactiveGOs = getNearGOS(2);
-        for (int i = 0; i < interactiveGOs.size(); i++) {
-            GameObject go = interactiveGOs.get(i);
-            if (go.getComponent(Interaktive.class) == null) {
-                interactiveGOs.remove(i);
-                i--;
+        interactiveGOs.clear();
+
+        List<GameObject> nearGOS = getNearGOS(2);
+        for (int i = 0; i < nearGOS.size(); i++) {
+            GameObject go = nearGOS.get(i);
+            if (go.getComponent(Interaktive.class) != null) {
+                go.getComponent(Interaktive.class).setInteractive(true);
+                interactiveGOs.add(go);
             }
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);
                 collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);
                 if (collided) {
-                    go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 0, 0, 1));
                     break;
-                }
-            }
-        }
-
-        if (interactiveGOs.size() > 0) {
-            for (GameObject go : oldIntGos) {
-                if (!interactiveGOs.contains(go)) {
-                    if (interactiveGO.getComponent(Interaktive.class) != null) {
-                        System.out.println("Left The Chat");
-                        interactiveGO.getComponent(Interaktive.class).setInteractive(false);
-                        interactiveGOGizmo.setInactive();
-
-                        interactiveGO = null;
-                    }
-                }
-            }
-        } else {
-            for (GameObject go : oldIntGos) {
-                if (go.getComponent(Interaktive.class) != null) {
-                    System.out.println("Left The Chat");
-                    go.getComponent(Interaktive.class).setInteractive(false);
-                    interactiveGOGizmo.setInactive();
-                    interactiveGO = null;
                 }
             }
         }
 
         if (interactiveGO == null && interactiveGOs.size() > 0) {
             setInteraktiveGO();
+        } else if (!interactiveGOs.contains(interactiveGO) || interactiveGOs.size() <= 0) {
+            System.out.println("No in list");
+            interactiveGO = null;
+            interactiveGOGizmo.setInactive();
         }
         if (collided) {
             this.gameObject.transform.position.sub(this.velocity);
@@ -216,15 +200,6 @@ public class PlayerController extends Component {
                         (this.gameObject.transform.position.y - go.transform.position.y) < range) {
                     if (go.getComponent(SpriteRenderer.class) != null) {
                         nearGos.add(go);
-                        if (Settings.DEBUG_DRAW >= 2) {
-                            go.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 1, 0, 1));
-                        }
-                    }
-                } else {
-                    if (Settings.DEBUG_DRAW >= 2) {
-                        if (go.getComponent(SpriteRenderer.class) != null) {
-                            go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
-                        }
                     }
                 }
             }

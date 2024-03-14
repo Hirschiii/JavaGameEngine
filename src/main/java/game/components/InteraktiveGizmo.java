@@ -15,9 +15,10 @@ public class InteraktiveGizmo extends Component {
     private GameObject activeGO;
     private boolean active = false;
     private SpriteRenderer gizmoSprite;
-    private Vector2f offset = new Vector2f(0.5f, 0.5f);
+    private Vector2f offset = new Vector2f(0.3f, 0.5f);
 
     public InteraktiveGizmo() {
+        setInactive();
     }
 
     @Override
@@ -29,8 +30,11 @@ public class InteraktiveGizmo extends Component {
     }
 
     public void setInactive() {
-        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
-        this.activeGO = null;
+        if (this.activeGO != null) {
+            this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
+        } else {
+            this.activeGO = null;
+        }
         this.active = false;
     }
 
