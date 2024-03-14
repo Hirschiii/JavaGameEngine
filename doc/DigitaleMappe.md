@@ -1,5 +1,11 @@
 # Spiel
 
+Um das Spiel alleine für sich zu spielen, muss in den Einstellungen
+(util/Settings.java) die Variable RELEASE_BUILD auf *true* gesetzt
+werden.
+
+Bei jeder Interaktion wird das Spiel in dem Status gespeichert, wenn man also die Spieldatei neu lädt, werd der letzte stand geladen.
+
 ## Controlls
 
 | Taste | Action |
@@ -98,6 +104,8 @@ implementiern und eine saubere Strucktur durchzusetzen. Für einen solchen
 Modularen aufbau ist eine Objekt Orientierte Programmiersprache ebenfalls
 hilfreich.
 
+Das Spiel an sich besteht schlussendlich nur aus einer *.json*-Datei. Diese kann man auch manuel angucken und bearbeiten. Alle Objekte werden so wie sie sind gespeichert.
+
 ## Packete:
 
 Um einen Überblick zu behalten ist es wichtig, die Klassen semantisch
@@ -137,6 +145,18 @@ benötigte Funktionen vorhanden sind.
 - StateMachine
 - TranslateGizmo
 
+Eine Interesante Komponente ist die *StateMachine* diese speichert
+States zwischen denen gewechselt werden kann. Die StateMachine wird
+in erste linie genutzt um die Animationen zu Managen. Man kann
+konkret festlegen zu welchem State bei welchem Event, basierend auf
+dem aktuellen State, gewechselt wird.
+
+Als Beispiel, egal in welche Richtung sich der Spieler bewegt, wird
+das Event "StopRun" ausgelöst, wenn dieser Stoppt. Dieses Event
+sorgt aber nicht dafür, dass er in irgendeine *idleanimatuin*
+übergeht, sondern basierend darauf, in welche Richtung er sich
+bewegt hat, wird enstprechend der nächste State gesetzt.
+
 
 ### Editor
 
@@ -165,7 +185,11 @@ legt seine Farbe fest.
 
 ### Util
 
-In Utils werden einiege Einstellungen und Hilfefunktionen bereitgestellt.
+In Utils werden einiege Einstellungen und Hilfefunktionen
+bereitgestellt. Neben dem wechseln zwischen der GameEngine und dem
+Spiel selber (*RELEASE_BUILD*) muss hier der abselute Pfad zu einem
+gültigen Spieleordner. Für das standardspiel Sollte der
+Projektordner selber angegeben werden.
 
 ## Bibliotheken
 
