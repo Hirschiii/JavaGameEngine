@@ -51,6 +51,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     public void loadResources(Scene scene) {
         // AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
         AssetPool.getShader("assets/shaders/default.glsl");
+        AssetPool.getShader("assets/shaders/vhs.glsl");
         AssetPool.getTexture("src/main/resources/assets/images/blendImage2.png");
 
         AssetPool.addSpritesheet("src/main/resources/assets/images/spritesheets/decorationsAndBlocks.png",

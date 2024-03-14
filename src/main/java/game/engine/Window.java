@@ -264,8 +264,8 @@ public class Window implements Observer {
         float endTime;
         float dt = -1.0f;
 
-        Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
-        // Shader vhsShader = AssetPool.getShader("assets/shaders/vhs.glsl");
+        //Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+        Shader defaultShader = AssetPool.getShader("assets/shaders/vhs.glsl");
         Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
         while (!glfwWindowShouldClose(glfwWindow)) {
