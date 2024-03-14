@@ -4,7 +4,9 @@ import game.components.GameCamera;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.components.StateMachine;
+import game.components.InteraktiveGizmo;
 import game.engine.GameObject;
+import game.engine.Prefabs;
 import game.util.AssetPool;
 
 public class LevelSceneInitializer extends SceneInitializer {
@@ -21,6 +23,12 @@ public class LevelSceneInitializer extends SceneInitializer {
         cameraObject.addComponent(new GameCamera(scene.camera()));
         cameraObject.start();
 
+        GameObject interactiveGizmo = Prefabs.generateSpriteObject(sprites.getSprite(69), 0.6f, 0.6f);
+        interactiveGizmo.name = "InteraktiveGizmo";
+        interactiveGizmo.transform.zIndex = 100;
+        interactiveGizmo.addComponent(new InteraktiveGizmo());
+
+        scene.addGameObject(interactiveGizmo);
         scene.addGameObject(cameraObject);
     }
 

@@ -6,48 +6,49 @@ import org.joml.Vector4f;
 import game.engine.GameObject;
 import game.engine.Prefabs;
 import game.engine.Window;
+import game.renderer.DebugDraw;
 
 /**
  * InteraktiveGizmo
  */
 public class InteraktiveGizmo extends Component {
+    private GameObject activeGO;
     private boolean active = false;
-    private GameObject gizmo;
     private SpriteRenderer gizmoSprite;
-    private Vector2f offset = new Vector2f(0.5f, 0.5f);
+    private Vector2f offset = new Vector2f(0.3f, 0.5f);
 
-    public InteraktiveGizmo(Sprite sprite) {
-        this.gizmo = Prefabs.generateSpriteObject(sprite, 0.5f, 0.5f);
-        this.gizmo.setNoSerialize();
-        this.gizmoSprite = this.gizmo.getComponent(SpriteRenderer.class);
-        Window.getScene().addGameObject(this.gizmo);
+    public InteraktiveGizmo() {
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Start Inter Gizmo");
+        setInactive();
+        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
     }
 
     @Override
     public void update(float dt) {
-        if (gameObject.getComponent(Interaktive.class) != null) {
-            if (gameObject.getComponent(Interaktive.class).getInteractive() && !active) {
-                System.out.println("SetActive");
-                setActive();
-            } else if (!gameObject.getComponent(Interaktive.class).getInteractive() && active){
-                System.out.println("SetInakice");
-                setInactive();
-            }
+        if (activeGO == null && active) {
+            System.out.println("SetInakice");
+            setInactive();
         }
     }
 
-    private void setInactive() {
+    public void setInactive() {
+        this.activeGO = null;
+        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0f, 0f, 0f, 0f));
         this.active = false;
-        this.gizmoSprite.setColor(new Vector4f(0f, 0f, 0f, 0f));
     }
 
-    private void setActive() {
+    public void setActive(GameObject go) {
         this.active = true;
-        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 0, 1, 1));
-        this.gizmoSprite.setColor(new Vector4f(1f, 1f, 1f, 1f));
-        this.gizmo.transform.position = new Vector2f(
-                gameObject.transform.position.x + offset.x,
-                gameObject.transform.position.y + offset.y);
+        this.activeGO = go;
+        this.gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(1f, 1f, 1f, 1f));
+        this.gameObject.transform.position = new Vector2f(
+                this.activeGO.transform.position.x + offset.x,
+                this.activeGO.transform.position.y + offset.y);
+        DebugDraw.addBox2D(this.gameObject.transform.position, new Vector2f(0.5f, 0.5f), 0);
     }
 
 }

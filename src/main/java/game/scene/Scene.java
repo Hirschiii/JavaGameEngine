@@ -130,6 +130,12 @@ public class Scene {
                 .findFirst();
         return result.orElse(null);
     }
+    public GameObject getGameObject(String gameObjectName) {
+        Optional<GameObject> result = this.gameObjects.stream()
+                .filter(gameObject -> gameObject.name.equals(gameObjectName))
+                .findFirst();
+        return result.orElse(null);
+    }
 
     /**
      * Expose Fields (Vars) to Dear Im GUI

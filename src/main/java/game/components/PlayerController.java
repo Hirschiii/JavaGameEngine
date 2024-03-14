@@ -33,6 +33,7 @@ public class PlayerController extends Component {
     private List<GameObject> interactiveGOs = new ArrayList<>();
 
     private GameObject interactiveGO = null;
+    private InteraktiveGizmo interactiveGOGizmo;
 
     private boolean collided = false;
 
@@ -42,6 +43,13 @@ public class PlayerController extends Component {
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
+        GameObject gizmo_Interakt = Window.getCurrenScene().getGameObjectWith(InteraktiveGizmo.class);
+        if (gizmo_Interakt != null) {
+            if (gizmo_Interakt.getComponent(InteraktiveGizmo.class) != null) {
+                this.interactiveGOGizmo = gizmo_Interakt.getComponent(InteraktiveGizmo.class);
+            }
+        }
+
     }
 
     @Override
@@ -50,7 +58,8 @@ public class PlayerController extends Component {
         this.collided = false;
         this.acceleraton.zero();
 
-        if (KeyListener.isKeyPressed(GLFW_KEY_E)) {
+        if (KeyListener.isKeyPressed(GLFW_KEY_E) && debounce < 0) {
+            debounce = debounceTime;
             if (interactiveGO != null) {
                 interactiveGO.getComponent(Interaktive.class).interact(this.gameObject);
             }
@@ -117,37 +126,33 @@ public class PlayerController extends Component {
 
         this.gameObject.transform.position.add(this.velocity);
 
-        List<GameObject> oldIntGos = interactiveGOs;
+        for (GameObject go : interactiveGOs) {
+            go.getComponent(Interaktive.class).setInteractive(false);
+        }
 
-        interactiveGOs = getNearGOS(2);
-        for (int i = 0; i < interactiveGOs.size(); i++) {
-            GameObject go = interactiveGOs.get(i);
-            if (go.getComponent(Interaktive.class) == null) {
-                interactiveGOs.remove(i);
-                i--;
+        interactiveGOs.clear();
+
+        List<GameObject> nearGOS = getNearGOS(2);
+        for (int i = 0; i < nearGOS.size(); i++) {
+            GameObject go = nearGOS.get(i);
+            if (go.getComponent(Interaktive.class) != null) {
+                go.getComponent(Interaktive.class).setInteractive(true);
+                interactiveGOs.add(go);
             }
             if (go.getComponent(Rigidbody.class) != null) {
                 this.gameObject.getComponent(Rigidbody.class).update(dt);
                 collided = go.getComponent(Rigidbody.class).collisionBox(this.gameObject);
                 if (collided) {
-                    go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 0, 0, 1));
                     break;
-                }
-            }
-        }
-
-        for (GameObject go : oldIntGos) {
-            if (!interactiveGOs.contains(go)) {
-                if (interactiveGO.getComponent(Interaktive.class) != null) {
-                    System.out.println("Left The Chat");
-                    interactiveGO.getComponent(Interaktive.class).setInteractive(false);
-                    interactiveGO = null;
                 }
             }
         }
 
         if (interactiveGO == null && interactiveGOs.size() > 0) {
             setInteraktiveGO();
+        } else if (!interactiveGOs.contains(interactiveGO) || interactiveGOs.size() <= 0) {
+            interactiveGO = null;
+            interactiveGOGizmo.setInactive();
         }
         if (collided) {
             this.gameObject.transform.position.sub(this.velocity);
@@ -158,12 +163,10 @@ public class PlayerController extends Component {
     }
 
     private void setInteraktiveGO() {
-        System.out.println("Set interakt");
         if (this.interactiveGO == null) {
             this.interactiveGO = interactiveGOs.getFirst();
         } else {
             if (interactiveGO.getComponent(Interaktive.class) != null) {
-                System.out.println("Befor setting new set false");
                 interactiveGO.getComponent(Interaktive.class).setInteractive(false);
             }
             if (interactiveGOs.contains(interactiveGO)) {
@@ -178,10 +181,9 @@ public class PlayerController extends Component {
             }
         }
         if (interactiveGO.getComponent(Interaktive.class) != null) {
-                System.out.println("afet setting new set true");
             interactiveGO.getComponent(Interaktive.class).setInteractive(true);
+            interactiveGOGizmo.setActive(interactiveGO);
         }
-        System.out.println(interactiveGO.name);
     }
 
     private List<GameObject> getNearGOS(int range) {
@@ -194,15 +196,6 @@ public class PlayerController extends Component {
                         (this.gameObject.transform.position.y - go.transform.position.y) < range) {
                     if (go.getComponent(SpriteRenderer.class) != null) {
                         nearGos.add(go);
-                        if (Settings.DEBUG_DRAW >= 2) {
-                            go.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 1, 0, 1));
-                        }
-                    }
-                } else {
-                    if (Settings.DEBUG_DRAW >= 2) {
-                        if (go.getComponent(SpriteRenderer.class) != null) {
-                            go.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
-                        }
                     }
                 }
             }

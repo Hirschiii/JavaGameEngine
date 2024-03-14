@@ -49,24 +49,20 @@ void main() {
 		if (color.a > 0.5) {
 
 			// Adding noise
-			float noise = rand(fPos + time) * 0.05;
+			float noise = rand(fTexCoords + time) * 0.05;
 
 			// Simulate color distortion and slight position shift
 			vec2 shift = vec2(rand(fTexCoords + time) * 0.005 - 0.0025, 10.0);
-			vec4 rColor = texture(uTextures[id], fTexCoords + shift);
-			vec4 gColor = texture(uTextures[id], fTexCoords);
-			vec4 bColor = texture(uTextures[id], fTexCoords - shift);
+			vec4 rColor = texture(uTextures[id], fPos + shift);
+			vec4 gColor = texture(uTextures[id], fPos);
+			vec4 bColor = texture(uTextures[id], fPos - shift);
 
 			// Combine color channels with noise
 			color.rgb = vec3(rColor.r, gColor.g, bColor.b) + vec3(noise, noise, noise);
 			// Implement scan lines
 
-			//float scanLineY = sin(fPos.y * 180.0 + time * 2) * 0.1; // Adjust the 800.0 for line density and 0.1 for visibility
-			//float scanLineX = sin(fPos.x * 180.0) * 0.1; // Adjust the 800.0 for line density and 0.1 for visibility
-			float scanLineY = sin(fPos.y * 300.0 + time * 2) * 0.01; // Adjust the 800.0 for line density and 0.1 for visibility
-			float scanLineX = sin(fPos.x * 300.0) * 0.01; // Adjust the 800.0 for line density and 0.1 for visibility
-			color.rgb -= scanLineY;
-			color.rgb -= scanLineX;
+			float scanLine = sin(fPos.y * 800.0 + time) * 0.1; // Adjust the 800.0 for line density and 0.1 for visibility
+			color.rgb -= scanLine;
 		}
 
 		FragColor = color;
