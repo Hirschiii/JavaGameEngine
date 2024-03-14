@@ -1,14 +1,10 @@
 package game.engine;
 
 import org.joml.Vector2f;
-import org.joml.Vector4f;
 
 import game.components.AnimationState;
-import game.components.Component;
-import game.components.Interaktive;
 import game.components.InteraktiveGizmo;
 import game.components.Inventar;
-import game.components.Item;
 import game.components.PlayerController;
 import game.components.Rigidbody;
 import game.components.Sprite;
@@ -204,11 +200,11 @@ public class Prefabs {
     }
 
     public static GameObject generateCustemInteractive(Sprite sprite) {
+        Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
         GameObject street = generateSpriteObject(sprite, 1, 1);
         street.addComponent(new Rigidbody(new Vector2f(0, 0), new Vector2f(1, 1)));
 
         street.addComponent(new change_color());
-        street.addComponent(new InteraktiveGizmo(sprite));
 
 
         return street;

@@ -33,6 +33,7 @@ public class PlayerController extends Component {
     private List<GameObject> interactiveGOs = new ArrayList<>();
 
     private GameObject interactiveGO = null;
+    private InteraktiveGizmo interactiveGOGizmo;
 
     private boolean collided = false;
 
@@ -42,6 +43,13 @@ public class PlayerController extends Component {
     @Override
     public void start() {
         this.stateMachine = gameObject.getComponent(StateMachine.class);
+        GameObject gizmo_Interakt = Window.getCurrenScene().getGameObjectWith(InteraktiveGizmo.class);
+        if (gizmo_Interakt != null) {
+            if (gizmo_Interakt.getComponent(InteraktiveGizmo.class) != null) {
+                this.interactiveGOGizmo = gizmo_Interakt.getComponent(InteraktiveGizmo.class);
+            }
+        }
+
     }
 
     @Override
@@ -136,11 +144,24 @@ public class PlayerController extends Component {
             }
         }
 
-        for (GameObject go : oldIntGos) {
-            if (!interactiveGOs.contains(go)) {
-                if (interactiveGO.getComponent(Interaktive.class) != null) {
+        if (interactiveGOs.size() > 0) {
+            for (GameObject go : oldIntGos) {
+                if (!interactiveGOs.contains(go)) {
+                    if (interactiveGO.getComponent(Interaktive.class) != null) {
+                        System.out.println("Left The Chat");
+                        interactiveGO.getComponent(Interaktive.class).setInteractive(false);
+                        interactiveGOGizmo.setInactive();
+
+                        interactiveGO = null;
+                    }
+                }
+            }
+        } else {
+            for (GameObject go : oldIntGos) {
+                if (go.getComponent(Interaktive.class) != null) {
                     System.out.println("Left The Chat");
-                    interactiveGO.getComponent(Interaktive.class).setInteractive(false);
+                    go.getComponent(Interaktive.class).setInteractive(false);
+                    interactiveGOGizmo.setInactive();
                     interactiveGO = null;
                 }
             }
@@ -178,8 +199,9 @@ public class PlayerController extends Component {
             }
         }
         if (interactiveGO.getComponent(Interaktive.class) != null) {
-                System.out.println("afet setting new set true");
+            System.out.println("afet setting new set true");
             interactiveGO.getComponent(Interaktive.class).setInteractive(true);
+            interactiveGOGizmo.setActive(interactiveGO);
         }
         System.out.println(interactiveGO.name);
     }
