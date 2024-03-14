@@ -61,8 +61,12 @@ void main() {
 			color.rgb = vec3(rColor.r, gColor.g, bColor.b) + vec3(noise, noise, noise);
 			// Implement scan lines
 
-			float scanLine = sin(fPos.y * 800.0 + time) * 0.1; // Adjust the 800.0 for line density and 0.1 for visibility
-			color.rgb -= scanLine;
+			//float scanLineY = sin(fPos.y * 180.0 + time * 2) * 0.1; // Adjust the 800.0 for line density and 0.1 for visibility
+			//float scanLineX = sin(fPos.x * 180.0) * 0.1; // Adjust the 800.0 for line density and 0.1 for visibility
+			float scanLineY = sin(fPos.y * 300.0 + time * 2) * 0.01; // Adjust the 800.0 for line density and 0.1 for visibility
+			float scanLineX = sin(fPos.x * 300.0) * 0.01; // Adjust the 800.0 for line density and 0.1 for visibility
+			color.rgb -= scanLineY;
+			color.rgb -= scanLineX;
 		}
 
 		FragColor = color;
