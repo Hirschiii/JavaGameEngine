@@ -17,7 +17,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 100,
           "uid": 17
         }
       },
@@ -25,10 +25,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
           },
           "sprite": {
             "width": 255.0,
@@ -101,7 +101,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 100,
           "uid": 22
         }
       },
@@ -109,10 +109,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
           },
           "sprite": {
             "width": 255.0,
@@ -185,7 +185,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 100,
           "uid": 27
         }
       },
@@ -193,10 +193,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
           },
           "sprite": {
             "width": 255.0,
@@ -269,7 +269,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 100,
           "uid": 32
         }
       },
@@ -277,10 +277,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
           },
           "sprite": {
             "width": 255.0,
@@ -353,7 +353,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 100,
           "uid": 37
         }
       },
@@ -361,10 +361,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
           },
           "sprite": {
             "width": 255.0,
@@ -437,7 +437,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 100,
           "uid": 42
         }
       },
@@ -445,10 +445,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
           },
           "sprite": {
             "width": 255.0,
@@ -1062,8 +1062,8 @@
             "y": 16.5
           },
           "scale": {
-            "x": 10.0,
-            "y": 10.0
+            "x": 8.0,
+            "y": 8.0
           },
           "rotation": 0.0,
           "zIndex": 0,
@@ -4378,6 +4378,7 @@
           "itemName": "Axt",
           "borken": false,
           "useItem": false,
+          "goTransparent": true,
           "interactive": false,
           "uid": 334
         }
@@ -4438,10 +4439,10 @@
         "type": "game.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
+            "x": 0.9,
+            "y": 0.5,
+            "z": 0.8,
+            "w": 0.8
           },
           "sprite": {
             "width": 32.0,
@@ -4479,6 +4480,7 @@
           "itemName": "Axt",
           "borken": false,
           "useItem": false,
+          "goTransparent": true,
           "interactive": false,
           "uid": 335
         }
@@ -4580,6 +4582,7 @@
           "itemName": "Axt",
           "borken": false,
           "useItem": true,
+          "goTransparent": true,
           "interactive": false,
           "uid": 336
         }
@@ -4681,6 +4684,7 @@
           "itemName": "Axt",
           "borken": false,
           "useItem": false,
+          "goTransparent": true,
           "interactive": false,
           "uid": 337
         }
@@ -9407,7 +9411,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 203
         }
       },
@@ -9498,7 +9502,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 203
         }
       },
@@ -23299,6 +23303,7 @@
         "type": "game.components.interactives.getItem",
         "properties": {
           "giveItem": "Blume",
+          "sendMessag": "Blume_gefunden",
           "interactive": false,
           "uid": 332
         }
@@ -25616,7 +25621,7 @@
             "y": 1.0
           },
           "rotation": -90.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 234
         }
       },
@@ -25876,7 +25881,7 @@
             "y": 1.0
           },
           "rotation": -90.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 234
         }
       },
@@ -25941,7 +25946,7 @@
             "y": 1.0
           },
           "rotation": -90.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 234
         }
       },
@@ -26071,7 +26076,7 @@
             "y": 1.0
           },
           "rotation": -90.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 246
         }
       },
@@ -26136,7 +26141,7 @@
             "y": 1.0
           },
           "rotation": -90.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 252
         }
       },
@@ -26266,7 +26271,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 258
         }
       },
@@ -26331,7 +26336,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 258
         }
       },
@@ -26396,7 +26401,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 258
         }
       },
@@ -26981,7 +26986,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 258
         }
       },
@@ -27046,7 +27051,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 258
         }
       },
@@ -27487,7 +27492,7 @@
     "isActiveGameObject": false,
     "doSerialization": true,
     "isDead": false,
-    "name": "EricHomeDoor",
+    "name": "RandDoor",
     "components": [
       {
         "type": "game.engine.Transform",
@@ -27547,7 +27552,7 @@
       {
         "type": "game.components.interactives.Pipe",
         "properties": {
-          "connectingPipeName": "EricHome",
+          "connectingPipeName": "RandHome",
           "offset": {
             "x": 0.0,
             "y": 0.0
@@ -33467,7 +33472,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 281
         }
       },
@@ -33558,7 +33563,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 281
         }
       },
@@ -34854,6 +34859,7 @@
         "properties": {
           "borken": false,
           "useItem": true,
+          "goTransparent": false,
           "interactive": false,
           "uid": 293
         }
@@ -35972,7 +35978,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 295
         }
       },
@@ -36063,7 +36069,7 @@
             "y": 1.0
           },
           "rotation": 0.0,
-          "zIndex": 0,
+          "zIndex": 1,
           "uid": 295
         }
       },

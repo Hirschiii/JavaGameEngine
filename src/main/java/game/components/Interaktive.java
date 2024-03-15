@@ -20,12 +20,18 @@ public abstract class Interaktive extends Component {
     public boolean getInteractive() {
         return this.interactive;
     }
-
     @Override
     public void update(float dt) {
         if(interactive) {
-            DebugDraw.addBox2D(gameObject.transform.position, gameObject.transform.scale, gameObject.transform.rotation, new Vector3f(1, 0, 0));
+        DebugDraw.addBox2D(gameObject.transform.position, gameObject.transform.scale, gameObject.transform.rotation,
+                new Vector3f(1, 0, 0));
         }
+    }
+
+    @Override
+    public void editorUpdate(float dt) {
+        DebugDraw.addBox2D(gameObject.transform.position, gameObject.transform.scale, gameObject.transform.rotation,
+                new Vector3f(1, 0, 0));
     }
 
 }

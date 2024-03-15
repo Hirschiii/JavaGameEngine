@@ -27,7 +27,7 @@ import game.engine.Window;
 import game.util.AssetPool;
 
 public class DebugDraw {
-    private static int MAX_LINES = 5000;
+    private static int MAX_LINES = 50000;
 
     private static List<Line2D> lines = new ArrayList<>();
     // 6 Floats per vertex, 2 per line

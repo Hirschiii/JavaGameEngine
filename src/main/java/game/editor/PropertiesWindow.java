@@ -9,6 +9,8 @@ import org.joml.Vector4f;
 import game.components.Message;
 import game.components.Rigidbody;
 import game.components.SpriteRenderer;
+import game.components.interactives.Amelie;
+import game.components.interactives.Eric;
 import game.components.interactives.Pipe;
 import game.components.interactives.breakOnItem;
 import game.components.interactives.getItem;
@@ -59,6 +61,16 @@ public class PropertiesWindow {
                         activeGameObject.addComponent(new Message());
                     }
                 }
+                if (activeGameObject.getComponent(Eric.class) == null) {
+                    if (ImGui.menuItem("Add Eric")) {
+                        activeGameObject.addComponent(new Eric());
+                    }
+                }
+                if (activeGameObject.getComponent(Amelie.class) == null) {
+                    if (ImGui.menuItem("Add Amelie")) {
+                        activeGameObject.addComponent(new Amelie());
+                    }
+                }
                 ImGui.endPopup();
             }
 
@@ -68,10 +80,18 @@ public class PropertiesWindow {
     }
 
     public void setActiveGameObject(GameObject go) {
-        if (go != null) {
+        if (go == null)
+            return;
+        SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
+        if (spr != null) {
             clearSelected();
-            this.activeGameObjects.add(go);
+            this.activeGameObjectsOgColor.add(new Vector4f(spr.getColor()));
+            spr.setColor(new Vector4f(0.9f, 0.3f, 0.8f, 0.8f));
+        } else {
+            this.activeGameObjectsOgColor.add(new Vector4f());
         }
+        this.activeGameObjects.add(go);
+
     }
 
     public GameObject getActiveGameObject() {
@@ -106,7 +126,7 @@ public class PropertiesWindow {
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
         if (spr != null) {
             this.activeGameObjectsOgColor.add(new Vector4f(spr.getColor()));
-            spr.setColor(new Vector4f(0.9f, 0.5f, 0.8f, 0.8f));
+            spr.setColor(new Vector4f(0.9f, 0.3f, 0.8f, 0.8f));
         } else {
             this.activeGameObjectsOgColor.add(new Vector4f());
         }

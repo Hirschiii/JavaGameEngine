@@ -1,5 +1,6 @@
 package game.components;
 
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import game.components.enums.CameraModi;
@@ -16,6 +17,7 @@ public class GameCamera extends Component {
     private transient float cameraBuffer = 1.5f;
     private transient float playerBuffer = 0.25f;
     private transient float wait;
+    private transient Vector2f velocity = new Vector2f(0, 0);
     public transient CameraModi camMode;
 
     private Vector4f skyColor = new Vector4f(104.0f / 255.0f, 159.0f / 255.0f, 56.0f / 255.0f, 1.0f);
@@ -30,6 +32,7 @@ public class GameCamera extends Component {
     public void start() {
         this.player = Window.getScene().getGameObjectWith(PlayerController.class);
         this.gameCamera.clearColor.set(skyColor);
+        this.read("Beginbrief", 18f);
     }
 
     @Override
@@ -42,7 +45,8 @@ public class GameCamera extends Component {
                 break;
             case CameraModi.READ:
                 this.wait -= dt;
-                if(this.wait < 0) {
+                gameCamera.position.y -= velocity.x * dt;
+                if (this.wait < 0) {
                     this.camMode = CameraModi.FOLLOWING;
                 }
                 break;
@@ -52,15 +56,16 @@ public class GameCamera extends Component {
         }
     }
 
-    public void read(GameObject go, float time) {
+    public void read(String title, float time) {
+        GameObject go = Window.getCurrenScene().getGameObject(title);
         if (go == null)
             return;
         this.wait = time;
         gameCamera.position.x = go.transform.position.x - (gameCamera.getProjectionSize().x / 2);
-        gameCamera.position.y = go.transform.position.y - (gameCamera.getProjectionSize().y / 2);
+        gameCamera.position.y = go.transform.position.y - (gameCamera.getProjectionSize().y / 2) + 2.5f;
+        velocity = new Vector2f(4f / time, 0f);
         camMode = CameraModi.READ;
     }
-
 
     private void followGO(GameObject go) {
         if (go == null)

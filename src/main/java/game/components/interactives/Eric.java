@@ -1,4 +1,4 @@
-package game.components.interactive;
+package game.components.interactives;
 
 import game.components.Interaktive;
 import game.components.Item;
