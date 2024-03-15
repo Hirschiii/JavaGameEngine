@@ -3,13 +3,16 @@ package game.engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joml.Vector2f;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import game.components.Component;
 import game.components.ComponentDeserializer;
+import game.components.Item;
 import game.components.SpriteRenderer;
+import game.renderer.DebugDraw;
 import game.util.AssetPool;
 import imgui.ImGui;
 
@@ -34,7 +37,32 @@ public class GameObject {
 
     public String name;
     private List<Component> components;
-    public List<Item> inventar;
+    private List<Integer> inventar;
+
+    public void addItem(GameObject go) {
+        if (go.getComponent(Item.class) != null) {
+            go.getComponent(Item.class).show();
+
+            System.out.println("Get Item: " + go.name);
+            if (!inventar.contains(go.uid)) {
+                inventar.add(go.uid);
+            }
+        }
+
+    }
+
+    public boolean hasItem(GameObject go) {
+        return inventar.contains(go.uid);
+    }
+
+    public boolean useItem(GameObject go) {
+        if (inventar.contains(go.uid)) {
+            inventar.remove(go.uid);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public transient Transform transform;
 
@@ -43,6 +71,7 @@ public class GameObject {
     public GameObject(String name) {
         this.name = name;
         this.components = new ArrayList<>();
+        this.inventar = new ArrayList<>();
 
         this.uid = ID_COUNTER++;
 
@@ -89,6 +118,18 @@ public class GameObject {
     public void start() {
         for (int i = 0; i < components.size(); i++) {
             components.get(i).start();
+        }
+    }
+
+    public void gameStart() {
+        for (int i = 0; i < components.size(); i++) {
+            components.get(i).gameStart();
+        }
+        for (int go_id : inventar) {
+            GameObject go = Window.getCurrenScene().getGameObject(go_id);
+            if (go.getComponent(Item.class) != null) {
+                go.getComponent(Item.class).show();
+            }
         }
     }
 

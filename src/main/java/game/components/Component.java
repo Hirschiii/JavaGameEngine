@@ -22,6 +22,9 @@ public abstract class Component {
 	public void start() {
 	}
 
+	public void gameStart() {
+	}
+
 	public void update(float dt) {
 
 	}

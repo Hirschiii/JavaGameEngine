@@ -59,6 +59,14 @@ public class Scene {
         isRunning = true;
     }
 
+    public void gameStart() {
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.gameStart();
+        }
+        isRunning = true;
+    }
+
     public void addGameObject(GameObject go) {
         if (!isRunning) {
             gameObjects.add(go);
@@ -144,12 +152,6 @@ public class Scene {
      */
     public void imgui() {
         this.sceneInitializer.imgui();
-    }
-    public Item createItem(String name) {
-        Item item = new Item(name);
-        item.addComponent(new Transform());
-        item.transform = item.getComponent(Transform.class);
-        return item;
     }
 
     public GameObject createGameObject(String name) {

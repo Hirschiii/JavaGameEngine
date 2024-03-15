@@ -4,7 +4,7 @@ import org.joml.Vector2f;
 
 import game.components.AnimationState;
 import game.components.InteraktiveGizmo;
-import game.components.Inventar;
+import game.components.Item;
 import game.components.PlayerController;
 import game.components.PositionAbsolut;
 import game.components.Rigidbody;
@@ -28,17 +28,17 @@ public class Prefabs {
         return block;
     }
 
-    public static GameObject generateItem(Sprite sprite, String name, float sizeX, float sizeY) {
-        Item item = Window.getScene().createItem(name);
-        item.transform.scale = new Vector2f(sizeX, sizeY);
+    public static GameObject generateSpriteObject(Sprite sprite, String name, float sizeX, float sizeY) {
+        GameObject block = Window.getScene().createGameObject(name);
+        block.transform.scale = new Vector2f(sizeX, sizeY);
 
         SpriteRenderer renderer = new SpriteRenderer();
         renderer.setSprite(sprite);
-        item.addComponent(renderer);
-        item.addComponent(new PositionAbsolut());
+        block.addComponent(renderer);
 
-        return item;
+        return block;
     }
+
 
     public static GameObject generatePlayer() {
         Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
@@ -190,7 +190,6 @@ public class Prefabs {
         player.addComponent(stateMachine);
 
         player.addComponent(new PlayerController());
-        player.addComponent(new Inventar());
         player.addComponent(new Rigidbody(new Vector2f(0f, -0.34f), new Vector2f(0.7f, 0.3f)));
         player.transform.zIndex = 2;
 
@@ -223,6 +222,18 @@ public class Prefabs {
        street.addComponent(new PositionAbsolut());
 
         return street;
+    }
+
+    public static GameObject generateItem(Sprite sprite, String name) {
+        GameObject item = generateSpriteObject(sprite, 1, 1);
+
+        SpriteRenderer renderer = new SpriteRenderer();
+        renderer.setSprite(sprite);
+        item.addComponent(renderer);
+        item.addComponent(new PositionAbsolut());
+        item.addComponent(new Item());
+
+        return item;
     }
 
 }

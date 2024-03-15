@@ -9,7 +9,7 @@
         "type": "game.engine.Transform",
         "properties": {
           "position": {
-            "x": 1.5,
+            "x": 0.5,
             "y": 1.5
           },
           "scale": {
@@ -18,7 +18,7 @@
           },
           "rotation": 0.0,
           "zIndex": 2,
-          "uid": 20
+          "uid": 5
         }
       },
       {
@@ -57,7 +57,7 @@
               }
             ]
           },
-          "uid": 21
+          "uid": 6
         }
       },
       {
@@ -1213,7 +1213,7 @@
             }
           ],
           "defaultStateTitle": "IdleFront",
-          "uid": 22
+          "uid": 7
         }
       },
       {
@@ -1229,14 +1229,7 @@
           "collided": false,
           "debounceTime": 0.2,
           "debounce": 0.2,
-          "uid": 23
-        }
-      },
-      {
-        "type": "game.components.Inventar",
-        "properties": {
-          "items": [],
-          "uid": 24
+          "uid": 8
         }
       },
       {
@@ -1247,7 +1240,7 @@
             "y": -0.34
           },
           "globalCenter": {
-            "x": 1.5,
+            "x": 0.5,
             "y": 1.16
           },
           "dimension": {
@@ -1255,18 +1248,379 @@
             "y": 0.3
           },
           "boxStart": {
-            "x": 1.15,
+            "x": 0.15,
             "y": 1.01
           },
           "boxEnd": {
-            "x": 1.85,
+            "x": 0.85,
             "y": 1.31
           },
-          "uid": 25
+          "uid": 9
         }
       }
     ],
-    "uid": 7
+    "inventar": [],
+    "uid": 0
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Flower",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": -0.5,
+            "y": -1.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 39
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/Items.png",
+              "width": 96,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 0.33333334,
+                "y": 1.0
+              },
+              {
+                "x": 0.33333334,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 40
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/Items.png",
+              "width": 96,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 0.33333334,
+                "y": 1.0
+              },
+              {
+                "x": 0.33333334,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 41
+        }
+      },
+      {
+        "type": "game.components.PositionAbsolut",
+        "properties": {
+          "absolutPos": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "uid": 42
+        }
+      },
+      {
+        "type": "game.components.Item",
+        "properties": {
+          "uid": 43
+        }
+      }
+    ],
+    "inventar": [],
+    "uid": 6
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Apple",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 0.5,
+            "y": -1.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 45
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/Items.png",
+              "width": 96,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 0.6666667,
+                "y": 1.0
+              },
+              {
+                "x": 0.6666667,
+                "y": 0.0
+              },
+              {
+                "x": 0.33333334,
+                "y": 0.0
+              },
+              {
+                "x": 0.33333334,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 46
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/Items.png",
+              "width": 96,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 0.6666667,
+                "y": 1.0
+              },
+              {
+                "x": 0.6666667,
+                "y": 0.0
+              },
+              {
+                "x": 0.33333334,
+                "y": 0.0
+              },
+              {
+                "x": 0.33333334,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 47
+        }
+      },
+      {
+        "type": "game.components.PositionAbsolut",
+        "properties": {
+          "absolutPos": {
+            "x": 1.0,
+            "y": 0.5
+          },
+          "uid": 48
+        }
+      },
+      {
+        "type": "game.components.Item",
+        "properties": {
+          "uid": 49
+        }
+      }
+    ],
+    "inventar": [],
+    "uid": 9
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Axe",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 1.5,
+            "y": -1.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 51
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/Items.png",
+              "width": 96,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.6666667,
+                "y": 0.0
+              },
+              {
+                "x": 0.6666667,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 52
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/Items.png",
+              "width": 96,
+              "height": 32
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.6666667,
+                "y": 0.0
+              },
+              {
+                "x": 0.6666667,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 53
+        }
+      },
+      {
+        "type": "game.components.PositionAbsolut",
+        "properties": {
+          "absolutPos": {
+            "x": 1.5,
+            "y": 0.5
+          },
+          "uid": 54
+        }
+      },
+      {
+        "type": "game.components.Item",
+        "properties": {
+          "uid": 55
+        }
+      }
+    ],
+    "inventar": [],
+    "uid": 12
   },
   {
     "isActiveGameObject": false,
@@ -1279,7 +1633,7 @@
         "properties": {
           "position": {
             "x": 1.5,
-            "y": 2.5
+            "y": 3.5
           },
           "scale": {
             "x": 1.0,
@@ -1287,7 +1641,7 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 27
+          "uid": 57
         }
       },
       {
@@ -1309,37 +1663,182 @@
             },
             "texCoords": [
               {
-                "x": 0.7,
-                "y": 0.4
+                "x": 0.4,
+                "y": 1.0
               },
               {
-                "x": 0.7,
-                "y": 0.3
+                "x": 0.4,
+                "y": 0.9
               },
               {
-                "x": 0.6,
-                "y": 0.3
+                "x": 0.3,
+                "y": 0.9
               },
               {
-                "x": 0.6,
-                "y": 0.4
+                "x": 0.3,
+                "y": 1.0
               }
             ]
           },
-          "uid": 28
+          "uid": 58
         }
       },
       {
-        "type": "game.components.PositionAbsolut",
+        "type": "game.components.interactives.getItem",
         "properties": {
-          "absolutPos": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 29
+          "giveItem": "Flower",
+          "interactive": false,
+          "uid": 60
         }
       }
     ],
-    "uid": 10
+    "inventar": [],
+    "uid": 15
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 3.5,
+            "y": 3.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 57
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/all.png",
+              "width": 320,
+              "height": 320
+            },
+            "texCoords": [
+              {
+                "x": 0.4,
+                "y": 1.0
+              },
+              {
+                "x": 0.4,
+                "y": 0.9
+              },
+              {
+                "x": 0.3,
+                "y": 0.9
+              },
+              {
+                "x": 0.3,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 58
+        }
+      },
+      {
+        "type": "game.components.interactives.getItem",
+        "properties": {
+          "giveItem": "Apple",
+          "interactive": false,
+          "uid": 61
+        }
+      }
+    ],
+    "inventar": [],
+    "uid": 17
+  },
+  {
+    "isActiveGameObject": false,
+    "doSerialization": true,
+    "isDead": false,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "game.engine.Transform",
+        "properties": {
+          "position": {
+            "x": 5.5,
+            "y": 3.5
+          },
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 57
+        }
+      },
+      {
+        "type": "game.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 32.0,
+            "texture": {
+              "filepath": "assets/spriteSheets/all.png",
+              "width": 320,
+              "height": 320
+            },
+            "texCoords": [
+              {
+                "x": 0.4,
+                "y": 1.0
+              },
+              {
+                "x": 0.4,
+                "y": 0.9
+              },
+              {
+                "x": 0.3,
+                "y": 0.9
+              },
+              {
+                "x": 0.3,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 58
+        }
+      },
+      {
+        "type": "game.components.interactives.getItem",
+        "properties": {
+          "giveItem": "Axe",
+          "interactive": false,
+          "uid": 62
+        }
+      }
+    ],
+    "inventar": [],
+    "uid": 19
   }
 ]

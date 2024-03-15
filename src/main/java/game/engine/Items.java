@@ -7,11 +7,11 @@ import java.util.List;
  * Items
  */
 public class Items {
-    private List<Item> items;
-    public HashMap<Item, GameObject> belongings;
+    private List<GameObject> items;
+    public HashMap<GameObject, GameObject> belongings;
 
 
-    public void addItem(Item c) {
+    public void addItem(GameObject c) {
         items.add(c);
     }
 
@@ -20,13 +20,13 @@ public class Items {
      * @param from
      * @param to
      */
-    public void changeBelong(Item item, GameObject from, GameObject to) {
+    public void changeBelong(GameObject item, GameObject from, GameObject to) {
         if(belongings.get(item).equals(from)) {
             belongings.put(item, to);
         }
     }
 
-    public void setBelong(Item item, GameObject to) {
+    public void setBelong(GameObject item, GameObject to) {
         if(belongings.get(item) != null) {
             belongings.put(item, to);
         }

@@ -9,6 +9,7 @@ import org.joml.Vector4f;
 import game.components.Rigidbody;
 import game.components.SpriteRenderer;
 import game.components.interactives.Pipe;
+import game.components.interactives.getItem;
 import game.engine.GameObject;
 import game.renderer.PickingTexture;
 import imgui.ImGui;
@@ -39,6 +40,11 @@ public class PropertiesWindow {
                 if (activeGameObject.getComponent(Pipe.class) == null) {
                     if (ImGui.menuItem("Add Pipe")) {
                         activeGameObject.addComponent(new Pipe());
+                    }
+                }
+                if (activeGameObject.getComponent(getItem.class) == null) {
+                    if (ImGui.menuItem("Add getItem")) {
+                        activeGameObject.addComponent(new getItem());
                     }
                 }
                 ImGui.endPopup();
