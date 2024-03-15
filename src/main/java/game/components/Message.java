@@ -16,6 +16,9 @@ public class Message extends Component {
         if (gameObject.getComponent(PositionAbsolut.class) == null) {
             gameObject.addComponent(new PositionAbsolut());
 
+            gameObject.getComponent(PositionAbsolut.class).absolutPos = new Vector2f(2.5f, 1f);
+
+
         }
         gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
     }
