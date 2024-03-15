@@ -6,9 +6,11 @@ import java.util.List;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
+import game.components.Message;
 import game.components.Rigidbody;
 import game.components.SpriteRenderer;
 import game.components.interactives.Pipe;
+import game.components.interactives.breakOnItem;
 import game.components.interactives.getItem;
 import game.engine.GameObject;
 import game.renderer.PickingTexture;
@@ -45,6 +47,16 @@ public class PropertiesWindow {
                 if (activeGameObject.getComponent(getItem.class) == null) {
                     if (ImGui.menuItem("Add getItem")) {
                         activeGameObject.addComponent(new getItem());
+                    }
+                }
+                if (activeGameObject.getComponent(breakOnItem.class) == null) {
+                    if (ImGui.menuItem("Add breakOnItem")) {
+                        activeGameObject.addComponent(new breakOnItem());
+                    }
+                }
+                if (activeGameObject.getComponent(Message.class) == null) {
+                    if (ImGui.menuItem("Add Message")) {
+                        activeGameObject.addComponent(new Message());
                     }
                 }
                 ImGui.endPopup();

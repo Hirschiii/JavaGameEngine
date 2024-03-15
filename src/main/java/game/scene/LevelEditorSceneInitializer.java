@@ -52,24 +52,35 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.getShader("assets/shaders/default.glsl");
         AssetPool.getShader("assets/shaders/vhs.glsl");
 
-
         String sheetPath = "assets/spriteSheets/all.png";
         AssetPool.addSpritesheet(sheetPath,
                 new Spritesheet(
                         AssetPool.getTexture(sheetPath),
                         32, 32, 75, 0));
 
-        sheetPath ="assets/spriteSheets/CharacterAnimation.png";
+        sheetPath = "assets/spriteSheets/CharacterAnimation.png";
         AssetPool.addSpritesheet(sheetPath,
                 new Spritesheet(
                         AssetPool.getTexture(sheetPath),
                         32, 32, 32, 0));
 
-        sheetPath ="assets/spriteSheets/Items.png";
+        sheetPath = "assets/spriteSheets/Items.png";
         AssetPool.addSpritesheet(sheetPath,
                 new Spritesheet(
                         AssetPool.getTexture(sheetPath),
-                        32, 32, 3, 0));
+                        16, 16, 4, 0));
+
+        sheetPath = "assets/spriteSheets/Mes_Apfel_bekommen.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        256, 128, 1, 0));
+
+        sheetPath ="assets/spriteSheets/Eric.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        32, 32, 4, 0));
 
         for (GameObject g : scene.getGameObjects()) {
             if (g.getComponent(SpriteRenderer.class) != null) {
@@ -164,6 +175,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             int uid = 0;
             Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
             Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
+            Spritesheet eric_sheet = AssetPool.getSpritesheet("assets/spriteSheets/Eric.png");
             int[] fullRigid_all = new int[2];
             fullRigid_all[0] = 56;
             fullRigid_all[1] = 55;
@@ -179,6 +191,40 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                     texCoords[2].y)) {
                 GameObject object = Prefabs.generatePlayer();
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            sprite = playerSprites.getSprite(0);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generatePlayer_Two();
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            sprite = eric_sheet.getSprite(0);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generateFigure(eric_sheet);
                 // Attach to mouse Cursor to drop
                 levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
             }
@@ -232,6 +278,24 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                     texCoords[2].y)) {
                 GameObject object = Prefabs.generateFullRigid(sprite);
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            Spritesheet apple_Mes = AssetPool.getSpritesheet("assets/spriteSheets/Mes_Apfel_bekommen.png");
+            sprite = apple_Mes.getSprite(0);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generateFullRigid(sprite, 2, 1);
                 // Attach to mouse Cursor to drop
                 levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
             }

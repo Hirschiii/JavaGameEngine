@@ -56,7 +56,19 @@ public class LevelSceneInitializer extends SceneInitializer {
         AssetPool.addSpritesheet(sheetPath,
                 new Spritesheet(
                         AssetPool.getTexture(sheetPath),
-                        32, 32, 3, 0));
+                        16, 16, 4, 0));
+
+        sheetPath ="assets/spriteSheets/Mes_Apfel_bekommen.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        256, 128, 1, 0));
+
+        sheetPath ="assets/spriteSheets/Eric.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        32, 32, 4, 0));
 
         for (GameObject g : scene.getGameObjects()) {
             if (g.getComponent(SpriteRenderer.class) != null) {

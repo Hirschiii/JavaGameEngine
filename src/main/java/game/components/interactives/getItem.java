@@ -4,6 +4,7 @@ import static org.lwjgl.glfw.GLFW.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.joml.Vector2f;
 
@@ -14,6 +15,7 @@ import game.engine.GameObject;
 import game.engine.KeyListener;
 import game.engine.Window;
 import game.util.AssetPool;
+import game.util.Settings;
 
 public class getItem extends Interaktive {
     public String giveItem;
@@ -24,6 +26,9 @@ public class getItem extends Interaktive {
         if (item != null) {
             if (item.getComponent(Item.class) != null) {
                 go.addItem(item);
+                if (Settings.SAVE) {
+                    Window.getCurrenScene().save();
+                }
             }
         }
 

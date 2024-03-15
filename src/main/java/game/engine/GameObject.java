@@ -57,7 +57,8 @@ public class GameObject {
 
     public boolean useItem(GameObject go) {
         if (inventar.contains(go.uid)) {
-            inventar.remove(go.uid);
+            go.getComponent(Item.class).hide();
+            inventar.remove(inventar.indexOf(go.uid));
             return true;
         } else {
             return false;

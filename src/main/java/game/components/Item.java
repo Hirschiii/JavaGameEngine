@@ -11,6 +11,7 @@ public class Item extends Component {
     public void gameStart() {
         System.out.println("GameStart item" + gameObject.name);
         this.getGameObject().getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 0, 0, 0));
+        this.gameObject.transform.zIndex = 100;
     }
 
     public void show() {
