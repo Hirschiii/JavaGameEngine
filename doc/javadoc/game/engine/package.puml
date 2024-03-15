@@ -103,10 +103,18 @@
 
         class Prefabs [[Prefabs.html]] {
             {static} +generateSpriteObject(Sprite, float, float): GameObject
+            {static} +generateSpriteObject(Sprite, String, float, float): GameObject
+            {static} +generatePlayer_Two(): GameObject
             {static} +generatePlayer(): GameObject
-            {static} +generateStreet(): GameObject
-            {static} +generateColorChangingStreet(Sprite): GameObject
-            {static} +generateCustemInteractive(Sprite): GameObject
+            {static} +generateFullRigid(Sprite): GameObject
+            {static} +generateFullRigid(Sprite, float, float): GameObject
+            {static} +generateMessage(Sprite, float, float): GameObject
+            {static} +generateAbsolut(Sprite): GameObject
+            {static} +generateChest(Sprite): GameObject
+            {static} +generateDoor(Sprite): GameObject
+            {static} +generateItem(Sprite, String): GameObject
+            {static} +generateFigure(Spritesheet): GameObject
+            {static} +generateZaun(Spritesheet): GameObject
         }
 
         class ImGuiLayer [[ImGuiLayer.html]] {
@@ -123,11 +131,15 @@
             {static} +init(int): void
             {static} +getID_COUNTER(): int
             {static} +setID_COUNTER(int): void
+            +addItem(GameObject): void
+            +hasItem(GameObject): boolean
+            +useItem(GameObject): boolean
             +getComponent(Class<T extends Component>): T extends Component
             +removeComponent(Class<T extends Component>): void
             +addComponent(Component): void
             +update(float): void
             +start(): void
+            +gameStart(): void
             +imgui(): void
             +getName(): String
             +setName(String): void
@@ -144,6 +156,13 @@
             +destroy(): void
             +editorUpdate(float): void
             +copy(): GameObject
+        }
+
+        class Items [[Items.html]] {
+            +belongings: HashMap<GameObject, GameObject>
+            +addItem(GameObject): void
+            +changeBelong(GameObject, GameObject, GameObject): void
+            +setBelong(GameObject, GameObject): void
         }
 
         class Camera [[Camera.html]] {

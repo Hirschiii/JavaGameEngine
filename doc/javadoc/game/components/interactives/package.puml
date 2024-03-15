@@ -5,12 +5,41 @@
             +interact(GameObject): void
         }
 
+        class breakOnItem [[breakOnItem.html]] {
+            +start(): void
+            +interact(GameObject): void
+        }
+
+        class Amelie [[Amelie.html]] {
+            +interact(GameObject): void
+        }
+
+        class Eric [[Eric.html]] {
+            +interact(GameObject): void
+        }
+
+        class Pipe [[Pipe.html]] {
+            +start(): void
+            +interact(GameObject): void
+        }
+
         class change_color [[change_color.html]] {
             +interact(GameObject): void
         }
 
+        class getItem [[getItem.html]] {
+            +giveItem: String
+            +sendMessag: String
+            +interact(GameObject): void
+        }
+
         game.components.Interaktive <|-- grow_in_size
+        game.components.Interaktive <|-- breakOnItem
+        game.components.Interaktive <|-- Amelie
+        game.components.Interaktive <|-- Eric
+        game.components.Interaktive <|-- Pipe
         game.components.Interaktive <|-- change_color
+        game.components.Interaktive <|-- getItem
     }
 
     namespace game.components {

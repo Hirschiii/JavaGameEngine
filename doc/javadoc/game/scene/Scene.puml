@@ -8,6 +8,7 @@
         +Scene(SceneInitializer)
         +init(): void
         +start(): void
+        +gameStart(): void
         +addGameObject(GameObject): void
         +editorUpdate(float): void
         +update(float): void
@@ -16,6 +17,7 @@
         +getGameObjectWith(Class<T extends Component>): GameObject
         +getGameObjects(): List<GameObject>
         +getGameObject(int): GameObject
+        +getGameObject(String): GameObject
         +imgui(): void
         +createGameObject(String): GameObject
         +save(): void

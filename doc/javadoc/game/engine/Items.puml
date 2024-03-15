@@ -1,0 +1,14 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Items\n<size:10>game.engine" as game.engine.Items [[Items.html]] {
+        +belongings: HashMap<GameObject, GameObject>
+        +addItem(GameObject): void
+        +changeBelong(GameObject, GameObject, GameObject): void
+        +setBelong(GameObject, GameObject): void
+    }
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

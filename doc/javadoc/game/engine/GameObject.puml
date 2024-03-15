@@ -10,11 +10,15 @@
         {static} +init(int): void
         {static} +getID_COUNTER(): int
         {static} +setID_COUNTER(int): void
+        +addItem(GameObject): void
+        +hasItem(GameObject): boolean
+        +useItem(GameObject): boolean
         +getComponent(Class<T extends Component>): T extends Component
         +removeComponent(Class<T extends Component>): void
         +addComponent(Component): void
         +update(float): void
         +start(): void
+        +gameStart(): void
         +imgui(): void
         +getName(): String
         +setName(String): void

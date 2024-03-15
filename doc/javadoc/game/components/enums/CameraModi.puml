@@ -6,6 +6,7 @@
     enum "<size:14>CameraModi\n<size:10>game.components.enums" as game.components.enums.CameraModi [[CameraModi.html]] {
         {static} +FOLLOWING
         {static} +STATIC
+        {static} +READ
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()

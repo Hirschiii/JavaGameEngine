@@ -1,0 +1,18 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Message\n<size:10>game.components" as game.components.Message [[Message.html]] {
+        +start(): void
+        +gameStart(): void
+        +update(float): void
+        +interact(): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.Message
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

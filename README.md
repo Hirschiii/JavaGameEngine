@@ -1,16 +1,64 @@
 <h1 align="center">
   <img height="300px" width="300px" src="https://raw.githubusercontent.com/Hirschiii/liferfix_game_projekt_2024_2_hj/main/assets/Studio_Firma/Logo_Ideen/Logo500x500.png" alt="Serenti Studios">
-  
+
   <a href="">Documentation</a> |
   <a href="">Releas</a>
 </h1>
 
-# GAme Idea
+# Game Idea
 
 - 2D Game
 - Idle Game (Lieferant muss seine Leiferantenzentrale upgraden usw.)
 - Platformer (Paket liefern)
 - Dungeon (Man muss immer weiter nach vorne dringen um Pakete abzugeben)
+
+# Ordner Struktur:
+
+´´´
+.
+├── Digitale Mappe
+├── LICENSE.md
+├── Makefile
+├── README.md
+├── assets
+│   ├── Character
+│   ├── Gui
+│   ├── Haus
+│   ├── Items
+│   ├── Mapmaking
+│   ├── Musik
+│   ├── README.md
+│   ├── Spielelogo
+│   ├── Storyline
+│   ├── Studio_Firma
+│   ├── Terrain
+│   ├── Text
+│   ├── shaders
+│   ├── spriteSheets
+│   └── utils
+├── bin
+├── builds
+├── concept.md
+├── doc
+│   └── javadoc
+├── jdtls-config.json
+├── lib
+├── src
+│   └── main
+│       └── java
+│           └── game
+│               ├── App.java
+│               ├── components
+│               ├── editor
+│               ├── engine
+│               ├── observers
+│               ├── physics
+│               ├── renderer
+│               ├── scene
+│               └── util
+└── story.md
+´´´
+
 
 # Ideen fuer Spaeter:
 

@@ -18,6 +18,11 @@ public class Message extends Component {
             gameObject.getComponent(PositionAbsolut.class).absolutPos = new Vector2f(1.5f, 1);
 
         }
+        gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+    }
+
+    @Override
+    public void gameStart() {
         gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 0, 0, 0));
         gameObject.transform.zIndex = 100;
     }
@@ -29,6 +34,8 @@ public class Message extends Component {
             if (time < 0) {
                 setInactive();
             }
+        } else {
+            gameObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0, 0, 0, 0));
         }
     }
 

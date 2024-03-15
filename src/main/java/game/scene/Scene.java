@@ -19,7 +19,6 @@ import game.components.SpriteRenderer;
 import game.engine.Camera;
 import game.engine.GameObject;
 import game.engine.GameObjectDeserializer;
-import game.engine.Item;
 import game.engine.Transform;
 import game.renderer.Renderer;
 import game.util.Settings;

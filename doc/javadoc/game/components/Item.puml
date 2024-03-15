@@ -4,9 +4,14 @@
     hide empty methods
 
     class "<size:14>Item\n<size:10>game.components" as game.components.Item [[Item.html]] {
-        {static} +uid_counter: int
-        +uid: int
+        +gameStart(): void
+        +show(): void
+        +hide(): void
     }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.Item
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
 @enduml

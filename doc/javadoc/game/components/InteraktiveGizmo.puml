@@ -4,8 +4,10 @@
     hide empty methods
 
     class "<size:14>InteraktiveGizmo\n<size:10>game.components" as game.components.InteraktiveGizmo [[InteraktiveGizmo.html]] {
-        +InteraktiveGizmo(Sprite)
+        +start(): void
         +update(float): void
+        +setInactive(): void
+        +setActive(GameObject): void
     }
 
     abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]

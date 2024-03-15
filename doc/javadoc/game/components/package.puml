@@ -1,6 +1,13 @@
 @startuml
     namespace game.components {
 
+        class Message [[Message.html]] {
+            +start(): void
+            +gameStart(): void
+            +update(float): void
+            +interact(): void
+        }
+
         class SpriteRenderer [[SpriteRenderer.html]] {
             +start(): void
             +update(float): void
@@ -20,15 +27,18 @@
             +GameCamera(Camera)
             +start(): void
             +update(float): void
-        }
-
-        class ScaleGizmo [[ScaleGizmo.html]] {
-            +ScaleGizmo(Sprite, PropertiesWindow)
-            +editorUpdate(float): void
+            +read(String, float): void
         }
 
         class InteraktiveGizmo [[InteraktiveGizmo.html]] {
-            +InteraktiveGizmo(Sprite)
+            +start(): void
+            +update(float): void
+            +setInactive(): void
+            +setActive(GameObject): void
+        }
+
+        class PositionAbsolut [[PositionAbsolut.html]] {
+            +absolutPos: Vector2f
             +update(float): void
         }
 
@@ -36,20 +46,6 @@
             +pickupObject(GameObject): void
             +place(): void
             +editorUpdate(float): void
-        }
-
-        class Gizmo [[Gizmo.html]] {
-            #activeGameObject: GameObject
-            #xAxisActive: boolean
-            #yAxisActive: boolean
-            +Gizmo(Sprite, PropertiesWindow)
-            +start(): void
-            +update(float): void
-            +editorUpdate(float): void
-            +setActive(): void
-            +setInactive(): void
-            +setUsing(): void
-            +setNotUsing(): void
         }
 
         class Sprite [[Sprite.html]] {
@@ -64,11 +60,6 @@
             +getTexId(): int
         }
 
-        class TranslateGizmo [[TranslateGizmo.html]] {
-            +TranslateGizmo(Sprite, PropertiesWindow)
-            +editorUpdate(float): void
-        }
-
         class AnimationState [[AnimationState.html]] {
             +title: String
             +doesLoop: boolean
@@ -76,12 +67,6 @@
             +setLoop(boolean): void
             +update(float): void
             +refreshTextures(): void
-        }
-
-        class GizmoSystem [[GizmoSystem.html]] {
-            +GizmoSystem(Spritesheet)
-            +start(): void
-            +editorUpdate(float): void
         }
 
         class ComponentDeserializer [[ComponentDeserializer.html]] {
@@ -92,6 +77,7 @@
         abstract class Component [[Component.html]] {
             +gameObject: GameObject
             +start(): void
+            +gameStart(): void
             +update(float): void
             +imgui(): void
             +generateID(): void
@@ -129,6 +115,15 @@
             +imgui(): void
         }
 
+        class PlayerController_two [[PlayerController_two.html]] {
+            +walkSpeed: float
+            +slowDownForc: float
+            +terminalVelocity: Vector2f
+            +start(): void
+            +gameStart(): void
+            +update(float): void
+        }
+
         class GridLines [[GridLines.html]] {
             +editorUpdate(float): void
         }
@@ -146,6 +141,7 @@
             +setInteractive(boolean): void
             +getInteractive(): boolean
             +update(float): void
+            +editorUpdate(float): void
         }
 
         class FontRenderer [[FontRenderer.html]] {
@@ -158,15 +154,10 @@
             +editorUpdate(float): void
         }
 
-        class Inventar [[Inventar.html]] {
-            +addItem(Item): void
-            +removeItem(Item): void
-            +doesHasItem(Item): boolean
-        }
-
         class Item [[Item.html]] {
-            {static} +uid_counter: int
-            +uid: int
+            +gameStart(): void
+            +show(): void
+            +hide(): void
         }
 
         class NonPickable [[NonPickable.html]]
@@ -180,29 +171,29 @@
             +editorUpdate(float): void
         }
 
+        Component <|-- Message
         Component <|-- SpriteRenderer
         SpriteRenderer --> Sprite: sprite
         Component <|-- GameCamera
         GameCamera --> game.components.enums.CameraModi: camMode
-        Gizmo <|-- ScaleGizmo
         Component <|-- InteraktiveGizmo
+        Component <|-- PositionAbsolut
         Component <|-- MouseControls
-        Component <|-- Gizmo
-        Gizmo <|-- TranslateGizmo
         Component <|-- AnimationState
         AnimationState --> "*" Frame: animationFrames
         AnimationState --> Sprite: currentSprite
-        Component <|-- GizmoSystem
         com.google.gson.JsonSerializer <|.. ComponentDeserializer
         com.google.gson.JsonDeserializer <|.. ComponentDeserializer
         Component <|-- KeyControls
+        Spritesheet --> "*" Sprite: sprites
         Component <|-- StateMachine
+        Component <|-- PlayerController_two
         Component <|-- GridLines
         Component <|-- PlayerController
         Component <|-- Interaktive
         Component <|-- FontRenderer
         Component <|-- EditorCamera
-        Component <|-- Inventar
+        Component <|-- Item
         Component <|-- NonPickable
         Component <|-- Rigidbody
     }

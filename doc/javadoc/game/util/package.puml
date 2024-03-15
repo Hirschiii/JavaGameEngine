@@ -10,6 +10,8 @@
 
         class Settings [[Settings.html]] {
             {static} +HOME_PATH: String
+            {static} +PLAYER_TWO: boolean
+            {static} +SAVE: boolean
             {static} +RELEASE_BUILD: boolean
             {static} +tileSize: float
             {static} +GRID_WIDTH: float

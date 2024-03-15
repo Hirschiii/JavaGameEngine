@@ -10,6 +10,7 @@
         enum CameraModi [[CameraModi.html]] {
             {static} +FOLLOWING
             {static} +STATIC
+            {static} +READ
         }
 
     }

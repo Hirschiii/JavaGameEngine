@@ -12,7 +12,6 @@ import game.components.Spritesheet;
 import game.components.StateMachine;
 import game.editor.JImGui;
 import game.engine.GameObject;
-import game.engine.Item;
 import game.engine.Prefabs;
 import game.engine.Window;
 import game.util.AssetPool;

@@ -1,0 +1,20 @@
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>PlayerController_two\n<size:10>game.components" as game.components.PlayerController_two [[PlayerController_two.html]] {
+        +walkSpeed: float
+        +slowDownForc: float
+        +terminalVelocity: Vector2f
+        +start(): void
+        +gameStart(): void
+        +update(float): void
+    }
+
+    abstract class "<size:14>Component\n<size:10>game.components" as game.components.Component [[Component.html]]
+
+    game.components.Component <|-- game.components.PlayerController_two
+
+    center footer UMLDoclet 2.1.0, PlantUML %version()
+@enduml

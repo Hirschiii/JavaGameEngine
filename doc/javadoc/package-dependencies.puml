@@ -14,10 +14,10 @@
     game.components --> game.engine
     game.components --> game.renderer
     game.components --> game.components.enums
-    game.components --> game.editor
     game.components --> com.google.gson
     game.components.interactives --> game.components
     game.components.interactives --> game.engine
+    game.components.interactives --> org.joml
     game.scene --> game.components
     game.scene --> game.engine
     game.scene --> game.renderer
@@ -49,8 +49,6 @@
     }
     class "game.components.enums" [[game/components/enums/package-summary.html]] {
     }
-    class "game.editor" [[game/editor/package-summary.html]] {
-    }
     class "game.components.interactives" [[game/components/interactives/package-summary.html]] {
     }
     class "game.scene" [[game/scene/package-summary.html]] {
@@ -58,6 +56,8 @@
     class "game.observers" [[game/observers/package-summary.html]] {
     }
     class "game.observers.events" [[game/observers/events/package-summary.html]] {
+    }
+    class "game.editor" [[game/editor/package-summary.html]] {
     }
 
     center footer UMLDoclet 2.1.0, PlantUML %version()
