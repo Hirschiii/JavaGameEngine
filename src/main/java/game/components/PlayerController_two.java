@@ -50,10 +50,6 @@ public class PlayerController_two extends Component {
 
     @Override
     public void start() {
-        if(!Settings.PLAYER_TWO) {
-            gameObject.destroy();
-            return;
-        }
         System.out.println("RunPlayerTwo");
         this.stateMachine = gameObject.getComponent(StateMachine.class);
         GameObject gizmo_Interakt = Window.getCurrenScene().getGameObjectWith(InteraktiveGizmo.class);
@@ -63,6 +59,14 @@ public class PlayerController_two extends Component {
             }
         }
 
+    }
+
+    @Override
+    public void gameStart() {
+        if(!Settings.PLAYER_TWO) {
+            gameObject.destroy();
+            return;
+        }
     }
 
     @Override

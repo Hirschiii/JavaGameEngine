@@ -13,6 +13,8 @@ import game.components.Sprite;
 import game.components.SpriteRenderer;
 import game.components.Spritesheet;
 import game.components.StateMachine;
+import game.components.Message;
+import game.components.interactives.breakOnItem;
 import game.components.interactives.change_color;
 import game.components.interactives.grow_in_size;
 import game.util.AssetPool;
@@ -367,6 +369,14 @@ public class Prefabs {
         return street;
     }
 
+    public static GameObject generateMessage(Sprite sprite, float width, float height) {
+        GameObject street = generateSpriteObject(sprite, width, height);
+        street.addComponent(new Message());
+
+        return street;
+    }
+
+
     public static GameObject generateAbsolut(Sprite sprite) {
         GameObject street = generateSpriteObject(sprite, 1, 1);
        street.addComponent(new PositionAbsolut());
@@ -425,6 +435,49 @@ public class Prefabs {
 
         player.addComponent(new Rigidbody(new Vector2f(0f, -0.34f), new Vector2f(0.7f, 0.3f)));
         player.transform.zIndex = 2;
+
+        return player;
+    }
+
+    public static GameObject generateZaun(Spritesheet sheet) {
+        Spritesheet playerSprites = sheet;
+        GameObject player = generateSpriteObject(playerSprites.getSprite(0), 1, 1);
+        player.name = "Zaun";
+
+        float defaultFrameTime = 0.35f;
+
+        AnimationState open = new AnimationState();
+        open.title = "Open";
+
+        open.addFrame(playerSprites.getSprite(0), defaultFrameTime);
+        open.addFrame(playerSprites.getSprite(1), defaultFrameTime);
+        open.addFrame(playerSprites.getSprite(2), defaultFrameTime);
+
+        open.setLoop(false);
+
+        AnimationState close = new AnimationState();
+        close.title = "Close";
+
+        close.addFrame(playerSprites.getSprite(2), defaultFrameTime);
+        close.addFrame(playerSprites.getSprite(1), defaultFrameTime);
+        close.addFrame(playerSprites.getSprite(0), defaultFrameTime);
+
+        close.setLoop(false);
+
+        StateMachine stateMachine = new StateMachine();
+
+        stateMachine.addState(open);
+        stateMachine.addState(close);
+
+        stateMachine.setDefaultState(close.title);
+
+        stateMachine.addState(open.title, close.title, "Break");
+        stateMachine.addState(close.title, open.title, "Break");
+
+        player.addComponent(stateMachine);
+
+        player.addComponent(new Rigidbody(new Vector2f(0f, 0f), new Vector2f(1f, 1f)));
+        player.addComponent(new breakOnItem());
 
         return player;
     }

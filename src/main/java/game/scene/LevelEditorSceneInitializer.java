@@ -48,6 +48,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void loadResources(Scene scene) {
+
         // AssetPool.getShader("src/main/resources/assets/shaders/default.glsl");
         AssetPool.getShader("assets/shaders/default.glsl");
         AssetPool.getShader("assets/shaders/vhs.glsl");
@@ -76,11 +77,34 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                         AssetPool.getTexture(sheetPath),
                         256, 128, 1, 0));
 
-        sheetPath ="assets/spriteSheets/Eric.png";
+        sheetPath = "assets/spriteSheets/Eric.png";
         AssetPool.addSpritesheet(sheetPath,
                 new Spritesheet(
                         AssetPool.getTexture(sheetPath),
                         32, 32, 4, 0));
+
+        sheetPath = "assets/spriteSheets/Amelia.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        32, 32, 4, 0));
+        sheetPath = "assets/spriteSheets/Zauntor-Sheet.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        64, 64, 3, 0));
+
+        sheetPath = "assets/spriteSheets/Message_sheet.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        255, 128, 6, 0));
+
+        sheetPath = "assets/spriteSheets/Brief_sheet.png";
+        AssetPool.addSpritesheet(sheetPath,
+                new Spritesheet(
+                        AssetPool.getTexture(sheetPath),
+                        768, 768, 2, 0));
 
         for (GameObject g : scene.getGameObjects()) {
             if (g.getComponent(SpriteRenderer.class) != null) {
@@ -109,6 +133,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             imguiBlock();
             imguiPrefabs();
             imguiItems();
+            imguiMessages();
+            imguiBriefe();
             ImGui.endTabBar();
         }
 
@@ -176,9 +202,10 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
             Spritesheet streetSprites = AssetPool.getSpritesheet("assets/spriteSheets/all.png");
             Spritesheet eric_sheet = AssetPool.getSpritesheet("assets/spriteSheets/Eric.png");
-            int[] fullRigid_all = new int[2];
+            Spritesheet amelia_sheet = AssetPool.getSpritesheet("assets/spriteSheets/Amelia.png");
+            Spritesheet zaun_sheet = AssetPool.getSpritesheet("assets/spriteSheets/Zauntor-Sheet.png");
+            int[] fullRigid_all = new int[1];
             fullRigid_all[0] = 56;
-            fullRigid_all[1] = 55;
 
             Sprite sprite = playerSprites.getSprite(0);
             float spriteWidth = sprite.getWidth() * 2;
@@ -231,6 +258,40 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             ImGui.popID();
             ImGui.sameLine();
 
+            sprite = amelia_sheet.getSprite(0);
+            spriteWidth = sprite.getWidth() * 2;
+            spriteHeight = sprite.getHeight() * 2;
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generateFigure(amelia_sheet);
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
+            sprite = zaun_sheet.getSprite(0);
+            spriteWidth = sprite.getWidth();
+            spriteHeight = sprite.getHeight();
+
+            id = sprite.getTexId();
+            texCoords = sprite.getTexCoords();
+
+            ImGui.pushID(uid++);
+            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                    texCoords[2].y)) {
+                GameObject object = Prefabs.generateZaun(zaun_sheet);
+                // Attach to mouse Cursor to drop
+                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+            }
+            ImGui.popID();
+            ImGui.sameLine();
+
             for (int i : fullRigid_all) {
                 sprite = streetSprites.getSprite(i);
                 spriteWidth = sprite.getWidth() * 2;
@@ -250,57 +311,6 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.sameLine();
             }
 
-            sprite = streetSprites.getSprite(66);
-            spriteWidth = sprite.getWidth() * 2;
-            spriteHeight = sprite.getHeight() * 2;
-
-            id = sprite.getTexId();
-            texCoords = sprite.getTexCoords();
-
-            ImGui.pushID(uid++);
-            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                    texCoords[2].y)) {
-                GameObject object = Prefabs.generateAbsolut(sprite);
-                // Attach to mouse Cursor to drop
-                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-            }
-            ImGui.popID();
-            ImGui.sameLine();
-
-            sprite = streetSprites.getSprite(0);
-            spriteWidth = sprite.getWidth() * 2;
-            spriteHeight = sprite.getHeight() * 2;
-
-            id = sprite.getTexId();
-            texCoords = sprite.getTexCoords();
-
-            ImGui.pushID(uid++);
-            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                    texCoords[2].y)) {
-                GameObject object = Prefabs.generateFullRigid(sprite);
-                // Attach to mouse Cursor to drop
-                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-            }
-            ImGui.popID();
-            ImGui.sameLine();
-
-            Spritesheet apple_Mes = AssetPool.getSpritesheet("assets/spriteSheets/Mes_Apfel_bekommen.png");
-            sprite = apple_Mes.getSprite(0);
-            spriteWidth = sprite.getWidth() * 2;
-            spriteHeight = sprite.getHeight() * 2;
-
-            id = sprite.getTexId();
-            texCoords = sprite.getTexCoords();
-
-            ImGui.pushID(uid++);
-            if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
-                    texCoords[2].y)) {
-                GameObject object = Prefabs.generateFullRigid(sprite, 2, 1);
-                // Attach to mouse Cursor to drop
-                levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
-            }
-            ImGui.popID();
-            ImGui.sameLine();
             ImGui.endTabItem();
         }
     }
@@ -321,6 +331,61 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
                         texCoords[2].y)) {
                     GameObject object = Prefabs.generateItem(sprite, "Itemm " + uid);
+                    // Attach to mouse Cursor to drop
+                    levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+            }
+
+            ImGui.endTabItem();
+        }
+    }
+
+    public void imguiMessages() {
+        if (ImGui.beginTabItem("Messages")) {
+            int uid = 0;
+            Spritesheet messag_sheets = AssetPool.getSpritesheet("assets/spriteSheets/Message_sheet.png");
+
+            for (Sprite sprite : messag_sheets.getSprites()) {
+                float spriteWidth = sprite.getWidth();
+                float spriteHeight = sprite.getHeight();
+
+                int id = sprite.getTexId();
+                Vector2f[] texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                        texCoords[2].y)) {
+                    GameObject object = Prefabs.generateMessage(sprite, 2, 1);
+                    // Attach to mouse Cursor to drop
+                    levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                }
+                ImGui.popID();
+
+            }
+
+            ImGui.endTabItem();
+        }
+    }
+
+    public void imguiBriefe() {
+
+        if (ImGui.beginTabItem("Briefe")) {
+            int uid = 0;
+            Spritesheet messag_sheets = AssetPool.getSpritesheet("assets/spriteSheets/Brief_sheet.png");
+
+            for (Sprite sprite : messag_sheets.getSprites()) {
+                float spriteWidth = sprite.getWidth() / 3;
+                float spriteHeight = sprite.getHeight() / 3;
+
+                int id = sprite.getTexId();
+                Vector2f[] texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x,
+                        texCoords[2].y)) {
+                    GameObject object = Prefabs.generateSpriteObject(sprite, 2, 1);
                     // Attach to mouse Cursor to drop
                     levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                 }

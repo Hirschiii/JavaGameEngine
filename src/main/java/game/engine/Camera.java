@@ -15,7 +15,9 @@ public class Camera {
     private float aspectRation = (float) Window.getWidth() / Window.getHeight();
     private float projectionHeight = Settings.PROJECTION_HEIGHT;
     private Vector2f projectionSize = new Vector2f(projectionHeight * aspectRation, projectionHeight);
-    public Vector4f clearColor = new Vector4f(1, 1, 1, 1);
+
+    private Vector4f skyColor = new Vector4f(104.0f / 255.0f, 159.0f / 255.0f, 56.0f / 255.0f, 1.0f);
+    public Vector4f clearColor = new Vector4f(skyColor);
 
     public Camera(Vector2f position) {
         this.position = position;

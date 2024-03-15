@@ -15,6 +15,7 @@ public class GameCamera extends Component {
     private transient Camera gameCamera;
     private transient float cameraBuffer = 1.5f;
     private transient float playerBuffer = 0.25f;
+    private transient float wait;
     public transient CameraModi camMode;
 
     private Vector4f skyColor = new Vector4f(104.0f / 255.0f, 159.0f / 255.0f, 56.0f / 255.0f, 1.0f);
@@ -39,11 +40,27 @@ public class GameCamera extends Component {
                 break;
             case CameraModi.STATIC:
                 break;
+            case CameraModi.READ:
+                this.wait -= dt;
+                if(this.wait < 0) {
+                    this.camMode = CameraModi.FOLLOWING;
+                }
+                break;
 
             default:
                 break;
         }
     }
+
+    public void read(GameObject go, float time) {
+        if (go == null)
+            return;
+        this.wait = time;
+        gameCamera.position.x = go.transform.position.x - (gameCamera.getProjectionSize().x / 2);
+        gameCamera.position.y = go.transform.position.y - (gameCamera.getProjectionSize().y / 2);
+        camMode = CameraModi.READ;
+    }
+
 
     private void followGO(GameObject go) {
         if (go == null)

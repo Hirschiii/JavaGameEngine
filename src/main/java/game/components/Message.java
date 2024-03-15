@@ -2,12 +2,6 @@ package game.components;
 
 import org.joml.Vector4f;
 
-import game.components.Component;
-import game.components.Interaktive;
-import game.components.PositionAbsolut;
-import game.components.SpriteRenderer;
-import game.engine.GameObject;
-
 /**
  * Message
  */

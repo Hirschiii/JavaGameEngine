@@ -2,7 +2,7 @@ package game.util;
 
 public class Settings {
     public static final String HOME_PATH = "/Users/niklas/projects/school/liferfix_game_projekt_2024_2_hj/";
-    public static final boolean PLAYER_TWO = true;
+    public static final boolean PLAYER_TWO = false;
     public static final boolean SAVE = false;
     public static final boolean RELEASE_BUILD = false;
     public static final float tileSize = 1;
