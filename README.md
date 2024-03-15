@@ -14,7 +14,7 @@
 
 # Ordner Struktur:
 
-´´´
+```
 .
 ├── Digitale Mappe
 ├── LICENSE.md
@@ -57,7 +57,7 @@
 │               ├── scene
 │               └── util
 └── story.md
-´´´
+```
 
 
 # Ideen fuer Spaeter:
