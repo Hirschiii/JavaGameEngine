@@ -28,6 +28,18 @@ public class Prefabs {
         return block;
     }
 
+    public static GameObject generateItem(Sprite sprite, String name, float sizeX, float sizeY) {
+        Item item = Window.getScene().createItem(name);
+        item.transform.scale = new Vector2f(sizeX, sizeY);
+
+        SpriteRenderer renderer = new SpriteRenderer();
+        renderer.setSprite(sprite);
+        item.addComponent(renderer);
+        item.addComponent(new PositionAbsolut());
+
+        return item;
+    }
+
     public static GameObject generatePlayer() {
         Spritesheet playerSprites = AssetPool.getSpritesheet("assets/spriteSheets/CharacterAnimation.png");
         GameObject player = generateSpriteObject(playerSprites.getSprite(0), 1, 1);

@@ -34,7 +34,7 @@ public class GameObject {
 
     public String name;
     private List<Component> components;
-    private List<Item> items;
+    public List<Item> inventar;
 
     public transient Transform transform;
 

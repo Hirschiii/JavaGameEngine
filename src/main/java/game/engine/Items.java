@@ -12,7 +12,6 @@ public class Items {
 
 
     public void addItem(Item c) {
-        c.generateID();
         items.add(c);
     }
 

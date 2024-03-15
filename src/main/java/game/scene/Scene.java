@@ -19,6 +19,7 @@ import game.components.SpriteRenderer;
 import game.engine.Camera;
 import game.engine.GameObject;
 import game.engine.GameObjectDeserializer;
+import game.engine.Item;
 import game.engine.Transform;
 import game.renderer.Renderer;
 import game.util.Settings;
@@ -143,6 +144,12 @@ public class Scene {
      */
     public void imgui() {
         this.sceneInitializer.imgui();
+    }
+    public Item createItem(String name) {
+        Item item = new Item(name);
+        item.addComponent(new Transform());
+        item.transform = item.getComponent(Transform.class);
+        return item;
     }
 
     public GameObject createGameObject(String name) {
