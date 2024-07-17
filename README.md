@@ -5,6 +5,8 @@
   <a href="">Releas</a>
 </h1>
 
+Ein Schulprojekt der 12. Klasse, eines deutschen Gymnasiums. Die Aufgabenstellung lautete simple, es solle ein Spiel mit einer grafischen Oberflaeche programmiert werden.
+
 # Game Idea
 
 - 2D Game
@@ -68,6 +70,10 @@
 # Inspiration:
 
 - https://cataclysmdda.org/
+
+# Was hat nicht geklappt?
+
+Im laufe der Zeit und mit dem wachsenden Zeitdruck ist die klare linie zwischen Engine und dem "Spiel", welches als Endprodukt nötig war, immer mehr verschwommen. Zu dem jetzigen Zeitpunk würde ich es auch nicht mehr "Engine" nennen.
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
